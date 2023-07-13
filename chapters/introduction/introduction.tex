@@ -1,5 +1,5 @@
 % !TeX root = ../../thesis.tex
-\chapter{This is introduction}\label{ch:introduction}
+\chapter{Introduction}\label{ch:introduction}
 \section{Gapped phases of matter}
 \begin{figure}
 	\centering
@@ -99,7 +99,9 @@ The second one is that a FDQC preserves the locality of operators. More specific
 \section{Enriching the trivial phase with symmetry}\label{sec:enriching-the-trivial-phase-with-symmetry}
 \begin{figure}
 	\centering
-	\input{chapters/introduction/image/GroupActionQuantumCirquit.tikz}
+	\scalebox{0.9}{
+		\input{chapters/introduction/image/GroupActionQuantumCirquit.tikz}
+	}
 	\caption{This figure shows the group action as a finite depth quantum cirquit.}
 	\label{fig:GroupActionQuantumCirquit}
 \end{figure}
@@ -150,7 +152,8 @@ One could therefore wonder whether
 \end{align}
 is a representation. It turns out this is not the case. This can easily be seen by the fact that $r(-1,1)$ and $r(1,-1)$ don't commute. $r$ does however commute up to a phase. More specifically, define $[\cdot]_\sim$ as the equivalence class that says that two operators are equivalent if they differ only up to a phase. Then $\tilde{r}$, defined through
 \begin{align}\label{eq:OnSiteActionOfFakeAKLT_Model_OnC2_ProjectiveRep}
-	\tilde r(1,1)&=[\id_{\CC^2}]_\sim&\tilde r(-1,1)&=[\sigma_x]_\sim&\tilde r(1,-1)&=[\sigma_y]_\sim&\tilde r(-1,-1)&=[\sigma_z]_\sim
+	\tilde r(1,1)&=[\id_{\CC^2}]_\sim&\tilde r(-1,1)&=[\sigma_x]_\sim\\
+	\tilde r(1,-1)&=[\sigma_y]_\sim&\tilde r(-1,-1)&=[\sigma_z]_\sim
 \end{align}
 is a representation ($\tilde{r}\in\hom(G,\PP\UU(\CC^2))$). We call such an $\tilde{r}$ a projective representation and we call $r$ then the lift of a projective representation.
 \subsection{The trivial product state and the entangled pair state}
@@ -221,7 +224,7 @@ are not invariant individually but do form an invariant subspace. As we highligh
 \subsection{No $G$-invariant finite depth quantum cirquits}
 \begin{figure}
 	\centering
-	\scalebox{0.7}{
+	\scalebox{0.65}{
 		\input{chapters/introduction/image/ConnectingPsiAndPsi0Proof2_WithLightcone.tikz}
 	}
 	\caption{A graphical depiction of the FDQC $\tilde{V}$ that we constructed from $V$. There are three areas indicated with respect to the lightcone that are used in the proof.}	\label{fig:ConnectingPsiAndPsi0Proof2_WithLightcone}
@@ -247,8 +250,8 @@ In this paper we define the Group cohomology groups using the algebraic approach
 \end{equation}
 such that
 \begin{align}
-	\nonumber
 	&(\d^{n+1}\phi)(g_1,\cdots,g_{n+1})\\
+	\nonumber
 	&=g_1\phi(g_2,\cdots,g_{n+1})+\sum_{i=1}^n (-1)^i \phi(g_1,\cdots,g_{i-1},g_{i}g_{i+1},\cdots,g_{n+1})+(-1)^{n+1}\phi(g_1,\cdots,g_n).
 \end{align}
 The first therm here means applying the left group action onto $\phi(g_2,\cdots,g_{n+1})$. However, when the group action on the module is trivial, we still like to keep the $g_1$ there for bookkeeping purposes.\\\\
@@ -340,7 +343,9 @@ As we did before we will sometimes consider the explicit case where the two para
 \end{figure}
 \begin{figure}
 	\centering
+	\scalebox{0.78}{
 	\input{chapters/introduction/image/U1_ThoulessPumpAs_FiniteDepthQuantumCircuit.tikz}
+	}
 	\caption{This figure displays the FDQC associated to a $U(1)$-invariant loop demonstrating a charge transport $+Q$.}
 	\label{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit}
 \end{figure}
@@ -368,7 +373,9 @@ We can now use these unitaries to create a $G$-invariant depth 2 quantum cirquit
 See figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit} for a graphical depiction of this FDQC.
 \begin{figure}
 	\centering
-	\input{chapters/introduction/image/U1_ThoulessPumpAs_FiniteDepthQuantumCircuitContraction.tikz}
+	\scalebox{0.78}{
+		\input{chapters/introduction/image/U1_ThoulessPumpAs_FiniteDepthQuantumCircuitContraction.tikz}
+	}
 	\caption{This figure displays the (non $G$-invariant) contraction of the loop displayed in figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit}.}
 	\label{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Contraction}
 \end{figure}
@@ -379,13 +386,14 @@ Now I will show That this loop is contractible in a non $G$-invariant way. To th
 \end{align}
 Similarly to our original loop we now let $U(\lambda)=\exp(-iK_1(\lambda))$ and let $V(\lambda)=\exp(-i K_2(\lambda))$ where
 \begin{align}
-	K_1(\lambda)&=i(\ket{0,0}\bra{v_-(\lambda),v_+(\lambda)}-\ket{v_-(\lambda),v_+(\lambda)}\bra{0,0})&K_2(\lambda)&=i(\ket{0,0}\bra{v_+(\lambda),v_-(\lambda)}-\ket{v_+(\lambda),v_-(\lambda)}\bra{0,0}).
+	K_1(\lambda)&=i(\ket{0,0}\bra{v_-(\lambda),v_+(\lambda)}-\ket{v_-(\lambda),v_+(\lambda)}\bra{0,0})\\
+	K_2(\lambda)&=i(\ket{0,0}\bra{v_+(\lambda),v_-(\lambda)}-\ket{v_+(\lambda),v_-(\lambda)}\bra{0,0}).
 \end{align}
 These will indeed satisfy that $U(0)=V(0)=\id_{\CC^3}$, $U(1)=U$ and $V(1)=V$. Moreover if you create the same depth 2 quantum cirquit you will still create a loop (as is displayed in figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Contraction}).
 \subsection{The boundary state}
 \begin{figure}
 	\centering
-	\scalebox{0.7}{
+	\scalebox{0.6}{
 		\input{chapters/introduction/image/G_InvariantContraction_WithLightcone.tikz}
 	}
 	\caption{A graphical depiction of the action of the FDQC $\tilde{V}(\lambda)$ on the product state $\ket{\phi}$. The state $\ket{\psi(\lambda)}$ is the boundary state of the loop and is continuous in $\lambda$.}
@@ -411,7 +419,9 @@ We call this state $\ket{\psi}$, the boundary state of $(V,\ket{\phi})$. Some re
 \subsection{No $G$-invariant contraction}
 \begin{figure}
 	\centering
+	\scalebox{0.8}{
 	\input{chapters/introduction/image/U1_ThoulessPumpAs_FiniteDepthQuantumCircuitBoundary.tikz}
+	}
 	\caption{}
 	\label{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Boundary}
 \end{figure}

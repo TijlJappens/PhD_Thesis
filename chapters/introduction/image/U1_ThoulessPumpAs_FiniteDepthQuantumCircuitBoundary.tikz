@@ -9,7 +9,8 @@
 				
 				}{
 				\ifthenelse{\y=2}{
-					\ifthenelse{\isodd{\x}}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$+Q$};}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$-Q$};}}
+					\ifthenelse{\x<6}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$0$};}{
+					\ifthenelse{\isodd{\x}}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$+Q$};}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$-Q$};}}}
 				{
 					\node[] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$\vdots$};
 				}

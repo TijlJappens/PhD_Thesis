@@ -2,8 +2,12 @@
 \newcommand{\Dx}{1}
 \newcommand{\Dy}{1}
 \newcommand{\TotalSites}{19}
-\node[] (FirstState) at (-2.5,0) {$\ket{\phi}=\ket{\phi_L}\otimes\ket{\phi_C}\otimes\ket{\phi_R}$};
-\node[] (LastState) at (-3,-6) {$\ket{\tilde{\phi}(\lambda)}=\ket{\phi_L}\otimes\ket{\psi(\lambda)}\otimes\ket{\phi_R}$};
+\node[] (FirstState) at (-2,0) {$\begin{matrix}
+		\ket{\phi}=\\\ket{\phi_L}\otimes\ket{\phi_C}\otimes\ket{\phi_R}
+	\end{matrix}$};
+\node[] (LastState) at (-2,-6) {$\begin{matrix}
+		\ket{\tilde{\phi}(\lambda)}=\\ \ket{\phi_L}\otimes\ket{\psi(\lambda)}\otimes\ket{\phi_R}
+	\end{matrix}$};
 \foreach \x in {0,...,\TotalSites}{
 	\foreach \y in {0,...,6}{
 		\ifthenelse{\y=0\OR\y=6}{\node (\x_\y) [circle,fill,inner sep=2pt] at (\Dx*\x,-\Dy*\y) {};}{
