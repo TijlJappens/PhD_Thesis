@@ -1,0 +1,76 @@
+\usepackage{graphicx,xcolor,textpos}
+
+\usepackage{ifthen}
+\usepackage{helvet}
+\usepackage[english]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{thmtools,thm-restate}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{relsize}
+\usepackage[]{geometry}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{changepage}
+\usepackage{caption,subcaption}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns,angles,quotes,decorations.pathreplacing}
+\usepackage{boolexpr}
+
+\makeatletter
+\newcommand\Label[1]{&\refstepcounter{equation}(\theequation)\ltx@label{#1}&}
+\makeatother
+
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+\newcommand{\IAC}{\textrm{IAC}}
+\renewcommand{\d}{\text{d}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\e}{\mathlarger{e}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\Hsplit}{{H_{\text{split}}}}
+
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+\newcommand{\UU}{\mathcal U}
+\newcommand{\KK}{\mathcal K}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\PP}{\mathcal P}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\TT}{\mathbb T}
+\renewcommand{\AA}{\mathcal A}
+\newcommand{\LL}{\mathcal L}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\id}{\mathbbm{1}}
+
+\newcommand{\Ad}[1]{\textrm{Ad}\left(#1\right)}
+\newcommand{\Aut}[1]{\textrm{Aut}\left(#1\right)}
+\newcommand{\QAut}[1]{\textrm{QAut}_1\left(#1\right)}
+\newcommand{\Herm}[1]{\textrm{Herm}\left(#1\right)}
+
+\newcommand{\qe}{\underset{\text{q.e.}}{\sim}}
+\newcommand{\ue}{\underset{\text{u.e.}}{\sim}}
+
+\newcommand{\Mod}[1]{\mathrm{mod} #1}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conclusion}[theorem]{Conclusion}

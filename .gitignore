@@ -28,6 +28,7 @@ thesis.ind
 thesis.run.xml
 thesis.synctex.gz
 thesis.ps
+thesis.pdf
 cover.*
 s
 .force_rebuild

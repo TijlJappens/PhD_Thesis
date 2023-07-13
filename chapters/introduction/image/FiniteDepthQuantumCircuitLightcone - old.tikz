@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+	\foreach \x in {0,...,11}{
+		\node (-\x) [] at (\x,1) {};
+		\node (\x) [circle,fill,inner sep=2pt] at (\x,0) {};
+		\ifthenelse{\NOT\(\x=0 \OR \x=11\)}{\node (2\x) [] at (\x,-1) {};}{\node (2\x) [] at (\x,-1) {$\vdots$};};
+		\node (3\x) [] at (\x,-2) {};
+		\ifthenelse{\NOT\(\x=0 \OR \x=11\)}{\node (4\x) [] at (\x,-3) {};}{\node (4\x) [] at (\x,-3) {$\vdots$};}
+		\node (5\x) [circle,fill,inner sep=2pt] at (\x,-4) {};
+	}
+	
+	
+	\foreach \x in {0,...,11}{
+		\draw (\x) -- (2\x);
+		\draw (2\x) -- (3\x);
+		\draw (3\x) -- (4\x);
+		\draw (4\x) -- (5\x);
+	}
+	
+	\foreach \x in {1,...,5}{
+	\if\x3{
+		\draw [fill=yellow] (2*\x-0.3-1,-0.6) rectangle (2*\x+0.3,-1.4);
+	}
+	\else{
+		\draw [fill=white] (2*\x-0.3-1,-0.6) rectangle (2*\x+0.3,-1.4);
+	}\fi};
+	
+	\foreach \x in {0,...,5}{
+		\ifthenelse{\x=2 \OR \x=3}{\draw [fill=yellow] (2*\x-0.3,-1.6) rectangle (2*\x+0.3+1,-2.4);}{\draw [fill=white] (2*\x-0.3,-1.6) rectangle (2*\x+0.3+1,-2.4);}
+	};
+	\foreach \x in {1,...,5}{
+		\ifthenelse{\x=2 \OR \x=3 \OR \x=4}{\draw [fill=yellow] (2*\x-0.3-1,-2.6) rectangle (2*\x+0.3,-3.4);}{\draw [fill=white] (2*\x-0.3-1,-2.6) rectangle (2*\x+0.3,-3.4);}
+	}
+	
+	\foreach \x in {1,...,5}{
+		\node [] at (2*\x-0.5,-1) {$U_{1,\x}$};
+		\node [] at (2*\x-0.5,-3) {$U_{3,\x}$};
+	}
+	\foreach \x in {0,...,5}
+	\node [] at (2*\x+0.5,-2) {$U_{2,\pgfmathtruncatemacro\result{\x+1}\result}$};
+	
+	\draw (-5) -- (5);
+	\draw (-6) -- (6);
+	\draw[fill=white] (4.6,1.4) rectangle (6.4,0.6);
+	\node at (5.5,1) {A};
+\end{tikzpicture}

@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+	\newcommand\Distance{1.5}
+	\newcommand\yDistance{1.3}
+	\newcommand{\NumberOfSites}{11}
+	\foreach \x in {0,...,\NumberOfSites}{
+		\foreach \y in {0,...,2}{
+			\ifthenelse{\y=0}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$\uparrow$};}{
+				\ifthenelse{\y=2}{\node[circle,draw=black,inner sep=0pt,minimum size=25pt] (\x_\y) at (\Distance*\x,-\yDistance*\y) {$\downarrow$};}{\node[] (\x_\y) at (\Distance*\x,-\yDistance*\y) {};}}
+			}
+	}
+	\node[] (Psi1) at (-\Distance,0) {$\ket{\psi_1}$};
+	\node[] (Psi2) at (-\Distance,-2*\yDistance) {$\ket{\psi_2}$};
+	\foreach \x in {0,...,\NumberOfSites}{
+		\foreach \y in {0,...,1}{
+			\draw[draw=black] (\x_\y) -- (\x_\the\numexpr \y + 1\relax);
+	}}
+	\foreach \x in {0,...,\NumberOfSites}{\ifthenelse{\isodd{\x}}{}{
+			\draw[fill=white] (\Distance*\x-0.3,-\yDistance*1+0.5) rectangle (\Distance*\x+\Distance+0.3,-\yDistance*1-0.5);
+			\node[] (U1_\x) at (\Distance*\x+0.5*\Distance,-\yDistance) {$V$};
+	}}
+\end{tikzpicture}
