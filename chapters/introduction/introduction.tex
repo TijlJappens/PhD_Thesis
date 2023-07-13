@@ -495,7 +495,7 @@ This means that the amount of $G$-invariant SPT's over $\ZZ$ that are mirror sym
 In the last few sections I have made statements like: "the right half part of this states transforms under a projective representation" or "the restriction to the right of the loop operator applied on the product state creates a zero dimensional SPT". With both statements is one common flaw though. These statements where meant for the situation where the lattice is $\ZZ$ but in this case there is no notion of a full Hilbert space. Both for defining representations and for defining zero dimensional SPT states I need a Hilbert space. This begs the question, on what Hilbert space is this true. Similar problems can be found with the sum of local therms operators introduced in the beginning (see for example the $K$ in definition \ref{def:ConnectedStates}). If the lattice is non-compact, there is no reason for the sum over the local therms to be convergent.\\\\
 In this section we will develop some definitions and mathematical tools that are most frequently used in this thesis. They are used to address some of these issues as well as allowing us to generalise some of our previously made statements.
 \subsection{The quasi local $C^*$-algebra}
-First we define the operator algebra we will be working on. To do this, we first choose a lattice. This is a discrete set, $\Gamma$ with some notion of distance on it. In this thesis we will mainly be working with three lattices. That is, the lattice with one point ($\ZZ_1$), the one dimensional lattice ($\ZZ$) and the two dimensional lattice ($\ZZ^2$).\\\\
+First we define the operator algebra we will be working on. To do this, we first choose a lattice. This is a discrete set, $\Gamma$ with some notion of distance on it which we will denote by $d:\Gamma^2\rightarrow \RR$. In this thesis we will mainly be working with three lattices. That is, the lattice with one point ($\ZZ_1$), the one dimensional lattice ($\ZZ$) and the two dimensional lattice ($\ZZ^2$).\\\\
 Next we must create the operator algebra. This will be very similar to what we did in figure \ref{fig:Lattice}. We first fix an on site Hilbert space. As we did before, we can still simply take $\CC^d$ for some integer $d\in\NN$ (where $d$ could possibly depend on the site). Next we define the local algebra. To this end, let $\mathfrak{B}_{\Gamma}$. For any $\Lambda\in\mathfrak{B}_\Gamma$ we define the algebra over $\Lambda$ through:
 \begin{equation}
 	\AA_{\Lambda}=\bigotimes_{i\in\Lambda}\BB(\CC^d).
@@ -514,40 +514,56 @@ and by identifying any two operators that can be embedded into the same operator
 \end{equation}
 is called the quasi-local $C^*$-algebra.
 \subsection{The on site group action}
-The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however there is no full Hilbert space and therefore, there is no unitary representation of the full group action.
+The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
+\begin{equation}
+	\beta^\Lambda_{g}(A)=\Ad{\bigotimes_{i\in\Lambda}U_i(g)}(A).
+\end{equation}
+It turns out that this automorphism on the algebra of local operators can be extended to the full quasi local $C^*$-algebra $\AA=\overline{\AA_{\text{loc}}}$. {\color{red}More explanation needed?}
 \subsection{Interactions and locally generated automorphisms}
-An interaction $\Phi$ is a map
+Given a quasi local $C^*$-algebra $\AA$ over a lattice $\Gamma$ with some distance measure $d$ defined on it, an interaction $\Phi$ is a map
 \begin{equation}
-	\Phi: \mathfrak{G}_{\ZZ^2}\rightarrow \AA_{\text{loc}}: I \mapsto \Phi(I)
+	\Phi: \mathfrak{G}_{\Gamma}\rightarrow \AA_{\text{loc}}: I \mapsto \Phi(I)
 \end{equation}
-where $\Phi(I)\in\AA_I$ is hermitian ($\Phi(I)=\Phi(I)^*$). We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. Take $F:\NN\rightarrow \RR^+$ any monotonically decreasing positive function then we define an $F$-norm on the space of interactions by:
+where $\Phi(I)\in\AA_I$ is hermitian ($\Phi(I)=\Phi(I)^*$).We will sometimes use the restriction of an interaction. For some $\tilde\Gamma\subset\Gamma$ we define $\Phi_{\tilde\Gamma}$ by
 \begin{equation}
-	\norm{\Phi}_F\defeq \sup_{x,y\in\ZZ^2}\frac{1}{F(\abs{x-y})}\sum_{Z\in\mathfrak{G}_{\ZZ^2},Z\ni x,y}\norm{\Phi(Z)}.
-\end{equation}
-Following \cite{ogata2021h3gmathbb} we will fix a specific family of monotonically decreasing positive functions by saying that for any $0<\phi<1$ we define
-\begin{equation}\label{eq:OurFFunction}
-	F_\phi:\RR^+\rightarrow\RR^+:r\mapsto \frac{\exp(-r^\phi)}{(1+r)^4}.
-\end{equation}
-We will sometimes use the restriction of an interaction. For some $\Gamma\subset\ZZ^2$ we define $\Phi_\Gamma$ by
-\begin{equation}
-	\Phi_\Gamma:\mathfrak{G}_{\ZZ^2}\rightarrow \AA_{\text{loc}}:I\mapsto\left\{\begin{matrix}
+	\Phi_{\tilde\Gamma}:\mathfrak{G}_{\ZZ^2}\rightarrow \AA_{\text{loc}}:I\mapsto\left\{\begin{matrix}
 		\Phi(I)&\text{if }I\subset\Gamma\\0&\text{otherwise}.
 	\end{matrix}\right.
 \end{equation}
-The set of interactions with this norm (for a fixed $F$) is a Banach space. One of the properties of $F$-local interactions is that they can be used to generate automorphisms. Let
+We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will used is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{doi:10.1063/1.5095769} we call such a function an $F$-function if it satisfies two conditions:
+\begin{enumerate}
+	\item $F$ is uniformly integrable over $\Gamma$:
+	\begin{equation}
+		\norm{F}=\sup_{x\in\Gamma}\sum_{y\in\Gamma}F(d(x,y))<\infty.
+	\end{equation}
+	\item $F$ satisfies the convolution condition
+	\begin{equation}
+		\sum_{z\in\Gamma}F(d(x,z))F(d(z,y))< C_F F(d(x,y))
+	\end{equation}
+	for some finite constant $C_F$.
+\end{enumerate}
+Given such an $F$-function, we can define a norm on these interactions called 
 \begin{equation}
-	\Phi:\mathfrak{G}_{\ZZ^2}\times [0,1]\rightarrow \AA_{\text{loc}}:(I,t)\mapsto \Phi(I,t)
+	\norm{\Phi}_F\defeq \sup_{x,y\in\ZZ^2}\frac{1}{F(\abs{x-y})}\sum_{Z\in\mathfrak{G}_{\ZZ^2},Z\ni x,y}\norm{\Phi(Z)}.
+\end{equation}
+The set of interactions with this norm (for a fixed $F$) is a Banach space. Following \cite{ogata2021h3gmathbb} we will fix a specific family of $F$-functions for the case where $\Gamma=\ZZ^2$. For any $0<\phi<1$ we define
+\begin{equation}\label{eq:OurFFunction}
+	F_\phi:\RR^+\rightarrow\RR^+:r\mapsto \frac{\exp(-r^\phi)}{(1+r)^4}.
+\end{equation}
+One of the properties of $F$-local interactions is that they can be used to generate automorphisms. Let
+\begin{equation}
+	\Phi:\mathfrak{G}_{\Gamma}\times [0,1]\rightarrow \AA_{\text{loc}}:(I,t)\mapsto \Phi(I,t)
 \end{equation}
 be a norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is norm continuous for each $I\in\mathfrak{G}_{\ZZ^2}$.} one parameter family of interactions such that the $F$-norm is uniformly bounded ($\sup_{t\in[0,1]}\norm{\Phi(\cdot,t)}_F<\infty$). We will denote the set of one parameter families of interactions that satisfy this property by $\BB_{F}([0,1])$. For any $\Phi\in\BB_{F_\phi}([0,1])$, we define the locally generated automorphism (LGA) $\gamma^{\Phi}_{s;t}$ such that for any $A\in\AA$, $\gamma^{\Phi}_{s;t}(A)$ is given as the solution to the differential equation
 \begin{equation}
 	\frac{\d}{\d t}\gamma^{\Phi}_{s;t}(A)=-i\sum_{I\in\mathfrak{G}_{\ZZ^2}}\gamma^{\Phi}_{s;t}([\Phi(I,t),A])
 \end{equation}
-with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{doi:10.1063/1.5095769}). This satisfies the condition that if $\sup_t\norm{\sum_{I\in\mathfrak{B}_{\ZZ^2}}\Phi(I,t)}<\infty$ then
+with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{doi:10.1063/1.5095769}). This satisfies the condition that if $\sup_t\norm{\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(I,t)}<\infty$ then
 \begin{align}
-	\gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\ZZ^2}}\Phi(s',t)).
+	\gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(s',t)).
 \end{align}
 An alternative way to think about LGA's is then precisely as the limit of {\color{red}to be continued...}
-Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\ZZ^2}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\ZZ^2}$). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
+Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
 \subsection{Lieb-Robinson bounds}
 \subsection{States}
 \subsection{The GNS representation}\label{sec:the-gns-representation}
