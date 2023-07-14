@@ -1,14 +1,13 @@
 \usepackage{graphicx,xcolor,textpos}
 
+\usepackage[utf8]{inputenc}
 \usepackage{ifthen}
 \usepackage{helvet}
 \usepackage[english]{babel}
 \usepackage[normalem]{ulem}
-\usepackage{amsmath}
-\usepackage{amsthm}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{thmtools,thm-restate}
 \usepackage{bbm}
-\usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{relsize}
 \usepackage[]{geometry}
@@ -30,11 +29,14 @@
 
 \newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
 \newcommand{\IAC}{\textrm{IAC}}
+\newcommand{\cone}{\textrm{Cone}}
 \renewcommand{\d}{\text{d}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\e}{\mathlarger{e}}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\Hsplit}{{H_{\text{split}}}}
+\newcommand{\HsplitTilde}{{\tilde{H}_{\text{split}}}}
+\newcommand{\phiTilde}{\tilde{\phi}}
 
 \let\originalleft\left
 \let\originalright\right
