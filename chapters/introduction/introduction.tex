@@ -57,7 +57,7 @@ We will provide the statements in more detail along with the main ideas needed f
 	\label{fig:GappedPhasesOfQuantumMatter}
 \end{figure}
 These equivalence classes allow for a way to characterise these topological phases of matter. For example, if two of these states have different transverse Hall conductances they cannot be equivalent. We can try to generalise this. Suppose we take all states that can be written as the unique gapped ground-state of some local Hamiltonian and then tried to label all of the connected components with respect to the above equivalence class. These connected components are then called quantum phases of matter (see figure \ref{fig:GappedPhasesOfQuantumMatter}).
-\section{Finite depth quantum circuits}
+\section{Finite depth quantum circuits}\label{sec:finite-depth-quantum-circuits}
 \begin{figure}
 	\centering
 	\input{chapters/introduction/image/Lattice.tikz}
@@ -533,7 +533,7 @@ where $\Phi(I)\in\AA_I$ is hermitian ($\Phi(I)=\Phi(I)^*$).We will sometimes use
 We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will used is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{doi:10.1063/1.5095769} we call such a function an $F$-function if it satisfies two conditions:
 \begin{enumerate}
 	\item $F$ is uniformly integrable over $\Gamma$:
-	\begin{equation}
+	\begin{equation}\label{eq:F_Is_Uniformly_Integrable_Over_Gamma}
 		\norm{F}=\sup_{x\in\Gamma}\sum_{y\in\Gamma}F(d(x,y))<\infty.
 	\end{equation}
 	\item $F$ satisfies the convolution condition
@@ -554,16 +554,47 @@ One of the properties of $F$-local interactions is that they can be used to gene
 \begin{equation}
 	\Phi:\mathfrak{G}_{\Gamma}\times [0,1]\rightarrow \AA_{\text{loc}}:(I,t)\mapsto \Phi(I,t)
 \end{equation}
-be a norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is norm continuous for each $I\in\mathfrak{G}_{\ZZ^2}$.} one parameter family of interactions such that the $F$-norm is uniformly bounded ($\sup_{t\in[0,1]}\norm{\Phi(\cdot,t)}_F<\infty$). We will denote the set of one parameter families of interactions that satisfy this property by $\BB_{F}([0,1])$. For any $\Phi\in\BB_{F_\phi}([0,1])$, we define the locally generated automorphism (LGA) $\gamma^{\Phi}_{s;t}$ such that for any $A\in\AA$, $\gamma^{\Phi}_{s;t}(A)$ is given as the solution to the differential equation
+be a piecewise norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is piecewise norm continuous for each $I\in\mathfrak{G}_{\ZZ^2}$.} one parameter family of interactions such that the $F$-norm is uniformly bounded ($\sup_{t\in[0,1]}\norm{\Phi(\cdot,t)}_F<\infty$). We will denote the set of one parameter families of interactions that satisfy this property by $\BB_{F}([0,1])$. For any $\Phi\in\BB_{F_\phi}([0,1])$, we define the locally generated automorphism (LGA) $\gamma^{\Phi}_{s;t}$ such that for any $A\in\AA$, $\gamma^{\Phi}_{s;t}(A)$ is given as the solution to the differential equation
 \begin{equation}
 	\frac{\d}{\d t}\gamma^{\Phi}_{s;t}(A)=-i\sum_{I\in\mathfrak{G}_{\ZZ^2}}\gamma^{\Phi}_{s;t}([\Phi(I,t),A])
 \end{equation}
-with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{doi:10.1063/1.5095769}). This satisfies the condition that if $\sup_t\norm{\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(I,t)}<\infty$ then
+with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{doi:10.1063/1.5095769}). This satisfies the condition that if
+\begin{equation}\label{eq:InteractionWithBoundedSum}
+	\sup_t\norm{\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(I,t)}<\infty
+\end{equation}
+then
 \begin{align}
 	\gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(s',t)).
 \end{align}
-An alternative way to think about LGA's is then precisely as the limit of {\color{red}to be continued...}
+A particularly useful example of an interaction that satisfies equation \eqref{eq:InteractionWithBoundedSum} is the restriction of an interaction to a finite subset $\Lambda\in\mathfrak{B}_\Gamma$\footnote{In fact the way they prove that $\gamma^\Phi_{s;t}$ exists in \cite{doi:10.1063/1.5095769} is by showing that the limit $\lim_{\Lambda\rightarrow\Gamma}\Ad{u^{\Phi_\Lambda}_{s;t}}$ exists and is continuous.}.\\\\
 Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
 \subsection{Lieb-Robinson bounds}
+In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum cirquit preserved the locality of operators. In particular we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section we will discuss a generalisation of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{doi:10.1063/1.5095769}. To formulate the theorem we will first need to define two constants depending on the interaction:
+\begin{enumerate}
+	\item For any $\Phi\in\BB_F([0,1])$ we define the absolute integral through
+	\begin{equation}
+		I_F(\Phi)\defeq C_F\int_0^1 \d t \norm{\Phi(t)}_F.
+	\end{equation}
+	\item For any $F$-function, we define a generalisation\footnote{Notice in particular that $G_F(0)=\norm{F}$.} of the $\norm{F}$ introduced in \ref{eq:F_Is_Uniformly_Integrable_Over_Gamma} by
+	\begin{equation}
+		G_F(t)\defeq \sup_{x\in\Gamma}\sum_{y\in\Gamma,d(x,y)>t}F(d(x,y)).
+	\end{equation}
+\end{enumerate}
+We can now summarise the Lieb-Robinson bound in the following theorem:
+\begin{theorem}[Lieb-Robinson bound]
+	Let $F$ be an $F$-function on $(\Gamma,d)$. Suppose that $\Phi\in\BB_F([0,1])$. For any $X,Y\in\mathfrak{B}_\Gamma$ with $X\cap Y=\emptyset$ the bound
+	\begin{equation}
+		\norm{[\gamma_{s;t}^{\Phi}(A),B]}\leq \frac{2\norm{A}\norm{B}}{C_F}(e^{2I_F(\Phi)}-1)\abs{X}G_F(d(X,Y))
+	\end{equation}
+	holds for all $A\in\AA_X,B\in\AA_Y$ and $t,s\in[0,1]$.
+\end{theorem}
+\begin{proof}
+	See Corollary 3.6 of \cite{doi:10.1063/1.5095769}.
+\end{proof}
 \subsection{States}
+In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. In this case we then associate to this density matrix a positive linear functional through
+\begin{equation}
+	\omega(A)= \Tr_\HH(\rho_\omega A).
+\end{equation}
+{\color{red}To be continued...}
 \subsection{The GNS representation}\label{sec:the-gns-representation}
