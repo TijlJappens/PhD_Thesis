@@ -76,3 +76,161 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{conclusion}[theorem]{Conclusion}
+
+%Requirements for shared paper
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{ex}{Example}
+\numberwithin{equation}{section}
+% \numberwithin{figure}{section}
+
+\def\idtyty{{\mathchoice {\mathrm{1\mskip-4mu l}} {\mathrm{1\mskip-4mu l}} %
+		{\mathrm{1\mskip-4.5mu l}} {\mathrm{1\mskip-5mu l}}}}
+
+% GREEK - 2 letters ------------------------------------------------
+
+\let\al=\alpha  \let\de=\delta 
+%\newcommand{\RR}{\mathsf{R}}
+\let\ve=\varepsilon \let\vp=\varphi \let\ga=\gamma \let\io=\iota
+\let\ka=\kappa \let\la=\lambda \let\om=\omega \let\vr=\varrho
+\let\si=\sigma \let\vs=\varsigma \let\th=\theta \let\vt=\vartheta
+\let\ze=\zeta \let\up=\upsilon
+
+\let\De=\Delta \let\Ga=\Gamma \let\La=\Lambda \let\Om=\Omega
+\let\Th=\Theta  \let\Si=\Sigma
+
+%Sven's macros
+\newcommand{\caA}{{\mathcal A}}
+\newcommand{\caB}{{\mathcal B}}
+\newcommand{\caC}{{\mathcal C}}
+\newcommand{\caD}{{\mathcal D}}
+\newcommand{\caE}{{\mathcal E}}
+\newcommand{\caF}{{\mathcal F}}
+\newcommand{\caG}{{\mathcal G}}
+\newcommand{\caH}{{\mathcal H}}
+\newcommand{\caI}{{\mathcal I}}
+\newcommand{\caJ}{{\mathcal J}}
+\newcommand{\caK}{{\mathcal K}}
+\newcommand{\caL}{{\mathcal L}}
+\newcommand{\caM}{{\mathcal M}}
+\newcommand{\caN}{{\mathcal N}}
+\newcommand{\caO}{{\mathcal O}}
+\newcommand{\caP}{{\mathcal P}}
+\newcommand{\caQ}{{\mathcal Q}}
+\newcommand{\caR}{{\mathcal R}}
+\newcommand{\caS}{{\mathcal S}}
+\newcommand{\caT}{{\mathcal T}}
+\newcommand{\caU}{{\mathcal U}}
+\newcommand{\caV}{{\mathcal V}}
+\newcommand{\caW}{{\mathcal W}}
+\newcommand{\caX}{{\mathcal X}}
+\newcommand{\caY}{{\mathcal Y}}
+\newcommand{\caZ}{{\mathcal Z}}
+\newcommand{\cah}{{\mathcal h}}
+
+
+\newcommand{\bbA}{{\mathbb A}}
+\newcommand{\bbB}{{\mathbb B}}
+\newcommand{\bbC}{{\mathbb C}}
+\newcommand{\bbD}{{\mathbb D}}
+\newcommand{\bbE}{{\mathbb E}}
+\newcommand{\bbF}{{\mathbb F}}
+\newcommand{\bbG}{{\mathbb G}}
+\newcommand{\bbH}{{\mathbb H}}
+\newcommand{\bbI}{{\mathbb I}}
+\newcommand{\bbJ}{{\mathbb J}}
+\newcommand{\bbK}{{\mathbb K}}
+\newcommand{\bbL}{{\mathbb L}}
+\newcommand{\bbM}{{\mathbb M}}
+\newcommand{\bbN}{{\mathbb N}}
+\newcommand{\bbO}{{\mathbb O}}
+\newcommand{\bbP}{{\mathbb P}}
+\newcommand{\bbQ}{{\mathbb Q}}
+\newcommand{\bbR}{{\mathbb R}}
+\newcommand{\bbS}{{\mathbb S}}
+\newcommand{\bbT}{{\mathbb T}}
+\newcommand{\bbU}{{\mathbb U}}
+\newcommand{\bbV}{{\mathbb V}}
+\newcommand{\bbW}{{\mathbb W}}
+\newcommand{\bbX}{{\mathbb X}}
+\newcommand{\bbY}{{\mathbb Y}}
+\newcommand{\bbZ}{{\mathbb Z}}
+
+\newcommand{\cf}{{\it cf.\/} }
+\newcommand{\etal}{{\it et.\/ al.\/} }
+\newcommand{\ie}{{\it i.e.\/} }
+\newcommand{\eg}{{\it e.g.\/} }
+\newcommand{\dif}{\mathrm{d}}
+
+\renewcommand{\Re}{\mathrm{Re}}
+
+\newcommand{\Ran}[1]{\mathrm{Ran}\, #1 }
+\newcommand{\Ker}[1]{\mathrm{Ker}\, #1 }
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\iu}{\mathrm{i}}
+%\newcommand{\id}{\bbI}
+\newcommand{\alg}[1]{\mathcal{A}(#1)}
+\newcommand{\idtytyeal}[1]{\mathcal{I}_{ #1 }}
+\newcommand{\str}{^{*}}
+\newcommand{\ep}[1]{\mathrm{e}^{#1}}
+\newcommand{\hilb}{\mathcal{H}}
+%\newcommand{\dd}{\mathrm{d}}
+%\newcommand{\tr}{\mathrm{tr}}
+%\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\T}{\mathrm{T}\,}
+\newcommand{\Emean}[1]{\mathbb{E}(#1)}
+\newcommand{\Tstr}{\mathrm{T}^*\,}
+%\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\renewcommand{\braket}[2]{\left\langle #1 , #2\right\rangle}
+%\newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\ad}[1]{\mathrm{ad}_{#1}}
+%
+\newcommand{\teop}{\hfill$\square$}
+%
+\renewcommand{\labelenumi}{\roman{enumi}.}
+
+\DeclareMathOperator*{\slim}{s-lim}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\I}{\mathbbm{1}}
+
+\newcommand{\spec}{\mathrm{spec}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\dist}{\mathrm{dist}}
+
+\newcommand{\be}{\begin{equation}}
+	\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+	\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beann}{\begin{eqnarray*}}
+	\newcommand{\eeann}{\end{eqnarray*}}
+
+\newcommand{\wdr}{\textcolor{blue}} 
+
+\newcommand{\caal}{\caA_{\textrm{al}}}
+
+\newcommand{\zz}{zzzz}
+\newcommand{\Adjoint}{\mathrm{Ad}}
+
+\usepackage{xfrac}
+
+\newcommand{\polynom}{\mathrm{P}}
+\newcommand{\decrease}{\mathrm{M}}
+\newcommand{\superadd}{\mathrm{S}}
+
+\newcommand{\aux}{\mathrm{aux}}
+
+
+%\newcommand{\adjoint}{\mathbb{ad}}
+\newcommand{\loopc}{\,\square\,}
+
+\newcommand{\eder}{\equiv}
+
+\newcommand{\nor}{|||}
+
+\newcommand{\diam}{\mathrm{diam}}

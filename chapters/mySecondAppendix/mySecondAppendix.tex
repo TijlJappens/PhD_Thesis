@@ -1,10 +1,447 @@
 % !TeX root = ../../thesis.tex
 \chapter{Appendix to chapter \ref{ch:LoopSPT}}\label{ch:mySecondAppendix}
 
-\ldots
+
+\section{Appendix:  basic tricks in Hilbert space}\label{app: tricks}
+In this appendix we collect a few lemma's dealing with zero-dimensional systems, i.e.\ we deal with Hilbert spaces without any local structure. 
+
+\subsection{An estimate for bipartite systems}
+\begin{lemma}\label{lem: bipartite}
+	Consider a bipartite system $\caH=\caH_a\otimes\caH_b$. Let $P=P_a\otimes P_b$ where $P_a,P_b$ are rank-one projectors acting on Hilbert spaces $\caH_a,\caH_b$. Let $\rho$ be a density matrix on $\caH$ and let $\rho_a,\rho_b$ be the reduced density matrices on $\caH_a,\caH_b$.
+	Then 
+	$$
+	||\rho-P||_1 \leq 6\sqrt{ ||\rho_a-P_a||_1}+  6\sqrt{||\rho_b-P_b||_1  }
+	$$
+\end{lemma}
+\begin{proof}
+	We abuse notation by writing $P_i$ to denote $P_i \otimes 1$. 
+	First,
+	\begin{align*}
+		||\rho-P_i\rho P_i||_1  & \leq   ||P_i\rho\bar P_i ||_1+ ||\bar P_i\rho P_i ||_1+||\bar P_i\rho\bar P_i ||_1 \\
+		& \leq  || P_i\sqrt{\rho} ||_2 || \sqrt{\rho}\bar P_i ||_2  + ||\bar P_i\sqrt{\rho} ||_2 || \sqrt{\rho} P_i ||_2  +  \Tr ( \bar P_i \rho ) \\
+		&  \leq  3 \sqrt{\Tr ( \bar P_i \rho )} 
+		\leq 3\sqrt{||\rho_i-P_i||_1}  
+	\end{align*}
+	The second inequality follows from the Cauchy-Schwarz inequality and the last one is because
+	$$\Tr ( \bar P_i \rho ) = \Tr ( \bar P_i (\rho_i - P_i) )\leq ||\rho_i-P_i||_1,$$ where we used that $P_i$ is rank one. Then, we bound  $ ||P_b\rho P_b-P_b P_a\rho P_a P_b ||_1 \leq  ||\rho- P_a\rho P_a  ||_1 $ and so  
+	$$ || \rho- P_b P_a\rho P_a P_b ||_1 \leq \sum_{i=a,b}   ||\rho- P_i\rho P_i  ||_1 \leq \delta := 3\sum_{i=a,b}\sqrt{||\rho_i-P_i||_1}.
+	$$
+	Since $P=P_aP_b$ is rank one, we conclude that
+	$$
+	|1-\Tr (P\rho)| = |\Tr(\rho-\Tr (P\rho)P)|\leq ||\rho-\Tr (P\rho) P ||_1 = || \rho- P\rho P ||_1 \leq  \delta.
+	$$
+	Hence $|| \rho- P ||_1 \leq ||\rho-\Tr (P\rho) P ||_1+||(1-\Tr (P\rho)) P ||_1 \leq 2\delta$. 
+\end{proof}
+
+%
+\subsection{Parallel transport}
+We now turn to the
+%
+\begin{proof}[Proof of Lemma~\ref{lem: parallel transport simple}]
+	Let the normalized vectors $\Omega,\Psi \in \caH$ be representatives of  $\omega,\nu$. They can be chosen such that $a:= \langle\Psi,\Omega\rangle$ is real, with $0\leq a\leq 1$. Firstly, we note that $ ||\nu-\omega ||= \sqrt{1-a^2}$. 
+	We write then $\Psi=a \Omega+\sqrt{1-a^2}\Psi_\perp$ where $\Psi_\perp$ is orthogonal to $\Omega$ and has unit norm. 
+	Let now
+	$$
+	\Psi(s):=y(s)\Omega + \sqrt{1-y(s)^2}\Psi_\perp, \qquad y=a+(1-a)(1-(1-s)^2) 
+	$$
+	Then, 
+	\begin{enumerate}
+		\item $||\Psi(s)||=1$,
+		\item $\Psi(0)=\Psi$ and  $\Psi(1)=\Omega$,
+		\item $ |\partial_s y|,  |\partial_s \sqrt{1-y(s)^2}| \leq 2\sqrt{1-a} $. 
+	\end{enumerate}
+	Let $P(s)$ denote the orthogonal rank-one projector onto the span of $\Psi(s)$.
+	We consider the adiabatic generator 
+	\begin{equation}\label{Kato generator}
+		K(s)=i (P(s)\dot{P}(s)-\dot{P}(s)P(s)),
+	\end{equation}
+	which satisfies
+	%
+	\begin{equation*}
+		\dot P(s) = i[K(s),P(s)].
+	\end{equation*}
+	We then have
+	$$
+	|| K(s)|| \leq 2 || \dot{P}(s)|| \leq  4 ||\dot{\Psi}(s)|| \leq 8 \sqrt{1-a} \leq 8 || \nu-\omega ||.
+	$$
+	This proves items (i,ii). We turn to item (iii). If $h_{\nu/\omega} = 0$, then $U(g) \Omega = z_\omega(g)\Omega$ and $U(g) \Psi = z_\nu(g)\Psi$ with $z_\nu(g)= z_\omega(g)=:z(g)$. Therefore $U(g) \Psi_\perp = z(g)\Psi_\perp$ and so $U(g)\Psi(s) = z(g)\Psi(s)$ for all $s$. It follows that $P(s),\dot P(s)$ are invariant and so is $K(s)$ by definition~(\ref{Kato generator}).
+\end{proof}
 
 
 
+
+\subsection{Contracting loops}
+
+In this section, we prove Lemma~\ref{lem: contractibility zero dim} on the contractibility of loops in Hilbert space.
+
+Throughout this work, we often need to appeal to the fundamental theorem of calculus for Banach-space valued functions defined on the interval $[0,1]$. Let $X$ be an arbitrary Banach space. We first recall that a strongly measurable Banach-space valued function $J: [0,1]\to X: s\mapsto J(s)$ is Bochner integrable if and only if $\int_0^s du ||J(u)||<\infty$, see~\cite{diestel1978vector}. We consider functions $F: [0,1]\to X: s\mapsto F(s)$ that satisfy the following property:
+$$
+F(s)-F(0)=\int_0^s du J(u), \qquad  \sup_{s\in[0,1]} ||J(s)||  <\infty
+$$
+where $s\mapsto J(s)$ strongly measurable. In particular the function 
+$$s\mapsto \alpha_{H}(s)[A],$$
+for a TDI $H$ and $A\in \caal$ satisfies this property, with $J=\alpha_{H}(u)\{[H(u),A]\}$.
+
+For the application we have in mind here, it suffices to restrict our attention to the case of finite-dimensional Banach spaces. In that case (more generally in any Banach space with the Radon-Nikodym property with respect to the Lebesgue measure), a function $s\mapsto F(s)$ satisfies the property above if and only if it is Lipschitz continuous, in which case $J(s)$ is its derivative almost everywhere. We say that $C_F$ is a Lipschitz bound if $ \sup_{s\in[0,1]} ||J(s)|| \leq C_F$.   We now come to the
+%
+\begin{proof}[Proof of Lemma~\ref{lem: contractibility zero dim}]
+	As remarked in~(\ref{eq: finite tdi}), the evolved state $\nu(s)=\nu\circ \alpha_E(s)$ is of the form
+	$$
+	\nu(s) = \nu(0)\circ \Adjoint( U^*(s)), \qquad  U(s)=\id+i\int_0^s du E(u)U(u).
+	$$
+	We choose a unit vector representative $\Omega$ of $\nu(0)$, and we set 
+	$$
+	\widetilde\Psi(s)= U(s) \Omega.
+	$$
+	Then $s\mapsto\widetilde\Psi(s)$ is Lipschitz, and its almost sure derivative is $i E(s)\widetilde\Psi(s)$. 
+	Of course, changing the phase of $\widetilde\Psi(s)$ does not affect the state $\nu(s)$ and we use this to introduce a crucial modification of $s\mapsto \widetilde\Psi(s)$.
+	\begin{lemma}
+		There exists a Lipschitz function $a: [0,1]\mapsto U(1)$, with Lipschitz bound $ 4|||E||| $, and such that 
+		$$
+		\Psi(s)= a(s) \widetilde\Psi(s)
+		$$ 
+		satisfies
+		$$
+		k(s) := \Re \langle \Psi(s) , \Omega \rangle \geq -1/2.
+		$$
+	\end{lemma}
+	\begin{proof}
+		Let $\widetilde k(s)=\Re \langle \widetilde \Psi(s) , \Omega \rangle$. As $s\mapsto \widetilde \Psi(s)$ is Lipschitz continuous with bound $|||E|||$, so is $\widetilde k(s)$. Then the sets
+		$$
+		\kappa_0=\{ s\in [0,1], \, k(s)> 0   \}, \qquad 
+		\kappa_1=\{ s\in [0,1], \,  k(s)< -1/2   \}
+		$$
+		are open and
+		$$
+		\dist(\kappa_0,\kappa_1) \geq \frac{1}{2 |||E|||}.
+		$$
+		We can therefore construct a continuous, $U(1)$-valued function $a$ with Lipschitz bound $4 |||E|||$  such that $a(\kappa_0)=1, a(\kappa_1) =-1$
+		and the vector $a(s)\widetilde\Psi(s)$ satisfies the required properties.
+	\end{proof}
+	
+	We started from a loop $\nu(\cdot)$ and we now have a function $s\mapsto \Psi(s)$. The latter function is not necessarily a loop of unit vectors in the Hilbert space, but it is a family of representatives of $\nu(s)$, in particular 
+	\begin{equation}\label{eq: almost vector loop}
+		\Psi(0) = \Omega,\qquad \Psi(1) \propto \Omega.
+	\end{equation}
+	We now set for $\lambda\in[0,1]$,
+	$$
+	\Psi_\lambda(s):= \frac{1}{\sqrt{N(s,\lambda)}} \left(\lambda\Omega +  (1-\lambda) \Psi(s) \right),    \qquad  N(s,\lambda) = \lambda^2+(1-\lambda)^2+2\lambda(1-\lambda)k(s).
+	$$
+	With this definition and from the above construction of $\Psi(s)$ and \eqref{eq: almost vector loop}, it follows that 
+	\begin{enumerate}
+		\item $N \geq 1/4$,
+		\item $||\Psi_\lambda(s)||=1$,
+		\item $\Psi_\lambda(0) = \Omega$ and   $\Psi_\lambda(1)\propto \Omega$,
+		\item $\Psi_0(s)=\Psi(s)$ and  $\Psi_1(s)=\Omega$.
+	\end{enumerate}
+	Since $k(s)$ is Lipschitz, and $N\geq 1/4$, we infer that $\frac{1}{\sqrt{N}}$ is Lipschitz. Therefore, and since $s\mapsto a(s)$ and $\Psi$ are Lipschitz, also $s\mapsto \Psi_\lambda(s)$ is Lipschitz. A short calculation yields $||\partial_s\Psi_\lambda(s)|| \leq 20 |||E|||$. We denote by $P=P(\lambda,s)$ the rank-one projector on the range of $\Psi_\lambda(s)$. Writing $P=|\Psi\rangle\langle\Psi|$, the Lipschitz continuity of $s\mapsto \Psi_\lambda(s)$ gives that $s\mapsto P(\lambda,s)$ is Lipschitz with $|| \partial_sP(\lambda,s) || \leq 40 |||E|||$. 
+	We can now set
+	$$
+	E_\lambda(s)= -i [\partial_sP(\lambda,s) ,P(\lambda,s)]
+	$$
+	to satisfy item iii) of the lemma. Moreover, $||| E_\lambda |||\leq 80 |||E|||$.
+	To construct the family $F_s(\cdot)$, we proceed analogously, but the considerations are simpler because the functions $\lambda\mapsto \Psi_\lambda(s)$ are clearly Lipschitz in $\lambda$. Here we find $||\partial_\lambda\Psi_\lambda(s)|| \leq 52$ and so $||| F_s |||\leq 208$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \section{Appendix: Locality estimates}\label{app: locality}
+% We review the standard propagation bounds that are necessary for the proofs of Lemma \ref{lem: loc and liebrobinson}.  These bounds go back to 
+% \cite{Lieb:1972ts} but we use proofs in \cite{nachtergaele2019quasi}. 
+
+
+% \subsection{Functions $\bbN^+\to \bbR^+$}\label{subsec:F}
+% Just as in the main text, we denote $\bbN^{+}=\{1,2,\ldots\}$ and we consistently denote by $r$ variables in $\bbN^+$.
+% We define transformations $\decrease,\superadd, \polynom$ on bounded functions $\bbN^+\to\bbR^+$;
+%  \begin{itemize}
+	%  \item  $\decrease(f)(r)=\max_{r'\geq r} f(r')$
+	% \item $\polynom(f)(r)=r f(r) $
+	%  \item  $\superadd(f)(r)= \sup_{\ell\in\bbN^+}\mathop{\sup}\limits_{(r_1,\ldots,r_\ell) \in (\bbN^+)^\ell: \sum_i r_i=r } \prod_{i} f(r_i)
+	% $
+	%  \end{itemize}
+%  The definition of $\superadd(f)$ is taken from \cite{bruckner1960minimal} and its use lies in the fact that $\hat f=\superadd(f)$, for $f<1$,  is logarithmically {superadditive}, i.e,\, 
+% \begin{equation}\label{eq: log subadditive}
+	% \hat f(r_1)\hat f (r_2)\leq \hat f (r_1+r_2)\qquad r_1,r_2 \in \bbN^+.
+	% \end{equation}
+
+% We now consider the following transformations:
+% \begin{enumerate}
+	% \item $f\mapsto\hat{f}= \decrease(p f)$ for some polynomial $p$ with positive coefficients;
+	% \item {$f\mapsto\hat{f} = \decrease \begin{cases}f(\tfrac{r-b}{a}) &  \tfrac{r-b}{a}\in \bbN^+ \\    0 & \text{otherwise} \end{cases}  $},  for some  $a\in\bbN^+,b\in\bbN$. 
+	% \item  $f\mapsto\hat{f}= \superadd(f)$ for $f <1$. 
+	% \end{enumerate}
+% These transformations have the following important property, referring to the class $\caF$ introduced in \ref{sec: interactions}.  
+% \begin{lemma}
+	% If $f\in \caF$, then $\hat{f}$ is affiliated to $f$ and depends on the parameters $a,b,p$, in the sense of Definition \ref{def: derived function}. 
+	% \end{lemma}
+% \begin{proof}
+	% Only item iii) needs a proof. 
+	% Note first that if $f\leq F$ with F logarithmically superadditive, then $\superadd(f)\leq\superadd(F)=F$. Assume that  $f(r) \leq C_\alpha e^{-c_\alpha r^{\alpha}}$ for some $0<\alpha\leq 1$. By tuning $c_\alpha$, we can choose $C_\alpha=1$, so that $f$ is bounded above by a logarithmically superadditive function $r\mapsto e^{-c_\alpha r^{\alpha}}$. The claim now follows.
+	% \end{proof}
+% Finally, we will often use without comment that $\max(f_1,f_2) \in\caF$ if $f_1,f_2 \in\caF$. 
+
+
+% \subsubsection{Local decompositions}
+
+% We recall the canonical decomposition of observables  $A\in\caA$ into finitely suppported terms centered at some $j\in\bbZ$,  $A=\sum_{k\in\bbN} A_{j,k}$, introduced in Section \ref{sec: automorphisms}.
+% We will use the bound
+% \begin{equation}\label{eq: bound partial}
+	% ||A_{x,k}|| \leq  \begin{cases}  ||A-\tau_{B^c_{k}(j)}[A]|| + ||A-\tau_{B^c_{k-1}(j)}[A]||   &  k>0 \\
+		%  || A||  &  k=0  \end{cases}
+	% \end{equation}
+% and the terms on the right-hand side will in practice be bounded by the following standard result:
+% \begin{lemma}\label{lem: com and norm}
+	% For any $A\in\caA$, 
+	% $$||A-\tau_{Z^c}[A]||\leq \sup_{O\in \caA_{Z^c}, ||O||=1} ||[O,A]||.$$
+	%  \end{lemma} 
+%  \begin{proof}
+	%  If $A$ is a local observable supported in a finite set $X$, then the claim follows from the expression
+	%  $\tau_{Z^c}[A]=\int d\mu_{X\setminus Z}(U) UAU^*$ with $\mu_{X\setminus Z}$ the Haar measure on the unitary group in~$\caA_{X\setminus Z}$. The general case follows by approximating $A$ with a sequence of local elements. 
+	%  \end{proof}
+
+% %%%%%%%%%%%%%
+
+
+
+
+% \subsection{Lieb-Robinson bounds in finite volume} \label{sec: lr in finite volume}
+% In the present section, we restrict our setup to finite volume, as it is mostly done for the discussion of Lieb-Robinson bounds. More concretely, we assume that all the operators appearing below, in particular the spatial terms of the interactions, belong to the algebra $\caA_{[-L,L]}$ for a large but finite $L$. In order to ensure a smooth passing to infinite volume in Section \ref{sec: passage to infinite volume}, we will only consider interactions and TDIs that are restrictions of infinite volume interactions and TDIs. For example, a TDI $H^{(L)}$ on $\caA_{[-L,L]}$ will be the restriction of a TDI $H$ on the full chain algebra as defined in Section \ref{sec: interactions}, namely $H^{(L)}_S = H_S$ whenever $S$ is a subset of $[-L,L]$. The advantage of this is that the decay function $f_H$ associated with $H$ can be chosen fixed and independent of $L$. Similarly, all estimates are understood to be independent of $L$. In order not to overburden the notation, we will not keep the superscripts $L$ below.
+
+
+% Let $H$ be a TDI as introduced above and let $\alpha_H$ be the associated almost local evolution, in the sense that 
+% $$
+% \alpha_H(s)[A]=A+i\int_0^s du \,  \alpha_H(u)\{[H(u),A]\}.
+% $$
+% In contrast with the main text, we allow here arbitrary times $s \in \bbR$. 
+% The existence and uniqueness of this finite-volume dynamics follows from elementary facts on matrix-valued ODE's. We now state a version of the Lieb-Robinson bound, using the language introduced in section \ref{subsec:F}.  
+% \begin{lemma} \label{lem: bounds on evolved}
+	% Let
+	% \begin{equation} \label{eq: def h}
+		% h=\superadd (  \max( \frac{\decrease\polynom f_F}{v( f_F)}, \frac{  \decrease\polynom f_H}{v(f_H)}) ), \qquad  v(f)= \sup_r (\polynom f(r))
+		% \end{equation}   
+	% \begin{equation} \label{eq: def f prime}
+		% \hat f(r)= \decrease \begin{cases}  (\tfrac{r-1}{2})^2 \polynom h(\tfrac{r-1}{2})  & \tfrac{r-1}{2} \in \bbN^+ \\  0  & \text{otherwise} \end{cases}
+		% \end{equation}
+	% Then for any subset $X$,
+	% $$
+	% ||  \alpha_{H}(s)(F) ||_{X,\hat f} \leq 8 e^{ s v(f_H) C_H}   v( f_F)  ||F||_{X,f_F}
+	% $$
+	% where $C_H = \sup_{s \in \bbR}||H(s)||_{f_H}$. Note that  $\hat f \in \caF$ if  $f_H, f_F \in\caF$.
+	% \end{lemma}
+
+% \begin{proof}
+	
+	% We will start from the bound \eqref{eq: start lr} below. This bound follows from equations (3.41-3.42) of \cite{nachtergaele2019quasi} once one proves that the reminder term $R_N(t)$ appearing in (3.41) in \cite{nachtergaele2019quasi} vanishes as $N\to\infty$. The vanishing of this remainder term is proven analogously to the bounds that we derive below and so we do not comment on this further. 
+	
+	% For  $A\in\caA_{S_0}$ and  $O \in \caA_{B_{r-1}(x)^c}$ with $r\in\bbN^+$,
+	% \begin{equation}\label{eq: start lr}
+		% \frac{||[O, \alpha_H(s)[A]||}{ || O ||} \leq {2}   || A ||  \sum_{n\geq 0}   \sum_{\substack{
+				% S_{1},\ldots,S_{n}: \\
+				% { S_{j+1} \sim S_{j},  j=0,\ldots,n} }}
+		% \int^s d\underline{u}
+		%  || H_{S_n}(u_n)||  \ldots || H_{S_1}(u_1)||,
+		% \end{equation}
+	% where \begin{enumerate}
+		% \item we denote $S\sim S'$ whenever $S,S'$ intersect,
+		% \item $\int^s d\underline{u}$ is shorthand for $ \int_{0}^s du_1 \int_{0}^{u_1} du_2 \ldots  \int_0^{u_{n-1}} du_n$,
+		% \item we introduced the dummy $S_{n+1}= B_{r-1}(x)^c$ (in particular, the $n=0$ term equals $0$ if $S_0$ and $B_{r-1}(x)^c$ are disjoint and $1$ otherwise).
+		% \end{enumerate}
+	% We now take  $A= \sum_{S_0\ni x} \frac{1}{|S_0|}  F_{S_0}$. Then the bound above, linearity of the commutator and the triangle inequality yield
+	% $$
+	% t_r := \sup_{O \in \caA_{B_{r-1}(x)^c}} \frac{||[O,\alpha_H(s)[A]]|| }{|| O ||}\leq 2 \sum_{n\geq 0} 
+	%  \sum_{\substack{
+			% S_0,S_{1},\ldots,S_{n}: \\
+			% { S_{j+1} \sim S_{j},  j=-1,\ldots,n} }}   \frac{ ||F_{S_0}||}{|S_0|} \int^s d\underline{u}
+	%  || H_{S_n}(u_n)||  \ldots || H_{S_1}(u_1)||
+	% $$
+	% where we have introduced the dummy $S_{-1}=\{x\}$, i.e.\ $S_0$ is from now on constrained to satisfy $S_0 \sim \{x\}$.  
+	%  Recalling the definition of $h$ in \eqref{eq: def h}, 
+	% \begin{multline} \label{eq: use of h}
+		%   \frac{f_F(\diam(S_0)+1)}{v(f_F)} \prod_{j=1}^{n-1}  \frac{|S_j| f_H(\diam(S_j)+1)}{v(f_H)  }\frac{f_F(\diam(S_n)+1)}{v(f_F)}\leq 
+		% \prod_{j=0}^n h(\diam(S_j)+1) \\ \leq   
+		%      h(\sum_{j=0}^n \diam(S_j)+n+1) \leq h(r)
+		% \end{multline}
+	% where the second inequality is because $h$ is logarithmically superadditive and the last inequality is because $\sum_{j=0}^n\diam(S_j) \geq r$ and $h$ is non-increasing.  Hence we get, dropping the condition $S_{n+1} \sim S_n$,
+	% \begin{equation} \label{eq: anchored sums}
+		% \frac{t_r}{h(r)} 
+		% \leq  2  \sum_{n\geq 0}  \sum_{\substack{S_0,\ldots,S_{n} \\
+				%  S_{j+1}  \sim S_j: j=-1,\ldots, n-1}}    \frac{v(f_F) ||F_{S_0}||}{f_F(\diam(S_0)+1)}   \int^s d\underline{u}            \prod_{j=1}^n\frac{ v(f_H)|| H_{S_j}(u_j)||}{|S_{j-1}|f_H(\diam(S_{j})+1)}  
+		% \end{equation}
+	% We can now perform iteratively the sum  $S_j$ iteratively, starting at $j=n$ and using that
+	% $$
+	% \frac{1}{|S_{j-1}|}\sum_{{S_j:S_j \sim S_{j-1}}} \frac{|| H_{S_j}(u)||}{f_H(1+\diam(S_{j}))}  \leq || H(u) ||_{{f_H}},
+	% $$
+	% and for the last factor $j=0$,
+	% %
+	% \begin{equation*}
+		% \sum_{S_0\ni x} \frac{||F_{S_0}||}{{{f_F}}(\diam(S_0)+1)}\leq ||F||_{{f_F}}.
+		% \end{equation*}
+	% %
+	% Taking $\sup$ over $u$ and performing the integrals, we get
+	% %
+	% \begin{equation}\label{propagation}
+		%  \frac{t_r}{h(r)} \leq 2 \sum_{n\geq 0} \frac{s^n}{n!} C_H^n v(f_H)^n ||F||_{{f_F}} v(f_F)  \leq 
+		% 2 e^{ s v(f_H) C_H}  v(f_F) ||F||_{{f_F}}=:\caR.
+		% \end{equation}
+	% From the bound \eqref{eq: bound partial} and  Lemma \ref{lem: com and norm} we conclude that, with $K_{j,r}=(\alpha_H(s)[A])_{j,r}$ 
+	% $$
+	% || K_{j,r} || \leq   t_r+t_{r+1} \leq 2 t_r \leq 2 h(r) \caR.
+	% $$ 
+	% Note that the estimate is independent of the site $j$. To convert these bounds into a bound on $||\alpha_H(s)[F]||$ we note that, for a non-increasing $\hat f$,
+	% \begin{align}
+		% \sum_{S\ni n}  \frac{1}{\hat f(\diam(S)+1)} ||(\alpha_H(s)[F])_S|| &  \leq   \frac{1}{\hat f(1)}  ||K_{n,0}||   +\sum_{r\in\bbN^+} \sum_{j: \dist(j,n)= r}   \frac{1}{\hat f(2r+1)}  ||K_{j,r}||   \\
+		% &  \leq     \frac{2 h(1) }{\hat f(1)} \caR+ 2 \sum_{r\in\bbN^+}  \frac{2r+1}{\hat f(2r+1)} h(r)\caR.  \label{eq: end bound} 
+		% \end{align}
+	% In the first inequality, we recalled the definition~(\ref{eq: evolved interaction}). We choose $\hat f$ as in \eqref{eq: def f prime}, so that in particular  $\hat f(1) \geq   3 h(1) $ and 
+	% $$
+	% \hat f(2r+1) \geq  r^2 (2r+1)h(r). 
+	% $$
+	% Then  \eqref{eq: end bound} is bounded by $  \frac{2}{3}\caR+ \frac{2\pi^2}{6}\caR \leq 4\caR$ from which the lemma follows. 
+	% \end{proof}
+
+
+% \subsection{Passage to infinite volume}\label{sec: passage to infinite volume}
+
+% As was already pointed out in the original~\cite{Lieb:1972ts}, the finite volume Lieb-Robinson bound implies the convergence of the $*$-automorphisms $\alpha_{H^{(L)}}$ as $L\to\infty$.
+% \begin{lemma} \label{lem: LRB in inf volume}
+	% Let $\alpha_{H^{(L)}}$ be the finite volume almost local evolution above. Then, for any $A\in\caA$ and $s\in \bbR$, the limit
+	% $$
+	% \alpha_H(s)[A]=\lim_{L\to\infty}\alpha_{H^{(L)}}(s)[A]
+	% $$
+	% exists and defines a strongly continuous family of $*$-automorphisms solving the Heisenberg equation \eqref{eq: heisenberg}.  The extension of $\alpha_H(s)$ to interactions, as defined in Section \ref{sec: automorphisms}, satisfies the same bound as given in Lemma \ref{lem: bounds on evolved}.
+	% \end{lemma}
+% The proof of this claim relies on Lemma \ref{lem: bounds on evolved}, its proof and most importantly of the fact that the bounds therein hold uniformly in $L$. Since the argument is well-known, we omit it here.\\
+
+
+
+% Finally, we can now prove the bound of Lemma~\ref{lem: loc and liebrobinson} item (iv). It follows because we can now restrict to $s\in [0,1]$, and hence the prefactor $8 e^{ s v(f_H) C_H}   v( f_F) $ can be omitted by choosing $\hat{f}$ judiciously. 
+
+
+
+
+
+
+\section{Proof of Proposition \ref{prop: uniqueness of ground state}}   \label{sec: app stability}
+
+We will use finite-volume restrictions of interactions $
+H^{(L)}_S= \chi(S\subset [-L,L])$ that inherit bounds since
+$
+||H^{(L)} ||_f \leq   ||H||_f
+$. 
+We note that $\iota(H^{(L)})$ (recall the definition in Subsection \ref{subsec:alal}) is a Hermitian element of the finite-dimensional $C^*$-algebra $\caA_L=\caA_{[-L,L]}$,  which is isomorphic to a full matrix algebra. We write $\Tr_L(\cdot)$ for the trace on $\caA_L$ and we say that $H^{(L)}$ has a spectral gap $\Delta$ if the minimum of the spectrum of $\iota(H^{(L)})$ is a simple eigenvalue $E_0$ and the next smallest eigenvalue is no smaller than $E_0+\Delta$. We let $P_L$ denote the one-dimensional spectral projector corresponding to $E_0$ and we write $\bar P_L=1-P_L$. 
+Further, $\omega_{P_L}$ denotes the state on $\caA_L$ given by 
+$$ \omega_{P_L}(A) = \Tr (P_L A), \qquad A \in  \caA_L.
+$$
+%
+
+
+\subsection{Preliminaries}
+
+
+For a function $v \in L^1(\bbR)$,
+we define the map $\caK^H_v: \caA\to\caA$
+\begin{equation*}
+	\caK^{H}_v[A] = \int_{-\infty}^\infty  v(t)\alpha_H(t)[A]dt
+\end{equation*}
+Note that we used the evolution $\alpha_H(t)$ here for $t\in \bbR$ instead of $[0,1]$.
+\begin{lemma}\label{lem: Block diagonalization} 
+	Let $H^{(L)}$ have a spectral gap $\Delta$, uniformly in $L$.  There is a function $v\in L^1$ such that 
+	\begin{enumerate}
+		\item $\int_{-\infty}^{\infty} v(t) dt=1$ and $v\geq 0$;
+		\item  $\caK^{H}_v[\caal]\subset \caal$
+		\item $\caK^{H^{(L)}}_v(P_LA\bar{P}_L)=\caK^{H^{(L)}}_v(\bar{P}_LA\bar{P}_L)=0$ for any $A\in \caA_L$.
+		\item For any $A\in \caal$,  $\lim_L\caK^{H^{(L)}}_v(A)= \caK^{H^{}}_v(A)$.
+	\end{enumerate}
+\end{lemma}
+This Lemma is a special case of the,  by now, standard constructions introduced in \cite{hastings2005quasiadiabatic,bachmann2012automorphic}. The following lemma is a collection of facts appearing in the proof of Proposition \ref{prop: bhm}, see again~\cite{nachtergaele2020quasi}.
+\begin{lemma}\label{lem: limiting ground state} 
+	Assume the setup of Proposition \ref{prop: bhm}, with $H=F+W$. Then $H^{(L)}$ has a spectral gap $\Delta=\tfrac{1}{2}$ uniformly in $L$.  Moreover, 
+	for any $A\in \caA$ with finite support, the weak limit
+	$$
+	\nu(A)=\lim_L \omega_{P_L}(A)
+	$$
+	exists. By density, $\nu$ extends to a state on $\caA$ and it is a ground state for $H$.
+\end{lemma}
+
+
+\subsection{Proof of Proposition \ref{prop: uniqueness of ground state}}
+
+For any ground state $\psi$ associated to $H$, \eqref{eq: invariance of ground states} and item $iv$ Lemma~\ref{lem: Block diagonalization} imply that
+$$
+\psi(A)=  \psi(\caK_v^H(A)) = \lim_L \psi(\caK_v^{H^{(L)}}(A))
+$$
+for $A$ with finite support and
+with  $v$ as in Lemma~\ref{lem: Block diagonalization}.
+Next,
+\begin{align}
+	\psi(A) &=  \lim_L ( \psi(\caK_v^{H^{(L)}}(P_LAP_L)) +  \psi(\caK_v^{H^{(L)}}(\bar P_L A\bar P_L)) 
+	\\
+	&=  \lim_L ( \psi(P_LAP_L) +  \psi(\caK_v^{H^{(L)}}(\bar P_L A\bar P_L))  \label{eq: origina of decomp}
+\end{align}
+with the first equality follows from item iii) of Lemma~\ref{lem: Block diagonalization}, and
+where the second equality follows because $P_L$ is a one-dimensional spectral projection of $H^{(L)}$. 
+For $L$ such that $[-L,L]$ contains the support of $A$, we have hence
+$$
+\psi(P_LAP_L)= \psi(P_L) \Tr_L(P_LA).
+$$
+Since $\psi(P_L) \in [0,1]$, there is a subsequence $L_n$ such that the limit $\lim_n\psi(P_{L_n})$ exists. We call this limit $a \in [0,1]$.
+We then see from Lemma \ref{lem: limiting ground state} that
+$$
+\lim_n \psi(P_{L_n}AP_{L_n}) = a \nu(A)
+$$
+and from \eqref{eq: origina of decomp}, it then follows that 
+\begin{equation}\label{eq: convex decomposition}
+	\psi(A)= a \nu(A) +(1-a)\mu(A)
+\end{equation}
+where, in case $ a < 1$,  
+$$
+\mu(A)=\lim_n    \frac{1}{\psi(\bar{P}_{L_n})}  \psi(\bar{P}_{L_n}\caK_v^{H^{(L_n)}}(A)\bar{P}_{L_n})
+$$
+and we used Lemma \ref{lem: Block diagonalization} item iii) to commute the projectors. The existence of the limit follows because the first term in \eqref{eq: origina of decomp} has a limit.  
+We now claim that $\mu$ extends to a state on $\caA$. Indeed, positivity follows from the nonnegativity of the function $v$. Normalization follows from $\caK_v^{H^{(L_n)}}(\bbI) = \bbI$ since $\int v = 1$, and the extension is then by density of operators with local support. Therefore, also \eqref{eq: convex decomposition} extends to any $A\in \caA$. 
+
+
+
+Now, since $\psi$ is assumed to be pure, \eqref{eq: convex decomposition} means that either $a=0$ or $a=1$, since we can easily check that $\nu$ and $\mu$ are not equal. We will exclude the case $a=0$, which will end the proof.  
+
+We define the boundary operator
+$$
+B_L= \sum_{S: S \cap [-L,L]\neq 0, S \cap [-L,L]^c \neq \emptyset}  W_S
+$$
+satisfying $||B_L|| \leq 2f(1) ||W||_f$. By the variational principle Lemma \ref{lem: variational principle}
+$$
+\psi(H^{(L)}+B_L) \leq (\omega_{P_L}\otimes\psi|_{[-L,L]^c})(H^{(L)}+B_L)
+$$
+which implies 
+$$
+\psi(H^{(L)}) \leq \omega_{P_L}(H^{(L)}) + 2||B_L||  
+$$
+By the gap assumption, we have 
+also
+$$
+\psi(H^{(L)}) \geq \psi(P_L) E_{0,L}+ (1-\psi(P_L)) (E_{0,L} +\Delta)    
+$$
+and hence
+$$
+\psi(P_L) E_{0,L}+ (1-\psi(P_L)) (E_{0,L} +\Delta) \leq  E_{0,L} + 2||B_L|| 
+$$
+from which we conclude that
+$$
+(1-\psi(P_L))   \leq  \frac{2||B_L|| }{\Delta} \leq  \frac{4 f(1) ||W||_f  }{\Delta}.
+$$
+If $||W||_f$ is small enough, we get that $a = \liminf_L\psi(P_L)>0$ and so the alternative $a=0$ is indeed excluded. \hfill $\Box$
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Keep the following \cleardoublepage at the end of this file, 
