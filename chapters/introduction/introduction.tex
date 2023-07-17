@@ -512,7 +512,7 @@ and by identifying any two operators that can be embedded into the same operator
 \begin{equation}
 	\AA=\overline{\AA_{\text{loc}}}
 \end{equation}
-is called the quasi-local $C^*$-algebra.
+is called the quasi-local $C^*$-algebra\footnote{More generally $C^*$-algebras are just Banach algebras (with a norm) and an adjoint but all the $C^*$ algebras considered in this thesis will either be bounded operators on some separable Hilbert space or quasi-local $C^*$ algebras on some lattice.}.
 \subsection{The on site group action}
 The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
 \begin{equation}
@@ -592,9 +592,54 @@ We can now summarise the Lieb-Robinson bound in the following theorem:
 	See Corollary 3.6 of \cite{doi:10.1063/1.5095769}.
 \end{proof}
 \subsection{States}
-In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. In this case we then associate to this density matrix a positive linear functional through
+In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. This is a positive semi-definite, Hermitian operator of trace one acting on $\HH$. In this case we then associate to this density matrix a positive linear functional through
 \begin{equation}
 	\omega(A)= \Tr_\HH(\rho_\omega A).
 \end{equation}
-{\color{red}To be continued...}
+Since in this case we didn't define our system through a Hilbert space but directly defined the operator algebra, we can't really define density matrices but we can still define the linear functionals directly. To this end, we define a state to be linear functional $\omega:\AA\rightarrow \CC$ that is
+\begin{enumerate}
+	\item positive ($\omega(A^\dagger A)\geq 0$ for all $A\in\AA$).
+	\item normalised ($\omega(\id)=1$).
+\end{enumerate}
+We will refer to the space of states on $\AA$ as $\SS(\AA)$. We will mostly only work with pure states. In the case where we had a Hilbert space, these where simply states whose density matrices are rank one projectors projecting to some vector $\ket{\omega}\in\HH$. In this case the linear functional was the expectation value with respect to some vector:
+\begin{align}\label{eq:VectorState}
+	\omega(A)&=\Tr_\HH(\rho_\omega A)=\bra{\omega}A\ket{\omega}&\rho_\omega&=\ket{\omega}\bra{\omega}.
+\end{align}
+In more general $C^*$-algebras\footnote{Like the quasi local $C^*$-algebra we defined before.} we call a state pure using the following definition:
+\begin{definition}[pure]\label{def:PureState}
+	$\omega\in\SS(\AA)$ is called pure if for every $p\in]0,1[$, the only two states $\omega_1,\omega_2\in\SS(\AA)$ that satisfy
+	\begin{equation}
+		\omega=p\omega_1+(1-p)\omega_2
+	\end{equation}
+	are given by $\omega_1=\omega_2=\omega$. We denote the space of pure states as $\PP(\AA)$.
+\end{definition}
+One can easily see that the vector states in equation \eqref{eq:VectorState} indeed satisfy definition \ref{def:PureState}.
 \subsection{The GNS representation}\label{sec:the-gns-representation}
+This section uses the formalism and theorems of \cite{bratteli1979operator}.\\\\
+As stated before, a quasi local $C^*$ algebra is not an algebra of bounded operators on some Hilbert space. Sometimes however it is useful to consider maps from our operator algebra to the space of bounded operators on some Hilbert space. To this end the following two definitions:
+\begin{definition}[representation]
+	A map $\pi:\AA\rightarrow \BB(\HH)$ is called a representation if:
+	\begin{enumerate}
+		\item it is an algebra homomorphism.
+		\item it satisfies $\pi(A^\dagger)=\pi(A)^\dagger$.
+		\item it satisfies $\pi(\id_\AA)=\id_{\HH}$.
+	\end{enumerate}
+\end{definition}
+\begin{definition}[cyclic vector]
+	We call a normalised vector $\ket{v}\in\HH$ cyclic with respect to a representation $\pi:\AA\rightarrow \BB(\HH)$ if
+	\begin{equation}
+		\textrm{span}_{A\in\AA}\pi(A)\ket{v}=\HH.
+	\end{equation}
+\end{definition}
+If one has a representation $\pi\in\AA\rightarrow\BB(\HH)$ together with a cyclic vector $\ket{v}\in\HH$ then it is straightforward to see that $\omega:\AA\rightarrow\CC$ defined through
+\begin{equation}
+	\omega(A)=\bra{v}\pi(A)\ket{v}
+\end{equation}
+is a state. This state is in general not pure. Indeed, if we let our Hilbert space contain two parts, $\HH=\HH_1\oplus\HH_2$ and we assume that our representation $\pi$ is a direct sum $\pi=\pi_1\oplus\pi_2$ with $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ both representations themselves. If we now take as our cyclic vector $\ket{v}=\frac{1}{\sqrt{2}}(\ket{v_1}+\ket{v_2})$ with $\ket{v_1}$ a cyclic vector of $\pi_1$ and $\ket{v_2}$ a cyclic vector of $\pi_2$ then we obtain
+\begin{equation}
+	\bra{v}\pi(A)\ket{v}=\frac{1}{2}(\bra{v_1}\pi_1(A)\ket{v_1}+\bra{v_2}\pi_2(A)\ket{v_2}).
+\end{equation}
+This is clearly not a pure state. To ensure that the obtained representation is pure we need to assume another property for our representation. This property is called irreducible:
+\begin{definition}[irreducible representation]
+	A representation $\pi:\AA\rightarrow \BB(\HH)$ is called irreducible if every normalised vector in $\HH$ is cyclic with respect to $\pi$.
+\end{definition}
