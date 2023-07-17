@@ -632,7 +632,7 @@ As stated before, a quasi local $C^*$ algebra is not an algebra of bounded opera
 	\end{equation}
 \end{definition}
 If one has a representation $\pi\in\AA\rightarrow\BB(\HH)$ together with a cyclic vector $\ket{v}\in\HH$ then it is straightforward to see that $\omega:\AA\rightarrow\CC$ defined through
-\begin{equation}
+\begin{equation}\label{eq:StateBelongingToRepresentation}
 	\omega(A)=\bra{v}\pi(A)\ket{v}
 \end{equation}
 is a state. This state is in general not pure. Indeed, if we let our Hilbert space contain two parts, $\HH=\HH_1\oplus\HH_2$ and we assume that our representation $\pi$ is a direct sum $\pi=\pi_1\oplus\pi_2$ with $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ both representations themselves. If we now take as our cyclic vector $\ket{v}=\frac{1}{\sqrt{2}}(\ket{v_1}+\ket{v_2})$ with $\ket{v_1}$ a cyclic vector of $\pi_1$ and $\ket{v_2}$ a cyclic vector of $\pi_2$ then we obtain
@@ -643,3 +643,13 @@ This is clearly not a pure state. To ensure that the obtained representation is 
 \begin{definition}[irreducible representation]
 	A representation $\pi:\AA\rightarrow \BB(\HH)$ is called irreducible if every normalised vector in $\HH$ is cyclic with respect to $\pi$.
 \end{definition}
+It can be shown (see eg. {\color{red}more precise citation needed} \cite{bratteli1979operator}) that the state in equation \eqref{eq:StateBelongingToRepresentation} is pure if and only if $\pi$ is irreducible.\\\\
+We have so far created a state starting from a representation and have given a sufficient and required condition for the state to be pure. It turns out that the opposite statement is true as well. We summarise the opposite result in the following lemma (see \cite{bratteli1979operator} for the proof):
+\begin{lemma}[GNS representation]
+	For any $\omega\in\SS(\AA)$ there exists a representation $\pi_\omega:\AA\rightarrow\BB(\HH_\omega)$ and a vector $\ket{\omega}\in\HH_\omega$ that is cyclic with respect to $\pi_\omega$ such that
+	\begin{align}
+		\omega(A)&=\bra{\omega}\pi_\omega(A)\ket{\omega}&\forall A&\in\AA.
+	\end{align}
+	If furthermore $\omega$ is pure then $\pi_\omega$ is irreducible.
+\end{lemma}
+We call $(\HH_\omega,\pi_\omega,\ket{\omega})$ a GNS\footnote{Named after {\color{red}should I cite to their work (its from the 1940s)?}} triple
