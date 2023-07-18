@@ -530,7 +530,7 @@ where $\Phi(I)\in\AA_I$ is hermitian ($\Phi(I)=\Phi(I)^*$).We will sometimes use
 		\Phi(I)&\text{if }I\subset\Gamma\\0&\text{otherwise}.
 	\end{matrix}\right.
 \end{equation}
-We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will used is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{doi:10.1063/1.5095769} we call such a function an $F$-function if it satisfies two conditions:
+We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will used is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{nachtergaele2019quasi} we call such a function an $F$-function if it satisfies two conditions:
 \begin{enumerate}
 	\item $F$ is uniformly integrable over $\Gamma$:
 	\begin{equation}\label{eq:F_Is_Uniformly_Integrable_Over_Gamma}
@@ -558,7 +558,7 @@ be a piecewise norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is
 \begin{equation}
 	\frac{\d}{\d t}\gamma^{\Phi}_{s;t}(A)=-i\sum_{I\in\mathfrak{G}_{\ZZ^2}}\gamma^{\Phi}_{s;t}([\Phi(I,t),A])
 \end{equation}
-with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{doi:10.1063/1.5095769}). This satisfies the condition that if
+with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{nachtergaele2019quasi}). This satisfies the condition that if
 \begin{equation}\label{eq:InteractionWithBoundedSum}
 	\sup_t\norm{\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(I,t)}<\infty
 \end{equation}
@@ -566,10 +566,10 @@ then
 \begin{align}
 	\gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(s',t)).
 \end{align}
-A particularly useful example of an interaction that satisfies equation \eqref{eq:InteractionWithBoundedSum} is the restriction of an interaction to a finite subset $\Lambda\in\mathfrak{B}_\Gamma$\footnote{In fact the way they prove that $\gamma^\Phi_{s;t}$ exists in \cite{doi:10.1063/1.5095769} is by showing that the limit $\lim_{\Lambda\rightarrow\Gamma}\Ad{u^{\Phi_\Lambda}_{s;t}}$ exists and is continuous.}.\\\\
+A particularly useful example of an interaction that satisfies equation \eqref{eq:InteractionWithBoundedSum} is the restriction of an interaction to a finite subset $\Lambda\in\mathfrak{B}_\Gamma$\footnote{In fact the way they prove that $\gamma^\Phi_{s;t}$ exists in \cite{nachtergaele2019quasi} is by showing that the limit $\lim_{\Lambda\rightarrow\Gamma}\Ad{u^{\Phi_\Lambda}_{s;t}}$ exists and is continuous.}.\\\\
 Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
 \subsection{Lieb-Robinson bounds}
-In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum cirquit preserved the locality of operators. In particular we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section we will discuss a generalisation of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{doi:10.1063/1.5095769}. To formulate the theorem we will first need to define two constants depending on the interaction:
+In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum cirquit preserved the locality of operators. In particular we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section we will discuss a generalisation of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{nachtergaele2019quasi}. To formulate the theorem we will first need to define two constants depending on the interaction:
 \begin{enumerate}
 	\item For any $\Phi\in\BB_F([0,1])$ we define the absolute integral through
 	\begin{equation}
@@ -589,7 +589,7 @@ We can now summarise the Lieb-Robinson bound in the following theorem:
 	holds for all $A\in\AA_X,B\in\AA_Y$ and $t,s\in[0,1]$.
 \end{theorem}
 \begin{proof}
-	See Corollary 3.6 of \cite{doi:10.1063/1.5095769}.
+	See Corollary 3.6 of \cite{nachtergaele2019quasi}.
 \end{proof}
 \subsection{States}
 In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. This is a positive semi-definite, Hermitian operator of trace one acting on $\HH$. In this case we then associate to this density matrix a positive linear functional through
