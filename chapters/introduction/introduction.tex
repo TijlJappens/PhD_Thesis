@@ -654,18 +654,43 @@ We have so far created a state starting from a representation and have given a s
 \end{lemma}
 The GNS triple belonging to a state is not unique but it is unique up to a unitary transformation. More specifically:
 \begin{lemma}[Uniqueness of the GNS triple]\label{lem:UniquenessOfGNSTriple}
-	Let $(\HH_1,\pi_1,\ket{v_1})$ and $(\HH_2,\pi_2,\ket{v_2})$ be two GNS triples for $\omega\in\SS(\AA)$ then there exists a unitary $U\in\UU(\HH_1,\HH_2)$ such that
+	Let $(\HH_1,\pi_1,\ket{v_1})$ and $(\HH_2,\pi_2,\ket{v_2})$ be two GNS triples for $\omega\in\SS(\AA)$ then there exists a unique unitary $U\in\UU(\HH_1,\HH_2)$ such that
 	\begin{align}
 		\Ad{U}\circ\pi_1&=\pi_2&U\ket{v_1}&=\ket{v_2}.
 	\end{align}
-	If additionally $\omega$ is pure, $U$ is unique.
 \end{lemma}
-The main way we will use this lemma in this thesis is to show that an automorphism that leaves a state invariant can be represented by a unitary on the GNS representation. We summarise this result in the following lemma:
-\begin{lemma}[Automorphic equivalence]
-	Let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple of $\omega\in\PP(\AA)$. Let $\tau\in\Aut{\AA}$ be such that $\omega=\omega\circ\tau$ then there exists a unique unitary $U\in\UU(\HH_\omega)$ such that
+The main way we will use this lemma in this thesis is to show that an automorphism that leaves a state invariant can be represented by a unitary on the GNS representation. We summarise this result in the following corollary:
+\begin{corollary}\label{cor:OneStateHasUnitarilyEquivalentGNSTriples}
+	Let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple of $\omega\in\SS(\AA)$. Let $\tau\in\Aut{\AA}$ be such that $\omega=\omega\circ\tau$ then there exists a unique unitary $U\in\UU(\HH_\omega)$ such that
 	\begin{align}
 		\Ad{U}\circ\pi_\omega&=\pi_\omega\circ\tau&U\ket{\omega}&=\ket{\omega}.
 	\end{align}
-\end{lemma}
-This lemma is simply a consequence of applying lemma \ref{lem:UniquenessOfGNSTriple} to the GNS triples $(\HH_\omega,\pi_\omega,\ket{\omega})$ and $(\HH_\omega,\pi_\omega\circ\tau,\ket{\omega})$.
+\end{corollary}
+This corollary is simply a consequence of applying lemma \ref{lem:UniquenessOfGNSTriple} to the GNS triples $(\HH_\omega,\pi_\omega,\ket{\omega})$ and $(\HH_\omega,\pi_\omega\circ\tau,\ket{\omega})$.
+\subsection{Intermezzo commutants and bicommutants}
+For this section, we will let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, the bounded operators on some Hilbert space. We will use $M'$ to denote the commutant (the subalgebra of $\BB(\HH)$ that commutes with all elements of $M$) and denote by $M''$ the bicummutant (the commutant of the commutant). We will need a standard operator algebra result called the Von Neumann bicommutant theorem:
+\begin{definition}
+	Let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, the bounded operators on some Hilbert space. We have that
+	\begin{equation}
+	M''=\text{cl}_W(M)=\text{cl}_S(M)
+	\end{equation}
+	where $M''$ is the bicommutant, $\text{cl}_W$ is the closure in weak operator topology and $\text{cl}_S$ is the closure in strong operator topology.
+\end{definition}
 \subsection{Equal at infinity and the split property}
+We have already established that two GNS triples belonging to the same state are related to each other via some unitary. There is a generalisation of this concept which we will summarise in the following definition.
+\begin{definition}[Quasi-equivalence]
+	Two representations of an algebra $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ are quasi-equivalent if there exists a $C^*$ isomorphism
+	\begin{equation}
+		\Phi:\pi_1(\AA)''\rightarrow\pi_2(\AA)''
+	\end{equation}
+	such that
+	\begin{equation}
+		\Phi\circ\pi_1=\pi_2.
+	\end{equation}
+	If additionally, there is a unitary $U\in\UU(\HH_1,\HH_2)$ such that $\Phi=\Ad{U}$ then we call $\pi_1$ and $\pi_2$ unitary equivalent.
+\end{definition}
+For a pure state, quasi equivalence implies unitary equivalence and two representations corresponding to one state are always unitarily equivalent (which we already discussed in \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples}).\\\\
+Most of the things we discussed so far where true for general $C^*$-algebras. Because however, we have a quasi-local $C^*$-algebra we have additional structure. For our quasi-local $C^*$-algebra there is a very useful alternative notion to being quasi-equivalent:
+\begin{lemma}[Equal at infinity]
+	
+\end{lemma}
