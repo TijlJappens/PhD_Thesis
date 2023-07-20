@@ -1,32 +1,46 @@
 % !TeX root = ../../thesis.tex
 \chapter{Introduction}\label{ch:introduction}
-\section{Gapped phases of matter}
+\section{Topological phases of matter}
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{IntegerQHE.png}
 		\caption{Integer quantum Hall effect (1980)}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{FractionalQHE.png}
 		\caption{Fractional quantum Hall effect (1982)}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.3\textwidth}
+	\\
+	\begin{subfigure}[b]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{MajoranaEdgeModes.png}
 		\caption{Majorana edge modes (first reported to be found in 2012 but data was not conclusive).}
 	\end{subfigure}
-	\caption{Three examples of topological order.}
+	\hfil
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Fermi-Hubbard Ladders.pdf}
+		\caption{Fermi Hubbart models (see \cite{sompet2022realizing}). This is an example of the Haldane phase that we will discuss in section \ref{sec:an-example-in-1d-the-haldane-phase}.}
+	\end{subfigure}
+	\caption{Four examples of topological order.}
 	\label{fig:TopologicalOrderFigures}
 \end{figure}
-In 1980, Klaus von Klitzing drasticly changed the condensed matter physics landscape when he discovered a new phenomena called the integer quantum Hall effect. He applied an external magnetic field to a low temperature silicon based MOSFET and discovered that the Hall conductance induced by the magnetic field did not follow the classical linear dependence of this magnetic field. It in stead formed what we now call Hall plateaus (see figure \ref{fig:TopologicalOrderFigures}a). It was soon discovered that these plateaus where caused by new phases of matter that could not be distinguished by local order parameters breaking some symmetry and therefore did not follow Landaus paradigm. In later years many other such phases of matter emerged that did not follow the Landau paradigm. This included (and is not limited to) the fractional quantum Hall effect (see figure \ref{fig:TopologicalOrderFigures}b) and the majorana edge mode model\footnote{This is not found experimentally yet and is mainly theorized. There have been many experimental efforts to observe this effect but none of them have proven to be conclusive.} (see figure \ref{fig:TopologicalOrderFigures}c).\\\\
-Theoretical descriptions of these new phases of matter looked very different from the old (Landau) phases of matter. As the name suggests the effect is quantum mechanical in nature. In fact it is related to a topological property of the gapped many body ground state. As such these phenomena are largely considered to be zero temperature phases of matter\footnote{With some caveats like the famous role of disorder that allows us to observe the quantum Hall plateaus in situations where there is no gap.}. For non interacting electrons in periodic potentials this topological property is the first Chern number of the Bloch bundle. For ground-states of more general interacting Hamiltonians the property that distinguishes the phases is much harder to distillate and in many ways {\color{red}(maybe this needs more information)} still an open problem.\\\\
-As these Hall plateaus where differentiated by some topological property of the many body ground-state they where called topological phases of matter. In the following years many such phases of matter where discovered. They all belonged to some topological property of some many body ground-state (sometimes multiple ground-states with some degeneracy). Just to name a few, there is invertible topological order (this is believed to be related to the integer quantum Hall effect), anyonic topological order (this is believed to be related to the fractional quantum Hall effect), symmetry protected topological order (this is related to the majorana edge modes), symmetry enriched topological order and many more.
+In 1980, Klaus von Klitzing made a groundbreaking discovery in condensed matter physics by uncovering a remarkable phenomenon called the integer quantum Hall effect. He conducted experiments on a low-temperature silicon-based MOSFET under the influence of an external magnetic field. To his surprise, the Hall conductance induced by the magnetic field did not follow the classical linear dependence observed in the classical Hall effect, which is based on the Lorentz force acting on charged particles in a magnetic field. Instead, it formed distinct quantized plateaus (see figure \ref{fig:TopologicalOrderFigures}a).
 \\\\
+The materials exhibiting these Hall plateaus possessed intriguing new properties: they were classified by an integer, now known as the topological invariant or Chern number. Unlike conventional order parameters, this integer remained robust under local perturbations. Strikingly, this integer was typically only observable at the boundary of the material system and not within the bulk.
+\\\\
+Further investigations revealed that these quantized plateaus were manifestations of new phases of matter that defied classification based on local order parameters, thereby challenging the conventional understanding of phases matter described by Landau's paradigm. Later on many more such phases of matter where found. They were all characterized by topological invariants. Some famous examples included the fractional quantum Hall effect (see figure \ref{fig:TopologicalOrderFigures}b), the majorana edge mode model (see figure \ref{fig:TopologicalOrderFigures}c), and the Haldane phase (see figure \ref{fig:TopologicalOrderFigures}d). While the majorana edge mode model remains mainly theoretical, the fractional quantum Hall effect and the Haldane phase\cite{sompet2022realizing} have been experimentally observed.
+\\\\
+Theoretical descriptions of these new phases of matter significantly differ from classical Landau phases, yet they share striking similarities among themselves. All of these quantum phases exhibit properties such as the invariance of their topological invariants under local perturbations and a discontinuous behavior near the boundary of the material system.
+\\\\
+As the name suggests, the quantum Hall effect is inherently quantum mechanical in nature and is related to a topological property of the gapped many-body ground state. As such, these phenomena are predominantly considered zero-temperature phases of matter, although certain caveats exist, such as the role of disorder, which allows the observation of quantum Hall plateaus even in situations without a gap. For non-interacting electrons in periodic potentials, the topological property is characterized by the first Chern number of the Bloch bundle. However, for ground states of more general interacting Hamiltonians, distilling the properties that distinguish the phases is far more challenging and remains an active area of research (see eg. \cite{sopenko2023chiral} where produce examples of nontrivial bosonic invertible topological order).
+\\\\
+As these Hall plateaus were differentiated by some topological property of the many-body ground state, they were called topological phases of matter. In the following years, many such phases of matter were discovered, each belonging to distinct topological properties of their respective many-body ground states, sometimes involving multiple ground states with certain degeneracy. Some notable examples include invertible topological order, which is believed to be related to the integer quantum Hall effect, and anyonic topological order, associated with the fractional quantum Hall effect. Symmetry-protected topological order is linked to the majorana edge modes and the Haldane phase, while symmetry-enriched topological order and many other intriguing topological phases have also been explored.
+\section{Gapped phases of matter}
 All of these topological phases of matter are described by a Hamiltonian that is gapped and a sum of local therms\footnote{In section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.}. It turns out that this locality and this gap protects the topological orders mentioned at the end of the last section. To explain this more precisely we will define two equivalence classes: The first equivalence class is an equivalence on Hamiltonians:
 \begin{definition}[Equivalence of Hamiltonians]\label{def:ConnectedHamiltonians}
 	Two local Hamiltonians, with unique gapped ground-states, $H_0$ and $H_1$ are connected if there exists a path $t\mapsto H(t)$ such that
@@ -124,7 +138,7 @@ However, since
 	U(g)U(h)\ket{\psi}=U(gh)\ket{\psi}
 \end{equation}
 we need that $\alpha(g)\alpha(h)=\alpha(gh)$ and therefore $\alpha\in\hom(G,U(1))$. The trivial state is then the state such that $\alpha=1$. We therefore say that the zero dimensional SPTs are classified by the $U(1)$-representations $\hom(G,U(1))$. We will see in subsection \ref{sec:example-1-h1gtt} that this group is the same as something called the first group cohomology group.
-\section{An example in 1d: The Haldane phase}
+\section{An example in 1d: The Haldane phase}\label{sec:an-example-in-1d-the-haldane-phase}
 The next example is a slightly less trivial one. We will now take the one dimensional lattice $\Lambda=\ZZ$.\footnote{As discussed before, this means the full Hilbert space is not a well defined object. We will for now however chose to ignore this and revisit it in section \ref{sec:ToolsForQuantumManyBody}.} In this example we will take as group $\ZZ_2\times\ZZ_2$\footnote{We can extend this group in a straightforward way to $SO(3)$ using the double covering, $f:SU(2)\rightarrow SO(3)$.}. We write the four group elements of $\ZZ_2\times\ZZ_2$ as
 \begin{align}
 	&(1,1)&&(-1,1)&&(1,-1)&&(-1,-1).
@@ -676,7 +690,8 @@ For this section, we will let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, th
 	\end{equation}
 	where $M''$ is the bicommutant, $\text{cl}_W$ is the closure in weak operator topology and $\text{cl}_S$ is the closure in strong operator topology.
 \end{definition}
-\subsection{Equal at infinity and the split property}
+\subsection{Equal at infinity}
+Again, this section heavily relies on \cite{BratRob}.\\\\
 We have already established that two GNS triples belonging to the same state are related to each other via some unitary. There is a generalisation of this concept which we will summarise in the following definition.
 \begin{definition}[Quasi-equivalence]
 	Two representations of an algebra $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ are quasi-equivalent if there exists a $C^*$ isomorphism
@@ -690,7 +705,21 @@ We have already established that two GNS triples belonging to the same state are
 	If additionally, there is a unitary $U\in\UU(\HH_1,\HH_2)$ such that $\Phi=\Ad{U}$ then we call $\pi_1$ and $\pi_2$ unitary equivalent.
 \end{definition}
 For a pure state, quasi equivalence implies unitary equivalence and two representations corresponding to one state are always unitarily equivalent (which we already discussed in \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples}).\\\\
-Most of the things we discussed so far where true for general $C^*$-algebras. Because however, we have a quasi-local $C^*$-algebra we have additional structure. For our quasi-local $C^*$-algebra there is a very useful alternative notion to being quasi-equivalent:
+Most of the things we discussed so far where true for general $C^*$-algebras. Because however, we have a quasi-local $C^*$-algebra we have additional structure. For our quasi-local $C^*$-algebra there is a very useful alternative notion to being quasi-equivalent. We formulate the condition here for two pure states but there is a more general
 \begin{lemma}[Equal at infinity]
-	
+	Let $\omega_1,\omega_2\in\SS(\AA)$ be factor states\footnote{The definition of factor states is rather technical and will not be discussed here. For us it is sufficient that any restrictions of SRE states are locally normal factor states.}. The following conditions are equivalent:
+	\begin{enumerate}
+		\item $\omega_1$ and $\omega_2$ are quasi-equivalent.
+		\item given $\epsilon>0$ there exists an $R>0$ such that
+		\begin{equation}
+			\abs{\omega_1(B)-\omega_2(B)}<\epsilon\norm{B}
+		\end{equation}
+		for all $B\in\AA_{]-\infty,-R]\cup [R,\infty[}$.
+	\end{enumerate}
 \end{lemma}
+In particular, since for pure states quasi-equivalence implies unitary equivalence this gives us a particularly intuitive picture of the GNS Hilbert space: Take $\omega\in\PP(\AA)$ and let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple for $\omega$ then the map
+\begin{equation}
+	M:\PP\HH_\omega\rightarrow \{\omega'\in\PP(\AA)|\omega'\text{ is equal at infinity to }\omega\}:\ket{\omega'}_\sim\mapsto \bra{\omega'}\pi_\omega(\cdot)\ket{\omega'}
+\end{equation}
+is a bijection\footnote{With the right topologies it is even a Homeomorphism.}. Here $\PP\HH_\omega$ is the states in $\HH_\omega$ up to a phase (also known as the rays). In other words, the vectors in a GNS Hilbert space label all states that are equal to each other at infinity.
+\section{SPT indices revised}
