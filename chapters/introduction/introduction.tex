@@ -668,7 +668,7 @@ We have so far created a state starting from a representation and have given a s
 \end{lemma}
 The GNS triple belonging to a state is not unique but it is unique up to a unitary transformation. More specifically:
 \begin{lemma}[Uniqueness of the GNS triple]\label{lem:UniquenessOfGNSTriple}
-	Let $(\HH_1,\pi_1,\ket{v_1})$ and $(\HH_2,\pi_2,\ket{v_2})$ be two GNS triples for $\omega\in\SS(\AA)$ then there exists a unique unitary $U\in\UU(\HH_1,\HH_2)$ such that
+	Let $(\HH_1,\pi_1,\ket{v_1})$ and $(\HH_2,\pi_2,\ket{v_2})$ be two GNS triples for $\omega_1\in\SS(\AA)$ and $\omega_1\in\SS(\AA)$ respectively then $\omega_1=\omega_2$ if and only if there exists a unique unitary $U\in\UU(\HH_1,\HH_2)$ such that
 	\begin{align}
 		\Ad{U}\circ\pi_1&=\pi_2&U\ket{v_1}&=\ket{v_2}.
 	\end{align}
@@ -723,4 +723,45 @@ In particular, since for pure states quasi-equivalence implies unitary equivalen
 \end{equation}
 is a bijection\footnote{With the right topologies it is even a Homeomorphism.}. Here $\PP\HH_\omega$ is the space of vectors in $\HH_\omega$ up to a phase (also known as the rays). In other words, the vectors in a GNS Hilbert space label all states that are equal to each other at infinity.
 \section{SPT indices revised}
-We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}.
+We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
+\begin{equation}
+	\omega=\phi\circ\gamma^\Phi_{0;1}
+\end{equation}
+is $G$-invariant. The first thing we will need is the following lemma (for the proof, see \ref{lem:PropertiesLocallyGeneratedAutomorphisms1d}\footnote{In fact this lemma gives that $A$ is not just in $\AA$ but satisfies some additional property called summable.}):
+\begin{lemma}\label{lem:PropertiesLocallyGeneratedAutomorphisms1dIntroduction}
+	Let $\Phi_L,\Phi_R\in\BB_F([0,1])$ be the restrictions to $L=]-\infty,0[$ and $R=[0,\infty[$ respectively then there exists a unitary $A\in\UU(\AA)$ such that
+	\begin{equation}
+		\gamma^\Phi_{0;1}\circ\gamma^{\Phi_L+\Phi_R}_{0;1}=\Ad{A}.
+	\end{equation}
+\end{lemma}
+Now let $\phi_L$ and $\phi_R$ be the restrictions of $\phi$ to $\AA_L$ and $\AA_R$ respectively. Also, let
+\begin{align}
+	&(\HH_L,\pi_L,\ket{\phi_L})&&(\HH_R,\pi_R,\ket{\phi_R})
+\end{align}
+be GNS triples for $\phi_L$ and $\phi_R$ respectively. Using this we get that
+\begin{align}
+	(\HH_L\otimes\HH_R,\pi_L\otimes\pi_R,\ket{\phi_L}\otimes\ket{\phi_R})
+\end{align}
+is a GNS triple for the full $\phi$. Since $\omega=\phi\circ\gamma^\Phi_{0;1}$, this means that
+\begin{equation}
+	(\HH_L\otimes\HH_R,\pi_L\otimes\pi_R\circ\gamma^\Phi_{0;1},\ket{\phi_L}\otimes\ket{\phi_R})
+\end{equation}
+is a GNS triple for $\omega$. Using lemma \ref{lem:PropertiesLocallyGeneratedAutomorphisms1dIntroduction} together with lemma \ref{lem:UniquenessOfGNSTriple} gives us that
+\begin{equation}
+	(\HH_L\otimes\HH_R,\tilde{\pi}_L\otimes\tilde{\pi}_R,\ket{\omega})
+\end{equation}
+where
+\begin{align}
+	\tilde{\pi}_L&=\pi_L\circ\gamma^{\Phi_L}_{0;1}&\tilde{\pi}_R&=\pi_R\circ\gamma^{\Phi_R}_{0;1}&\ket{\omega}&=\pi_L\otimes\pi_R(A^\dagger)\ket{\phi_L}\otimes\ket{\phi_R}
+\end{align}
+is a GNS triple for $\omega$. A state that has a GNS triple of this form is said to have the split property. It turns out that this split property is precisely what is needed to construct the 1d SPT index. Before we can do this, we need to introduce one more lemma (for the proof, see \ref{lem:SplittingOfUnitary}):
+\begin{lemma}\label{lem:SplittingOfUnitaryIntroduction}
+	Let $\AA$ and $\BB$ be arbitrary unital $C^*$-algebras. Let $(\HH_\AA,\pi_\AA)$ and $(\HH_\BB,\pi_\BB)$ be arbitrary irreducible $*$-representations on $\AA$ and $\BB$ respectively. Let $U\in\UU(\HH_\AA\otimes\HH_\BB)$ be such that there exists an $\alpha_\AA\in\Aut{\AA}$ and an $\alpha_\BB\in\Aut{\BB}$ satisfying
+	\begin{equation}
+		\Ad{U}\circ(\pi_\AA\otimes\pi_\BB)=\pi_\AA\circ\alpha_\AA\otimes\pi_\BB\circ\alpha_\BB
+	\end{equation}
+	then there exists a $U_\AA\in\UU(\HH_\AA)$ and a $U_\BB\in\UU(\HH_\BB)$ such that
+	\begin{equation}
+		U=U_\AA\otimes U_\BB.
+	\end{equation}
+\end{lemma}
