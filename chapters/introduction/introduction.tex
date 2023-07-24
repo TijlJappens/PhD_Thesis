@@ -747,7 +747,7 @@ is a GNS triple for the full $\phi$. Since $\omega=\phi\circ\gamma^\Phi_{0;1}$, 
 	(\HH_L\otimes\HH_R,\pi_L\otimes\pi_R\circ\gamma^\Phi_{0;1},\ket{\phi_L}\otimes\ket{\phi_R})
 \end{equation}
 is a GNS triple for $\omega$. Using lemma \ref{lem:PropertiesLocallyGeneratedAutomorphisms1dIntroduction} together with lemma \ref{lem:UniquenessOfGNSTriple} gives us that
-\begin{equation}
+\begin{equation}\label{eq:GNSTripleForOmegaIntroduction}
 	(\HH_L\otimes\HH_R,\tilde{\pi}_L\otimes\tilde{\pi}_R,\ket{\omega})
 \end{equation}
 where
@@ -765,3 +765,12 @@ is a GNS triple for $\omega$. A state that has a GNS triple of this form is said
 		U=U_\AA\otimes U_\BB.
 	\end{equation}
 \end{lemma}
+We are now ready for the construction of the projective representations. We simply take the GNS triple from equation \eqref{eq:GNSTripleForOmegaIntroduction} constructed from a $G$-invariant state $\omega$. We then use corollary \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples} to get a unitary representation\footnote{It is a linear representation because it leaves a state invariant.} $u\in\hom(G,\UU(\HH_L\otimes\HH_R))$ such that
+\begin{equation}
+	\Ad{u(g)}\circ(\tilde{\pi}_L\otimes\tilde{\pi}_R)=\tilde{\pi}_L\otimes\tilde{\pi}_R\circ\beta_g.
+\end{equation}
+We then use lemma \ref{lem:SplittingOfUnitaryIntroduction} to obtain a pair of projective representations $u_L:G\rightarrow\UU(\HH_L)$ and $u_R:G\rightarrow\UU(\HH_R)$ such that
+\begin{equation}
+	u(g)=u_L(g)\otimes u_R(g).
+\end{equation}
+The group cohomology group one gets from the cochain of $u_R$ is then precisely the SPT index of $\omega$.
