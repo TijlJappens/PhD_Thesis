@@ -22,10 +22,11 @@
 \author{Tijl}{Jappens}
 
 \supervisor{Prof.~dr.~W.~De Roeck}{}
-\president{Prof.~dr.~ir.~The~Chairman}{}
-\jurymember{Prof.~dr.~ir.~The~One}{}
-\jurymember{Prof.~dr.~ir.~The~Other}{}
-\externaljurymember{Prof.~dr.~External~Jurymember}{Far Away}
+\president{Prof.~dr.~The~Chairman}{}
+\jurymember{Prof.~dr.~T.~Van Riet}{}
+\jurymember{Prof.~dr.~J.~Indekeu}{}
+\externaljurymember{Prof.~dr.~C.~Tauber}{Far Away}
+\externaljurymember{Prof.~dr.~S.~Cenatiempo}{Far Away}
 
 % Your research group within the department
 % e.g. iMinds-DistriNet, Scientific Computing Group, ...
@@ -58,28 +59,6 @@
 
 %%% COVER: End settings %%%
 
-% for the nomenclature (comment out if you do not use the nomencl package
-\usepackage{nomencl}   % For nomenclature
-\renewcommand{\nomname}{List of Symbols}
-\newcommand{\myprintnomenclature}{%
-  \cleardoublepage%
-  \printnomenclature%
-  \chaptermark{\nomname}
-  \addcontentsline{toc}{chapter}{\nomname} %% comment to exclude from TOC
-}
-\makenomenclature%
-
-% for the list of abbreviations (comment out if you do not use the glossaries package
-\usepackage{glossaries} % For list of abbreviations
-\newcommand{\glossname}{List of Abbreviations}
-\newcommand{\myprintglossary}{%
-  \renewcommand{\glossaryname}{\glossname}
-  \cleardoublepage%
-  \printglossary[title=\glossname]
-  \chaptermark{\glossname}
-  \addcontentsline{toc}{chapter}{\glossname} %% comment to exclude from TOC
-}
-\makeglossaries%
 
 
 % BibLaTeX
@@ -99,6 +78,32 @@
 \usepackage{booktabs}
 
 \input{myPackage.tex}
+
+
+% for the nomenclature (comment out if you do not use the nomencl package
+\begin{comment}
+	\usepackage{nomencl}   % For nomenclature
+	\renewcommand{\nomname}{List of Symbols}
+	\newcommand{\myprintnomenclature}{%
+		\cleardoublepage%
+		\printnomenclature%
+		\chaptermark{\nomname}
+		\addcontentsline{toc}{chapter}{\nomname} %% comment to exclude from TOC
+	}
+	\makenomenclature%
+	
+	% for the list of abbreviations (comment out if you do not use the glossaries package
+	\usepackage{glossaries} % For list of abbreviations
+	\newcommand{\glossname}{List of Abbreviations}
+	\newcommand{\myprintglossary}{%
+		\renewcommand{\glossaryname}{\glossname}
+		\cleardoublepage%
+		\printglossary[title=\glossname]
+		\chaptermark{\glossname}
+		\addcontentsline{toc}{chapter}{\glossname} %% comment to exclude from TOC
+	}
+	\makeglossaries%
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -121,14 +126,14 @@
 %    \includeabbreviations{abbreviations}
 % 2. automatic generation via the glossary package
 %    \glossary{name=MD,description=molecular dynamics}
-\myprintglossary
+%\myprintglossary
 
 % To create a list of symbols, there are 2 options
 % 1. include a manually created nomenclature as a chapter
 %    \includenomenclature{nomenclaturechapter}
 % 2. automatic generation via the nomencl package
 %    \nomenclature[cB]{$c_B(\vec{x})$}{Characteristic function of $B$}
-\myprintnomenclature
+%\myprintnomenclature
 
 \tableofcontents
 %\listoffigures
@@ -172,9 +177,9 @@
 %\printbibliography[title=\bibname]
 \instructionsbibliography
 
-\includecv{curriculum}
+%\includecv{curriculum}
 
-\includepublications{publications}
+%\includepublications{publications}
 
 \makebackcoverXII
 

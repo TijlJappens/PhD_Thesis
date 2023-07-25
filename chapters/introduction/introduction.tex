@@ -427,7 +427,7 @@ We call this state $\ket{\psi}$, the boundary state of $(V,\ket{\phi})$. Some re
 	\item If each layer of the loop is $G$-invariant it is easy to see that that the boundary state will be $G$-invariant.
 	\item If we have two equivalent loops then their boundary states have to be equivalent as 0-dimensional states.
 	\item If we have two $G$-equivalent loops then their boundary states have to be equivalent as $G$-invariant, 0-dimensional states.
-	\item In principle, we can define this boundary state also for any lattice of the form $\ZZ^d$ for any positive integer $d$. The boundary state will then be a state over the lattice $\ZZ^{d-1}$. However ,the last statement that an equivalence of loops implies an equivalence of states is not so trivial any more. The statement is still believed to be true {\color{red}citation needed?}.
+	\item In principle, we can define this boundary state also for any lattice of the form $\ZZ^d$ for any positive integer $d$. The boundary state will then be a state over the lattice $\ZZ^{d-1}$. However ,the last statement that an equivalence of loops implies an equivalence of states is not so trivial any more. The statement is still believed to be true (this is related to the $\Omega$ spectrum hypotheses in for example \cite{xiong2019classification}).
 \end{enumerate}
 
 \subsection{No $G$-invariant contraction}
@@ -441,7 +441,7 @@ We call this state $\ket{\psi}$, the boundary state of $(V,\ket{\phi})$. Some re
 \end{figure}
 Now we will show that the $G$-invariant loop presented in section \ref{sec:classification-of-loops-an-example} cannot have a $G$-invariant contraction. To see this, we first create the boundary state of this loop. This is done in figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Boundary}. It creates a 0-dimensional SPT state with charge $-Q$.\\\\
 Now, suppose there was a family of depth-D FDQCs, $V(\lambda)$ such that $V(0)=\id$ and $V(1)$ generates the loop given in section \ref{sec:classification-of-loops-an-example}. Let $\ket{\psi(\lambda)}$ be the boundary state of $(V(\lambda),\ket{\phi})$. It has to be a continuous family of states connecting the boundary state of $(V,\ket{\phi})$ to the $G$-invariant product state that is the boundary state of $(\id,\ket{\phi})$. Since the boundary state of $(V,\ket{\phi})$ had charge $-Q$ and the boundary state of $(\id,\ket{\phi})$ has charge $0$, this is not possible. This shows that there does not exist a contraction.\\\\
-This allows us to come to the following conjecture that we will prove in chapter {\color{red}reference needed} of this thesis:
+This allows us to come to the following conjecture that we will prove in chapter \ref{ch:LoopSPT} of this thesis:
 \begin{conjecture}
 	The classification of $G$-invariant loops is fully determined by the classification of their respective boundary states.
 \end{conjecture}
@@ -481,14 +481,14 @@ As an example, consider $G=\ZZ_2$. We will denote the elements of $\ZZ_2$ with m
 	U(1)\ket{\uparrow}&=\ket{\uparrow}&U(1)\ket{\downarrow}&=\ket{\downarrow}\\
 	U(-1)\ket{\uparrow}&=\ket{\uparrow}&U(-1)\ket{\downarrow}&=-\ket{\downarrow}.
 \end{align}
-The two examples of translation invariant $G$-invariant states that we will consider are the product state with $\ket{\uparrow}$ vectors everywhere which we will call $\ket{\psi_1}$ and the product state with $\ket{\downarrow}$ vectors everywhere which we will call $\ket{\psi_2}$. As is depicted in figure \ref{fig:Z_2_and_TranslationInvariantStates}, these two states can indeed be deformed into one another via a $G$-invariant LGU. Can I find a $G$-invariant LGU that is translation invariant as well? It turns out that the answer to this question is no. The reason why this is the case is that in chapter {\color{red}reference} we provide an $H^1(G,\TT)-$valued index for any $G$-invariant, translation invariant state that is invariant under applying $G$-invariant, translation invariant LGU's. If one combines the translation index with the SPT index mentioned previously, one obtains an $H^2(G,\TT)\oplus H^1(G,\TT)$-valued index.
+The two examples of translation invariant $G$-invariant states that we will consider are the product state with $\ket{\uparrow}$ vectors everywhere which we will call $\ket{\psi_1}$ and the product state with $\ket{\downarrow}$ vectors everywhere which we will call $\ket{\psi_2}$. As is depicted in figure \ref{fig:Z_2_and_TranslationInvariantStates}, these two states can indeed be deformed into one another via a $G$-invariant LGU. Can I find a $G$-invariant LGU that is translation invariant as well? It turns out that the answer to this question is no. The reason why this is the case is that in chapter \ref{ch:TranslationSPT} (or more accurately in appendix \ref{sec:OneDimensionalIndices}) we provide an $H^1(G,\TT)-$valued index for any $G$-invariant, translation invariant state that is invariant under applying $G$-invariant, translation invariant LGU's. If one combines the translation index with the SPT index mentioned previously, one obtains an $H^2(G,\TT)\oplus H^1(G,\TT)$-valued index.
 \subsection{Mirror symmetry}
 Previously every additional symmetry we imposed just resulted in another index for the classification problem. This seems to be the case for every symmetry that preserves the orientation of the lattice\footnote{I am only talking about the lattices $\ZZ^d$ for which there are no difficulties to defining an orientation}. It turns out however that orientation reversing symmetries can restrict some of the previous indices. By this I mean that the cochains that are used to define the SPT index have to satisfy some additional property. This reduces the amount of SPT classes one can get.\\\\
 Remember that we previously classified $G$-symmetric SPT's over the lattice $\ZZ$ by looking at the cochains corresponding to projective representations. We did this by looking at how the state transforms under the group action on the right half of the lattice. Say that the right half of the chain transforms under some projective representation $U_R(g)$. We can do the same with the left half of the chain. Say we call this projective representation $U_L(g)$. Since the full state is $G$-invariant, we require
 \begin{equation}
 	U(g)=U_L(g)\otimes U_R(g)
 \end{equation}
-to be a linear representation. It turns out ({\color{red}I have to explain this further}) that if our state is translation invariant there is a unitary, $V$ such that
+to be a linear representation. It turns out that if our state is mirror symmetric (and the group action is as well) there is a unitary, $V$ such that
 \begin{equation}
 	U_L(g)=V^\dagger U_R(g)V.
 \end{equation}
@@ -532,7 +532,7 @@ The definition of the on-site group action is again very similar to what we did 
 \begin{equation}
 	\beta^\Lambda_{g}(A)=\Ad{\bigotimes_{i\in\Lambda}U_i(g)}(A).
 \end{equation}
-It turns out that this automorphism on the algebra of local operators can be extended to the full quasi local $C^*$-algebra $\AA=\overline{\AA_{\text{loc}}}$. {\color{red}More explanation needed?}
+It turns out that this automorphism on the algebra of local operators can be extended to the full quasi local $C^*$-algebra $\AA=\overline{\AA_{\text{loc}}}$.
 \subsection{Interactions and locally generated automorphisms}
 Given a quasi local $C^*$-algebra $\AA$ over a lattice $\Gamma$ with some distance measure $d$ defined on it, an interaction $\Phi$ is a map
 \begin{equation}
