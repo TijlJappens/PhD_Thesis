@@ -1307,6 +1307,7 @@ De appendices kunnen desgevallend worden gebundeld in een apart boekdeel.
   {\sffamily \textcolor{white} {\@faculty}}
   \end{flushright}
   \end{textblock*}
+
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1404,6 +1405,10 @@ De appendices kunnen desgevallend worden gebundeld in een apart boekdeel.
   %
   % Create header
   \frontcoverheaderXII{#1}
+  
+  \begin{textblock*}{130mm}(20mm+#1,95mm)
+  	\includegraphics[width=130mm]{chapters/introduction/image/SPT_Phases.pdf}
+  \end{textblock*}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
   %
@@ -1423,7 +1428,7 @@ De appendices kunnen desgevallend worden gebundeld in een apart boekdeel.
   % Place the DRAFT notifier on the front page to avoid printing a wrong
   % version
   \ifadsphd@final\else
-    \begin{textblock*}{120mm}(17.5mm+#1,50mm)
+    \begin{textblock*}{120mm}(17.5mm+#1,40mm)
     \textblockcolour{}
     \vspace{-\parskip}
     \begin{center}
@@ -1437,7 +1442,7 @@ De appendices kunnen desgevallend worden gebundeld in een apart boekdeel.
   %
   % Place the title and subtitle
   %\typeout{Title position: 17.5mm+\the#1}
-  \begin{textblock*}{135mm}(17.5mm+#1,100mm)
+  \begin{textblock*}{135mm}(17.5mm+#1,60mm)
   \textblockcolour{}
   \vspace{-\parskip}
   \raggedright
