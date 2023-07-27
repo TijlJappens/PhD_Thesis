@@ -29,10 +29,12 @@ thesis.run.xml
 thesis.synctex.gz
 thesis.ps
 thesis.pdf
+thesis.stp
 cover.*
 s
 .force_rebuild
 *.bbl
 *.blg
 *.tgz
+*.log
 VERSION
