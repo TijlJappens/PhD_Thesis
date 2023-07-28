@@ -67,7 +67,9 @@ The subclasses that are otained this way are called the classes of symmetry enri
 In this paper we will mainly focus on the symmetry enrichment of the trivial quantum phase of matter (see figure \ref{fig:ConnectedComponents}). The equivalence classes obtained here are then called the symmetry protected topological (or SPT) phase because they are only protected because of the symmetry and are trivial without it. Some well known examples of symmetry protected topological order are the majorana edge mode model (see figure \ref{fig:SymmetryProtectedTopologicalOrderFigures}a), protected by the fermion parity symmetry and the Haldane phase (see figure \ref{fig:SymmetryProtectedTopologicalOrderFigures}b) protected by the rotational symmetry $SO(3)$. While the majorana edge mode model remains mainly theoretical, the Haldane phase has been experimentally\cite{sompet2022realizing} observed.
 \section{What is in this thesis}
 The work in this thesis aims at improving our understanding of symmetry protected topological order in various specific cases.
-\paragraph{Chapter \ref{sec:SPT_Order_In_A_Nutshell}:}This chapter provides a concrete and simple framework for looking at the trivial gapped phase of matter by considering finte depth quantum circuits. It then uses this to introduce the notions of short ranged entangled (SRE) states. Afterwards we define the on site group action and use this to define symmetry protected topological (SPT) states.
+\paragraph{Chapter \ref{sec:SPT_Order_In_A_Nutshell}:}This chapter provides a concrete and simple framework for looking at the trivial gapped phase of matter by considering finte depth quantum circuits. It then uses this to introduce the notions of short ranged entangled (SRE) states. Afterwards we define the on site group action and use this to define symmetry protected topological (SPT) states. It then proceeds with some examples. First, we discuss zero dimensional SPT order (which just amounts to a preservation of charge), then we explain an example of SPT order in 1d called the Haldane phase. We then talk about the definition of group cohomology groups in which all our SPT indices take values.
+\paragraph{Chapter \ref{ch:LoopSPT}:}This chapter is based on the paper \hyperref[mySecondPaper]{[b]}. It features a generalisation of the loop SPT index constructed in section \ref{sec:loops-of-spts} called the charge pumping index. It is a generalisation of the known $\ZZ$-valued index for the Thouless pump. It then proves existence and completeness of this index.
+\paragraph{Chapter \ref{ch:TranslationSPT}:}This chapter is based on the paper \hyperref[myFirstPaper]{[a]}. It considers SPT states in two spatial dimensions and looks at how the SPT classification changes if one imposes additional translation symmetries. It proves that these indices are well defined.
 \chapter{Symmetry protected topological order in a nutshell}\label{sec:SPT_Order_In_A_Nutshell}
 \section{Gapped phases of matter}
 All of these topological phases of matter are described by a Hamiltonian that is gapped and a sum of local therms\footnote{In section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.}. It turns out that this locality and this gap protects the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes: The first equivalence class is an equivalence on Hamiltonians:
@@ -187,7 +189,9 @@ The singlet is now invariant under the group action ($u(g)\ket{s}=\ket{s}$ for a
 \subsection{Intermezzo: Linear and projective representations}
 I can rewrite the unitaries in equation \eqref{eq:OnSiteActionOfFakeAKLT_Model} as
 \begin{align}\label{eq:OnSiteActionOfFakeAKLT_Model_Rewritten}
-	u(1,1)&=\id_{\CC^2}\otimes\id_{\CC^2}&u(-1,1)&=(i\sigma_x)\otimes(i\sigma_x)&u(1,-1)&=(i\sigma_y)\otimes(i\sigma_y)&u(-1,-1)&=(i\sigma_z)\otimes(i\sigma_z).
+	u(1,1)&=\id_{\CC^2}\otimes\id_{\CC^2}&u(-1,1)&=(i\sigma_x)\otimes(i\sigma_x)\\
+	\nonumber
+	u(1,-1)&=(i\sigma_y)\otimes(i\sigma_y)&u(-1,-1)&=(i\sigma_z)\otimes(i\sigma_z).
 \end{align}
 One could therefore wonder whether
 \begin{align}\label{eq:OnSiteActionOfFakeAKLT_Model_OnC2}
@@ -196,6 +200,7 @@ One could therefore wonder whether
 is a representation. It turns out this is not the case. This can easily be seen by the fact that $r(-1,1)$ and $r(1,-1)$ don't commute. $r$ does however commute up to a phase. More specifically, define $[\cdot]_\sim$ as the equivalence class that says that two operators are equivalent if they differ only up to a phase. Then $\tilde{r}$, defined through
 \begin{align}\label{eq:OnSiteActionOfFakeAKLT_Model_OnC2_ProjectiveRep}
 	\tilde r(1,1)&=[\id_{\CC^2}]_\sim&\tilde r(-1,1)&=[\sigma_x]_\sim\\
+	\nonumber
 	\tilde r(1,-1)&=[\sigma_y]_\sim&\tilde r(-1,-1)&=[\sigma_z]_\sim
 \end{align}
 is a representation ($\tilde{r}\in\hom(G,\PP\UU(\CC^2))$). We call such an $\tilde{r}$ a projective representation and we call $r$ then the lift of a projective representation.
@@ -345,7 +350,7 @@ If we now write out the two cochain for $\tilde{U}$, we obtain
 	\tilde{\omega}(g,h)=\omega(g,h)+\phi(g)+\phi(h)-\phi(gh)
 \end{equation}
 concluding the proof.
-\section{Loops of SPTs}
+\section{Loops of SPTs}\label{sec:loops-of-spts}
 This section is aimed at giving an introduction on the classification of loops of SPT's.
 \subsection{What is a loop? What are equivalent loops?}
 Let $\ket{\phi}$ be a product state. We say that a one parameter family $t\in[0,1]\mapsto \ket{\phi(t)}$ is a loop based at $\ket{\phi}$ if
@@ -462,7 +467,7 @@ We call this state $\ket{\psi}$, the boundary state of $(V,\ket{\phi})$. Some re
 \subsection{No $G$-invariant contraction}
 \begin{figure}
 	\centering
-	\scalebox{0.8}{
+	\scalebox{0.75}{
 	\input{chapters/introduction/image/U1_ThoulessPumpAs_FiniteDepthQuantumCircuitBoundary.tikz}
 	}
 	\caption{The construction of the boundary state of the loop from figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit}.}

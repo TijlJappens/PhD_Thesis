@@ -47,9 +47,9 @@ The first result of this paper is the construction of an $H^2(G,\TT)$ valued ind
 We also look at the case where there is a second translation symmetry (so the system is translation invariant in both $x$ and $y$ directions). For such systems there is the following conjecture conjecture (see again \cite{xiong2019classification} and \cite{Chen_2013}):
 \begin{conjecture}\label{conj2}
 	The space of SPTs, translation invariant in two directions under stable equivalence also satisfies conjecture \ref{conj:StableEquivGroupStructure}. Let $g$ be the inclusion map from the space of 2d SPT states that are translation invariant in both $x$ and $y$ directions to the more general set of 2d SPT states with translation invariance in the $x$ direction only. Let $f$ be the map that takes a 1d translation invariant SPT state and outputs a 2d SPT state that is translation invariant in both $x$ and $y$ directions by taking the tensor product in the $y$ direction. The sequence
-	\begin{equation}
-	0\rightarrow\left\{\begin{matrix}\text{1d translation invariant}\\ \text{SPT states}\end{matrix}\right\}\stackrel{f}{\rightarrow}\left\{\begin{matrix}\text{2d SPT states with two}\\ \text{translation symmetries}\end{matrix}\right\}\stackrel{g}{\rightarrow}\left\{\begin{matrix}\text{2d SPT states translation}\\ \text{invariant in $x$ direction}\end{matrix}\right\}\rightarrow 0
-	\end{equation}
+	\begin{gather}
+		0\rightarrow\left\{\begin{matrix}\text{1d translation invariant}\\ \text{SPT states}\end{matrix}\right\}\stackrel{f}{\rightarrow}\left\{\begin{matrix}\text{2d SPT states with two}\\ \text{translation symmetries}\end{matrix}\right\}\stackrel{g}{\rightarrow}\left\{\begin{matrix}\text{2d SPT states translation}\\ \text{invariant in $x$ direction}\end{matrix}\right\}\rightarrow 0
+	\end{gather}
 	induces a sequence (of group morphisms) on the stable equivalence classes. By this we mean that the class of $f(\phi)$ only depends on the class of $\phi$ and similarly for $g$. Moreover, this induced sequence is exact and split.
 \end{conjecture}
 Translation invariant SPT states in one spatial dimension are known to carry an $H^2(G,\TT)\oplus H^1(G,\TT)$ valued index (see appendix \ref{sec:OneDimensionalIndices}). From this and the last two conjectures, we expect there is an
@@ -196,11 +196,17 @@ On the set of $G$-invariant SRE states we will now define three stable equivalen
 	\end{align}
 \end{definition}
 We also define similar equivalence classes $\expval{\cdot}_\sim^1,\expval{\cdot}_\sim^2$ and $\expval{\cdot}_\sim^3$ on
-\begin{align}
-S_1&=\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))|\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\:\omega\circ\tau=\omega\}\\
-S_2&=\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))|\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\:\omega\circ\nu=\omega\}\\
-S_3&=\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))|\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\:\omega\circ\tau=\omega,\:\omega\circ\nu=\omega\}
-\end{align}
+\begin{align*}
+S_1&=\left\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))\left|\begin{matrix}
+	\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\\\omega\circ\tau=\omega
+\end{matrix}\right.\right\}\\
+S_2&=\left\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))\left|\begin{matrix}
+	\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\\\omega\circ\nu=\omega
+\end{matrix}\right.\right\}\\
+S_3&=\left\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))\left|\begin{matrix}
+	\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\\\omega\circ\tau=\omega,\:\omega\circ\nu=\omega
+\end{matrix}\right.\right\}
+\end{align*}
 respectively. Here we now also demand that the interactions and the trivial states are invariant under the additional translation symmetries.
 \subsection{(Borel) Group cohomology groups}\label{sec:GroupCohomology}
 In this paper we define the Group cohomology groups using the algebraic approach. A standard reference for Group cohomology is \cite{benson1991representations}. Let $G$ be an arbitrary finite group. For any $n\in\NN$, let $C^n(G,M)$ (in principle this can be for any (left) G-module $M$ but in this paper we will always take $M=\TT$ with the addition and the trivial group action\footnote{So in particular when we write $g_1 \phi(g_2,\cdots,g_n)$ for any $\phi\in C^{n-1}(G,M)$ we will sometimes identify it simply with $\phi(g_2,\cdots,g_n)$.}) be the group of all functions from $G^n$ to $M$. We will use additive notation on this space and denote the group operator by $+$ and the inverse of an element of the group $\phi$ by $-\phi$. Now define the coboundary homomorphisms
@@ -230,7 +236,52 @@ In what follows we will denote the group action on $H^n(G,M)$ also in the same a
 \section{Results}
 This section will contain three different parts. First we discuss the main result starting from some rather abstract assumptions. In the second part we present the claim that these assumptions are implied by some more natural assumptions relating to short range entanglement. In the last part of the section we compare our assumptions to those made in \cite{Ogata2d}.
 \subsection{Statement of the result in terms of Q-automorphisms}\label{sec:Results_2}
-\input{chapters/TranslationSPT/image/Figure1.tex}
+\begin{figure}
+	\centering
+	\def\s{0.5}
+	\resizebox{0.45\textwidth}{!}{%
+		\begin{tikzpicture}
+			\fill[fill=blue!30!white] (-4*\s,-4*\s) rectangle (4*\s,4*\s);
+			\draw[draw=black,line width=0.3mm] (0,4*\s) -- (0,-4*\s);
+			
+			\node at (-2*\s,0) {$\alpha_L$};
+			\node at (2*\s,0) {$\alpha_R$};
+	\end{tikzpicture}}
+	$\qquad$
+	\def\s{0.4}
+	\resizebox{0.45\textwidth}{!}{%
+		\begin{tikzpicture}
+			\draw[draw=white,line width=0mm] (1,0) coordinate (a) -- (0,0) coordinate (b) -- (1,1) coordinate (c);
+			
+			\fill[fill=green!30!white] (0,0) -- (-5*\s,-5*\s) -- (-5*\s,5*\s);
+			\fill[fill=green!30!white] (0,0) -- (5*\s,-5*\s) -- (5*\s,5*\s);
+			\fill[fill=red!30!white] (0,1*\s) -- (4*\s,5*\s) -- (-4*\s,5*\s);
+			\fill[fill=red!30!white] (0,-1*\s) -- (4*\s,-5*\s) -- (-4*\s,-5*\s);
+			
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:4*\s] (\x,\x+1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-4*\s:0] (\x,-\x+1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:4*\s] (\x,-\x-1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-4*\s:0] (\x,\x-1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-5*\s:5*\s] (\x,\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-5*\s:5*\s] (\x,-\x);
+			
+			\draw[draw=black,line width=0.3mm] (0,0) -- (2*\s,0);
+			\draw[draw=black,->,line width=0.3mm] (1.5*\s,0) arc (0:45:1.5*\s);
+			\node at (1.7*\s, 0.7*\s) {$\theta$};
+			
+			\node at (-3*\s,0) {$\eta^L_g$};
+			\node at (3.5*\s,0) {$\eta^R_g$};
+			\node at (0,3*\s) {$\Theta$};
+	\end{tikzpicture}}
+	\caption{These figures indicate the support area of the different automorphisms in a particular decomposition of the $\textrm{QAut}$. The angle $\theta$ needs to be smaller then or equal to what was indicated here so that the $\Theta$ and the $\eta_g$ (possibly after widening by one site) commute.}
+	\label{fig:SetupWithQAutomorphism}
+\end{figure}
 Similarly what was done in \cite{Ogata2d}, we will define an index on the space of states that can be disentangled by a Q-automorphism. This class of automorphisms is defined as:
 \begin{definition}
 	Take $\alpha\in\Aut{\AA}$. We say that $\alpha\in\QAut{\AA}$ if and only if $\forall\theta\in]0,\pi/2[$ there exists an $\alpha_L\in\Aut{\AA_L},\alpha_R\in\Aut{\AA_R},V_1\in\UU(\AA)$ and a $\Theta\in\Aut{\AA_{W(C_\theta)^c}}$\footnote{Note that our definition of $\QAut{\AA}$ is slightly different from the definition of $\textrm{QAut}(\AA)$ from \cite{Ogata2d} because of this widening $W$.} such that
@@ -299,7 +350,49 @@ We now state the result that using assumption \ref{assumption} we can define an 
 \begin{proof}
 	This statement is proven in subsection \ref{sec:ProofOf:thrm:ExistenceFirstIndex}.
 \end{proof}
-%\input{Figures/Figure3}
+\begin{figure}
+	\centering
+	\def\s{0.4}
+	\resizebox{0.45\textwidth}{!}{%
+		\begin{tikzpicture}
+			\draw[draw=white,line width=0mm] (1+\s,0) coordinate (a) -- (\s,0) coordinate (b) -- (1+\s,1) coordinate (c);
+			
+			\fill[fill=green!30!white] (-1*\s,0) -- (-6*\s,-5*\s) -- (-6*\s,5*\s);
+			\fill[fill=green!30!white] (1*\s,0) -- (6*\s,-5*\s) -- (6*\s,5*\s);
+			\fill[fill=red!30!white] (0,1*\s) -- (4*\s,5*\s) -- (-4*\s,5*\s);
+			\fill[fill=red!30!white] (0,-1*\s) -- (4*\s,-5*\s) -- (-4*\s,-5*\s);
+			
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:4*\s] (\x,\x+1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-4*\s:0] (\x,-\x+1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:4*\s] (\x,-\x-1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-4*\s:0] (\x,\x-1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:5*\s] (\x+1*\s,\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:5*\s] (\x+1*\s,-\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-5*\s:0] (\x-1*\s,-\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-5*\s:0] (\x-1*\s,\x);
+			
+			\draw[draw=black,line width=0.3mm] (1*\s,0) -- (3*\s,0);
+			\draw[draw=black,->,line width=0.3mm] (2.5*\s,0) arc (0:45:1.5*\s);
+			\node at (2.7*\s, 0.7*\s) {$\theta$};
+			
+			\node at (-4*\s,0) {$\eta^L_g$};
+			\node at (4.5*\s,0) {$\eta^R_g$};
+			\node at (0,3*\s) {$\Theta$};
+			\node at (-1*\s,-1*\s) {$\bullet$};
+			\node at (-1.45*\s,-1.5*\s) {$\mathsmaller{\mathsmaller{\left(\scalebox{0.5}{-}1,\scalebox{0.5}{-}1\right)}}$};
+			
+	\end{tikzpicture}}
+	\caption{This figure indicates the support area of the different automorphisms when there are two translation directions. The angle $\theta$ still has to be smaller then or equal to what was indicated here so that the $\Theta$ and the $\eta_g$ commute but now we must be able to do both a horizontal and a vertical widening of the support of $\eta_g$. Also the coordinate $(-1,-1)$ which will be of particular interest is indicated.}
+	\label{fig:SetupForTwoTranslations}
+\end{figure}
 Now we will present the assumption from which we can define the $H^1(G,\TT)$-valued index (see figure \ref{fig:SetupForTwoTranslations} for the support of the automorphisms).
 \begin{restatable}{assumption}{assumptionTwo}\label{assumption:2Translations}
 	Let $\omega\in\PP(\AA)$ be
@@ -774,10 +867,12 @@ We will now show that the index is independent on the choice of $\tilde{\beta}_g
 	\Ad{\pi_0(V_1^\dagger) \tilde{\delta}_g\pi_0(V_1)}\circ\pi_0\circ\alpha_0\circ\Theta=\pi_0\circ\alpha_0\circ\Theta\circ\Ad{V_{g,21}}\circ\eta_{g,1}\circ\eta_{g,2}^{-1}\circ\Ad{V_{g,22}^\dagger}.
 	\end{equation}
 	Doing the same for the $V_{g,21}$ and $V_{g,22}$ now gives
-	\begin{align}
-	\Ad{\pi_0\circ\alpha_0\circ\Theta(V_{g,21}^\dagger)\pi_0(V_1^\dagger)\tilde{\delta}_g\pi_0(V_1)}\circ\pi_0\circ\alpha_0\circ\Theta\circ\Ad{V_{g,22}}&=\pi_0\circ\alpha_0\circ\Theta\circ\eta_{g,2}\circ(\eta_{g,1})^{-1}\\
-	\Ad{\pi_0\circ\alpha_0\circ\Theta(V_{g,21}^\dagger)\pi_0(V_1^\dagger)\tilde{\delta}_g\pi_0(V_1)\pi_0\circ\alpha_0\circ\Theta(V_{g,22})}\circ\pi_0&=\pi_0\circ\alpha_0\circ\eta_{g,2}\circ(\eta_{g,1})^{-1}\circ\alpha_0^{-1}.
-	\end{align}
+	\begin{equation}
+	\begin{aligned}
+		\Ad{\pi_0\circ\alpha_0\circ\Theta(V_{g,21}^\dagger)\pi_0(V_1^\dagger)\tilde{\delta}_g\pi_0(V_1)}\circ\pi_0\circ\alpha_0\circ\Theta\circ\Ad{V_{g,22}}&=\pi_0\circ\alpha_0\circ\Theta\circ\eta_{g,2}\circ(\eta_{g,1})^{-1}\\
+		\Ad{\pi_0\circ\alpha_0\circ\Theta(V_{g,21}^\dagger)\pi_0(V_1^\dagger)\tilde{\delta}_g\pi_0(V_1)\pi_0\circ\alpha_0\circ\Theta(V_{g,22})}\circ\pi_0&=\pi_0\circ\alpha_0\circ\eta_{g,2}\circ(\eta_{g,1})^{-1}\circ\alpha_0^{-1}.
+	\end{aligned}
+	\end{equation}
 	Since the last equation is split we have by lemma \ref{lem:UsingIrreducibilityAndWignerTheorem} that we can take $\delta_g^L\in\textrm{Cone}_L^W(\alpha_0,\theta)$ and $\delta_g^R\in\textrm{Cone}_R^W(\alpha_0,\theta)$ such that
 	\begin{equation}
 	\delta_g^L\otimes\delta_g^R=\pi_0\circ\alpha_0\circ\Theta(V_{g,21}^\dagger)\pi_0(V_1^\dagger)\tilde{\delta}_g\pi_0(V_1)\pi_0\circ\alpha_0\circ\Theta(V_{g,22}).
@@ -986,11 +1081,13 @@ We now have to extend the above definition to the group
 \end{lemma}
 \begin{proof}
 	To show that this indeed satisfies equation \eqref{eq:lemDefinitionOfWgMapCondition} observe that using equation \eqref{eq:DefinitionOfGroupMorphismVAutEquation} we obtain:
-	\begin{align}
-	&\Ad{\phi_2(v^{-p}W_g v^{p})}\circ\pi_0\\
+	\begin{equation}
+	\begin{aligned}
+		&\Ad{\phi_2(v^{-p}W_g v^{p})}\circ\pi_0\\
 	&=\pi_0\circ \alpha_0\circ\Theta\circ\Ad{a}\circ\tau^{-p}\circ\eta_g\circ\beta_g^U\circ\tau^p\circ\Ad{a^{\dagger}}\circ\Theta^{-1}\circ\alpha_0^{-1}\\
 	&=\pi_0\circ \alpha_0\circ\Theta\circ\gamma^H_{0;1}\circ\gamma^{H_L}_{1;0}\otimes\gamma^{H_L}_{1;0}\circ\stkout{\Phi_{0;1}^{-1}}\circ\tau^{-p}\circ\eta_g\circ\beta_g^U\circ\tau^p\circ\stkout{\Phi_{0;1}}\circ\gamma^{\Hsplit}_{0;1}\circ\gamma^H_{1;0}\circ\Theta^{-1}\circ\alpha_0^{-1}.
-	\end{align}
+	\end{aligned}
+	\end{equation}
 	Since $\Phi$ commutes with both the $\tau^{-p}\circ\eta_g\circ\tau^p$ and with the $\beta_g^{\tau^{-p}(U)}$ the result follows.
 \end{proof}
 \begin{lemma}\label{lem:phi1phi2matchingCondition}
@@ -1086,13 +1183,14 @@ is a GNS triple for $\omega_{01}\otimes_{\text{stack}}\omega_{02}$. The followin
 	To show this we simply have to apply the adjoint action of these operators on $\pi_{01}\otimes\pi_{02}$ and see that these are indeed implementations of the right automorphisms. This is so by construction.
 \end{proof}
 We are now ready to provide a proof of equation \ref{eq:IndexMorphismUnderStacking}. We have
-\begin{align}
+\begin{equation}
+\begin{aligned}
 &C(g,h)\\
-\nonumber
 &=(K_{g,1}^R\otimes K_{g,2}^R)\Ad{W_{g,1}\otimes W_{g,2}}\left((K_{h,1}^R\otimes K_{h,2}^R)\Ad{(W_{h,1}\otimes W_{h,2})(W_{gh,1}\otimes W_{gh,2})^\dagger}\left((K_{gh,1}^R\otimes K_{gh,2}^R)^\dagger\right)\right)\\
 &(u^R_1(g,h)\otimes u^R_2(g,h))v^\dagger (u^R_1(g,h)\otimes u^R_2(g,h))^\dagger v\\
 &=C_1(g,h)C_2(g,h)
-\end{align}
+\end{aligned}
+\end{equation}
 concluding the proof.
 \begin{remark}\label{rem:StackingH3ValuedIndex}
 	Clearly the same argument can be used to argue that the $H^3$-valued index is invariant under stacking.
@@ -1146,7 +1244,49 @@ We will now prove lemma \ref{lem:SRE_Implies_Assumption_1d} that we restate here
 \begin{proof}
 	The proof simply uses lemma \ref{lem:PropertiesLocallyGeneratedAutomorphisms1d}.
 \end{proof}
-\input{chapters/TranslationSPT/image/Figure5}
+\begin{figure}
+	\centering
+	\def\s{0.4}
+	\resizebox{0.45\textwidth}{!}{%
+		\begin{tikzpicture}
+			\draw[draw=white,line width=0mm] (1+\s,0) coordinate (a) -- (\s,0) coordinate (b) -- (1+\s,1) coordinate (c);
+			
+			\fill[fill=green!30!white] (-1*\s,0) -- (-6*\s,-5*\s) -- (-6*\s,5*\s);
+			\fill[fill=green!30!white] (1*\s,0) -- (6*\s,-5*\s) -- (6*\s,5*\s);
+			\fill[fill=red!30!white] (0,1*\s) -- (4*\s,5*\s) -- (-4*\s,5*\s);
+			\fill[fill=red!30!white] (0,-1*\s) -- (4*\s,-5*\s) -- (-4*\s,-5*\s);
+			
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:4*\s] (\x,\x+1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-4*\s:0] (\x,-\x+1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:4*\s] (\x,-\x-1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-4*\s:0] (\x,\x-1*\s);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:5*\s] (\x+1*\s,\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=0:5*\s] (\x+1*\s,-\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-5*\s:0] (\x-1*\s,-\x);
+			\draw[draw=black,line width=0.3mm]
+			plot[smooth,samples=2,domain=-5*\s:0] (\x-1*\s,\x);
+			
+			\draw[draw=black,line width=0.3mm] (1*\s,0) -- (3*\s,0);
+			\draw[draw=black,->,line width=0.3mm] (2.5*\s,0) arc (0:45:1.5*\s);
+			\node at (2.7*\s, 0.7*\s) {$\theta$};
+			
+			\node at (-4*\s,0) {$\eta^L_g$};
+			\node at (4.5*\s,0) {$\eta^R_g$};
+			\node at (0,3*\s) {$\Theta$};
+			\node at (-1*\s,-1*\s) {$\bullet$};
+			\node at (-1.45*\s,-1.5*\s) {$\mathsmaller{\mathsmaller{\left(\scalebox{0.5}{-}1,\scalebox{0.5}{-}1\right)}}$};
+			
+	\end{tikzpicture}}
+	\caption{This figure indicates the support area of the different automorphisms when there are two translation directions. The angle $\theta$ still has to be smaller then or equal to what was indicated here so that the $\Theta$ and the $\eta_g$ commute but now we must be able to do both a horizontal and a vertical widening of the support of $\eta_g$. Also the coordinate $(-1,-1)$ which will be of particular interest is indicated.}
+	\label{fig:SetupForTwoTranslationsNearProof}
+\end{figure}
 \section{The $H^1(G,\TT)$-valued index}\label{sec:TwoDirectionTraslationInvariance}
 In this section we discuss translation invariance not just in the vertical direction but in two directions simultaneously. Let $\nu\in\Aut{\AA}$ be the automorphism that translates the lattice to the right by one site. Let $\mu\in\Aut{\AA}$ be the automorphism that rotates the lattice by $90^\circ$ clockwise. There is a relation between these automorphisms. Specifically, the automorphism $\tau$ that translated the lattice upwards by one site can now be written as $\tau=\mu^{-1}\circ\nu\circ\mu$. We now let our state $\omega$ satisfy assumption \ref{assumption:2Translations}. We will restate this assumption here for convenience
 \assumptionTwo*$\:$\\
@@ -1707,7 +1847,27 @@ In what follows, let $\omega_0$ be the product state and let $\gamma^\Phi_{0;1}$
 \begin{equation}
 \omega=\omega_0\circ\gamma^\Phi_{0;1}.
 \end{equation}
-\input{chapters/TranslationSPT/image/Figure2}
+\begin{figure}
+	\centering
+	\def\s{0.5}
+	\resizebox{0.45\textwidth}{!}{%
+		\begin{tikzpicture}
+			\fill[fill=red!30!white] (0,0) -- (2.5*\s,4*\s) -- (4*\s,4*\s) -- (4*\s,2.5*\s);
+			\fill[fill=red!30!white] (0,0) -- (2.5*\s,-4*\s) -- (4*\s,-4*\s) -- (4*\s,-2.5*\s);
+			\fill[fill=red!30!white] (0,0) -- (-2.5*\s,4*\s) -- (-4*\s,4*\s) -- (-4*\s,2.5*\s);
+			\fill[fill=red!30!white] (0,0) -- (-2.5*\s,-4*\s) -- (-4*\s,-4*\s) -- (-4*\s,-2.5*\s);
+			
+			\draw[draw=black,line width=0.3mm] (-4*\s,4*\s) -- (4*\s,-4*\s);
+			\draw[draw=black,line width=0.3mm] (-4*\s,-4*\s) -- (4*\s,4*\s);
+			
+			\node at (2*\s,0) {$1$};
+			\node at (0,2*\s) {$2$};
+			\node at (-2*\s,0) {$3$};
+			\node at (0,-2*\s) {$4$};
+	\end{tikzpicture}}
+	\caption{This figure indicates four different areas of $\ZZ^2$ and we will take $\pi_0=\bigotimes_{i=1}^4\pi_{0,i}$ where each of the $\pi_{0,i}$ is an irreducible representation of the restriction of $\AA$ to each of the areas. The red areas are chosen such that they do not overlap with the support of $\tilde{\eta}_g$ and $\eta_g$.}
+	\label{fig:IndexInvariantUnderRotationDecomposition}
+\end{figure}
 Sometimes we will need a specific decomposition of this locally generated Automorphism:
 \begin{lemma}\label{lem:DecompositionOfLGAInCross}
 	Let $\{1,2,3,4\}$ be regions indicated in figure \ref{fig:IndexInvariantUnderRotationDecomposition} (including the red areas) and let $\AA_{\text{red}}$ be the part of the $C^*$ algebra that has support in the red regions of figure \ref{fig:IndexInvariantUnderRotationDecomposition}. There exists a $B\in\UU(\AA)$ and a $\Theta\in\Aut{\AA_{\text{red}}}$ such that $\beta^{\mu\nu}_g\circ\Theta=\Theta\circ\beta^{\mu\nu}_g$ (for all $\mu\in\{U,D\}$ and $\nu\in\{L,R\}$) satisfying
@@ -1743,13 +1903,14 @@ satisfy $\omega\circ\tilde{\beta}_{g,1}=\omega\circ\tilde{\beta}_{g,2}=\omega$. 
 	&=\pi_0\circ\gamma^\Phi_{0;1}\circ\eta_g\circ\tilde{\eta}_g\circ\beta_g^{RU}\circ(\beta_g^{LD})^{-1}.
 	\end{align}
 	Now we use lemma \ref{lem:DecompositionOfLGAInCross} and obtain
-	\begin{align}
-	\Ad{W_g\tilde{W}_{g^{-1}}}\circ\pi_0\circ\Ad{B}\circ\gamma^{\sum_i\Phi_i}_{0;1}\circ\stkout{\Theta}&=\pi_0\circ\Ad{B}\circ\gamma^{\sum_i\Phi_i}_{0;1}\circ\stkout{\Theta}\circ\eta_g\circ\tilde{\eta}_g\circ\beta_g^{RU}\circ(\beta_g^{LD})^{-1}\\
+	\begin{equation}
+	\begin{aligned}
+		\Ad{W_g\tilde{W}_{g^{-1}}}\circ\pi_0\circ\Ad{B}\circ\gamma^{\sum_i\Phi_i}_{0;1}\circ\stkout{\Theta}&=\pi_0\circ\Ad{B}\circ\gamma^{\sum_i\Phi_i}_{0;1}\circ\stkout{\Theta}\circ\eta_g\circ\tilde{\eta}_g\circ\beta_g^{RU}\circ(\beta_g^{LD})^{-1}\\
 	\Ad{\pi_0(B^\dagger)W_g\tilde{W}_{g^{-1}}\pi_0(B)}\circ\pi_0\circ\gamma^{\sum_i\Phi_i}_{0;1}&=\pi_0\circ\gamma^{\sum_i\Phi_i}_{0;1}\circ\eta_g\circ\tilde{\eta}_g\circ\beta_g^{RU}\circ(\beta_g^{LD})^{-1}\\
 	\Ad{\pi_0(B^\dagger)W_g\tilde{W}_{g^{-1}}\pi_0(B)}\circ\pi_0&=\left(\pi_{0,1}\otimes\pi_{0,2}\circ\gamma^{\Phi_1+\Phi_2}_{0;1}\circ\eta_g^R\circ\tilde{\eta}_g^U\circ\beta_g^{RU}\circ\gamma^{\Phi_1+\Phi_2}_{1;0}\right)\\
-	\nonumber
 	&\qquad\otimes \left(\pi_{0,3}\otimes\pi_{0,4}\circ\gamma^{\Phi_3+\Phi_4}_{0;1}\circ\eta_g^L\circ\tilde{\eta}_g^D\circ(\beta_g^{LD})^{-1}\circ\gamma^{\Phi_3+\Phi_4}_{1;0}\right).
-	\end{align}
+	\end{aligned}
+	\end{equation}
 	By appendix \ref{lem:SplittingOfUnitary}, there exist $\tilde{X}_g\in\UU(\HH_{0,1}\otimes\HH_{0,2})$ and $\tilde{Y}_g\in\UU(\HH_{0,3}\otimes\HH_{0,4})$ such that
 	\begin{equation}
 	\tilde{X}_g\otimes\tilde{Y}_g=\pi_0(B^\dagger)W_g\tilde{W}_{g^{-1}}\pi_0(B).
@@ -1786,7 +1947,9 @@ satisfy $\omega\circ\tilde{\beta}_{g,1}=\omega\circ\tilde{\beta}_{g,2}=\omega$. 
 	\begin{align}
 	\Ad{\tilde{K}_g^U}\circ\pi_0\circ\gamma^\Phi_{0;1}&=\Ad{(b_g^R)^\dagger w^\dagger X_g w X_g^\dagger}\circ\pi_0\circ\gamma^\Phi_{0;1}\\
 	&=\Ad{(b_g^R)^\dagger w^\dagger X_g w}\circ\pi_0\circ\gamma^\Phi_{0;1}\circ(\beta_g^{RU})^{-1}\circ(\eta_g^R)^{-1}\circ(\tilde{\eta}_g^U)^{-1}\\
-	&=\Ad{(b_g^R)^\dagger}\circ\pi_0\circ\gamma^\Phi_{0;1}\circ\nu^{-1}\circ\tilde{\eta}_g^U\circ\eta_g^R\circ\beta_g^{RU}\circ\nu\circ(\beta_g^{RU})^{-1}\circ(\eta_g^R)^{-1}\circ(\tilde{\eta}_g^U)^{-1}\\
+	&=\Ad{(b_g^R)^\dagger}\circ\pi_0\circ\gamma^\Phi_{0;1}\circ\nu^{-1}\circ\tilde{\eta}_g^U\circ\eta_g^R\circ\beta_g^{RU}\circ\\
+	\nonumber
+	&\qquad\qquad\nu\circ(\beta_g^{RU})^{-1}\circ(\eta_g^R)^{-1}\circ(\tilde{\eta}_g^U)^{-1}\\
 	&=\pi_0\circ\gamma^\Phi_{0;1}\circ\nu^{-1}\circ\tilde{\eta}_g^U\circ\beta_g^{RU}\circ\nu\circ(\beta_g^{RU})^{-1}\circ(\tilde{\eta}_g^U)^{-1}.
 	\end{align}
 	By similar arguments we get that
