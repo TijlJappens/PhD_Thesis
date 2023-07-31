@@ -1,0 +1,280 @@
+% !TeX root = ../../thesis.tex
+\chapter{Tools for quantum many body physics}\label{ch:Tools_For_Quantum_many_Body}
+
+\section{A rigorous mathematical framework}
+\label{sec:ToolsForQuantumManyBody}
+In the last few sections I have made statements like: "the right half part of this states transforms under a projective representation" or "the restriction to the right of the loop operator applied on the product state creates a zero dimensional SPT". With both statements is one common flaw though. These statements where meant for the situation where the lattice is $\ZZ$ but in this case there is no notion of a full Hilbert space. Both for defining representations and for defining zero dimensional SPT states I need a Hilbert space. This begs the question, on what Hilbert space is this true. Similar problems can be found with the sum of local therms operators introduced in the beginning (see for example the $K$ in definition \ref{def:ConnectedStates}). If the lattice is non-compact, there is no reason for the sum over the local therms to be convergent.\\\\
+In this section we will develop some definitions and mathematical tools that are most frequently used in this thesis. They are used to address some of these issues as well as allowing us to generalise some of our previously made statements.
+\subsection{The quasi local $C^*$-algebra}
+First we define the operator algebra we will be working on. To do this, we first choose a lattice. This is a discrete set, $\Gamma$ with some notion of distance on it which we will denote by $d:\Gamma^2\rightarrow \RR$. In this thesis we will mainly be working with three lattices. That is, the lattice with one point ($\ZZ_1$), the one dimensional lattice ($\ZZ$) and the two dimensional lattice ($\ZZ^2$).\\\\
+Next we must create the operator algebra. This will be very similar to what we did in figure \ref{fig:Lattice}. We first fix an on site Hilbert space. As we did before, we can still simply take $\CC^d$ for some integer $d\in\NN$ (where $d$ could possibly depend on the site). Next we define the local algebra. To this end, let $\mathfrak{B}_{\Gamma}$. For any $\Lambda\in\mathfrak{B}_\Gamma$ we define the algebra over $\Lambda$ through:
+\begin{equation}
+\AA_{\Lambda}=\bigotimes_{i\in\Lambda}\BB(\CC^d).
+\end{equation}
+We define this algebra in such a way that the inclusion on $\mathfrak{B}_\Gamma$ define an embedding on the algebra
+\begin{align}
+\Lambda_1&\subset\Lambda_2&&\Rightarrow&\AA_{\Lambda_1}&\subset\AA_{\Lambda_2}.
+\end{align}
+This embedding is defined by mapping $a\in\AA_{\Lambda_1}$ to $\left(\bigotimes_{i\in\Lambda_2\backslash\Lambda_1}\id_{\CC^d}\right)\otimes a\in \AA_{\Lambda_2}$. If we now define the local algebra by taking the union over all finite sets
+\begin{equation}
+\AA_{\text{loc}}=\bigcup_{\Lambda\in\mathfrak{B}_\Gamma}\AA_\Lambda
+\end{equation}
+and by identifying any two operators that can be embedded into the same operator (in some bigger still finite subset of $\Gamma$). One can easily check that this is indeed a well defined algebra. Now, let $\norm{\cdot}$ be the operator norm on the (tensor products of) the on site Hilbert spaces. This norm is indeed invariant under the choice of embedding. The closure of the local algebra under this norm,
+\begin{equation}
+\AA=\overline{\AA_{\text{loc}}}
+\end{equation}
+is called the quasi-local $C^*$-algebra\footnote{More generally $C^*$-algebras are just Banach algebras (with a norm) and an adjoint but all the $C^*$ algebras considered in this thesis will either be bounded operators on some separable Hilbert space or quasi-local $C^*$ algebras on some lattice.}.
+\subsection{The on site group action}
+The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
+\begin{equation}
+\beta^\Lambda_{g}(A)=\Ad{\bigotimes_{i\in\Lambda}U_i(g)}(A).
+\end{equation}
+It turns out that this automorphism on the algebra of local operators can be extended to the full quasi local $C^*$-algebra $\AA=\overline{\AA_{\text{loc}}}$.
+\subsection{Interactions and locally generated automorphisms}
+Given a quasi local $C^*$-algebra $\AA$ over a lattice $\Gamma$ with some distance measure $d$ defined on it, an interaction $\Phi$ is a map
+\begin{equation}
+\Phi: \mathfrak{G}_{\Gamma}\rightarrow \AA_{\text{loc}}: I \mapsto \Phi(I)
+\end{equation}
+where $\Phi(I)\in\AA_I$ is hermitian ($\Phi(I)=\Phi(I)^*$).We will sometimes use the restriction of an interaction. For some $\tilde\Gamma\subset\Gamma$ we define $\Phi_{\tilde\Gamma}$ by
+\begin{equation}
+\Phi_{\tilde\Gamma}:\mathfrak{G}_{\ZZ^2}\rightarrow \AA_{\text{loc}}:I\mapsto\left\{\begin{matrix}
+\Phi(I)&\text{if }I\subset\Gamma\\0&\text{otherwise}.
+\end{matrix}\right.
+\end{equation}
+We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will used is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{nachtergaele2019quasi} we call such a function an $F$-function if it satisfies two conditions:
+\begin{enumerate}
+	\item $F$ is uniformly integrable over $\Gamma$:
+	\begin{equation}\label{eq:F_Is_Uniformly_Integrable_Over_Gamma}
+	\norm{F}=\sup_{x\in\Gamma}\sum_{y\in\Gamma}F(d(x,y))<\infty.
+	\end{equation}
+	\item $F$ satisfies the convolution condition
+	\begin{equation}
+	\sum_{z\in\Gamma}F(d(x,z))F(d(z,y))< C_F F(d(x,y))
+	\end{equation}
+	for some finite constant $C_F$.
+\end{enumerate}
+Given such an $F$-function, we can define a norm on these interactions called 
+\begin{equation}
+\norm{\Phi}_F\defeq \sup_{x,y\in\ZZ^2}\frac{1}{F(\abs{x-y})}\sum_{Z\in\mathfrak{G}_{\ZZ^2},Z\ni x,y}\norm{\Phi(Z)}.
+\end{equation}
+The set of interactions with this norm (for a fixed $F$) is a Banach space. Following \cite{Ogata2d} we will fix a specific family of $F$-functions for the case where $\Gamma=\ZZ^2$. For any $0<\phi<1$ we define
+\begin{equation}\label{eq:OurFFunction}
+F_\phi:\RR^+\rightarrow\RR^+:r\mapsto \frac{\exp(-r^\phi)}{(1+r)^4}.
+\end{equation}
+One of the properties of $F$-local interactions is that they can be used to generate automorphisms. Let
+\begin{equation}
+\Phi:\mathfrak{G}_{\Gamma}\times [0,1]\rightarrow \AA_{\text{loc}}:(I,t)\mapsto \Phi(I,t)
+\end{equation}
+be a piecewise norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is piecewise norm continuous for each $I\in\mathfrak{G}_{\ZZ^2}$.} one parameter family of interactions such that the $F$-norm is uniformly bounded ($\sup_{t\in[0,1]}\norm{\Phi(\cdot,t)}_F<\infty$). We will denote the set of one parameter families of interactions that satisfy this property by $\BB_{F}([0,1])$. For any $\Phi\in\BB_{F_\phi}([0,1])$, we define the locally generated automorphism (LGA) $\gamma^{\Phi}_{s;t}$ such that for any $A\in\AA$, $\gamma^{\Phi}_{s;t}(A)$ is given as the solution to the differential equation
+\begin{equation}
+\frac{\d}{\d t}\gamma^{\Phi}_{s;t}(A)=-i\sum_{I\in\mathfrak{G}_{\ZZ^2}}\gamma^{\Phi}_{s;t}([\Phi(I,t),A])
+\end{equation}
+with initial condition $\gamma^{\Phi}_{s;s}(A)=A$ (the existence of this automorphism is proven in \cite{nachtergaele2019quasi}). This satisfies the condition that if
+\begin{equation}\label{eq:InteractionWithBoundedSum}
+\sup_t\norm{\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(I,t)}<\infty
+\end{equation}
+then
+\begin{align}
+\gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(s',t)).
+\end{align}
+A particularly useful example of an interaction that satisfies equation \eqref{eq:InteractionWithBoundedSum} is the restriction of an interaction to a finite subset $\Lambda\in\mathfrak{B}_\Gamma$\footnote{In fact the way they prove that $\gamma^\Phi_{s;t}$ exists in \cite{nachtergaele2019quasi} is by showing that the limit $\lim_{\Lambda\rightarrow\Gamma}\Ad{u^{\Phi_\Lambda}_{s;t}}$ exists and is continuous.}.\\\\
+Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
+\subsection{Lieb-Robinson bounds}
+In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum cirquit preserved the locality of operators. In particular we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section we will discuss a generalisation of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{nachtergaele2019quasi}. To formulate the theorem we will first need to define two constants depending on the interaction:
+\begin{enumerate}
+	\item For any $\Phi\in\BB_F([0,1])$ we define the absolute integral through
+	\begin{equation}
+	I_F(\Phi)\defeq C_F\int_0^1 \d t \norm{\Phi(t)}_F.
+	\end{equation}
+	\item For any $F$-function, we define a generalisation\footnote{Notice in particular that $G_F(0)=\norm{F}$.} of the $\norm{F}$ introduced in \ref{eq:F_Is_Uniformly_Integrable_Over_Gamma} by
+	\begin{equation}
+	G_F(t)\defeq \sup_{x\in\Gamma}\sum_{y\in\Gamma,d(x,y)>t}F(d(x,y)).
+	\end{equation}
+\end{enumerate}
+We can now summarise the Lieb-Robinson bound in the following theorem:
+\begin{theorem}[Lieb-Robinson bound]
+	Let $F$ be an $F$-function on $(\Gamma,d)$. Suppose that $\Phi\in\BB_F([0,1])$. For any $X,Y\in\mathfrak{B}_\Gamma$ with $X\cap Y=\emptyset$ the bound
+	\begin{equation}
+	\norm{[\gamma_{s;t}^{\Phi}(A),B]}\leq \frac{2\norm{A}\norm{B}}{C_F}(e^{2I_F(\Phi)}-1)\abs{X}G_F(d(X,Y))
+	\end{equation}
+	holds for all $A\in\AA_X,B\in\AA_Y$ and $t,s\in[0,1]$.
+\end{theorem}
+\begin{proof}
+	See Corollary 3.6 of \cite{nachtergaele2019quasi}.
+\end{proof}
+\subsection{States}
+In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. This is a positive semi-definite, Hermitian operator of trace one acting on $\HH$. In this case we then associate to this density matrix a positive linear functional through
+\begin{equation}
+\omega(A)= \Tr_\HH(\rho_\omega A).
+\end{equation}
+Since in this case we didn't define our system through a Hilbert space but directly defined the operator algebra, we can't really define density matrices but we can still define the linear functionals directly. To this end, we define a state to be linear functional $\omega:\AA\rightarrow \CC$ that is
+\begin{enumerate}
+	\item positive ($\omega(A^\dagger A)\geq 0$ for all $A\in\AA$).
+	\item normalised ($\omega(\id)=1$).
+\end{enumerate}
+We will refer to the space of states on $\AA$ as $\SS(\AA)$. We will mostly only work with pure states. In the case where we had a Hilbert space, these where simply states whose density matrices are rank one projectors projecting to some vector $\ket{\omega}\in\HH$. In this case the linear functional was the expectation value with respect to some vector:
+\begin{align}\label{eq:VectorState}
+\omega(A)&=\Tr_\HH(\rho_\omega A)=\bra{\omega}A\ket{\omega}&\rho_\omega&=\ket{\omega}\bra{\omega}.
+\end{align}
+In more general $C^*$-algebras\footnote{Like the quasi local $C^*$-algebra we defined before.} we call a state pure using the following definition:
+\begin{definition}[pure]\label{def:PureState}
+	$\omega\in\SS(\AA)$ is called pure if for every $p\in]0,1[$, the only two states $\omega_1,\omega_2\in\SS(\AA)$ that satisfy
+	\begin{equation}
+	\omega=p\omega_1+(1-p)\omega_2
+	\end{equation}
+	are given by $\omega_1=\omega_2=\omega$. We denote the space of pure states as $\PP(\AA)$.
+\end{definition}
+One can easily see that the vector states in equation \eqref{eq:VectorState} indeed satisfy definition \ref{def:PureState}.
+\subsection{The GNS representation}\label{sec:the-gns-representation}
+This section uses the formalism and theorems of \cite{bratteli1979operator}. We will completely omit any of the proofs in this section. For the proofs we again refer to \cite{bratteli1979operator}.\\\\
+As stated before, a quasi local $C^*$ algebra is not an algebra of bounded operators on some Hilbert space. Sometimes however it is useful to consider maps from our operator algebra to the space of bounded operators on some Hilbert space. To this end the following two definitions:
+\begin{definition}[representation]
+	A map $\pi:\AA\rightarrow \BB(\HH)$ is called a representation if:
+	\begin{enumerate}
+		\item it is an algebra homomorphism.
+		\item it satisfies $\pi(A^\dagger)=\pi(A)^\dagger$.
+		\item it satisfies $\pi(\id_\AA)=\id_{\HH}$.
+	\end{enumerate}
+\end{definition}
+\begin{definition}[cyclic vector]
+	We call a normalised vector $\ket{v}\in\HH$ cyclic with respect to a representation $\pi:\AA\rightarrow \BB(\HH)$ if
+	\begin{equation}
+	\textrm{span}_{A\in\AA}\pi(A)\ket{v}=\HH.
+	\end{equation}
+\end{definition}
+If one has a representation $\pi\in\AA\rightarrow\BB(\HH)$ together with a cyclic vector $\ket{v}\in\HH$ then it is straightforward to see that $\omega:\AA\rightarrow\CC$ defined through
+\begin{equation}\label{eq:StateBelongingToRepresentation}
+\omega(A)=\bra{v}\pi(A)\ket{v}
+\end{equation}
+is a state. This state is in general not pure. Indeed, if we let our Hilbert space contain two parts, $\HH=\HH_1\oplus\HH_2$ and we assume that our representation $\pi$ is a direct sum $\pi=\pi_1\oplus\pi_2$ with $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ both representations themselves. If we now take as our cyclic vector $\ket{v}=\frac{1}{\sqrt{2}}(\ket{v_1}+\ket{v_2})$ with $\ket{v_1}$ a cyclic vector of $\pi_1$ and $\ket{v_2}$ a cyclic vector of $\pi_2$ then we obtain
+\begin{equation}
+\bra{v}\pi(A)\ket{v}=\frac{1}{2}(\bra{v_1}\pi_1(A)\ket{v_1}+\bra{v_2}\pi_2(A)\ket{v_2}).
+\end{equation}
+This is clearly not a pure state. To ensure that the obtained representation is pure we need to assume another property for our representation. This property is called irreducible:
+\begin{definition}[irreducible representation]
+	A representation $\pi:\AA\rightarrow \BB(\HH)$ is called irreducible if every normalised vector in $\HH$ is cyclic with respect to $\pi$.
+\end{definition}
+It can be shown (see eg. theorem 2.3.19 of \cite{bratteli1979operator}) that the state in equation \eqref{eq:StateBelongingToRepresentation} is pure if and only if $\pi$ is irreducible.\\\\
+We have so far created a state starting from a representation and have given a sufficient and required condition for the state to be pure. It turns out that the opposite statement is true as well. We summarise the opposite result in the following lemma (see \cite{bratteli1979operator} for the proof):
+\begin{lemma}[GNS triple]
+	For any $\omega\in\SS(\AA)$ there exists a representation $\pi_\omega:\AA\rightarrow\BB(\HH_\omega)$ and a vector $\ket{\omega}\in\HH_\omega$ that is cyclic with respect to $\pi_\omega$ such that
+	\begin{align}
+	\omega(A)&=\bra{\omega}\pi_\omega(A)\ket{\omega}&\forall A&\in\AA.
+	\end{align}
+	If furthermore $\omega$ is pure then $\pi_\omega$ is irreducible. We call $(\HH_\omega,\pi_\omega,\ket{\omega})$ a GNS\footnote{Named after \cite{gelfand1943imbedding} and \cite{segal1947irreducible}.} triple of $\omega$.
+\end{lemma}
+The GNS triple belonging to a state is not unique but it is unique up to a unitary transformation. More specifically:
+\begin{lemma}[Uniqueness of the GNS triple]\label{lem:UniquenessOfGNSTriple}
+	Let $(\HH_1,\pi_1,\ket{v_1})$ and $(\HH_2,\pi_2,\ket{v_2})$ be two GNS triples for $\omega_1\in\SS(\AA)$ and $\omega_1\in\SS(\AA)$ respectively then $\omega_1=\omega_2$ if and only if there exists a unique unitary $U\in\UU(\HH_1,\HH_2)$ such that
+	\begin{align}
+	\Ad{U}\circ\pi_1&=\pi_2&U\ket{v_1}&=\ket{v_2}.
+	\end{align}
+\end{lemma}
+The main way we will use this lemma in this thesis is to show that an automorphism that leaves a state invariant can be represented by a unitary on the GNS representation. We summarise this result in the following corollary:
+\begin{corollary}\label{cor:OneStateHasUnitarilyEquivalentGNSTriples}
+	Let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple of $\omega\in\SS(\AA)$. Let $\tau\in\Aut{\AA}$ be such that $\omega=\omega\circ\tau$ then there exists a unique unitary $U\in\UU(\HH_\omega)$ such that
+	\begin{align}
+	\Ad{U}\circ\pi_\omega&=\pi_\omega\circ\tau&U\ket{\omega}&=\ket{\omega}.
+	\end{align}
+\end{corollary}
+This corollary is simply a consequence of applying lemma \ref{lem:UniquenessOfGNSTriple} to the GNS triples $(\HH_\omega,\pi_\omega,\ket{\omega})$ and $(\HH_\omega,\pi_\omega\circ\tau,\ket{\omega})$.
+\subsection{Intermezzo commutants and bicommutants}
+For this section, we will let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, the bounded operators on some Hilbert space. We will use $M'$ to denote the commutant (the subalgebra of $\BB(\HH)$ that commutes with all elements of $M$) and denote by $M''$ the bicummutant (the commutant of the commutant). We will need a standard operator algebra result called the Von Neumann bicommutant theorem:
+\begin{definition}
+	Let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, the bounded operators on some Hilbert space. We have that
+	\begin{equation}
+	M''=\text{cl}_W(M)=\text{cl}_S(M)
+	\end{equation}
+	where $M''$ is the bicommutant, $\text{cl}_W$ is the closure in weak operator topology and $\text{cl}_S$ is the closure in strong operator topology.
+\end{definition}
+\subsection{Equal at infinity}
+Again, this section heavily relies on \cite{BratRob}.\\\\
+We have already established that two GNS triples belonging to the same state are related to each other via some unitary. There is a generalisation of this concept which we will summarise in the following definition.
+\begin{definition}[Quasi-equivalence]
+	Two representations of an algebra $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ are quasi-equivalent if there exists a $C^*$ isomorphism
+	\begin{equation}
+	\Phi:\pi_1(\AA)''\rightarrow\pi_2(\AA)''
+	\end{equation}
+	such that
+	\begin{equation}
+	\Phi\circ\pi_1=\pi_2.
+	\end{equation}
+	If additionally, there is a unitary $U\in\UU(\HH_1,\HH_2)$ such that $\Phi=\Ad{U}$ then we call $\pi_1$ and $\pi_2$ unitary equivalent.
+\end{definition}
+For a pure state, quasi equivalence implies unitary equivalence and two representations corresponding to one state are always unitarily equivalent (which we already discussed in \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples}).\\\\
+Most of the things we discussed so far where true for general $C^*$-algebras. Because however, we have a quasi-local $C^*$-algebra we have additional structure. For our quasi-local $C^*$-algebra there is a very useful alternative notion to being quasi-equivalent. We formulate the condition here for two pure states but there is a more general
+\begin{lemma}[Equal at infinity]
+	Let $\omega_1,\omega_2\in\SS(\AA)$ be factor states\footnote{The definition of factor states is rather technical and will not be discussed here. For us it is sufficient that any restrictions of SRE states are locally normal factor states.}. The following conditions are equivalent:
+	\begin{enumerate}
+		\item $\omega_1$ and $\omega_2$ are quasi-equivalent.
+		\item given $\epsilon>0$ there exists an $R>0$ such that
+		\begin{equation}
+		\abs{\omega_1(B)-\omega_2(B)}<\epsilon\norm{B}
+		\end{equation}
+		for all $B\in\AA_{]-\infty,-R]\cup [R,\infty[}$.
+	\end{enumerate}
+\end{lemma}
+In particular, since for pure states quasi-equivalence implies unitary equivalence this gives us a particularly intuitive picture of the GNS Hilbert space: Take $\omega\in\PP(\AA)$ and let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple for $\omega$ then the map
+\begin{equation}
+M:\PP\HH_\omega\rightarrow \{\omega'\in\PP(\AA)|\omega'\text{ is equal at infinity to }\omega\}:\ket{\omega'}_\sim\mapsto \bra{\omega'}\pi_\omega(\cdot)\ket{\omega'}
+\end{equation}
+is a bijection\footnote{With the right topologies it is even a Homeomorphism.}. Here $\PP\HH_\omega$ is the space of vectors in $\HH_\omega$ up to a phase (also known as the rays). In other words, the vectors in a GNS Hilbert space label all states that are equal to each other at infinity.
+\section{SPT indices revised}
+We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
+\begin{equation}
+\omega=\phi\circ\gamma^\Phi_{0;1}
+\end{equation}
+is $G$-invariant. The first thing we will need is the following lemma (for the proof, see \ref{lem:PropertiesLocallyGeneratedAutomorphisms1d}\footnote{In fact this lemma gives that $A$ is not just in $\AA$ but satisfies some additional property called summable.}):
+\begin{lemma}\label{lem:PropertiesLocallyGeneratedAutomorphisms1dIntroduction}
+	Let $\Phi_L,\Phi_R\in\BB_F([0,1])$ be the restrictions to $L=]-\infty,0[$ and $R=[0,\infty[$ respectively then there exists a unitary $A\in\UU(\AA)$ such that
+	\begin{equation}
+	\gamma^\Phi_{0;1}\circ\gamma^{\Phi_L+\Phi_R}_{0;1}=\Ad{A}.
+	\end{equation}
+\end{lemma}
+Now let $\phi_L$ and $\phi_R$ be the restrictions of $\phi$ to $\AA_L$ and $\AA_R$ respectively. Also, let
+\begin{align}
+&(\HH_L,\pi_L,\ket{\phi_L})&&(\HH_R,\pi_R,\ket{\phi_R})
+\end{align}
+be GNS triples for $\phi_L$ and $\phi_R$ respectively. Using this we get that
+\begin{align}
+(\HH_L\otimes\HH_R,\pi_L\otimes\pi_R,\ket{\phi_L}\otimes\ket{\phi_R})
+\end{align}
+is a GNS triple for the full $\phi$. Since $\omega=\phi\circ\gamma^\Phi_{0;1}$, this means that
+\begin{equation}
+(\HH_L\otimes\HH_R,\pi_L\otimes\pi_R\circ\gamma^\Phi_{0;1},\ket{\phi_L}\otimes\ket{\phi_R})
+\end{equation}
+is a GNS triple for $\omega$. Using lemma \ref{lem:PropertiesLocallyGeneratedAutomorphisms1dIntroduction} together with lemma \ref{lem:UniquenessOfGNSTriple} gives us that
+\begin{equation}\label{eq:GNSTripleForOmegaIntroduction}
+(\HH_L\otimes\HH_R,\tilde{\pi}_L\otimes\tilde{\pi}_R,\ket{\omega})
+\end{equation}
+where
+\begin{align}
+\tilde{\pi}_L&=\pi_L\circ\gamma^{\Phi_L}_{0;1}&\tilde{\pi}_R&=\pi_R\circ\gamma^{\Phi_R}_{0;1}&\ket{\omega}&=\pi_L\otimes\pi_R(A^\dagger)\ket{\phi_L}\otimes\ket{\phi_R}
+\end{align}
+is a GNS triple for $\omega$. A state that has a GNS triple of this form is said to have the split property. It turns out that this split property is precisely what is needed to construct the 1d SPT index. Before we can do this, we need to introduce one more lemma (for the proof, see \ref{lem:SplittingOfUnitary}):
+\begin{lemma}\label{lem:SplittingOfUnitaryIntroduction}
+	Let $\AA$ and $\BB$ be arbitrary unital $C^*$-algebras. Let $(\HH_\AA,\pi_\AA)$ and $(\HH_\BB,\pi_\BB)$ be arbitrary irreducible $*$-representations on $\AA$ and $\BB$ respectively. Let $U\in\UU(\HH_\AA\otimes\HH_\BB)$ be such that there exists an $\alpha_\AA\in\Aut{\AA}$ and an $\alpha_\BB\in\Aut{\BB}$ satisfying
+	\begin{equation}
+	\Ad{U}\circ(\pi_\AA\otimes\pi_\BB)=\pi_\AA\circ\alpha_\AA\otimes\pi_\BB\circ\alpha_\BB
+	\end{equation}
+	then there exists a $U_\AA\in\UU(\HH_\AA)$ and a $U_\BB\in\UU(\HH_\BB)$ such that
+	\begin{equation}
+	U=U_\AA\otimes U_\BB.
+	\end{equation}
+\end{lemma}
+We are now ready for the construction of the projective representations. We simply take the GNS triple from equation \eqref{eq:GNSTripleForOmegaIntroduction} constructed from a $G$-invariant state $\omega$. We then use corollary \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples} to get a unitary representation\footnote{It is a linear representation because it leaves a state invariant.} $u\in\hom(G,\UU(\HH_L\otimes\HH_R))$ such that
+\begin{equation}
+\Ad{u(g)}\circ(\tilde{\pi}_L\otimes\tilde{\pi}_R)=\tilde{\pi}_L\otimes\tilde{\pi}_R\circ\beta_g.
+\end{equation}
+We then use lemma \ref{lem:SplittingOfUnitaryIntroduction} to obtain a pair of projective representations $u_L:G\rightarrow\UU(\HH_L)$ and $u_R:G\rightarrow\UU(\HH_R)$ such that
+\begin{equation}
+u(g)=u_L(g)\otimes u_R(g).
+\end{equation}
+The group cohomology group one gets from the cochain of $u_R$ is then precisely the SPT index of $\omega$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Keep the following \cleardoublepage at the end of this file, 
+% otherwise \includeonly includes empty pages.
+\cleardoublepage
+
+% vim: tw=70 nocindent expandtab foldmethod=marker foldmarker={{{}{,}{}}}
