@@ -185,9 +185,9 @@ We will now define a subset of these states that we will call short range entang
 	Let $\omega\in\PP(\AA)$. We say that $\omega$ is an SRE state if and only if there exists a $\phi\in]0,1[$ such that there exists an interaction $\Phi\in\BB_{F_\phi}([0,1])$ such that $\omega\circ\gamma^\Phi_{0;1}$ is a product state. We then call $\gamma^\Phi_{0;1}$ a disentangler for $\omega$.
 \end{definition}
 On the set of $G$-invariant SRE states we will now define three stable equivalence classes depending on the additional imposed symmetry:
-\begin{definition}
+\begin{definition}\label{def:EquivalenceOfG_InvariantSRE_States}
 	Take $(\omega_1,U_1)$ and $(\omega_2,U_2)$ elements of
-	\begin{equation}
+	\begin{equation}\label{eq: DefinitionOfS_0}
 	S_0=\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))|\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G\}
 	\end{equation}
 	for two algebras $\AA_1$ and $\AA_2$\footnote{With two different algebras we simply mean two different on site dimensions because we already fixed each on site dimension to be identical.}. We say that $\expval{\omega_1,U_1}_\sim=\expval{\omega_2,U_2}_\sim$ if and only if there exists a $\phi\in]0,1[$ such that there exists a $G$-invariant interaction $\Phi\in\BB_{F_\phi}([0,1])$, trivial elements of $S_0$ (see subsection \ref{sec:States}), $(\phi_1,\tilde U_1)$ and $(\phi_2,\tilde U_2)$ for algebras $\tilde\AA_1$ and $\tilde\AA_2$ respectively and an on site unitary such that
@@ -196,17 +196,18 @@ On the set of $G$-invariant SRE states we will now define three stable equivalen
 	\end{align}
 \end{definition}
 We also define similar equivalence classes $\expval{\cdot}_\sim^1,\expval{\cdot}_\sim^2$ and $\expval{\cdot}_\sim^3$ on
-\begin{align*}
+\begin{align}
 S_1&=\left\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))\left|\begin{matrix}
 	\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\\\omega\circ\tau=\omega
 \end{matrix}\right.\right\}\\
 S_2&=\left\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))\left|\begin{matrix}
 	\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\\\omega\circ\nu=\omega
 \end{matrix}\right.\right\}\\
+\label{eq: DefinitionOfS_i}
 S_3&=\left\{(\omega,U)\in\PP(\AA)\times\hom(G,U(\CC^d))\left|\begin{matrix}
 	\omega\text{ is SRE},\:\omega\circ i_{U(g)}=\omega\:\forall g\in G,\\\omega\circ\tau=\omega,\:\omega\circ\nu=\omega
 \end{matrix}\right.\right\}
-\end{align*}
+\end{align}
 respectively. Here we now also demand that the interactions and the trivial states are invariant under the additional translation symmetries.
 \subsection{(Borel) Group cohomology groups}\label{sec:GroupCohomology}
 In this paper we define the Group cohomology groups using the algebraic approach. A standard reference for Group cohomology is \cite{benson1991representations}. Let $G$ be an arbitrary finite group. For any $n\in\NN$, let $C^n(G,M)$ (in principle this can be for any (left) G-module $M$ but in this paper we will always take $M=\TT$ with the addition and the trivial group action\footnote{So in particular when we write $g_1 \phi(g_2,\cdots,g_n)$ for any $\phi\in C^{n-1}(G,M)$ we will sometimes identify it simply with $\phi(g_2,\cdots,g_n)$.}) be the group of all functions from $G^n$ to $M$. We will use additive notation on this space and denote the group operator by $+$ and the inverse of an element of the group $\phi$ by $-\phi$. Now define the coboundary homomorphisms
