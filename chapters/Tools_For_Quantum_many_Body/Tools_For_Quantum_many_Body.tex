@@ -239,7 +239,14 @@ The equivalence of states is straightforward to extend to the case of the quasi 
 \begin{equation}
 	\psi_1=\psi_2\circ\gamma^\Phi_{0;1}.
 \end{equation}
-However, to discuss the equivalence class of Hamiltonians we will need some additional structure.
+However, to discuss the equivalence class of Hamiltonians we will need some additional structure. We will need a generalisation of the adiabatic theorem. This theorem says that if we have a smooth family of Hamiltonians $\lambda\mapsto H_\lambda$ and we have a family of eigenstates $\lambda\mapsto\ket{\psi_\lambda}$ of $H_\lambda$ protected by a gap from the rest of the spectrum that then there is one parameter family of bounded operators $K(s)$ such that
+\begin{equation}
+	\ket{\psi_\lambda}=\mathcal{T}\exp(-i\int_0^\lambda\d s K(s))\ket{\psi_0}.
+\end{equation}
+To get a version of this theorem for interactions, we first need to redefine the $F$-norm to include the smoothness condition. We therefore define
+\begin{equation}
+	content
+\end{equation}
 \section{SPT indices revised}\label{sec:SPT_Indices_Revised}
 We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
 \begin{equation}
