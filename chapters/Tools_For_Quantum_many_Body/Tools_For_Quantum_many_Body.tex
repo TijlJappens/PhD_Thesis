@@ -243,10 +243,11 @@ However, to discuss the equivalence class of Hamiltonians we will need some addi
 \begin{equation}
 	\ket{\psi_\lambda}=\mathcal{T}\exp(-i\int_0^\lambda\d s K(s))\ket{\psi_0}.
 \end{equation}
-To get a version of this theorem for interactions, we first need to redefine the $F$-norm to include the smoothness condition. We therefore define
+To get a version of this theorem for interactions, we first need to redefine the $F$-norm to include the smoothness condition. We therefore for any smooth one parameter family of interactions (following \cite{nachtergaele2019quasi}) define a second $F$-norm (which we will call the smooth $F$-norm)
 \begin{equation}
-	content
+	\norm{\Phi}_{F}^1 (s)\defeq \sup_{x,y\in \Gamma} \frac{1}{F(d(x,y))}\sum_{\substack{X\in\mathfrak{B}_\Gamma \\ x,y\in X}}\left(\norm{\Phi(X,s)}+\abs{X}\norm{\frac{\d}{\d s}\Phi(X,s)}\right).
 \end{equation}
+If $\norm{\Phi}_{F}^1 (s)$ is measurable and bounded we will say that $\Phi\in\BB^1_F([0,1])$ (here $\abs{X}$ is the amount of sites in $X$).
 \section{SPT indices revised}\label{sec:SPT_Indices_Revised}
 We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
 \begin{equation}
