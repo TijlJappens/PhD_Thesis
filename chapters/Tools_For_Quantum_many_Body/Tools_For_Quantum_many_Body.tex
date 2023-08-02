@@ -57,7 +57,7 @@ Given such an $F$-function, we can define a norm on these interactions called
 \begin{equation}
 \norm{\Phi}_F\defeq \sup_{x,y\in\ZZ^2}\frac{1}{F(\abs{x-y})}\sum_{Z\in\mathfrak{G}_{\ZZ^2},Z\ni x,y}\norm{\Phi(Z)}.
 \end{equation}
-The set of interactions with this norm (for a fixed $F$) is a Banach space. Following \cite{Ogata2d} we will fix a specific family of $F$-functions for the case where $\Gamma=\ZZ^2$. For any $0<\phi<1$ we define
+The set of interactions with this norm (for a fixed $F$) is a Banach space. We will denote the space of interactions with bounded $F-$norm by $\Phi\in\BB_F$. Following \cite{Ogata2d} we will fix a specific family of $F$-functions for the case where $\Gamma=\ZZ^2$. For any $0<\phi<1$ we define
 \begin{equation}\label{eq:OurFFunction}
 F_\phi:\RR^+\rightarrow\RR^+:r\mapsto \frac{\exp(-r^\phi)}{(1+r)^4}.
 \end{equation}
@@ -219,6 +219,27 @@ In particular, since for pure states quasi-equivalence implies unitary equivalen
 M:\PP\HH_\omega\rightarrow \{\omega'\in\PP(\AA)|\omega'\text{ is equal at infinity to }\omega\}:\ket{\omega'}_\sim\mapsto \bra{\omega'}\pi_\omega(\cdot)\ket{\omega'}
 \end{equation}
 is a bijection\footnote{With the right topologies it is even a Homeomorphism.}. Here $\PP\HH_\omega$ is the space of vectors in $\HH_\omega$ up to a phase (also known as the rays). In other words, the vectors in a GNS Hilbert space label all states that are equal to each other at infinity.
+\subsection{The GNS spectrum}\label{sec:GNS_Spectrum}
+There is  We will do this by using the following theorem:
+\begin{lemma}
+	Let $\Phi\in\BB_{F_\phi}$ be a bounded interaction and let $\omega\in\PP(\AA)$ be a state such that $\omega\circ\gamma^{\Phi}_{0;t}$ $\forall t\in[0,1]$. Let $(\HH,\pi,\Omega)$ be a GNS triple for $\omega$ then there is a (potentially unbounded) hermitian operator $H\in\textrm{Herm}(\HH)$ such that
+	\begin{equation}
+		[H,\pi(A)]=\pi\left(\sum_{S\in\mathfrak{B}_\Gamma}[\Phi(S),A]\right)
+	\end{equation}
+	for all $A\in\AA$. It is unique up to a multiple of the identity.
+\end{lemma}
+\begin{proof}
+	The proof of this lemma is in Corollary 3.2.48 of \cite{bratteli1979operator}.
+\end{proof}
+In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of $\omega$. The spectrum of $H$, is called the GNS spectrum of $\Phi$ with respect to $\omega$. It is easy to see that any two unitary equivalent states will have identical GNS spectra. States that are not unitary equivalent will in general not have identical GNS spectra. Therefore, an interaction has multiple spectra, one for each unitary equivalence class of states.
+\section{Equivalence of states vs equivalence of gapped interactions}
+So far we have mainly seen an interaction as something with a well defined time evolution. However, in section \ref{sec:GappedPhasesOfMatterIntro} we discussed that there are two possible equivalence classes, the equivalence of states and an equivalence class of gapped Hamiltonians.
+\\\\
+The equivalence of states is straightforward to extend to the case of the quasi local $C^*$-algebra. Namely, two states on a quasi local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists a $\phi\in]0,1[$ and a one parameter family of interactions $\Phi\in\BB_{F_\phi}([0,1])$ such that
+\begin{equation}
+	\psi_1=\psi_2\circ\gamma^\Phi_{0;1}.
+\end{equation}
+However, to discuss the equivalence class of Hamiltonians we will need some additional structure.
 \section{SPT indices revised}\label{sec:SPT_Indices_Revised}
 We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
 \begin{equation}
