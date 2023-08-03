@@ -221,8 +221,8 @@ M:\PP\HH_\omega\rightarrow \{\omega'\in\PP(\AA)|\omega'\text{ is equal at infini
 is a bijection\footnote{With the right topologies it is even a Homeomorphism.}. Here $\PP\HH_\omega$ is the space of vectors in $\HH_\omega$ up to a phase (also known as the rays). In other words, the vectors in a GNS Hilbert space label all states that are equal to each other at infinity.
 \subsection{The GNS spectrum}\label{sec:GNS_Spectrum}
 There is  We will do this by using the following theorem:
-\begin{lemma}
-	Let $\Phi\in\BB_{F_\phi}$ be a bounded interaction and let $\omega\in\PP(\AA)$ be a state such that $\omega\circ\gamma^{\Phi}_{0;t}$ $\forall t\in[0,1]$. Let $(\HH,\pi,\Omega)$ be a GNS triple for $\omega$ then there is a (potentially unbounded) hermitian operator $H\in\textrm{Herm}(\HH)$ such that
+\begin{lemma}\label{lem:GNS_Hamiltonian}
+	Let $\Phi\in\BB_{F_\phi}$ be a bounded interaction and let $\omega\in\PP(\AA)$ be a state such that $\omega\circ\gamma^{\Phi}_{0;t}$ $\forall t\in[0,1]$. Let $(\HH,\pi,\ket{\Omega})$ be a GNS triple for $\omega$ then there is a (potentially unbounded) hermitian operator $H\in\textrm{Herm}(\HH)$ such that
 	\begin{equation}
 		[H,\pi(A)]=\pi\left(\sum_{S\in\mathfrak{B}_\Gamma}[\Phi(S),A]\right)
 	\end{equation}
@@ -231,14 +231,25 @@ There is  We will do this by using the following theorem:
 \begin{proof}
 	The proof of this lemma is in Corollary 3.2.48 of \cite{bratteli1979operator}.
 \end{proof}
-In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of $\omega$. The spectrum of $H$, is called the GNS spectrum of $\Phi$ with respect to $\omega$. It is easy to see that any two unitary equivalent states will have identical GNS spectra. States that are not unitary equivalent will in general not have identical GNS spectra. Therefore, an interaction has multiple spectra, one for each unitary equivalence class of states.
+In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of $\omega$. The spectrum of $H$, is called the GNS spectrum of $\Phi$ with respect to $\omega$. It is easy to see that any two unitary equivalent states will have identical GNS spectra. States that are not unitary equivalent will in general not have identical GNS spectra. Therefore, an interaction has multiple spectra, one for each unitary equivalence class of states. This leads to the following definition for a unique gapped ground-state:
+\begin{definition}\label{def:UniqueGappedGroundstate}
+	We say that the interaction $\Phi\in\BB_F$ has a unique gapped ground-state $\omega$ if
+	\begin{enumerate}
+		\item Any other eigenstate of $\Phi$ is unitary equivalent to $\omega$.
+		\item The cyclic vector $\ket{\Omega}$ in the GNS triple of $\omega$, $(\HH,\pi,\ket{\Omega})$ is a unique gapped ground-state of the Hamiltonian, $H$ constructed in lemma \ref{lem:GNS_Hamiltonian}.
+	\end{enumerate}
+\end{definition}
+The gap that this $H$ has is then called the gap of $\Phi$ (as it is independent on the choice of $H$).
 \section{Equivalence of states vs equivalence of gapped interactions}
 So far we have mainly seen an interaction as something with a well defined time evolution. However, in section \ref{sec:GappedPhasesOfMatterIntro} we discussed that there are two possible equivalence classes, the equivalence of states and an equivalence class of gapped Hamiltonians.
 \\\\
-The equivalence of states is straightforward to extend to the case of the quasi local $C^*$-algebra. Namely, two states on a quasi local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists a $\phi\in]0,1[$ and a one parameter family of interactions $\Phi\in\BB_{F_\phi}([0,1])$ such that
-\begin{equation}
-	\psi_1=\psi_2\circ\gamma^\Phi_{0;1}.
-\end{equation}
+The equivalence of states is straightforward to extend to the case of the quasi local $C^*$-algebra. Namely:
+\begin{definition}\label{def:EquivalenceOfStates}
+	Two states on a quasi local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists an $F$-function, $F$ and a one parameter family of interactions $\Phi\in\BB_{F}([0,1])$ such that
+	\begin{equation}
+		\psi_1=\psi_2\circ\gamma^\Phi_{0;1}.
+	\end{equation}
+\end{definition}
 However, to discuss the equivalence class of Hamiltonians we will need some additional structure. We will need a generalisation of the adiabatic theorem. This theorem says that if we have a smooth family of Hamiltonians $\lambda\mapsto H_\lambda$ and we have a family of eigenstates $\lambda\mapsto\ket{\psi_\lambda}$ of $H_\lambda$ protected by a gap from the rest of the spectrum that then there is one parameter family of bounded operators $K(s)$ such that
 \begin{equation}
 	\ket{\psi_\lambda}=\mathcal{T}\exp(-i\int_0^\lambda\d s K(s))\ket{\psi_0}.
@@ -247,7 +258,17 @@ To get a version of this theorem for interactions, we first need to redefine the
 \begin{equation}
 	\norm{\Phi}_{F}^1 (s)\defeq \sup_{x,y\in \Gamma} \frac{1}{F(d(x,y))}\sum_{\substack{X\in\mathfrak{B}_\Gamma \\ x,y\in X}}\left(\norm{\Phi(X,s)}+\abs{X}\norm{\frac{\d}{\d s}\Phi(X,s)}\right).
 \end{equation}
-If $\norm{\Phi}_{F}^1 (s)$ is measurable and bounded we will say that $\Phi\in\BB^1_F([0,1])$ (here $\abs{X}$ is the amount of sites in $X$).
+We will always assume in this section that $t\mapsto \Phi(X,t)$ is continuous for each $X\in\mathfrak{B}_\Gamma$ here. If $\norm{\Phi}_{F}^1 (s)$ is measurable and bounded we will say that $\Phi\in\BB^1_F([0,1])$ (here $\abs{X}$ is the amount of sites in $X$). This allows us to define the equivalence of interactions:
+\begin{definition}\label{def:EquivalenceOfInteractions}
+	For $\Phi_1,\Phi_2\in\BB_F$, with unique gapped ground-states, we say that $\Phi_1$ and $\Phi_2$ are equivalent if there exists, curve $\Phi\in\BB^1_F$ with uniformly unique gapped ground-states such that $\Phi(0)=\Phi_1$ and $\Phi(1)=\Phi_2$.
+\end{definition}
+We are now ready to state the theorem that summarises what we said in section \ref{sec:GappedPhasesOfMatterIntro}:
+\begin{theorem}\label{thrm:EquivalenceOfDefinitionsOfGappedPhasesOfMatter}
+	Let $\Phi_1,\Phi_2\in\BB_F$ be interactions with unique gapped ground-states $\omega_1,\omega_2\in\PP(\AA)$ then $\Phi_1$ and $\Phi_2$ are connected as in definition \ref{def:EquivalenceOfInteractions} if and only if $\omega_1$ and $\omega_2$ are connected as in definition \ref{def:ConnectedStates}.
+\end{theorem}
+\begin{proof}
+	The if statement is done by proving that the interaction defined in equation (5.100) of \cite{nachtergaele2019quasi} has a bounded $F$-norm (with some slightly slower decaying $F$-function) and the only if statement is done in theorem 7.4 of the same paper (again, these interactions will be connected through a path defined with a slower decaying $F$-function).
+\end{proof}
 \section{SPT indices revised}\label{sec:SPT_Indices_Revised}
 We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
 \begin{equation}
