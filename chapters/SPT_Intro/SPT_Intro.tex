@@ -219,8 +219,50 @@ This implies that $\tilde{\psi}$ transforms under the group action on $L$ as a p
 \begin{remark}
 	We have swept a lot of details under the table in this proof. For instance, we speak about the group action on $L$ or on $R$ but since this is an infinitely large region, there is no well defined notion of a full Hilbert space and therefore we cannot speak about the group action on these regions. However, this will be fixed in section \ref{sec:the-gns-representation} as we will introduce the GNS Hilbert space.
 \end{remark}
-\subsection{Finite system sizes and protected ground state degeneracy}
-
+\subsection{From the entangled pair state to the projective entangled pair state}
+The states constructed so far in this section are all very trivial. The only difference between the $G$-invariant product state and the non-trivial state is lies in what we call a site. If we shift our lattice by half a site then what was previously called non-trivial will now be trivial and vice versa.
+\\\\
+This needn't be true in general. In fact, we will use the entangled pair state to construct a different state on a different lattice that shows this. This new system uses an on site group action that only includes the triplet. To this end, let $P:\CC^4\rightarrow \CC^3$ be the projector from the  $\CC^2\otimes\CC^2$ that we had to the triplet subspace $\CC^3$ end let $E:\CC^3\rightarrow \CC^4$ be the opposite embedding. The triplet group action, defined by
+\begin{equation}
+	u_s(g)=P u(g) E
+\end{equation}
+(where $u$ was the previous group action on $\CC^4$) is still a linear representation ($u_s\in\hom(G,\UU(\CC^3))$).
+\\\\
+Of course the space over the one dimensional lattice $\ZZ$ and the on-site Hilbert space given by the triplet $\CC^3$ doesn't have a $G$-invariant product state. Therefore will define our sites such that the on site Hilbert space includes two triplets $\CC^3\otimes\CC^3\sim \CC^9$. This Hilbert space with group action given by $g\mapsto u_s(g)\otimes u_s(g)$ does have an invariant vector. Call the product state over this invariant vector $\ket{\phi}$.
+\\\\
+Now, we need to create a non-trivial state in the same space. The state we will create is often called the projective entangled pair state (PEPs).\footnote{In this case the obtained PEPs state is called the AKLT state.} We will do this as follows. Take the entangled pair state and call it $\ket{\psi^(0)}$. Then project all the sites in some box to the triplet space $\CC^3$ and renormalise\footnote{We will not show here that this does not give zero.} the state
+\begin{equation}
+	\ket{\psi^{(i+1)}}=\frac{1}{N_i}P_{[-i,i]}\ket{\psi^{(0)}}.
+\end{equation}
+The limit, $\ket{\psi}$ exists and is called the projective entangled pair state or PEPs. In this case the PEPs constructed is rather famous and is called the AKLT state. It turns out that this resulting state is also in the non-trivial Haldane phase. Moreover, the state is completely translation invariant and is therefore not dependent on the choice of sites.
+\subsection{Gapless edge mode}
+\begin{figure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Fermi-Hubbard Ladders.pdf}
+		\caption{This figure shows the ground-state degeneracy of two Hamiltonians defined on a finite system. It shows two states on the same finite Hilbert space, one has a bulk that is in the trivial Haldane phase whereas the other one has a bulk in the nontrivial Haldane phase.}
+		\label{fig:EdgeModesInHaldanePhase}
+	\end{subfigure}
+	\hfil
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{EdgeMagnetization.pdf}
+		\caption{This figure comes from \cite{sompet2022realizing}. They prepared four systems. With total magnetization non-zero/zero and in the trivial/non-trivial Haldane phase. They then measured the average magnetization per site and they are able to see the edge modes of the non-trivial Haldane phase.}
+		\label{fig:EdgeMagnetization}
+	\end{subfigure}
+	\caption{Two figures from \cite{sompet2022realizing}.}
+	\label{fig:EdgeModesInHaldanePhaseBoth}
+\end{figure}
+So far, we have seen that the right half of a the system can transform as a projective representation or as a linear representation. It turns out that this has some surprising consequences for the ground state degeneracy if we were to introduce an edge.
+\\\\
+More specifically, suppose we have an infinitly large system on a one dimensional lattice\footnote{Again, we will define these notions properly in chapter \ref{ch:Tools_For_Quantum_many_Body}.}. Assume we have a Hamiltonian that is a sum of $G$-invariant local therms $H=\sum_{i\in\ZZ} H_i$. Suppose that the total Hilbert space is a product between the right part and the left part of the system $\HH=\HH_L\otimes\HH_R$. We can then define $H_R=\sum_{i>0}H_i$ as the sum of all local therms that act trivially on $\HH_L$. We can now see the ground-state of $H_R$ as a subspace of $\HH_R$. We will call it $\mathcal{V}_R$. The vectors in $\mathcal{V}_R$ are sometimes called the edge modes (as it is a Hilbert space that emerges if one introduces an edge).
+\\\\
+Since $H_R$ is a $G$-invariant operator (it is a sum over $G$-invariant therms), we need that $\mathcal{V}_R$ is a $G$-invariant subspace. However, if the bulk of the system is non-trivial the right half of the system has to transform as a projective representation. A non-trivial projective representation can never be one dimensional. This leads us to the following statement:
+\paragraph{Statement:}The edge modes of a Hamiltionan whose bulk groundstate is in the non-trivial Haldane phase can never be one dimensional.
+\\\\
+This statement is sometimes rephrased as: the edge modes of a non-trivial SPT are protected. In figure \ref{fig:EdgeModesInHaldanePhase} we give a graphical depiction of such edge modes.
+\\\\
+These edge modes can be observed in experiments. One example of such an experiment is in \cite{sompet2022realizing} (see figure \ref{fig:EdgeMagnetization}) where they are able to detect the edge modes of the non-trivial phase by measuring the average magnetization per site. 
 \section{(Borel) Group cohomology groups}
 \subsection{General algebraic definition}\label{sec:general-algebraic-definition}
 In this paper we define the Group cohomology groups using the algebraic approach. A standard reference for Group cohomology is \cite{benson1991representations}. Let $G$ be a finite group. For any $n\in\NN$ and any module $M$, let $C^n(G,M)$ (in principle this can be for any (left) G-module $M$ but in this thesis we will always take $M=\TT$ with the addition and the trivial group action\footnote{So in particular when we write $g_1 \phi(g_2,\cdots,g_n)$ for any $\phi\in C^{n-1}(G,M)$ we will sometimes identify it simply with $\phi(g_2,\cdots,g_n)$.}) be the group of all functions from $G^n$ to $M$. We will use additive notation on this space and denote the group operator by $+$ and the inverse of an element of the group $\phi$ by $-\phi$. Now define the coboundary homomorphisms
