@@ -23,7 +23,7 @@ Both these concepts are equivalent. More specifically:
 	\item If two uniquely gapped local Hamiltonians, $H_0$ and $H_1$, are equivalent through a path $H(t)$, the ground-states of $H(t)$ form a path satisfying what was in definition \ref{def:ConnectedStates}.
 	\item If a state $\ket{\psi_0}$ is a unique gapped groundstate of some local Hamiltonian and is connected to $\ket{\psi_1}$ via a path $\ket{\psi(t)}$, there is a continuous path of parent Hamiltonians $H(t)$ for $\ket{\psi(t)}$ satisfying what was in definition \ref{def:ConnectedHamiltonians}.
 \end{itemize}
-We will provide the statements in more detail along with the main ideas needed for the proof in section \ref{sec:ToolsForQuantumManyBody}.\\\\
+We will provide the statements in more detail along with the main ideas needed for the proof in section \ref{sec:equivalence-of-states-vs-equivalence-of-gapped-interactions}.\\\\
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{GappedPhasesOfQuantumMatter.pdf}
@@ -219,6 +219,8 @@ This implies that $\tilde{\psi}$ transforms under the group action on $L$ as a p
 \begin{remark}
 	We have swept a lot of details under the table in this proof. For instance, we speak about the group action on $L$ or on $R$ but since this is an infinitely large region, there is no well defined notion of a full Hilbert space and therefore we cannot speak about the group action on these regions. However, this will be fixed in section \ref{sec:the-gns-representation} as we will introduce the GNS Hilbert space.
 \end{remark}
+\subsection{Finite system sizes and protected ground state degeneracy}
+
 \section{(Borel) Group cohomology groups}
 \subsection{General algebraic definition}\label{sec:general-algebraic-definition}
 In this paper we define the Group cohomology groups using the algebraic approach. A standard reference for Group cohomology is \cite{benson1991representations}. Let $G$ be a finite group. For any $n\in\NN$ and any module $M$, let $C^n(G,M)$ (in principle this can be for any (left) G-module $M$ but in this thesis we will always take $M=\TT$ with the addition and the trivial group action\footnote{So in particular when we write $g_1 \phi(g_2,\cdots,g_n)$ for any $\phi\in C^{n-1}(G,M)$ we will sometimes identify it simply with $\phi(g_2,\cdots,g_n)$.}) be the group of all functions from $G^n$ to $M$. We will use additive notation on this space and denote the group operator by $+$ and the inverse of an element of the group $\phi$ by $-\phi$. Now define the coboundary homomorphisms
