@@ -1442,7 +1442,7 @@ De appendices kunnen desgevallend worden gebundeld in een apart boekdeel.
   %
   % Place the title and subtitle
   %\typeout{Title position: 17.5mm+\the#1}
-  \begin{textblock*}{135mm}(17.5mm+#1,60mm)
+  \begin{textblock*}{135mm}(17.5mm+#1,55mm)
   \textblockcolour{}
   \vspace{-\parskip}
   \raggedright
