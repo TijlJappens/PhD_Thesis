@@ -11,15 +11,15 @@ Next we must create the operator algebra. This will be very similar to what we d
 \begin{equation}
 \AA_{\Lambda}=\bigotimes_{i\in\Lambda}\BB(\CC^d).
 \end{equation}
-We define this algebra in such a way that the inclusion on $\mathfrak{B}_\Gamma$ define an embedding on the algebra
+We define this algebra in such a way that the inclusion on $\mathfrak{B}_\Gamma$ defines an embedding on the algebra
 \begin{align}
 \Lambda_1&\subset\Lambda_2&&\Rightarrow&\AA_{\Lambda_1}&\subset\AA_{\Lambda_2}.
 \end{align}
-This embedding is defined by mapping $a\in\AA_{\Lambda_1}$ to $\left(\bigotimes_{i\in\Lambda_2\backslash\Lambda_1}\id_{\CC^d}\right)\otimes a\in \AA_{\Lambda_2}$. If we now define the local algebra by taking the union over all finite sets
+This embedding is defined by mapping $a\in\AA_{\Lambda_1}$ to $\left(\bigotimes_{i\in\Lambda_2\backslash\Lambda_1}\id_{\CC^d}\right)\otimes a\in \AA_{\Lambda_2}$. We now define the local algebra by taking the union over all finite sets
 \begin{equation}
 \AA_{\text{loc}}=\bigcup_{\Lambda\in\mathfrak{B}_\Gamma}\AA_\Lambda
 \end{equation}
-and by identifying any two operators that can be embedded into the same operator (in some bigger still finite subset of $\Gamma$). One can easily check that this is indeed a well defined algebra. Now, let $\norm{\cdot}$ be the operator norm on the (tensor products of) the on site Hilbert spaces. This norm is indeed invariant under the choice of embedding. The closure of the local algebra under this norm,
+and by identifying any two operators that can be embedded into the same operator (in some bigger still finite subset of $\Gamma$). One can easily check that this is indeed a well defined algebra. Now, let $\norm{\cdot}$ be the operator norm on the (tensor products of) the on site Hilbert spaces. This norm is indeed invariant under the choice of embedding ($\norm{a}_{\AA_1}=\norm{a\otimes\id_{\AA_2}}_{\AA_1\otimes\AA_2}$). The closure of the local algebra under this norm,
 \begin{equation}
 \AA=\overline{\AA_{\text{loc}}}
 \end{equation}
@@ -38,10 +38,10 @@ Given a quasi local $C^*$-algebra $\AA$ over a lattice $\Gamma$ with some distan
 where $\Phi(I)\in\AA_I$ is hermitian ($\Phi(I)=\Phi(I)^*$).We will sometimes use the restriction of an interaction. For some $\tilde\Gamma\subset\Gamma$ we define $\Phi_{\tilde\Gamma}$ by
 \begin{equation}
 \Phi_{\tilde\Gamma}:\mathfrak{G}_{\ZZ^2}\rightarrow \AA_{\text{loc}}:I\mapsto\left\{\begin{matrix}
-\Phi(I)&\text{if }I\subset\Gamma\\0&\text{otherwise}.
+\Phi(I)&\text{if }I\subset\tilde\Gamma\\0&\text{otherwise}.
 \end{matrix}\right.
 \end{equation}
-We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will used is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{nachtergaele2019quasi} we call such a function an $F$-function if it satisfies two conditions:
+We will sometimes require a norm on the space of interactions that indicates how local an interaction acts. The norm we will use is sometimes called the $F$-norm. It is labeled by some non-increasing positive function $F:\NN\rightarrow \RR^+$. Following \cite{nachtergaele2019quasi} we call such a function an $F$-function if it satisfies two conditions:
 \begin{enumerate}
 	\item $F$ is uniformly integrable over $\Gamma$:
 	\begin{equation}\label{eq:F_Is_Uniformly_Integrable_Over_Gamma}
@@ -53,7 +53,7 @@ We will sometimes require a norm on the space of interactions that indicates how
 	\end{equation}
 	for some finite constant $C_F$.
 \end{enumerate}
-Given such an $F$-function, we can define a norm on these interactions called 
+Given such an $F$-function, we can define a norm on these interactions denoted by 
 \begin{equation}
 \norm{\Phi}_F\defeq \sup_{x,y\in\ZZ^2}\frac{1}{F(\abs{x-y})}\sum_{Z\in\mathfrak{G}_{\ZZ^2},Z\ni x,y}\norm{\Phi(Z)}.
 \end{equation}
@@ -78,7 +78,7 @@ then
 \gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(s',t)).
 \end{align}
 A particularly useful example of an interaction that satisfies equation \eqref{eq:InteractionWithBoundedSum} is the restriction of an interaction to a finite subset $\Lambda\in\mathfrak{B}_\Gamma$\footnote{In fact the way they prove that $\gamma^\Phi_{s;t}$ exists in \cite{nachtergaele2019quasi} is by showing that the limit $\lim_{\Lambda\rightarrow\Gamma}\Ad{u^{\Phi_\Lambda}_{s;t}}$ exists and is continuous.}.\\\\
-Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
+Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$), where $\tau\in\Aut{\AA}$ is the translation automorphism (see section \ref{sec:QuasiLocalC*Algebra}). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
 \subsection{Lieb-Robinson bounds}
 In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum cirquit preserved the locality of operators. In particular we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section we will discuss a generalisation of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{nachtergaele2019quasi}. To formulate the theorem we will first need to define two constants depending on the interaction:
 \begin{enumerate}
@@ -187,7 +187,7 @@ For this section, we will let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, th
 	\end{equation}
 	where $M''$ is the bicommutant, $\text{cl}_W$ is the closure in weak operator topology and $\text{cl}_S$ is the closure in strong operator topology.
 \end{definition}
-\subsection{Equal at infinity}
+\subsection{Equal at infinity}\label{sec:equal-at-infinity}
 Again, this section heavily relies on \cite{BratRob}.\\\\
 We have already established that two GNS triples belonging to the same state are related to each other via some unitary. There is a generalisation of this concept which we will summarise in the following definition.
 \begin{definition}[Quasi-equivalence]
@@ -233,7 +233,7 @@ There is  We will do this by using the following theorem:
 \end{proof}
 In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of $\omega$. The spectrum of $H$, is called the GNS spectrum of $\Phi$ with respect to $\omega$. It is easy to see that any two unitary equivalent states will have identical GNS spectra. States that are not unitary equivalent will in general not have identical GNS spectra. Therefore, an interaction has multiple spectra, one for each unitary equivalence class of states. This leads to the following definition for a unique gapped ground-state:
 \begin{definition}\label{def:UniqueGappedGroundstate}
-	We say that the interaction $\Phi\in\BB_F$ has a unique gapped ground-state $\omega$ if
+	We say that the interaction $\Phi\in\BB_F$ has a unique gapped ground-state $\omega$ if:
 	\begin{enumerate}
 		\item Any other eigenstate of $\Phi$ is unitary equivalent to $\omega$.
 		\item The cyclic vector $\ket{\Omega}$ in the GNS triple of $\omega$, $(\HH,\pi,\ket{\Omega})$ is a unique gapped ground-state of the Hamiltonian, $H$ constructed in lemma \ref{lem:GNS_Hamiltonian}.
