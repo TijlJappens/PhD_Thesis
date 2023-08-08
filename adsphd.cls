@@ -1407,7 +1407,7 @@ De appendices kunnen desgevallend worden gebundeld in een apart boekdeel.
   \frontcoverheaderXII{#1}
   
   \begin{textblock*}{130mm}(20mm+#1,95mm)
-  	\includegraphics[width=130mm]{chapters/introduction/image/SPT_Phases.pdf}
+  	\includegraphics[width=130mm]{image/SPT_Phases.pdf}
   \end{textblock*}
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
