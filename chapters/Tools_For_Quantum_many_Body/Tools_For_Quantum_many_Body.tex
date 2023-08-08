@@ -3,11 +3,11 @@
 
 \section{A rigorous mathematical framework}
 \label{sec:ToolsForQuantumManyBody}
-In the last few sections I have made statements like: "the right half part of this states transforms under a projective representation" or "the restriction to the right of the loop operator applied on the product state creates a zero dimensional SPT". With both statements is one common flaw though. These statements where meant for the situation where the lattice is $\ZZ$ but in this case there is no notion of a full Hilbert space. Both for defining representations and for defining zero dimensional SPT states I need a Hilbert space. This begs the question, on what Hilbert space is this true. Similar problems can be found with the sum of local terms operators introduced in the beginning (see for example the $K$ in definition \ref{def:ConnectedStates}). If the lattice is non-compact, there is no reason for the sum over the local terms to be convergent.\\\\
-In this section we will develop some definitions and mathematical tools that are most frequently used in this thesis. They are used to address some of these issues as well as allowing us to generalise some of our previously made statements.
-\subsection{The quasi local $C^*$-algebra}
-First we define the operator algebra we will be working on. To do this, we first choose a lattice. This is a discrete set, $\Gamma$ with some notion of distance on it which we will denote by $d:\Gamma^2\rightarrow \RR$. In this thesis we will mainly be working with three lattices. That is, the lattice with one point ($\ZZ_1$), the one dimensional lattice ($\ZZ$) and the two dimensional lattice ($\ZZ^2$).\\\\
-Next we must create the operator algebra. This will be very similar to what we did in figure \ref{fig:Lattice}. We first fix an on site Hilbert space. As we did before, we can still simply take $\CC^d$ for some integer $d\in\NN$ (where $d$ could possibly depend on the site). Next we define the local algebra. To this end, let $\mathfrak{B}_{\Gamma}$. For any $\Lambda\in\mathfrak{B}_\Gamma$ we define the algebra over $\Lambda$ through:
+In the last few sections, I have made statements like: "the right half part of this state transforms under a projective representation" or "the restriction to the right of the loop operator applied on the product state creates a zero-dimensional SPT". With both statements is one common flaw though. These statements were meant for the situation where the lattice is $\ZZ$ but in this case, there is no notion of a full Hilbert space. Both for defining representations and for defining zero-dimensional SPT states I need a Hilbert space\footnote{For defining a zero-dimensional SPT consistent with how it was described in the previous section I even need a finite Hilbert space. However, it is straightforward to extend the notion to any separable Hilbert space.}. This begs the question, on what Hilbert space is this true? Similar problems can be found with the sum of local terms operators introduced in the beginning (see for example the $K$ in definition \ref{def:ConnectedStates}). If the lattice is non-compact, there is no reason for the sum over the local terms to be convergent.\\\\
+In this section, we will develop some definitions and mathematical tools that are most frequently used in this thesis. They are used to address some of these issues as well as allowing us to generalize some of our previously made statements.
+\subsection{The quasi-local $C^*$-algebra}
+First, we define the operator algebra we will be working on. To do this, we first choose a lattice. This is a discrete set, $\Gamma$ with some notion of distance on it which we will denote by $d:\Gamma^2\rightarrow \RR$. In this thesis, we will mainly be working with three lattices. That is, the lattice with one point ($\ZZ_1$), the one dimensional lattice ($\ZZ$) and the two dimensional lattice ($\ZZ^2$).\\\\
+Next, we must create the operator algebra. This will be very similar to what we did in figure \ref{fig:Lattice}. We first fix an on-site Hilbert space. As we did before, we can still simply take $\CC^d$ for some integer $d\in\NN$ (where $d$ could possibly depend on the site). Next, we define the local algebra. To this end, let $\mathfrak{B}_{\Gamma}$. For any $\Lambda\in\mathfrak{B}_\Gamma$ we define the algebra over $\Lambda$ through:
 \begin{equation}
 \AA_{\Lambda}=\bigotimes_{i\in\Lambda}\BB(\CC^d).
 \end{equation}
@@ -19,19 +19,19 @@ This embedding is defined by mapping $a\in\AA_{\Lambda_1}$ to $\left(\bigotimes_
 \begin{equation}
 \AA_{\text{loc}}=\bigcup_{\Lambda\in\mathfrak{B}_\Gamma}\AA_\Lambda
 \end{equation}
-and by identifying any two operators that can be embedded into the same operator (in some bigger still finite subset of $\Gamma$). One can easily check that this is indeed a well defined algebra. Now, let $\norm{\cdot}$ be the operator norm on the (tensor products of) the on site Hilbert spaces. This norm is indeed invariant under the choice of embedding ($\norm{a}_{\AA_1}=\norm{a\otimes\id_{\AA_2}}_{\AA_1\otimes\AA_2}$). The closure of the local algebra under this norm,
+and by identifying any two operators that can be embedded into the same operator (in some bigger still finite subset of $\Gamma$). One can easily check that this is indeed a well-defined algebra. Now, let $\norm{\cdot}$ be the operator norm on the (tensor products of) the on-site Hilbert spaces. This norm is indeed invariant under the choice of embedding ($\norm{a}_{\AA_1}=\norm{a\otimes\id_{\AA_2}}_{\AA_1\otimes\AA_2}$). The closure of the local algebra under this norm,
 \begin{equation}
 \AA=\overline{\AA_{\text{loc}}}
 \end{equation}
 is called the quasi-local $C^*$-algebra\footnote{More generally $C^*$-algebras are just Banach algebras (with a norm) and an adjoint but all the $C^*$ algebras considered in this thesis will either be bounded operators on some separable Hilbert space or quasi-local $C^*$ algebras on some lattice.}.
-\subsection{The on site group action}
-The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
+\subsection{The on-site group action}
+The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however, there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
 \begin{equation}
 \beta^\Lambda_{g}(A)=\Ad{\bigotimes_{i\in\Lambda}U_i(g)}(A).
 \end{equation}
-It turns out that this automorphism on the algebra of local operators can be extended to the full quasi local $C^*$-algebra $\AA=\overline{\AA_{\text{loc}}}$.
+It turns out that this automorphism on the algebra of local operators can be extended to the full quasi-local $C^*$-algebra $\AA=\overline{\AA_{\text{loc}}}$.
 \subsection{Interactions and locally generated automorphisms}
-Given a quasi local $C^*$-algebra $\AA$ over a lattice $\Gamma$ with some distance measure $d$ defined on it, an interaction $\Phi$ is a map
+Given a quasi-local $C^*$-algebra $\AA$ over a lattice $\Gamma$ with some distance measure $d$ defined on it, an interaction $\Phi$ is a map
 \begin{equation}
 \Phi: \mathfrak{G}_{\Gamma}\rightarrow \AA_{\text{loc}}: I \mapsto \Phi(I)
 \end{equation}
@@ -78,15 +78,15 @@ then
 \gamma^\Phi_{s;t}&=\Ad{u^\Phi_{s;t}}&u^\Phi_{s;t}&\defeq\mathcal{T}\exp(-i\int_t^s\d s'\sum_{I\in\mathfrak{B}_{\Gamma}}\Phi(s',t)).
 \end{align}
 A particularly useful example of an interaction that satisfies equation \eqref{eq:InteractionWithBoundedSum} is the restriction of an interaction to a finite subset $\Lambda\in\mathfrak{B}_\Gamma$\footnote{In fact the way they prove that $\gamma^\Phi_{s;t}$ exists in \cite{nachtergaele2019quasi} is by showing that the limit $\lim_{\Lambda\rightarrow\Gamma}\Ad{u^{\Phi_\Lambda}_{s;t}}$ exists and is continuous.}.\\\\
-Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$), where $\tau\in\Aut{\AA}$ is the translation automorphism (see section \ref{sec:QuasiLocalC*Algebra}). It should be clear that if an interaction is $G$-invariant (translation invariant) that then the LGA it generates commutes with the group action (the translation automorphism) as well.
+Sometimes we will say that an interaction is $G$-invariant. By this we simply mean that $\beta_g(\Phi(I))=\Phi(I)$ (for all $I\in\mathfrak{G}_{\Gamma}$). Similarly, if we say an interaction is translation invariant we mean that $\tau(\Phi(I))=\Phi(\tau(I))$ (for all $I\in\mathfrak{G}_{\Gamma}$), where $\tau\in\Aut{\AA}$ is the translation automorphism (see section \ref{sec:QuasiLocalC*Algebra}). It should be clear that if an interaction is $G$-invariant (translation invariant), the LGA it generates commutes with the group action (the translation automorphism) as well.
 \subsection{Lieb-Robinson bounds}
-In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum cirquit preserved the locality of operators. In particular we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section we will discuss a generalisation of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{nachtergaele2019quasi}. To formulate the theorem we will first need to define two constants depending on the interaction:
+In section \ref{sec:finite-depth-quantum-circuits} and in particular in figure \ref{fig:GroupActionQuantumCirquit} we discussed how a finite depth quantum circuit preserved the locality of operators. In particular, we showed that the support of a local operator only grew linearly with the depth of the FDQC. In this section, we will discuss a generalization of this statement that is often referred to as the Lieb-Robinson bound (see \cite{Lieb:1972ts}). This is a result that has been restated in many different forms. The form that we will use most often was introduced in \cite{nachtergaele2019quasi}. To formulate the theorem we will first need to define two constants depending on the interaction:
 \begin{enumerate}
 	\item For any $\Phi\in\BB_F([0,1])$ we define the absolute integral through
 	\begin{equation}
 	I_F(\Phi)\defeq C_F\int_0^1 \d t \norm{\Phi(t)}_F.
 	\end{equation}
-	\item For any $F$-function, we define a generalisation\footnote{Notice in particular that $G_F(0)=\norm{F}$.} of the $\norm{F}$ introduced in \ref{eq:F_Is_Uniformly_Integrable_Over_Gamma} by
+	\item For any $F$-function, we define a generalization\footnote{Notice in particular that $G_F(0)=\norm{F}$.} of the $\norm{F}$ introduced in \ref{eq:F_Is_Uniformly_Integrable_Over_Gamma} by
 	\begin{equation}
 	G_F(t)\defeq \sup_{x\in\Gamma}\sum_{y\in\Gamma,d(x,y)>t}F(d(x,y)).
 	\end{equation}
@@ -103,20 +103,20 @@ We can now summarise the Lieb-Robinson bound in the following theorem:
 	See Corollary 3.6 of \cite{nachtergaele2019quasi}.
 \end{proof}
 \subsection{States}
-In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. This is a positive semi-definite, Hermitian operator of trace one acting on $\HH$. In this case we then associate to this density matrix a positive linear functional through
+In the case where the operator algebra is simply the bounded operators on a separable Hilbert space $\HH$ we usually define states through some density matrix on that Hilbert space. This is a positive semi-definite, Hermitian operator of trace one acting on $\HH$. In this case, we then associate to this density matrix a positive linear functional through
 \begin{equation}
 \omega(A)= \Tr_\HH(\rho_\omega A).
 \end{equation}
 Since in this case we didn't define our system through a Hilbert space but directly defined the operator algebra, we can't really define density matrices but we can still define the linear functionals directly. To this end, we define a state to be linear functional $\omega:\AA\rightarrow \CC$ that is
 \begin{enumerate}
 	\item positive ($\omega(A^\dagger A)\geq 0$ for all $A\in\AA$).
-	\item normalised ($\omega(\id)=1$).
+	\item normalized ($\omega(\id)=1$).
 \end{enumerate}
-We will refer to the space of states on $\AA$ as $\SS(\AA)$. We will mostly only work with pure states. In the case where we had a Hilbert space, these where simply states whose density matrices are rank one projectors projecting to some vector $\ket{\omega}\in\HH$. In this case the linear functional was the expectation value with respect to some vector:
+We will refer to the space of states on $\AA$ as $\SS(\AA)$. We will mostly only work with pure states. In the case where we had a Hilbert space, these were simply states whose density matrices are rank one projectors projecting to some vector $\ket{\omega}\in\HH$. In this case, the linear functional was the expectation value with respect to some vector:
 \begin{align}\label{eq:VectorState}
 \omega(A)&=\Tr_\HH(\rho_\omega A)=\bra{\omega}A\ket{\omega}&\rho_\omega&=\ket{\omega}\bra{\omega}.
 \end{align}
-In more general $C^*$-algebras\footnote{Like the quasi local $C^*$-algebra we defined before.} we call a state pure using the following definition:
+In more general $C^*$-algebras\footnote{Like the quasi-local $C^*$-algebra we defined before.} we call a state pure using the following definition:
 \begin{definition}[pure]\label{def:PureState}
 	$\omega\in\SS(\AA)$ is called pure if for every $p\in]0,1[$, the only two states $\omega_1,\omega_2\in\SS(\AA)$ that satisfy
 	\begin{equation}
@@ -126,8 +126,8 @@ In more general $C^*$-algebras\footnote{Like the quasi local $C^*$-algebra we de
 \end{definition}
 One can easily see that the vector states in equation \eqref{eq:VectorState} indeed satisfy definition \ref{def:PureState}.
 \subsection{The GNS representation}\label{sec:the-gns-representation}
-This section uses the formalism and theorems of \cite{bratteli1979operator}. We will completely omit any of the proofs in this section. For the proofs we again refer to \cite{bratteli1979operator}.\\\\
-As stated before, a quasi local $C^*$ algebra is not an algebra of bounded operators on some Hilbert space. Sometimes however it is useful to consider maps from our operator algebra to the space of bounded operators on some Hilbert space. To this end the following two definitions:
+This section uses the formalism and theorems of \cite{bratteli1979operator}. We will completely omit any of the proofs in this section. For the proofs, we again refer to \cite{bratteli1979operator}.\\\\
+As stated before, a quasi-local $C^*$ algebra is not an algebra of bounded operators on some Hilbert space. Sometimes however it is useful to consider maps from our operator algebra to the space of bounded operators on some Hilbert space. To this end the following two definitions:
 \begin{definition}[representation]
 	A map $\pi:\AA\rightarrow \BB(\HH)$ is called a representation if:
 	\begin{enumerate}
@@ -137,7 +137,7 @@ As stated before, a quasi local $C^*$ algebra is not an algebra of bounded opera
 	\end{enumerate}
 \end{definition}
 \begin{definition}[cyclic vector]
-	We call a normalised vector $\ket{v}\in\HH$ cyclic with respect to a representation $\pi:\AA\rightarrow \BB(\HH)$ if
+	We call a normalized vector $\ket{v}\in\HH$ cyclic with respect to a representation $\pi:\AA\rightarrow \BB(\HH)$ if
 	\begin{equation}
 	\textrm{span}_{A\in\AA}\pi(A)\ket{v}=\HH.
 	\end{equation}
@@ -152,7 +152,7 @@ is a state. This state is in general not pure. Indeed, if we let our Hilbert spa
 \end{equation}
 This is clearly not a pure state. To ensure that the obtained representation is pure we need to assume another property for our representation. This property is called irreducible:
 \begin{definition}[irreducible representation]
-	A representation $\pi:\AA\rightarrow \BB(\HH)$ is called irreducible if every normalised vector in $\HH$ is cyclic with respect to $\pi$.
+	A representation $\pi:\AA\rightarrow \BB(\HH)$ is called irreducible if every normalized vector in $\HH$ is cyclic with respect to $\pi$.
 \end{definition}
 It can be shown (see eg. theorem 2.3.19 of \cite{bratteli1979operator}) that the state in equation \eqref{eq:StateBelongingToRepresentation} is pure if and only if $\pi$ is irreducible.\\\\
 We have so far created a state starting from a representation and have given a sufficient and required condition for the state to be pure. It turns out that the opposite statement is true as well. We summarise the opposite result in the following lemma (see \cite{bratteli1979operator} for the proof):
@@ -189,7 +189,7 @@ For this section, we will let $M$ be a unital $C^*$-subalgebra of $\BB(\HH)$, th
 \end{definition}
 \subsection{Equal at infinity}\label{sec:equal-at-infinity}
 Again, this section heavily relies on \cite{BratRob}.\\\\
-We have already established that two GNS triples belonging to the same state are related to each other via some unitary. There is a generalisation of this concept which we will summarise in the following definition.
+We have already established that two GNS triples belonging to the same state are related to each other via some unitary. There is a generalization of this concept which we will summarise in the following definition.
 \begin{definition}[Quasi-equivalence]
 	Two representations of an algebra $\pi_1:\AA\rightarrow\BB(\HH_1)$ and $\pi_2:\AA\rightarrow\BB(\HH_2)$ are quasi-equivalent if there exists a $C^*$ isomorphism
 	\begin{equation}
@@ -201,10 +201,10 @@ We have already established that two GNS triples belonging to the same state are
 	\end{equation}
 	If additionally, there is a unitary $U\in\UU(\HH_1,\HH_2)$ such that $\Phi=\Ad{U}$ then we call $\pi_1$ and $\pi_2$ unitary equivalent.
 \end{definition}
-For a pure state, quasi equivalence implies unitary equivalence and two representations corresponding to one state are always unitarily equivalent (which we already discussed in \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples}).\\\\
-Most of the things we discussed so far where true for general $C^*$-algebras. Because however, we have a quasi-local $C^*$-algebra we have additional structure. For our quasi-local $C^*$-algebra there is a very useful alternative notion to being quasi-equivalent. We formulate the condition here for two pure states but there is a more general
+For a pure state, quasi equivalence implies unitary equivalence, and two representations corresponding to one state are always unitarily equivalent (which we already discussed in \ref{cor:OneStateHasUnitarilyEquivalentGNSTriples}).\\\\
+Most of the things we discussed so far were true for general $C^*$-algebras. Because however, we have a quasi-local $C^*$-algebra we have additional structure. For our quasi-local $C^*$-algebra there is a very useful alternative notion to being quasi-equivalent. We formulate the condition here for two pure states but there is a more general
 \begin{lemma}[Equal at infinity]
-	Let $\omega_1,\omega_2\in\SS(\AA)$ be factor states\footnote{The definition of factor states is rather technical and will not be discussed here. For us it is sufficient that any restrictions of SRE states are locally normal factor states.}. The following conditions are equivalent:
+	Let $\omega_1,\omega_2\in\SS(\AA)$ be factor states\footnote{The definition of factor states is rather technical and will not be discussed here. For us, it is sufficient that any restrictions of SRE states are locally normal factor states.}. The following conditions are equivalent:
 	\begin{enumerate}
 		\item $\omega_1$ and $\omega_2$ are quasi-equivalent.
 		\item given $\epsilon>0$ there exists an $R>0$ such that
@@ -214,7 +214,7 @@ Most of the things we discussed so far where true for general $C^*$-algebras. Be
 		for all $B\in\AA_{]-\infty,-R]\cup [R,\infty[}$.
 	\end{enumerate}
 \end{lemma}
-In particular, since for pure states quasi-equivalence implies unitary equivalence this gives us a particularly intuitive picture of the GNS Hilbert space: Take $\omega\in\PP(\AA)$ and let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple for $\omega$ then the map
+In particular, since for pure states, quasi-equivalence implies unitary equivalence this gives us a particularly intuitive picture of the GNS Hilbert space: Take $\omega\in\PP(\AA)$ and let $(\HH_\omega,\pi_\omega,\ket{\omega})$ be a GNS triple for $\omega$ then the map
 \begin{equation}
 M:\PP\HH_\omega\rightarrow \{\omega'\in\PP(\AA)|\omega'\text{ is equal at infinity to }\omega\}:\ket{\omega'}_\sim\mapsto \bra{\omega'}\pi_\omega(\cdot)\ket{\omega'}
 \end{equation}
@@ -231,7 +231,7 @@ There is  We will do this by using the following theorem:
 \begin{proof}
 	The proof of this lemma is in Corollary 3.2.48 of \cite{bratteli1979operator}.
 \end{proof}
-In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of $\omega$. The spectrum of $H$, is called the GNS spectrum of $\Phi$ with respect to $\omega$. It is easy to see that any two unitary equivalent states will have identical GNS spectra. States that are not unitary equivalent will in general not have identical GNS spectra. Therefore, an interaction has multiple spectra, one for each unitary equivalence class of states. This leads to the following definition for a unique gapped ground-state:
+In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of $\omega$. The spectrum of $H$, is called the GNS spectrum of $\Phi$ with respect to $\omega$. It is easy to see that any two unitary equivalent states will have identical GNS spectra. States that are not unitary equivalent will in general not have identical GNS spectra. Therefore, an interaction has multiple spectra, one for each unitary equivalence class of states. This leads to the following definition of a unique gapped ground-state:
 \begin{definition}\label{def:UniqueGappedGroundstate}
 	We say that the interaction $\Phi\in\BB_F$ has a unique gapped ground-state $\omega$ if:
 	\begin{enumerate}
@@ -239,18 +239,18 @@ In a way, $H$ is the way the interaction $\Phi$ acts on the GNS Hilbert space of
 		\item The cyclic vector $\ket{\Omega}$ in the GNS triple of $\omega$, $(\HH,\pi,\ket{\Omega})$ is a unique gapped ground-state of the Hamiltonian, $H$ constructed in lemma \ref{lem:GNS_Hamiltonian}.
 	\end{enumerate}
 \end{definition}
-The gap that this $H$ has is then called the gap of $\Phi$ (as it is independent on the choice of $H$).
+The gap that this $H$ has is then called the gap of $\Phi$ (as it is independent of the choice of $H$).
 \section{Equivalence of states vs equivalence of gapped interactions}\label{sec:equivalence-of-states-vs-equivalence-of-gapped-interactions}
-So far we have mainly seen an interaction as something with a well defined time evolution. However, in section \ref{sec:GappedPhasesOfMatterIntro} we discussed that there are two possible equivalence classes, the equivalence of states and an equivalence class of gapped Hamiltonians.
+So far we have mainly seen an interaction as something with a well-defined time evolution. However, in section \ref{sec:GappedPhasesOfMatterIntro} we discussed that there are two possible equivalence classes, the equivalence of states and an equivalence class of gapped Hamiltonians.
 \\\\
-The equivalence of states is straightforward to extend to the case of the quasi local $C^*$-algebra. Namely:
+The equivalence of states is straightforward to extend to the case of the quasi-local $C^*$-algebra. Namely:
 \begin{definition}\label{def:EquivalenceOfStates}
-	Two states on a quasi local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists an $F$-function, $F$ and a one parameter family of interactions $\Phi\in\BB_{F}([0,1])$ such that
+	Two states on a quasi-local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists an $F$-function, $F$ and a one parameter family of interactions $\Phi\in\BB_{F}([0,1])$ such that
 	\begin{equation}
 		\psi_1=\psi_2\circ\gamma^\Phi_{0;1}.
 	\end{equation}
 \end{definition}
-However, to discuss the equivalence class of Hamiltonians we will need some additional structure. We will need a generalisation of the adiabatic theorem. This theorem says that if we have a smooth family of Hamiltonians $\lambda\mapsto H_\lambda$ and we have a family of eigenstates $\lambda\mapsto\ket{\psi_\lambda}$ of $H_\lambda$ protected by a gap from the rest of the spectrum that then there is one parameter family of bounded operators $K(s)$ such that
+However, to discuss the equivalence class of Hamiltonians we will need some additional structure. We will need a generalization of the adiabatic theorem. This theorem says that if we have a smooth family of Hamiltonians $\lambda\mapsto H_\lambda$ and we have a family of eigenstates $\lambda\mapsto\ket{\psi_\lambda}$ of $H_\lambda$ protected by a gap from the rest of the spectrum that then there is one parameter family of bounded operators $K(s)$ such that
 \begin{equation}
 	\ket{\psi_\lambda}=\mathcal{T}\exp(-i\int_0^\lambda\d s K(s))\ket{\psi_0}.
 \end{equation}
@@ -270,7 +270,7 @@ We are now ready to state the theorem that summarises what we said in section \r
 	The if statement is done by proving that the interaction defined in equation (5.100) of \cite{nachtergaele2019quasi} has a bounded $F$-norm (with some slightly slower decaying $F$-function) and the only if statement is done in theorem 7.4 of the same paper (again, these interactions will be connected through a path defined with a slower decaying $F$-function).
 \end{proof}
 \section{SPT indices revised}\label{sec:SPT_Indices_Revised}
-We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions where first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
+We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions were first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
 \begin{equation}
 \omega=\phi\circ\gamma^\Phi_{0;1}
 \end{equation}
