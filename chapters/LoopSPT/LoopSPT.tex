@@ -18,19 +18,25 @@ In this paper, we construct an index associated with loops of $G$-symmetric inve
 \end{figure} 
 %
 
-Before heading to the main text, we present the idea behind our classification in heuristic terms, and for the sake of clarity for $G=U(1)$, see Figure~\ref{fig: edge_characterization}. There are two ways to measure charge transport. In the `bulk' characterization used e.g. in the original work of Thouless, transport is obtained as the difference of charge in reservoirs before and after the process has taken place; Equivalently, one can compute the integrated current. For the purpose of this paper, we prefer the `edge' characterization: Transport is determined by running the process truncated to only one half-line and by measuring the charge accumulated at the edge: specifically by measuring the difference between the amount of charge in the left part of the system before and after the truncated process took place.  In the setting of spin chains, the idea goes back to \cite{KitaevConf} and it was developed more explicitly in~\cite{Else_2014,Else_2016,potter2016classification,von2016phase}, often under the name of `Floquet phases', see also \cite{Xiong_2018} for a review. The problem of classifying loops of states (and more general families of states) has received much interest in the recent physics literature, see in particular~\cite{KunoHatsugai,kapustin2022local,wen2021flow,aasen2022adiabatic,shiozaki2022adiabatic}. 
+Before heading to the main text, we present the idea behind our classification in heuristic terms, and for the sake of clarity for $G=U(1)$, see Figure~\ref{fig: edge_characterization}. There are two ways to measure charge transport. In the `bulk' characterization used e.g. in the original work of Thouless, transport is obtained as the difference of charge in reservoirs before and after the process has taken place; Equivalently, one can compute the integrated current. For the purpose of this paper, we prefer the `edge' characterization: Transport is determined by running the process truncated to only one half-line and by measuring the charge accumulated at the edge: specifically by measuring the difference between the amount of charge in the left part of the system before and after the truncated process took place.  In the setting of spin chains, the idea goes back to \cite{KitaevConf} and it was developed more explicitly in~\cite{Else_2014,Else_2016,potter2016classification,von2016phase}, often under the name of `Floquet phases', see also \cite{Xiong_2018} for a review. The problem of classifying loops of states (and more general families of states) has received much interest in the recent physics literature, see in particular~\cite{KunoHatsugai,kapustin2022local,wen2021flow,Aasen_2022,shiozaki2022adiabatic}. 
 
 Finally, we mention an auxiliary result, see Proposition~\ref{prop: uniqueness of ground state}, which may be of interest in its own, namely that small perturbations of a trivial on-site interaction have a unique gapped ground state. Results of that kind have been established in great generality with various techniques, see~\cite{yarotsky2006ground,bravyi2010topological,michalakis2013stability,nachtergaele2020quasi,del2021lie}. However, the specific claim that we need does not seem to appear in the literature, mainly because we consider the infinite-volume setup and because the class of interactions we consider is broader. The fact that the unperturbed ground state is a product state allows for a simpler argument --- but still along the lines of~\cite{michalakis2013stability}.
 
 %
 %
 %
-\subsection*{Plan of the paper} We develop the setup in Sections \ref{sec: setup} and \ref{sec: processes}. The results and relevant examples are stated in Sections \ref{sec: processes} and \ref{sec: pumping index}.  The rest of the paper is devoted to the proofs. In Sections \ref{sec: technical preliminaries} and \ref{sec: hilbert space theory} we state some general preliminaries, and the remaining Sections \ref{sec: trivial index loop is short}, \ref{sec: contractibility of short loops with product basepoint}, \ref{sec: classification for product loops}, \ref{sec: proofs of main} contain specific aspects of the proofs, see Section~\ref{sec:plan} for a more detailed overview.
+\subsection*{Plan of the paper} We develop the setup in Sections \ref{sec: setup} and \ref{sec: processes}. The results and relevant examples are stated in Sections \ref{sec: processes} and \ref{sec: pumping index}.  The rest of the paper is devoted to the proofs. In Sections \ref{sec: technical preliminaries} and \ref{sec: hilbert space theory} we state some general preliminaries, and the remaining Sections \ref{sec: trivial index loop is short}, \ref{sec: contractibility of short loops with product basepoint}, \ref{sec: classification for product loops}, \ref{sec: proofs of main} contain specific aspects of the proofs. 
 
 
 
 \subsection*{Acknowledgements}
 W.D.R thanks Dominic Else for explaining him the classification of periodic processes of SPT states, which is the main inspiration for this paper.    M.F. was supported in part by the NSF under grant DMS-1907435. W.D.R. and T.J. were supported in part by the FWO under grant G098919N. S.B. was upported by NSERC of Canada.
+
+\subsection*{Data Availability Statement} Data sharing not applicable to this article as no datasets were generated or analysed during the current study.
+
+\subsection*{Conflicts of Interests} The authors have no relevant financial or non-financial interests to disclose.
+
+
 
 \section{Setup}   \label{sec: setup}
 \subsection{Algebras}
@@ -61,9 +67,11 @@ If $H$ is an interaction with finite $||\cdot||_f$ norm \emph{and} it satisfies 
 $$
 \iota(H)= \sum_{S} H_S\in\caA,
 $$
-as a map from interactions to observables. The algebra generated by all such elements is a norm-dense subalgebra of $\caA$ that is usually called the \emph{almost local algebra} and that we denote by $\caal$, see also~\cite{kapustin2021classification}. The main interest of this algebra is that it is invariant under the adjoint action associated with an interaction. Indeed, if $A\in\caal$ and $||H||_f <\infty $, then $\sum_{S} [H_S,A]$ is norm convergent and its sum, denoted $[H,A] = [\iota(H),A]$, is again an element of $\caal$.
+as a map from interactions to observables. The algebra generated by all such elements is a norm-dense subalgebra of $\caA$ (because it contains the dense set of observable supported on a finite set) that is usually called the \emph{almost local algebra} and that we denote by $\caal$. It is the algebra used in~\cite{kapustin2021classification}, indeed not equipped with a particular norm, but since we allow for any $f\in\caF$ this is a larger algebra than that used, e.g.~in~\cite{moon2020automorphic}.
 
-For later purposes, we also let $\iota_\Lambda(H) = \sum_{S\subset\Lambda} H_S$ whenever the sum is convergent. In particular $\iota_{\bbZ} = \iota$, and if $Z$ is a finite set, then $\iota_Z(H) \in \caA_Z$.
+The main interest of this algebra is that it is invariant under the adjoint action associated with an interaction. Indeed, if $A\in\caal$ and $||H||_f <\infty $, then $\sum_{S} [H_S,A]$ is norm convergent and its sum, denoted $[H,A] = [\iota(H),A]$, is again an element of $\caal$.
+
+For later purposes, we also let $\iota_\Lambda(H) = \sum_{S\subset\Lambda} H_S$ whenever the sum is convergent. In particular $\iota_\Gamma = \iota$, and if $Z$ is a finite set then $\iota_Z(H)$ is an observable supported in~$Z$.
 
 \subsubsection{Almost local evolutions}\label{ALEs}
 
@@ -81,7 +89,11 @@ Specifically, $\alpha_H(s)[A]$ is defined as the limit in the topology of $\caA$
 
 %Note also that we prefer to use the bracket $[\cdot]$ to contain the argument of a function on $\caA$, as on the left of \eqref{eq: heisenberg}, but sometimes we use $\{\cdot\}$ to avoid visually bizarre expressions, as on the right of \eqref{eq: heisenberg}.
 
-We conclude this section by noting that all definition introduced so far can be applied to the tensor product algebra $\widetilde \caA= \caA \otimes  \caA'$ of two spin chain algebras $\caA$ and $\caA'$. The site algebras $\widetilde \caA_j$ are defined as $\caA_j\otimes\caA'_j$ and $\widetilde\caA$ is then the inductive limit of (tensor products of) these site algebras.
+We conclude this section by noting that all definition introduced so far can be applied to the tensor product algebra
+$$
+\widetilde \caA= \caA \otimes  \caA'
+$$
+of two spin chain algebras $\caA$ and $\caA'$. The site algebras $\widetilde \caA_j$ are defined as $\caA_j\otimes\caA'_j$ and $\widetilde\caA$ is then the inductive limit of (tensor products of) these site algebras.
 
 
 \subsection{States}\label{sec: states}
@@ -90,7 +102,7 @@ States are normalized positive linear functionals on the spin chain algebra $\ca
 \begin{equation}\label{eq: metric on states}
 	||\psi-\psi'|| = \sup_{A \in\caA, ||A||=1} |\psi[A]-\psi'[A]|.
 \end{equation}
-The set $\caP(\caA)$ is convex and its extremal points are called the pure states. In all what follows, we consider only pure states.
+The set $\caP(\caA)$ is convex and its extremal points are called the pure states.
 
 A distinguished class of states is that of spatial product states $\phi$, i.e.\ states that satisfy
 $$
@@ -133,15 +145,15 @@ As we shall see shortly, an equivalent condition for a $G$-invariant, invertible
 
 \section{Processes}\label{sec: processes}
 
-Processes should intuitively be defined as continuous paths or loops of states.  This  presupposes in particular a suitable topology on the space of states. However, the standard topologies on states (e.g.\ norm topology or weak topology) do not fit physical intuition, in particular concerning locality properties, and it has become standard in this setting to view a curve of states as `continuous' if it can be generated by a TDI, even if there is no known topology that substantiates this.  This idea is sometimes referred to as \emph{automorphic equivalence} and it was introduced in the works \cite{hastings2005quasiadiabatic,bachmann2012automorphic}.  Concretely, we now define paths of pure states.
+Processes should intuitively be defined as continuous paths or loops of states.  This  presupposes in particular a suitable topology on the space of states. However, the standard topologies on states (e.g.\ norm topology or weak topology) do not fit physical intuition, in particular concerning locality properties, and it has become standard in this setting to view a curve of states as `continuous' if it can be generated by a TDI, even if there is no known topology that substantiates this.  This idea is sometimes referred to as \emph{automorphic equivalence} and it was introduced in the works \cite{hastings2005quasiadiabatic,bachmann2012automorphic}.  Concretely, we define paths of pure states
 \begin{definition}[Paths] \label{def: paths}
 	Let $\caA$ be a spin chain algebra and let $\gamma$ be a group action. A \emph{path} is a function $[0,1] \ni s \mapsto \psi(s)\in\caP(\caA)$ where each $\psi(s)$ is a pure state, and there is a TDI $H$ such that $\psi(s)=\psi(0)\circ\alpha_H(s)$. A path is called a \emph{loop} if $\psi(0) = \psi(1)$.
 	Finally, a path $\psi(\cdot)$ is $G$-invariant if all $\psi(s)$ are G-invariant. 
 \end{definition}
 Two remarks are in order. First of all, the group action (as well as the algebra) are fixed along the path. Secondly, while we did not require that a $G$-invariant path is generated by a $G$-invariant TDI, it is always possible to choose the TDI $G$-invariant. Indeed, if a $G$-invariant path is generated by a TDI $H$, then the TDIs given by $\gamma(g)[H(s)_S]$ for $g\in G$ all generate the same path since $\psi$ and $\psi(s)$ are $G$-invariant, and so
-$
-\bar{H}_S(s)=   \int_G d\mu(g)  \gamma(g)[H_S(s)],
-$
+$$
+\bar{H}_S(s)=   \int_G d\mu(g)  \gamma(g)[H(s)_S],
+$$
 with $\mu(\cdot)$ the normalized Haar measure on $G$, generates the same path. Now $\bar{H}$ is $G$-invariant and $|||\bar H |||_f \leq |||H|||_f$ for any $f\in \caF$ since $\gamma(g)$ are automorphisms.
 
 
@@ -159,9 +171,9 @@ One relevant case where the classification problem is straightforward is for \em
 By this we mean that $\caA = \caB(\caH)$, for some Hilbert space $\caH$. The $0$-dim $G$-states are $G$-invariant pure normal states on $\caB(\caH)$ and we will assume that there is at least one such $0$-dim $G$-state. 
 It follows\footnote{See Lemma \ref{lem: gns} and its proof} that the $G$-action on $\caB(\caH)$ can be implemented by a family of unitaries $U(g)$, i.e.\  $ \gamma(g)[A] = U(g) A U(g)\str$, and $U(\cdot)$ is a strongly continuous unitary representation of $G$.
 
-A pure normal states $\psi$ on $\caB(\caH)$ is given by a ray in Hilbert space as  $\psi(B)=\langle\Psi, B\Psi\rangle$ for some $\Psi \in \caH$ with $||\Psi||=1$, which we call a representative of $\psi$.
+A pure normal states $\psi$ on $\caB(\caH)$ is given by a ray in Hilbert space as  $\psi(B)=\langle\Psi, B\Psi\rangle$ for some $\Psi \in \caH$ with $||\Psi||=1$, which we call a representant of $\psi$.
 The equivalence question for $0$-dim $G$-states is stated more easily than in the case of states on spin chain algebras, because now the natural topologies are physically relevant. 
-We simply call a pair of $0$-dim $G$-states $\psi,\psi'$  $G$-equivalent if they can be connected by a norm-continuous path of $0$-dim $G$-states\footnote{Choosing a weaker topology would not change the classification}.  
+We simply call a pair of $0$-dim $G$-states $\psi,\psi'$  $G$-equivalent if they can be connected by a  path of $0$-dim $G$-states, continuous in the weak-$*$ topology\footnote{Choosing the stronger norm topology in this definition would not change our results}.  
 Note that if the action $\gamma$ is trivial, then any pair of $0$-dim $G$-states is $G$-equivalent, by the connectedness of the projectivization of~$\caH$. For general compact groups $G$, we will provide a full classification of $G$-equivalence classes of $0$-dim $G$-states  in Proposition \ref{prop: zerodim}.
 
 \subsubsection{G-charge}\label{sec: g charge}
@@ -183,11 +195,11 @@ We call henceforth $h_{\psi_2/\psi_1}$ the relative charge of $\psi_2$ and $\psi
 An alternative view on $G$-charge would be to restrict the algebra to $G$-invariant elements, in which case we could phrase the above proposition as describing the \emph{superselection sectors}.
 \begin{proof}
 	We choose a unitary representation $U(\cdot)$ of $G$ that implements $\gamma(\cdot)$ on $\caB(\caH)$.  
-	If a state $\psi_j$ is $G$-invariant then any of its representatives $\Psi_j$ is invariant up to phase: $U(g)\Psi_j= z_j(g)\Psi_j$, and $G\to U(1): g\mapsto z_j(g)$ is a group homomorphism. We then define $h_{\psi_2/\psi_1}(g)\in\bbS^1$ by
+	If a state $\psi_j$ is $G$-invariant then any of its representants $\Psi_j$ is invariant up to phase: $U(g)\Psi_j= z_j(g)\Psi_j$, and $G\to U(1): g\mapsto z_j(g)$ is a group homomorphism. We then define $h_{\psi_2/\psi_1}(g)\in\bbS^1$ by
 	$$
-	e^{ih_{\psi_2/\psi_1}(g)}=\frac{z_2(g)}{z_1(g)}. 
+	e^{ih_{\psi_2/\psi_1}(g)}=\frac{z_2(g)}{z_1(g)}, 
 	$$ 
-	It is apparent that $z_j(g)$ does not depend on the choice of representatives $\Psi_j$. The unitary representation $U(\cdot)$ is uniquely determined up to multiplication with a $U(1)$ representation of $G$, which does affect $z_j(g)$ but not $h_{\psi_2/\psi_1}(g)$, and we conclude that $h_{\psi_2/\psi_1} \in H^1(G)$ is well-defined. To prove $i)$, we note that if two states are $G$-equivalent with interpolating path $\psi(s)$, then $s\mapsto h_{\psi(s)/\psi_1} $ is continuous and hence, by the discreteness of $H^1(G)$, constant. Reciprocally, if two states have zero relative charge, then there is a continuous path of $G$-invariant unitaries $V_s$ acting non-trivially only in the subspace spanned by their representatives $\Psi_1,\Psi_2$ and interpolating between the two. The vector states given by $V_s\Psi_1$ form the connecting path. $ii)$ is checked using the relation $\frac{z_3}{z_1} = \frac{z_3}{z_2}\frac{z_2}{z_1}$ and $iii)$ follows similarly. To prove $iv)$, we pick a unitary representation $U'$ implementing $\gamma'$ on  $\caB(\caH')$. By the intertwining property we have then that $\gamma(g)[\cdot]=\delta(U'(g))[\cdot]\delta(U'(g))\str$ and the claim follows from $z_j(g) = \psi_j(U(g)) = \psi_j(\delta(U'(g))$.
+	It is apparent that $z_j(g)$ does not dependent on the choice of representants $\Psi_j$. The unitary representation $U(\cdot)$ is uniquely determined up to multiplication with a $U(1)$ representation of $G$, which does affect $z_j(g)$ but not $h_{\psi_2/\psi_1}(g)$, and we conclude that $h_{\psi_2/\psi_1} \in H^1(G)$ is well-defined.  Then $i)-iii)$ {\color{red} add something?} are manifestly satisfied, with $ii)$ following from $\frac{z_3}{z_1} = \frac{z_3}{z_2}\frac{z_2}{z_1}$. To prove $iv)$, we pick a unitary representation $U'$ implementing $\gamma'$ on  $\caB(\caH')$. By the intertwining property we have then that $\gamma(g)[\cdot]=\delta(U'(g))[\cdot]\delta(U'(g))\str$ and the claim follows from $z_j(g) = \psi_j(U(g)) = \psi_j(\delta(U'(g))$.
 \end{proof}
 
 \subsection{Homotopy}\label{sec: homotopy}
@@ -258,7 +270,7 @@ but most authors \cite{kitaev2009periodic,chen_gu_wen_2011,kapustin2021classific
 definition
 of invertibility \eqref{eq: def invertibility}: One identifies $\psi$ on a spin chain algebras $\caA$ with $\psi \otimes \phi$ on $\caA\otimes\caA'$ if $\phi$ is a pure product state on $\caA'$. This gives states on spin chain algebras the structure of a monoid, with product states being the unit element. In that sense invertible states are indeed those that have an inverse in this monoid.   
 \begin{definition}[Stable ($G$)-equivalence]
-	A pair of states $\psi_1,\psi_2$ on spin chain algebras $\caA_1,\caA_2$ are $(G)$-stably equivalent if and only if there are a ($G$-invariant) product states $\phi_1,\phi_2$ on spin chain algebras $\caA'_1,\caA'_2$  such that the states $\psi_1\otimes \phi_1, \psi_2\otimes \phi_2$ are ($G$)-equivalent.
+	A pair of states $\psi_1,\psi_2$ on spin chain algebras $\caA_1,\caA_2$ are $(G)$-stably equivalent if and only if there are a ($G$-invariant) product states $\phi_1,\phi_2$ on spin chain algebras $\caA'_1,\caA'_2$  such that the pair of states $\psi_1\otimes \phi_1, \psi_2\otimes \phi_2$ is ($G$)-equivalent.
 \end{definition}  
 The relaxation of the equivalence property by stabilization is natural, if only because it allows to compare states defined on spin chain algebras with distinct on-site dimensions $n_j$.
 On the other hand, a case could be make that our notion of equivalence is too generous and that one should only allow for tensoring with product states of which all the factors have zero $G$-charge with respect to some fixed reference state, see \cite{kapustin2021classification} for a similar restriction.  For example, consider a $U(1)$-invariant spin chain where, for each site $i$, we specify a reference zero-dimensional pure $G$-invariant state $\phi_i$ and we consider the $G$-invariant product state $\psi=\otimes_i \psi_i$ such that 
@@ -270,7 +282,7 @@ The classification of states up to stable ($G$-)equivalence is usually referred 
 
 Just as for the notion of equivalence, it is natural to relax the notion of homotopy by allowing tensoring with product states. 
 
-\begin{definition}[Stable ($G$)-homotopy]\label{def: stable homotopy}
+\begin{definition}[Stable ($G$)-homotopy]
 	A pair of loops $\psi_1(\cdot),\psi_2(\cdot)$ on spin chain algebras $\caA_1,\caA_2$ are $(G)$-stably homotopic if and only if there are  ($G$-invariant) product states $\phi_1,\phi_2$ on spin chain algebras $\caA'_1,\caA'_2$ such that the following loops are ($G$)-homotopic 
 	$\psi_1(\cdot)\otimes \phi_1, \psi_2(\cdot)\otimes \phi_2$
 \end{definition} 
@@ -295,7 +307,7 @@ To streamline the discussion of our results, we introduce some terminology tailo
 	\end{enumerate}
 \end{definition}
 The extension to loops is then self-explanatory. 
-\begin{definition}[$G$-loop]\label{def: G-loop}
+\begin{definition}[$G$-loop]
 	A $G$-loop is a triple $(\caA,\gamma,\psi(\cdot))$ where
 	\begin{enumerate}
 		\item For any $s\in [0,1]$, $(\caA,\gamma,\psi(s))$ is a $G$-state. 
@@ -340,16 +352,17 @@ This TDI is again $G$-invariant, but the path it generates is in general no long
 $$
 \psi':=  \psi(0) \circ \alpha_{H'}(1) 
 $$
-need not be equal to the basepoint $\psi(0)$.  Nevertheless, far to the left of the origin,  $\psi'$ resembles $\psi(0) \circ \alpha_{H}(1)=\psi(0)$ because far to the left $H$ is equal to $H'$. Far to the right,  $\psi'$ trivially resembles $\psi(0)$. Making these observations precise, we will show that
+need not be equal to the basepoint $\psi(0)$.  Nevertheless, far to the left of the origin,  $\psi'$ resembles $\psi(0) \circ \alpha_{H}(1)=\psi(0)$ because far to the left $H$ is equal to $H'$. Far to the right,  $\psi'$ trivially resembles $\psi(0)$. By making the previous observations precise with the help of the Lieb-Robinson bound, we will show that
 \begin{equation}\label{eq: same away from cut}
 	||(\psi(0)-\psi')_{< -r} || \leq f(r),\qquad  ||(\psi(0)-\psi')_{{\geq r}} || \leq f(r)
 \end{equation}
-for some $f\in \caF$. Here we abbreviated $\zeta_X=\zeta|_{\caA_X}$ for the restriction of functionals $\zeta$ on $\caA$ to the subalgebra $\caA_X$, with $X=\{{< -r}\}$ or $X=\{{\geq r}\}$ in the above examples. Let $\caH$ be the Hilbert space carrying the GNS representation associated with $\psi(0)$. Then the above bounds lead to
+for some $f\in \caF$. Here we abbreviated $\zeta_X=\zeta|_{\caA_X}$ for the restriction of functionals $\zeta$ on $\caA$ to the subalgebra $\caA_X$, with $X=\{{< -r}\}$ or $X=\{{\geq r}\}$ in the above examples. With this, we will establish  that $\psi',\psi(0)$ are mutually normal states, meaning that one of them is represented by a pure density matrix in the GNS-representation of the other, see Section~\ref{sec: hilbert space theory}. 
 \begin{proposition}\label{prop: equivalence of states}
-	If the pure state $\psi(0)$ is invertible, then the pumped state $\psi'$, is normal with respect to $\psi(0)$. That is, it is represented by a density matrix on $\caH$.
+	If the pure state $\psi(0)$ is invertible, then the pumped state $\psi'$, as defined above, is normal with respect to $\psi(0)$.
 \end{proposition}
 \noindent We postpone the proof to Section~\ref{sec: proofs of main}. 
-By standard considerations (see Lemma \ref{lem: gns}), we obtain a unitary action $g\mapsto U(g)$ satisfying the requirements of Proposition \ref{prop: zerodim} in Section \ref{sec: equivalence zero},  and therefore  the pumped charge $h_{\psi'/{\psi(0)}}$ is well-defined. We then define the index
+
+Hence, $\psi'$ can be represented as a pure state on $\caB(\caH)$, where $\caH$ the Hilbert space carrying the GNS representation associated with $\psi(0)$. By standard considerations (see Lemma \ref{lem: gns}), we obtain a unitary action $g\mapsto U(g)$ satisfying the requirements of Proposition \ref{prop: zerodim} in Section \ref{sec: equivalence zero},  and therefore  the pumped charge $h_{\psi'/{\psi(0)}}$ is well-defined. We then define the index
 $$
 I(\psi(0),H):=h_{\psi'/{\psi(0)}}.
 $$
@@ -378,7 +391,7 @@ We define the charge pair creation and annihilation operators $a(h),a^*(h)$ in $
 \begin{align}
 	a(h')=\ket{0,0}\bra{-h',h'},\qquad  	a^*(h')&=\ket{-h',h'}\bra{0,0}.
 \end{align}
-Now we define two families of interactions $E(h'),O(h')$ parameterized by $h'$:
+Now we define two interactions families of interactions $E(h'),O(h')$ parametrized by $h'$:
 \begin{align}
 	E(h')_{\{i,i+1 \}} & =  (a(h')+a^*(h'))_{i,i+1},\qquad \text{if $i$ is even}     \\
 	O(h')_{\{i,i+1 \}} & = (a(h')+a^*(h'))_{i,i+1},\qquad \text{if $i$ is odd}  .
@@ -391,8 +404,11 @@ The TDI  $H=H(s)$ is then
 		O(-h)&s \in[1/2,1]
 	\end{cases}
 \end{equation}
-The basepoint of the loop is chosen as the product state $\phi$ over zero-charge states defined by $\phi[A_{i}]  = \langle 0| A |0\rangle$ for any $A \in \caB(\caH)$ and $\phi[A_{i}A'_{j}] =  \phi[A_{i}]  \phi[A'_{j}]$ for any $A,A' \in \caB(\caH)$.
-
+The basepoint of the loop is chosen as the product state over zero-charge states:
+\begin{align}
+	\phi[A_{i}]  & =    \langle 0| A |0\rangle,   \qquad A \in \caB(\caH)  \\
+	\phi[A_{i}A_{j}] & =  \phi[A_{i}]  \phi[A_{j}],\qquad i\neq j  
+\end{align}
 To understand the loop, it is helpful to graphically represent $ \phi$ as 
 $$
 \ldots \ket{0} \otimes \ket{0}\otimes \ket{0} \otimes \ket{0}  \ldots 
@@ -415,14 +431,11 @@ The apparant violation of charge conservation is because the opposite charge $-h
 
 \begin{figure}[ht] 
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{chapters/LoopSPT/image/Example.pdf}
+		\includegraphics[width=0.8\textwidth]{ExampleLoop.pdf}
 		\caption{Schematic representation of the examples presented in Section \ref{sec: examples}.}
 		\label{fig:ExampleLoop}
 	\end{center}
 \end{figure}
-
-\subsection{Overview of the proof}\label{sec:plan}
-We are now ready to turn to proofs. We start in Section~\ref{sec: technical preliminaries} with locality results on almost local evolutions; although they are known to some level from the literature, full proofs are not readily available in the precise setting we are considering here. In Section~\ref{sec: hilbert space theory}, we describe the Hilbert space setting obtained through the GNS representation. By comparing the initial state and the pumped state, this allows us to define an index following the lines sketched above and show that it is invariant under small perturbations of the TDI generating it. Section~\ref{sec: trivial index loop is short} starts the analysis of homotopies by showing that a loop with product basepoint can be deformed to what we call a short loop, namely a loop generated by a TDI with small norm. We show that this is doable through a $G$-homotopy provided the index vanishes. Section~\ref{sec: contractibility of short loops with product basepoint} finalizes this step by proving that a short loop can be further deformed to a constant loop; unlike the previous section which relies on splitting the chain, this section uses perturbative techniques on gapped ground states of quantum spin chains. Section~\ref{sec: classification for product loops} concludes the proof of our main result in the case of a fixed product basepoint, by proving the claimed additivities on the one hand, and showing that loops have the same index if and only if they are homotopic. Finally, Section~\ref{sec: proofs of main} extends the results to loops with arbitrary ($G$-invertible) basepoints, concluding the proof of Theorem~\ref{thm: classification loops}.
 
 
 \section{Technical preliminaries}   \label{sec: technical preliminaries}
@@ -465,7 +478,7 @@ The same symbol was already used in Section \ref{subsec:alal}  to denote the act
 The action of an interaction $H$ on $\caal$ by $[H,\cdot]$ is an (unbounded) derivation. It is the derivation, rather then the interaction itself, that determines the almost local evolution $\alpha_H$. 
 One should notice that distinct $H\neq H'$ can give rise to the same derivation, which complicates some of our calculations. Therefore, we introduce the relation $\eder$ to indicate equality of derivations;
 $$
-H \eder H' \quad \text{iff} \quad   [H,A]=[H',A] \quad \forall A \in\caal
+H \eder H' \quad \text{iff.} \quad   [H,A]=[H',A] \quad \forall A \in\caal
 $$
 
 
@@ -494,7 +507,7 @@ This definition satisfies the following constraint on the associated derivations
 \begin{equation} \label{eq: commutation autos}
 	[\beta[F],\cdot]= \beta \circ [F,\cdot] \circ \beta^{-1}
 \end{equation}
-and the integrated version for a TDI $H$ follows from Definition~(\ref{eq: heisenberg})
+and the integrated version for a TDI $H$ follows from the definition~(\ref{eq: heisenberg})
 \begin{equation} \label{eq: commutation autos integrated}
 	\alpha_{\beta[H]}= \beta \circ \alpha_H \circ \beta^{-1}
 \end{equation}
@@ -535,7 +548,7 @@ We will also use repeatedly that $\max(f_1,f_2) \in \caF$ if $f_1,f_2 \in\caF$.
 		$$||[F_1,F_2]||_{X,\hat{f}} \leq   ||F_1 ||_{X_1,f_1}   ||F_2||_{X_2,f_2}, $$
 		for $\hat{f}$ affiliated to $f=\max(f_1,f_2)$.
 		\item If all $X_n$ are mutually disjoint, then 
-		$$||\sum_{n}  F_n||_{X,\hat{f}} \leq \sup_n || F_n||_{X_n,f},\qquad  X=\cup_n X_n$$
+		$$||\sum_{n}  F_n||_{X,\hat{f}} \leq \sup_n || F^{(n)}||_{X_n,f},\qquad  X=\cup_n X_n$$
 		for $\hat{f}$ affiliated to $f$.
 		\item  Assume that $|||H|||_{f_1} \leq C_H $ for some $C_H<\infty$. Then
 		$$ ||  \alpha_H(s)[F] ||_{X,\hat{f}} \leq     ||F||_{X,f_2},  \qquad s\in [0,1]
@@ -543,7 +556,7 @@ We will also use repeatedly that $\max(f_1,f_2) \in \caF$ if $f_1,f_2 \in\caF$.
 		for $\hat{f}$ affiliated to $f=\max(f_1,f_2)$ and depending on $C_H$.
 	\end{enumerate}
 \end{lemma}
-Note that the upper bounds are trivial if the interactions are not anchored in the respective sets, see~(\ref{AnchoredInt}). The proofs of items $i-iii$ are straightforward, and item $iv$ relies on the Lieb-Robinson bound \cite{Lieb:1972ts} . We refer to similar\footnote{One of the differences with the cited references is the use of slightly different norms. In the appendix of~\cite{Stability} it is explained how to accommodate this.} statements in~\cite{nachtergaele2019quasi,bachmann2022trotter} and their proofs, see also the proof of Lemma~\ref{lem: evolution by similar tdi}.
+Note that the upper bounds are trivial if the interactions are not anchored in the respective sets, see~(\ref{AnchoredInt}). Since the proofs rely on standard techniques, we refer to the similar statements in~\cite{nachtergaele2019quasi,bachmann2022trotter} and their proofs, see also the proof of Lemma~\ref{lem: evolution by similar tdi}. Item $iv$ is a consequence of the Lieb-Robinson bound. One of the main difference with the cited references is the use of slightly different norms, but they can be shown to be equivalent, see the appendix of~\cite{Stability}.
 
 
 \subsection{Inversion, time-reversal, and composition of almost local evolutions}\label{sec:composition}
@@ -626,7 +639,11 @@ We establish a few consequences of the bounds in the previous sections. Even tho
 $$
 ||| H |||^{(1)}_{X,f}:= \int_0^1 ds  || H(s) ||_{X,f}
 $$
-Of, course, we always have $||| H |||^{(1)}_{X,f}  \leq ||| H |||_{X,f}$, but some bounds are stated more naturally in terms of the $L^1$-norm. 
+Of, course, we always have 
+$$
+||| H |||^{(1)}_{X,f}  \leq ||| H |||_{X,f},
+$$
+but some bounds are stated more naturally in terms of the $L^1$-norm. 
 \begin{lemma} \label{lem: evolution by similar tdi}
 	Let $X,Y$ be intervals or complements thereof and let $A\in\caA_Y$.
 	\begin{enumerate}
@@ -694,15 +711,15 @@ $$
 
 
 
-\subsection{Concatenation of almost local evolutions}\label{sec:Concatenation of evolutions}
+\subsection{Concatenation of almost local evolutions}
 
 First, we remark that one can often construct almost local evolutions by time-rescaling. This is used so often that we put it in a lemma.
 \begin{lemma}\label{lem: time-rescaling almost local evolutions}
-	Let $H$ be a TDI and let $j: [0,1]\to [0,1]$ be a piecewise smooth function, with  $|\frac{dj(s)}{ds}|\leq C_j$ except for a finite set of times $s$. Then $\alpha_H^{-1}(j(0))\circ\alpha_H(j(\cdot))$ is an almost local evolution.
-\end{lemma}     
+	Let $H$ be a TDI and let $j: [0,1]\to [0,1]$ be a piecewise smooth function, with  $|\frac{dj(s)}{ds}|\leq C_j$, except for a finite set of times $s$.  Then $\alpha^{-1}_H(j(0))\circ\alpha_H(j(\cdot))$ is an almost local evolution.  
+\end{lemma}
 \begin{proof}
 	We set $K=\frac{d j(s)}{ds} H(s)$, except for the finite set of times where the bound $|\frac{dj(s)}{ds}|\leq C_j$ does not hold, where we set $K(s)=0$.
-	We see that $|||K|||_f\leq C_j |||H|||_f $ for any $f\in \caF$ so that the TDI satisfies the necessary bound. The fact that it generates the family $\alpha^{-1}_H(j(0))\circ\alpha_H(j(\cdot))$  follows from direct computation.      
+	We see that $|||K|||_f\leq C_j |||H|||_f $ for any $f\in \caF$ so that the TDI satisfies the necessary bound. The fact that it generates the family $\alpha^{-1}_H(j(0))\circ\alpha_H(j(\cdot))$  follows from direct computation.
 \end{proof}
 For almost local evolutions $\alpha,\alpha'$, we define the concatenated evolution $\alpha\loopc \alpha'$ 
 by 
@@ -727,8 +744,9 @@ We will now state that composition of almost local evolutions is, in a certain  
 		\sigma^{(0)}(\lambda)=\sigma^{(1)}(\lambda)=\Id
 	\end{equation}
 \end{definition}
-In Section~\ref{sec: homotopy} the homotopy was defined as a property of a function $(s,\lambda)\mapsto \psi_\lambda(s)$ of \emph{states}. The connection with the above definition is the following: If $(s,\lambda)\mapsto \alpha^{(\lambda)}(s)$ is a homotopy of almost local evolutions, then $(s,\lambda)\mapsto \nu\circ\alpha^{(\lambda)}(s)$ is a homotopy of states, for any choice of state $\nu$. Moreover, if $s \mapsto \nu\circ\alpha^{(\lambda)}(s)$ is a loop for some $\lambda$, then it is a loop (with the same basepoint $\nu$) for any $\lambda$.
-To complete the vocabulary, two almost local evolutions $\alpha^{(0)},\alpha^{(1)}$ are called $G$-homotopic if there exists a $G$-homotopy $\alpha^{(\lambda)}$ reducing to $\alpha^{(0)}$ for $\lambda=0$ and to $\alpha^{(1)}$ for $\lambda=1$. 
+Before, the homotopy was defined as a property of a function $(s,\lambda)\mapsto \psi_\lambda(s)$ of \emph{states}. The connection with the above definition is the following: If $(s,\lambda)\mapsto \alpha^{(\lambda)}(s)$ is a homotopy of almost local evolutions, then $(s,\lambda)\mapsto \nu\circ\alpha^{(\lambda)}(s)$ is a homotopy, for any choice of state $\nu$. Note that this is a \emph{homotopy with fixed basespoint} in the sense that the basepoint of the interpolating loops $\nu\circ\alpha^{(\lambda)}(\cdot)$ is $\nu$ for all $\lambda \in [0,1]$.
+To complete the vocabulary, two almost local evolutions $\alpha^{(0)},\alpha^{(1)}$ are called $G$-homotopic if there exists a $G$-homotopy $\alpha^{(\lambda)}$ reducing to $\alpha^{(0)}$ for $\lambda=0$ and to $\alpha^{(1)}$ for $\lambda=1$.  
+Finally, note that the condition \eqref{eq: extra condition homotopy} is the analogue of the restriction to loops in Section \ref{sec: homotopy}. If we omit this condition, any local evolution would be homotopic to identity.  
 The main reason to consider homotopy of almost local evolutions, is given by the following lemma.
 \begin{lemma}\label{lem: composition of loops is homotopic to concatenation}
 	\begin{enumerate}
@@ -796,31 +814,31 @@ Although most of our reasoning stays on the level of the spin chain algebra $\ca
 
 \subsection{GNS construction}\label{sec: representations}
 We will make use of the GNS representation of state $\psi$ on $\caA$, see \cite{BratRob}. As before, we denote the GNS triple associated to $\psi$ by   $(\caH,\Omega,\pi)$ 
-(Hilbert space $\caH$,  normalized vector $\Omega\in\caH$,  $*$-representation  $\pi:\caA\to\caB(\caH)$), such that 
-$$\psi(A)=\langle\Omega, \pi[A]\Omega\rangle, \qquad \text{ for any $A\in\caA$}.  $$     From the purity of $\psi$, it follows that $\pi(\caA)'=\bbC 1$ and hence the von Neumann algebra $\pi(\caA)''$ equals the full algebra $\caB(\caH)$. The following lemma, already used in Section \ref{sec: g charge}, verifies that we are in the setting outlined in Section \ref{sec: equivalence zero}; We omit its standard proof which relies on the uniqueness of the GNS representation.
+(Hilbert space $\caH$,  vector $\Omega\in\caH$,  $*$-representation  $\pi:\caA\to\caB(\caH)$), such that 
+$$\psi(A)=\langle\Omega, \pi[A]\Omega\rangle, \qquad \text{ for any $A\in\caA$}.  $$     From the purity of $\psi$, it follows that $\pi(\caA)'=\bbC 1$ and hence the von Neumann algebra $\pi(\caA)''$ equals the full algebra $\caB(\caH)$. The following lemma, already used in Section \ref{sec: g charge}, verifies that we are in the setting outlined in Section \ref{sec: equivalence zero}. 
 \begin{lemma}\label{lem: gns} If $\psi$ is $G$-invariant, then there is a unique strongly continuous unitary representation $G\to \caU(\caH): g\mapsto U(g)$, such that $U(g)\Omega=\Omega$ and
 	\begin{equation} \label{eq: rep of g action}
 		\pi\circ \gamma(g)= \Adjoint(U(g))\circ \pi
 	\end{equation}
 \end{lemma} 
-% \begin{proof}
-	% By the uniqueness of the GNS representation, up to unitary equivalence, it follows that for each $g\in G$ there is a unique unitary $U(g)$ such that $U(g)\Omega=\Omega$ and such that \eqref{eq: rep of g action} holds. From $\pi(\caA)'=\bbC 1$, it also follows that $U(g')U(g)U^{-1}(g'g)$ is a multiple of identity and by the invariance of $\Omega$, it follows that this multiple of identity is identity.
-	% This yields that $g\mapsto U(g)$ is a genuine representation. 
-	% To get the strong continuity of $g\mapsto U(g)$, it suffices to get continuity of $g \mapsto U(g)\Psi$ for $\Psi\in \caD$ with $\caD\subset \caH$ dense. We choose $\caD=\{\pi(A)\Omega, A \in \caA\}$ and we note that 
-	% $$
-	% g\mapsto U(g)\pi(A)\Omega =  U(g)\pi(A)U^*(g)\Omega =  \pi(\gamma(g)[A])\Omega 
-	% $$
-	% is continuous by the strong continuity of $g\mapsto \gamma(g)$ and the continuity of $\pi$. 
-	% \end{proof}
-\noindent We further recall that two pure states $\psi,\psi'$ are said to be mutually normal\footnote{The term `equivalent' is used more often in the literature, but we avoid this term since it has already another natural meaning within this paper. However, in the zero-dimensional case, the two notions actually coincide.} iff\  $\psi'$ is represented as a pure density matrix $\rho_{\psi'}$ in the GNS representation of $\psi$: $\psi'(A) = \Tr_\caH(\rho_{\psi'}\pi(A))$. It then follows that the same holds with the roles of $\psi,\psi'$ reversed. 
+\begin{proof}
+	By the uniqueness of the GNS representation, up to unitary equivalence, it follows that for each $g\in G$ there is a unique unitary $U(g)$ such that $U(g)\Omega=\Omega$ and such that \eqref{eq: rep of g action} holds. From $\pi(\caA)'=\bbC 1$, it also follows that $U(g')U(g)U^{-1}(g'g)$ is a multiple of identity and by the invariance of $\Omega$, it follows that this multiple of identity is identity.
+	This yields that $g\mapsto U(g)$ is a genuine representation. 
+	To get the strong continuity of $g\mapsto U(g)$, it suffices to get continuity of $g \mapsto U(g)\Psi$ for $\Psi\in \caD$ with $\caD\subset \caH$ dense. We choose $\caD=\{\pi(A)\Omega, A \in \caA\}$ and we note that 
+	$$
+	g\mapsto U(g)\pi(A)\Omega =  U(g)\pi(A)U^*(g)\Omega =  \pi(\gamma(g)[A])\Omega 
+	$$
+	is continuous by the strong continuity of $g\mapsto \gamma(g)$ and the continuity of $\pi$. 
+\end{proof}
+Two pure states $\psi,\psi'$ are said to be mutually normal\footnote{The term `equivalent' is used more often in the literature, but we avoid this term since it has already another natural meaning within this paper. However, in the zero-dimensional case, the two notions actually coincide.} iff.\  $\psi'$ is represented as a pure density matrix $\rho_{\psi'}$ in the GNS representation of $\psi$: $\psi'(A) = \Tr_\caH(\rho_{\psi'}\pi(A))$. It then follows that the same holds with the roles of $\psi,\psi'$ reversed. 
 
-\subsection{GNS representation of a pure product state}\label{sec:GNS of product state}
-We construct the GNS representation of a pure, $G$-invariant product state $\phi$ in a pedagogical way to render the objects that follow more tangible.
+\subsection{GNS representation of a product $\phi$}
+We construct the GNS representation of a pure, $G$-invariant product state $\phi$ in a pedagogical way to render the objects that follow more tangible. (To avoid any possible confusion, we are going to construct a representation that is unitarily equivalent to the canonical GNS representation.)
 Recall that $\caA_i$ is a matrix algebra of $n_i\times n_i$ complex matrices, that we write as $\caA_i= \caB(\bbC^{n_i})$ For every $i$, we choose an orthonormal basis of $\bbC^{n_i}$ labelled by $\sigma=0,\ldots, n_i-1$ such that 
 $$
 \phi(A)=\langle 0|  A | 0\rangle,\qquad A\in \caA_i.
 $$
-The state $\phi$ corresponds hence intuitively to the --- a priori ill-defined --- vector 
+The state $\phi$ corresponds hence intuitively to the -a priori ill-defined- vector 
 \begin{equation}\label{eq: gns intuitive}
 	\ldots \otimes | 0\rangle_{i-1} \otimes | 0\rangle_i \otimes | 0\rangle_{i+1} \otimes \ldots
 \end{equation}
@@ -841,9 +859,9 @@ $$
 $$
 Then the representation $\pi:\caA\to\caB(\caH)$ is fixed by the requirement that its restrictions 
 $$
-\pi|_{\caA_S}:  \caA_S \otimes \id_{S^c} \to   \caB(\caH_S))\otimes \id_{\caH_{S^c}}
+\pi_{\caA_S}:  \caA_S \otimes \id_{S^c} \to   \caB(\caH_S))\otimes \id_{\caH_{S^c}}
 $$
-coincide with $\pi_S$, for finite $S$.  We note that for finite $S$, $\pi_S$ is an isomorphism between $\caA_S$ and $\caB(\caH_S)$ , whereas for infinite $X$,  $\pi(\caA_X)$ is a strict subset of $\caB(\caH_X)$. In the former case, the dual space of bounded linear functionals on $\caA_S$ is isomorphic to the trace-class operators on $\caH_S$, equipped with the trace norm $||\cdot||_1$.
+coincide with $\pi_S$, for finite $S$.  We note that for finite $S$, $\pi_S=\pi|_{\caA_S}: \pi(\caA_S)\to\caB(\caH_S)$ is an isomorphism, whereas for infinite $X$,  $\pi(\caA_X)$ is a strict subset of $\caB(\caH_X)$. In case $X$ is a finite set $S$, we have equality $\pi(\caA_S)=\caB(\caH_S)$ and  $\pi$ restricts to an isomorphism of $C^*$-algebras between $\caA_S$ and $\caB(\caH_S)$.     In that case, the dual space of functionals on $\caA_S$ is isomorphic to the trace-class operators on $\caH_S$, equipped with the trace norm $||\cdot||_1$.
 %
 %
 %We let $\Omega_X \in \caH_X$ be the vector $|{m_0}\rangle$ where $m_0(i)=0$ for all $i\in X$ and let $\Omega = \Omega_\bbZ$ (the vector formally written in~(\ref{eq: gns intuitive})). Again,
@@ -886,18 +904,18 @@ Then
 	To bound the first term in \eqref{eq: density calculations 1}, we compute, for $A\in \caB(\caH_{r'})$,
 	\begin{align}
 		|| \rho_{r'} - \Pi_{r,r'} \rho_{r'}\Pi_{r,r'} ||_1&=\sup_{A\in \caB(\caH_{r'}), ||A||\leq 1}
-		|\Tr_{r'}[(\Pi_{r,r'} \rho_{r'}\Pi_{r,r'} - \rho_{r'})A] | \label{FirstLine}\\
+		|\Tr_{r'}[(\Pi_{r,r'} \rho_{r'}\Pi_{r,r'} - \rho_{r'})A] | \\
 		&\leq 3  \sqrt{\Tr_{r'} [\rho_{r'} (1-\Pi_{r,r'})]} \sup_{A\in \caB(\caH_{r'}), ||A||\leq 1}  \sqrt{\Tr_{r'} [\rho_{r'}AA^*]}     \\
 		& \leq 3  \sqrt{\Tr_{r'} [\rho_{r'} (1-\Pi_{r,r'})]} \leq 3 \sqrt{\delta(r)}
 	\end{align}
-	where we used the Cauchy-Schwarz inequality (after expressing $\Pi_{r,r'} \rho_{r'}\Pi_{r,r'} - \rho_{r'} = \rho_{r'}(1-\Pi_{r,r'}) + (1-\Pi_{r,r'})\rho_{r'} - (1-\Pi_{r,r'})\rho_{r'}(1-\Pi_{r,r'})$ in~(\ref{FirstLine})) and the fact that 
+	where we used the Cauchy-Schwarz inequality and the fact that 
 	%
 	\begin{equation*}
 		\Tr_{r'} [\rho_{r'} (1-\Pi_{r,r'})] = \psi(1-\Pi_{r,r'}) = (\psi - \phi)(1-\Pi_{r,r'}).
 	\end{equation*}
 	%
-	To bound the second term in \eqref{eq: density calculations 1}, we note that $\Tr_{r'}(\Pi_{r,r'} \rho_{r'}\Pi_{r,r'}A) = \Tr_{r'}(\rho_{r'}A) \Tr_{r'}(\Pi_{r,r'} \rho_{r'}\Pi_{r,r'})$ for any observable $A$ supported on $I_r$, and since $\Pi_{r,r'}$ acts as a rank-1 projector on $\caH_{I_{r'}\setminus I_r}$, we conclude that 
-	$\Pi_{r,r'} \rho_{r'}\Pi_{r,r'}=c\rho_r\otimes \Pi_{r,r'}$ with $c\geq 0$.  Since 
+	To bound the second term in \eqref{eq: density calculations 1}, we observe that $\Pi_{r,r'}$ acts as a rank-1 projector on $\caH_{I_{r'}\setminus I_r}$, hence 
+	$\Pi_{r,r'} \rho_{r'}\Pi_{r,r'}$ is equal to $c\rho_r\otimes \Pi_{r,r'}$ with $c\geq 0$.  Since 
 	$$
 	c=\Tr_{r'} [\Pi_{r,r'} \rho_{r'}\Pi_{r,r'}]\geq 1-\delta(r),
 	$$ 
@@ -913,16 +931,17 @@ As remarked in Section \ref{sec: relative charge for cut loop},  this lemma also
 \end{equation}
 From \eqref{eq: loc bound 2}, we also deduce 
 \begin{equation} \label{eq: loc bound 3}
-	||\rho- \frac{\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}}{\Tr[\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}]}||_1\leq    12 \sqrt{\delta(r)},  
+	||\rho- \frac{\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}}{\Tr[\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}]}||_1\leq    4 \sqrt{\delta(r)},  
 \end{equation}
-provided that $\Tr[\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}]\neq 0$. The claim is trivial if $12 \sqrt{\delta(r)}\geq 2$. If $6 \sqrt{\delta(r)}< 1$, we denote $\tilde\rho = \Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}$ and have that $\Vert\rho - (\Tr\tilde\rho^{-1})\tilde\rho\Vert_1\leq 3\sqrt{\delta(r)} + \vert\Tr\tilde\rho\vert^{-1}\Vert \tilde\rho\Vert_1\vert 1-\Tr\tilde\rho\vert$, which yields the claim since (\ref{eq: loc bound 2}) implies $\vert 1- \Tr\tilde\rho\vert\leq 3\sqrt{\delta(r)} \leq 1/2$ and further $\Tr\tilde\rho\geq 1/2$. 
+provided that $\Tr[\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}]\neq 0$. 
+
 
 
 
 \subsection{The pumped state and its index}\label{sec: states cut loop}
 
 In this section we analyze the pumped state that was introduced in Section \ref{sec: relative charge for cut loop} for the special case in which the basepoint of the loop is a pure $G$-invariant product $\phi$, as in the previous subsections. 
-We fix this state $\phi$ in what follows, and we consider a $G$-invariant TDI $H$ that generates a loop $\phi\circ\alpha_H(\cdot)$, satisfying  $|||H|||_f\leq C_H$ for some $f\in\caF$.  As in Section \ref{sec: relative charge for cut loop}, 
+We fix this state $\phi$ in what follows, and we consider a $G$-invariant TDI $H$ that generates a loop $\phi\circ\alpha_H(\cdot)$, satisfying  $|||H|||_f\leq C_H$ for some $f\in\caF$ and some constant $C_H$.  As in Section \ref{sec: relative charge for cut loop}, 
 we cut the TDI by defining $H'$ to contain only the terms $H_S$ supported on the left, $S \leq 0$,  obtaining the pumped state
 \begin{equation}\label{eq: pumped state}
 	\psi= \phi\circ \alpha_{H'}(1).
@@ -931,7 +950,7 @@ We first establish that $\psi$ is normal w.r.t\ $\phi$.
 \begin{lemma}\label{lem: cut state}
 	There is $\hat{f}$ affiliated to $f$ and depending on $C_H$ such that 
 	\begin{equation}\label{eq: two-sided bound}
-		|| (\psi-\phi)_{I_r^c} || \leq  \hat{f}(r).
+		|| (\psi-\phi)_{I_r^c} || \leq  \hat{f}(r)
 	\end{equation}
 	Therefore, as a consequence of Lemma \ref{lem: condition for normality}, $\psi$ is normal w.r.t.\ $\phi$
 \end{lemma}
@@ -942,7 +961,7 @@ We first establish that $\psi$ is normal w.r.t\ $\phi$.
 	$$
 	and we now estimate the last quantity:
 	\begin{equation}
-		| \psi(A) - \phi(A)| =|\phi( \alpha_{H'}(1)[A] - \alpha_H(1)[A]) | \leq  \hat{f}(r) ||A||
+		| \psi(A) - \phi(A)| =|\phi( \alpha_{H'}(A) - \alpha_H(A)) | \leq  \hat{f}(r) ||A||
 		\label{eq: onesided bound}
 	\end{equation}
 	where the equality follows because  $\phi\circ\alpha_{H}(\cdot)$ is a loop,
@@ -964,28 +983,30 @@ We let  $\caS=\caS(C_H,f,\phi)$ be the set of $G$-invariant TDIs such that
 	\item $|||H|||_f \leq C_H$
 	\item $\phi\circ\alpha_H(\cdot)$ is a loop
 \end{enumerate}
-To any $H \in \caS$, we associate the pumped state $\psi=\phi\circ\alpha_{H'}(1)$. 
+To any $H \in \caS$, we associate the pumped state 
+$$
+\psi=\phi\circ\alpha_{H'}(1)
+$$
 Let  $\caT_{1,*}(\caH)$ the set of pure $G$-invariant density matrices on $\caH$. In particular,  $\rho_\psi$, the density matrix representing the state $\psi$ on $\caH$, is in $\caT_{1,*}(\caH)$.
-We define the function
+We then define the function
 $$
-\hat\rho: \caS\to \caT_{1,*}(\caH): H\mapsto \rho_\psi.
+\hat\rho: \caS\to \caT_{1,*}(\caH): H\mapsto \rho_\psi
 $$
-Next, let $g\mapsto U(g)$ be the unitary representation on $\caH$ given in Lemma \ref{lem: gns}. Since $\rho$ is pure, it is a one-dimensional projection and the $G$-invariance implies that $U(g)$ reduces to a one-dimensional representation on the range of the projection. In particular $\Tr( \rho U(g))$ is a complex number on the unit circle. We set 
+Next, let $g\mapsto U(g)$ be the unique unitary representation on $\caH$ given in Lemma \ref{lem: gns}. We set 
 $$
 \hat{h}:  \caT_{1,*}(\caH) \to H^1(G): \rho \mapsto \hat{h}(\rho)
 $$
 where $\hat{h}(\rho)$ is the homomorphism $G\mapsto \bbS^1$ defined by 
 \begin{equation}\label{expression for charge}
-	e^{i \hat{h}(\rho)(g)}=\Tr( \rho U(g)) \in U(1).
+	e^{i \hat{h}(\rho)(g)}=\Tr( \rho U(g)) \in U(1)  
 \end{equation}
 Because of the specific choice of $U(\cdot)$, we find that $\hat{h}(\rho_\psi)=h_{\psi/\phi}$. 
 We consider $\caS,\caT_{1,*}(\caH), H^1(G)$ with  topologies induced by, respectively, the norm $|||\cdot|||^{(1)}_f$, the trace norm $||\cdot ||_1$, and the metric $d_\infty(h,h')=\sup_{g\in G}|h(g)-h'(g)|_{\bbS^1}$.  With these choices, the map $\hat{h}$ is Lipschitz. Indeed, for any $\rho^{(1)},\rho^{(2)} \in \caT_{1,*}(\caH) $,
 $$
-d_{\infty}\left(\hat{h}(\rho^{(1)}),\hat{h}(\rho^{(2)})\right)
-\leq 
-C_{\bbS^1} \sup_{g\in G} \left|\Tr [\rho^{(1)} U(g)] -\Tr [\rho^{(2)} U(g)] \right| \leq C_{\bbS^1} ||\rho^{(1)}-\rho^{(2)}||_1. 
+d_{\infty}(\hat{h}(\rho^{(1)},\rho^{(2)})) \leq 
+C_{\bbS^1} \sup_{g\in G} |\Tr [\rho^{(1)} U(g)] -\Tr [\rho^{(2)} U(g)] | \leq ||\rho^{(1)}-\rho^{(2)}||_1. 
 $$
-with $ C_{\bbS^1}=\sup_{\theta\in [0,\pi] } \frac{\theta}{ |e^{i\theta}-1|}  <\infty $. 
+with $ C_{\bbS^1}=\sup_{\theta\in (0,2\pi] } \frac{|\theta|}{ |e^{i\theta}-1|}  <\infty $. 
 We now show 
 \begin{lemma}\label{lem: uniform cont index}
 	The maps
@@ -995,9 +1016,8 @@ We now show
 	$$
 	are uniformly continuous. 
 \end{lemma}
-\noindent Note that the value of $\hat h\circ \hat\rho$ is the same as the value of the index in Theoem~\ref{thm: pump index} but the map $h$ there differs from $\hat h\circ \hat\rho$ here because it is a function of a loop of states there, while it is here a function of the Hamiltonians generating a particular loop with fixed product basepoint.
 \begin{proof}
-	We have already remarked that $\hat{h}$ is Lipschitz, so both claims will be proven once we show that $\hat{\rho}$ is uniformly continuous. 
+	We have already remarked that $\hat{h}$ is Lipschitz, so both claims will be proven once we show that $\hat{\rho}$ is uniformly continuous, which we do now. 
 	Consider $H^{(1)},H^{(2)}\in \caS$ and let $\rho^{(j)}=\hat{\rho}(H^{(j)})$.
 	We have
 	\begin{align*}
@@ -1024,16 +1044,24 @@ Finally, we formulate a proposition that will be used crucially in the proof of 
 	There is an $ \epsilon>0$, such that, if $|||H^{(1)}-H^{(2)}|||^{(1)}_f \leq \epsilon$ for $H^{(1)}, H^{(2)}\in\caS$, then $I(\phi,H^{(1)})=I(\phi,H^{(2)})$. 
 \end{proposition}
 \begin{proof}
-	Let $h\in H^1(G)$. The discreteness of $H^1(G)$, see Section~\ref{sec: g charge}, implies that there is an $\epsilon(h)>0$ such that
-	$d_{\infty}(h,h')\leq \epsilon(h)$ implies $h=h'$.  However, since the metric on $H^1(G)$ is homogenous, namely $d_{\infty}(h,h') = d_{\infty}(h-h',0)$, we find  $\epsilon(h)=\epsilon(0)$ and one can choose $\epsilon$ uniformly on $H^1(G)$.  The claim of the proposition follows then from the uniform continuity of the index map~$I(\phi,\cdot)$ on $\caS$, i.e.\ from Lemma \ref{lem: uniform cont index}. 
+	For a given $h\in H^1$, the discreteness of $H^1$ implies that there is an $\epsilon(h)>0$ such that
+	$d_{\infty}(h,h')\leq \epsilon(h)$ implies $h=h'$.  However, since the metric on $H^1$ is homogenous, namely $d_{\infty}(h,h') = d_{\infty}(h-h',0)$, we find  $\epsilon(h)=\epsilon(0)$ and one can choose $\epsilon$ uniformly on $H^1$.  The claim of the proposition follows then from the uniform continuity of the index map~$I(\phi,\cdot)$ on $\caS$, i.e.\ from Lemma \ref{lem: uniform cont index}. 
 \end{proof}
+
+
+
+
+
+
+
+
 
 
 
 
 \subsection{Connecting states by adiabatic flow}
 
-States that are mutually normal, can be connected via an almost local evolution whose generating TDI is anchored in a finite set. In other words, the almost local evolution consists of inner automorphisms. In this section, we establish this statement in a quantitative way, but restricted to the specific setting in which we will need it.  A result very similar to the crucial Lemma \ref{lem: parallel transport} below already appeared in \cite{kapustin2021classification}. 
+States that are mutually normal, can be connected via an almost local evolution whose generating TDI is anchored in a finite set. In other words, the almost local evolution consists of inner automorphisms. In this section, we establish this statement in a quantitative way, but restricted to the specific setting in which we will need it.  The crucial Lemma \ref{lem: parallel transport} below is taken from \cite{kapustin2021classification}. 
 
 
 \subsubsection{Parallel transport for $0$-dimensional systems}\label{Parallel in 0d}
@@ -1047,7 +1075,7 @@ $$\alpha_E(s)=\id+i\int_0^sdu \alpha_E(s)\{[E(u),\cdot]\}.$$
 	\begin{enumerate}
 		\item   $|||E||| < 8 || \nu-\omega ||$
 		\item $\nu = \omega\circ \alpha_E(1)$
-		\item  If both $\nu,\omega$ are invariant under a $G$-action by automorphisms $\gamma(g)$, and $h_{\nu/\omega}=0$, then $E$ can be chosen $G$-invariant as well.
+		\item  If both $\nu,\omega$ are invariant under a $G$-action by automorphisms $\gamma(s)$, and $h_{\nu/\omega}=0$, then $E$ can be chosen $G$-invariant as well.
 	\end{enumerate}
 \end{lemma}
 The proof of this lemma uses only basic linear algebra and we postpone it to Appendix \ref{app: tricks}.
@@ -1060,7 +1088,7 @@ Recall the definition of the intervals $I_r$ in \eqref{eq: intervals}.
 \begin{lemma}\label{lem: parallel transport}
 	Let $\psi$ be a  pure state and $\phi$ a pure product state, such that
 	\begin{equation}\label{eq: one-sided bounds repeat}
-		|| (\psi-\phi)_{I_r^c} || \leq f(r),\qquad f \in \caF.
+		|| (\psi-\phi)_{I_r^c} || \leq f(r),\qquad f \in \caF
 	\end{equation}
 	Then there exist a  TDI $K$ such that 
 	\begin{enumerate}
@@ -1070,13 +1098,13 @@ Recall the definition of the intervals $I_r$ in \eqref{eq: intervals}.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	By Lemma~\ref{lem: condition for normality}, $\psi$ is normal w.r.t. $\phi$. Let $\rho$ be the pure density matrix on $\caH$ representing $\psi$.
+	By Lemma~\ref{lem: condition for normality}, $\psi$ is normal w.r.t. $\phi$. Let $\rho$ be the density matrix on $\caH$ representing $\psi$.
 	We set 
 	\begin{equation} \label{eq: def rho r}
 		\rho_r= \frac{\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}}{\Tr[\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}]}, \qquad \text{provided  $\Tr[\Pi_{I_{r}^c}\rho \Pi_{I_{r}^c}] \neq 0$  }  
 	\end{equation}  
 	By the bounds \eqref{eq: loc bound 2} and \eqref{eq: loc bound 3} with $\delta(r)=f(r)$ and the fact that $f$ is non-increasing, there is a finite $r_0>0$ such that for $r\geq r_0$, the denominator  \eqref{eq: def rho r} is not zero.
-	For $1 \leq r\leq r_0$, we set simply $\rho_r=\Pi$ (which coincides with the definition \eqref{eq: def rho r} for $r=1$).  In any case, the densities $\rho_r$ are of the form $\mu_r\otimes \Pi_{I_r^c}$ with $\mu_r$ pure: The purity of $\rho$ implies that of $\rho_r$\footnote{to avoid possible confusion induced by the notation: $\rho_r$ here is not a reduced density matrix, but the compression of $\rho$ to the range of $\Pi_{I_{r}^c}$} and therefore $\mu_r$ is pure, too.
+	For $1 \leq r\leq r_0$, we set simply $\rho_r=\Pi$ (which coincides with the definition \eqref{eq: def rho r} for $r=1$).  In any case, the densities $\rho_r$ are of the form $\mu_r\otimes \Pi_{I_r^c}$ with $\mu_r$ pure.
 	We have
 	\begin{align*}
 		||\mu_{r+1}-\mu_r\otimes \Pi_{I_{r+1}\setminus I_r}||_1 &= ||\rho_{r+1}-\rho_r||_1 \\
@@ -1085,7 +1113,7 @@ Recall the definition of the intervals $I_r$ in \eqref{eq: intervals}.
 	\end{align*}
 	by \eqref{eq: loc bound 3} with  $\delta(r)=f(r)$.
 	
-	We now apply Lemma \ref{lem: parallel transport simple} to obtain a zero-dimensional TDI $E_r(\cdot)$ of operators on $\caH_{I_{r+1}}$ (see Section~\ref{sec:GNS of product state}) transporting $\mu_r\otimes \Pi_{I_{r+1}\setminus I_r}$ into  $\mu_{r+1}$, satisfying the bound 
+	We now apply Lemma \ref{lem: parallel transport simple} to obtain a zero-dimensional TDI $E_r(\cdot)$ of operators on $\caH_{I_{r+1}}$ transporting $\mu_r\otimes \Pi_{I_{r+1}}$ into  $\mu_{r+1}$, satisfying the bound 
 	\begin{equation}\label{eq: bound on operators l}
 		\sup_{s}||E_r(s)|| \leq 8 \sqrt{f(r)}
 	\end{equation}
@@ -1099,7 +1127,7 @@ Recall the definition of the intervals $I_r$ in \eqref{eq: intervals}.
 	K_{S}(s)= \begin{cases}  \frac{1}{|T_r|}  K_r(\frac{s}{|T_r|})   &    S=I_{r+1}, s\in T_r \quad \text{for some $r\in \bbN^+$} \\
 		0 & \text{otherwise}. \end{cases}
 	$$
-	By construction, $\phi\circ\alpha_K(\sup T_r)$ is the state corresponding to the density matrix $\rho_{r+1}$ and so $\phi\circ\alpha_K(\sup T_r)\to \psi$ as $r\to\infty$. The bound $ |||K|||_{\{0,1\},\hat{f}}<1$ now follows from \eqref{eq: bound on operators l}.  The other claims simply carry over from Lemma~\ref{lem: parallel transport simple}. 
+	By construction, $\phi\circ\alpha_K(\sup T_r)$ is the state corresponding to the density matrix $\rho_{r+1}$ and so $\phi\circ\alpha_K(\sup T_r)\to \psi$ as $r\to\infty$. The bound $$ |||K|||_{\{0,1\},\hat{f}}<1$$ now follows from the bounds \eqref{eq: bound on operators l}.  The other claims simply carry over from Lemma~\ref{lem: parallel transport simple}. 
 \end{proof}
 
 
@@ -1109,27 +1137,32 @@ Recall the definition of the intervals $I_r$ in \eqref{eq: intervals}.
 
 \section{A loop with trivial index and product basepoint is homotopic to a short loop}  \label{sec: trivial index loop is short}
 
-By a \emph{short} loop, we mean a loop with a the generator of small norm. 
+In this section, we fix again a specific setup. We fix a $G$-invariant pure product state $\phi$ on a spin chain algebra, and a $G$-invariant TDI $H$ such that $\phi\circ \alpha_H(\cdot)$ is a loop  whose index is trivial;
+$$I(\phi,H)= 0.$$
+We also fix an $f \in \caF$ and a constant $C_H$ such that
+$|||H |||_f \leq C_H$. 
+The only aim of this is section is to prove that this loop is $G$-homotopic to an arbitrarily \emph{short} loop, in the sense that the norm of the generator is arbitrarily small:
 \begin{proposition}\label{prop: loop contractible to small loop}
-	Let $\phi$ be a $G$-invariant pure product state on $\caA$ and let $H$ be a $G$-invariant TDI such that $\phi\circ \alpha_H(\cdot)$ is a loop with trivial index, $I(\phi,H)= 0$. Assume that $|||H |||_f \leq C_H$ for some $f\in\caF$. Then there exists $G$-invariant TDIs $\widetilde H^{(R)}$, with $R\in 2\bbN$ such that
+	
+	There exists $G$-invariant TDIs $\widetilde H^{(R)}$, with $R\in 2\bbN$ such that
 	$\phi\circ\alpha_{\widetilde H^{(R)}}(\cdot)$ is a loop that is $G$-homotopic to $\phi\circ\alpha_{H}(\cdot)$, and such that
 	$$
 	\lim_{R\to\infty} \nor \widetilde H^{(R)}\nor_{\hat{f}} =0.
 	$$  
-	for $\hat{f}$ affiliated to $f$ and depending on $C_H$. The homotopy can be chosen to have fixed basepoint~$\phi$. 
+	for $\hat{f}$ affiliated to $f$ and depending on $C_H$. The homotopy can be chosen to have fixed basepoint $\phi$. 
 \end{proposition} 
-We work throughout the section under the assumptions of the proposition. All constants $C$ that appear can depend on $C_H$ and $f$. 
+Throughout the section, we keep the loop and its generating TDI $H$ fixed, together with $f\in \caF$ and $C_H$.   All constants $C$ that appear can depend on $C_H$ and $f$. 
 In particular, we write $\hat{f}$ for functions affiliated\footnote{As defined in Section \ref{sec: manipulating interactions}} to $f$ and depending on $C_H$.
 Just like for constants $C$, we will use  $\hat{f}$ as a generic notation, and its precise value can hence change from line to line.   
 
 
 \subsection{Splitting of the loop at a single edge}\label{sec: splitting at single edge}
 
-We say that a TDI $F$ is split at an edge $(j,j+1)$ iff\
+We say that a TDI $F$ is split at an edge $(j,j+1)$ iff.\
 $$
 \min S \leq j <\max S  \Rightarrow \forall s: F_S(s)=0.
 $$
-In such a case, we can write $F=F_{\leq j}+F_{>j}$ where, obviously, $F_{\leq j}, F_{>j}$ consist of terms $F_S$ with $\max S\leq j$ and $\min S>j$, respectively. The aim of this section is to modify the TDI $H$ locally, $H \to H+E^{(j)}$, such that $H+E^{(j)}$ is split at $(j,j+1)$  while still generating a loop with basepoint $\phi$.
+In such a case, we can write $F=F_{\leq j}+F_{>j}$ where, obviously, $F_{\leq j}, F_{>j}$ consist of terms $F_S$ with $\max S\leq j$ and $\min S>j$, respectively. The aim of this section is to modify the TDI $H$ locally, $H \to H+E^{(j)}$, such that it is split at $(j,j+1)$  while still generating a loop with basepoint $\phi$, see also Figure~\ref{fig: splitting loop single edge}. 
 We write 
 $$
 H=H_{\leq j}+H_{>j} + B_j,\qquad \text{where}\quad (B_j)_S= \chi( \min S \leq j <\max S)  H_S
@@ -1140,9 +1173,9 @@ We recall that the pumped state $\phi\circ\alpha_{H_{\leq 0}}(1)$ is assumed to 
 \begin{lemma}\label{lem: zero charge both sides}
 	Let 
 	$$
-	\psi_-=\phi\circ\alpha_{H_{\leq j}}(1), \qquad \psi_+=\phi\circ\alpha_{H_{> j}}(1).
+	\psi_-=\phi\circ\alpha_{H_{\leq j}}(1), \qquad \psi_+=\phi\circ\alpha_{H_{> j}}(1)
 	$$
-	Then the states $\psi_-|_{\leq j},\psi_+|_{> j} $ are normal and have zero relative charge with respect to $\phi|_{\leq j},\phi|_{> j} $, respectively. 
+	Then the states $\psi_-|_{\leq j},\psi_+|_{> j} $ have zero relative charge with respect to (in particular: are normal with respect to) $\phi|_{\leq j},\phi|_{> j} $, respectively. 
 \end{lemma}
 \begin{proof}
 	Since $\psi_-=\psi_-|_{\leq j} \otimes \phi|_{> j}$ and  $\psi_+=\phi|_{\leq j} \otimes \psi_+|_{> j}$, we have  
@@ -1156,8 +1189,18 @@ We recall that the pumped state $\phi\circ\alpha_{H_{\leq 0}}(1)$ is assumed to 
 	\psi_-\otimes\psi_+= \phi\circ \alpha_{H-B_j}(1)= \phi\circ\alpha_{H}(1)\circ   \alpha_L(1)=  \phi  \circ \alpha_L(1)
 	$$
 	where, by Lemma \ref{lem: local perturbation tdi}, $L$ is a G-invariant TDI anchored in $\{j,j+1\}$. The last equality follows because $H$ generates a loop. By invoking the last item of Lemma \ref{lem: local perturbation tdi}, we conclude that $\psi_- \otimes\psi_+$ has zero charge wrt.\ $\phi$. Therefore, using \eqref{eq: charge invariant under truncation} and Proposition \ref{prop: zerodim}, we have $h_{\psi_-/\phi}+h_{\psi_+/\phi}=0$.  
-	If $j=0$, then the state $\psi_-$ is the pumped state $\psi'$ defined in Section \eqref{sec: relative charge for cut loop}. For $j\neq0$, TDIs $H'=H_{\leq 0}$ and $H_{\leq j}$ differ by an interaction anchored in a finite set, therefore the resulting states have equal charge, invoking again Lemma \ref{lem: local perturbation tdi}. Since we assumed that the loop generated by $H$ has index zero, the claims  follow. 
+	If the site $j$ is chosen as $j=0$, then the state $\phi_-$ is precisely the pumped state $\psi'$ defined in Section \eqref{sec: relative charge for cut loop}. However, the TDIs $H'=H_{\leq 0}$ and $H_{\leq j}$ differ by an interaction anchored in a finite set, therefore the resulting states have equal charge, invoking again Lemma \ref{lem: local perturbation tdi}. Since we assumed that the loop generated by $H$ has index zero, the claims  follow. 
 \end{proof}
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{SplittingLoops.pdf}
+		\caption{The TDI $H$ is modified locally around edge $(j,j+1)$ so that it is split at this edge. This means that $H(s)$ is split for all $s\in[0,1]$. }
+		\label{fig: splitting loop single edge}
+	\end{center}
+\end{figure} 
+
 
 \begin{lemma}\label{lem: splitting single edge}
 	For any site $j \in \bbZ$, there is a $G$-invariant TDI $E^{(j)}$ with 
@@ -1169,15 +1212,16 @@ We recall that the pumped state $\phi\circ\alpha_{H_{\leq 0}}(1)$ is assumed to 
 In particular the affiliated function $\hat{f}$ can be chosen independently of $j$.
 \begin{proof}
 	We fix $j$ and we use again the notation $\psi_-,\psi_+$ as above. 
-	By the same analysis as the one in the proof of Lemma \ref{lem: cut state}, we get
+	By the same analysis as the one in the proof of Lemma \ref{lem: cut state}, we get that 
 	$$
-	||(\phi-\psi_-)|_{\leq j-r-2} || \leq \hat{f}(r), \qquad ||(\phi-\psi_+)|_{> j+r} ||\leq \hat{f}(r).
+	||(\phi-\psi_-)|_{\leq j-r-2} || \leq \hat{f}(r), \qquad ||(\phi-\psi_+)|_{\leq j+r} ||\leq \hat{f}(r).
 	$$
 	We will use Lemma \ref{lem: parallel transport} to connect these states. Even though Lemma \ref{lem: parallel transport} is formulated for states on a spin chain algebra, i.e.\ referring to the graph $\caA=\caA_\bbZ$, it of course holds just as well for states on $\caA_X$ with $X\subset\bbZ$. We apply it once with $X=\{\leq j\}$ and once with $X=\{> j\}$, to obtain TDIs $K_-,K_+$,  supported on $\{\leq j\}$ and  $\{> j\}$, and such that 
 	$$
 	\psi_-\otimes\psi_+  = \phi \circ \alpha_K(1), \qquad K=K_-+K_+, \qquad \nor K_{\pm}\nor_{\{j,j+1\},\hat{f}} \leq 1,
 	$$ 
-	with $\hat{f}$ chosen independently of $j$: Indeed, in both Lemmas~\ref{lem: cut state} and~\ref{lem: parallel transport}, the function $\hat f$ depends only on $f$ and $C_H$, in particular not on $j$. Hence we have now obtained that the path of states
+	with $\hat{f}$ chosen independently of $j$. 
+	Hence we have now obtained that the path of states
 	$$
 	\phi\circ \alpha_{H-B_j} \circ \alpha_K^{-1}(\cdot)
 	$$ is a loop with basepoint $\phi$ and it is factorized between $\{\leq j\}$ and $\{>j\}$. 
@@ -1185,7 +1229,7 @@ In particular the affiliated function $\hat{f}$ can be chosen independently of $
 	$$
 	H+E^{(j)}, \qquad E^{(j)}(s)= \alpha_K(s)[- K(s) - B_j(s)] + ( \alpha_{K}(s)[H(s)] - H(s)).
 	$$
-	Since $H-B_j$ and $K$ are split at $(j,j+1)$, we deduce that $H+E^{(j)}$ is split as well. 
+	Since $H-B_j$ and $K$ are split at $(j,j+1)$, we deduce that $E^{(j)}$ is split as well. 
 	To get the desired bounds on the TDI $E^{(j)}$, we use Lemma~\ref{lem: loc and liebrobinson} and Duhamel's formula.
 \end{proof}
 
@@ -1203,18 +1247,39 @@ $$
 where $F,W,Z$ are $G$-invariant TDIs depending on the parameter $R$ such that
 \begin{enumerate}
 	\item $W$ is small in the sense that $\nor W \nor_{\hat{f}}\leq \hat{f}(R)$.
-	\item $F$ is factorized over the intervals $I_n$  and $Z$ is factorized over the intervals $J_n$ (both $I_n,J_n$ are defined below and  have length $R$, see Figure~\ref{fig: intervals}).
-	\item $F$ is close to generating a loop: for each $n$, 
+	\item $F$ is factorized over the intervals $I_n$  and $Z$ is factorized over the intervals $J_n$ (both $I_n,J_n$ have length $R$ and they are defined below).
+	\item $F,Z$ are \emph{close} to generating loops: for each $n$, 
 	$$||(\phi-\phi\circ\alpha_{F}(1))_{I_n}|| \leq \hat{f}(R), $$
-	and analogously for $Z$ and the intervals $J_n$.
+	and analogously for $Z$.
 \end{enumerate}
+The first item is proven as a consequence of Lemma \ref{lem: small differences k}. The second item will be manifest by construction, and the third item is shown in 
+Lemma's \ref{lem: almost loop f} and \ref{lem: almost loop k}.
+We sketch the rough idea of the proof in Figure \ref{fig: handf}. 
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{SplittingLoops_2.pdf}
+		\caption{We represent TDIs by a spatial function, so that edges at which the TDI is split correspond to zeros of this function.  By implementing the loop-splitting procedure of Section \ref{sec: splitting at single edge} at multiple edges, we obtain the TDI $F$ that is split over intervals $I_n$ and that generates an (approximate) loop.  The difference $H-F$ is then split over the intervals $J_n$.
+			Since $H$ and $F$ generate (approximate) loops with basepoint $\phi$, the almost local evolution $\alpha_F^{-1}\circ\alpha_H$ also generates an (approximate) loop with basepoint $\phi$. 
+			The TDI $Z$ that generates the latter approximate loop would naturally be equal to $H-F$ in the limit of small $H$ and $F$. In general, $Z$ is not approximately equal to $H-F$, but it does inherit a crucial property of $H-F$, namely being (nearly) split over the intervals $J_n$. } 
+		\label{fig: handf}
+	\end{center}
+\end{figure}
+%
+%\begin{figure}[htb]
+%\begin{center}
+%\includegraphics[width=\textwidth]{SplittingLoops_2.pdf}
+%\caption{A caption}
+%\label{fig: intervals}
+%\end{center}
+%\end{figure}
 
-In the present and next sections, \ref{sec: approximate splitting} and \ref{sec: final stage proof} all TDIs and all states will be $G$-invariant, and we will not repeat this.
+
+In the present and next sections, \ref{sec: approximate splitting} and \ref{sec: final stage proof} all TDIs and all states will be $G$-invariant, and we will not repeat this.  Indeed, the triviality of the index of our original loop was used heavily in Section \ref{sec: splitting at single edge} to argue that the pumped state can be connected to the basepoint, but in the remainder of the proof it plays no role.  
 
 
 \subsubsection{Splitting the loop into factorized quasiloops}\label{sec:factorized quasi-loops}
 
-Let $R\in\bbN$. We introduce the intervals 
+Let us introduce the intervals 
 $$
 I_n= [Rn+1,R(n+1)],\qquad   J_n= [R(n-\tfrac{1}{2})-1,R(n+\tfrac{1}{2})]\qquad(n\in \bbZ).
 $$
@@ -1231,9 +1296,7 @@ We consider  the TDI
 \begin{equation}\label{F tilde}
 	\widetilde F=H+\sum_{n \in \bbZ} E^{(Rn)}
 \end{equation}
-where $E^{(Rn)}$ are defined as in Lemma~\ref{lem: splitting single edge}. The infinite sum is understood in a weak sense, as in Section \ref{sec: manipulating interactions}: the convergence of $\sum_{n \in \bbZ} \Vert (E^{(Rn)})_S\Vert$ follows from the fact that $E^{(Rn)}$ is anchored at $\{Rn,Rn+1\}$ and so $\Vert (E^{(Rn)})_S\Vert$ is small in $\mathrm{dist}(Rn,S)$.
-
-By Lemma \ref{lem: loc and liebrobinson}, we have $\nor\widetilde F\nor_{\hat{f}}\leq C$.
+where the infinite sum is understood in a weak sense, as in Section \ref{sec: manipulating interactions}. By Lemma \ref{lem: loc and liebrobinson}, we have $\nor\widetilde F\nor_{\hat{f}}\leq C$.
 Because of the tails of the anchored interactions $E^{(Rn)}$, $\widetilde F$ is not exactly split over the intervals $I_n$.
 Therefore, we explicitly define the split interaction $F$ by
 $$
@@ -1241,7 +1304,7 @@ F_S=\begin{cases}  \widetilde F_S & S \subset I_n \quad \text{for some $n$} \\
 	0  & \text{otherwise}
 \end{cases}
 $$
-Let $\widetilde Z$ be a TDI 
+Let $\widetilde Z$ be the TDI 
 such that  $\alpha_{\widetilde Z}=\alpha_{F}^{-1} \circ \alpha_H$. We similarly define its split version, but unlike $F$, the terms are now supported on the intervals $J_n$:
 $$
 Z_S=\begin{cases}  \widetilde Z_S & S \subset J_n \quad \text{for some $n$} \\
@@ -1254,11 +1317,10 @@ We will now express that the differences $F-\widetilde F, Z-\widetilde Z$ are sm
 	\nor F-\widetilde F\nor_{\hat{f}} \leq \hat{f}(R)
 	$$
 \end{lemma}
-\noindent To avoid confusion, we remind that the two functions called $\hat{f}$ in the above expression need not be equal,  as explained at the beginning of Section \ref{sec: trivial index loop is short}.
+To avoid confusion, we remind that the two functions called $\hat{f}$ in the above expression need not be equal,  as explained at the beginning of Section \ref{sec: trivial index loop is short}.
 \begin{proof} 
-	The difference $F-\widetilde F$ contains only those terms that cross at least one of the cuts between two intervals $I_n$. Since $H+E^{(Rn)}$ is split at site $Rn$, the only interaction terms in $\widetilde F=H+\sum_{n'} E^{(Rn')}$ that contain $\{Rn,Rn+1\}$ arise from $ E^{(Rn')}$ with $n' \neq n$ and hence they correspond to a set $S$ with $\diam(S)\geq R$ since $ E^{(Rn')}$ is anchored at $\{Rn',Rn'+1\}$. It follows that every term in $F-\widetilde F$ is of the form $\widetilde F_S$  with  $\diam(S)\geq R$.  Therefore
-	$$\nor F-\widetilde F\nor_{\sqrt{\hat{f}}} \leq \sum_{S:\diam(S)\geq R}\sqrt{\hat f(1+\diam(S))}\frac{||\widetilde F_S||}{\hat f(1+\diam(S))}
-	\leq \sqrt{\hat{f}(R)}  \nor \widetilde F \nor_{\hat{f}}. $$
+	Since $H+E^{(Rn)}$ is split at site $Rn$, the only interaction terms in $\widetilde F=H+\sum_{n'} E^{(Rn')}$ that contain $Rn$ arise from  $ E^{(Rn')}$ with $n' \neq n$ and hence they correspond to a set $S$ with $\diam(S)\geq R$. More generally, every term in $F-\widetilde F$ is of the form $F_S$  with  $\diam(S)\geq R$. Therefore
+	$$\nor F-\widetilde F\nor_{\sqrt{\hat{f}}} \leq \sqrt{\hat{f}(R)}  \nor \widetilde F \nor_{\hat{f}}. $$
 	As we already remarked that $\nor \widetilde F \nor_{\hat{f}}\leq C$, the lemma is proven.
 \end{proof}
 
@@ -1269,27 +1331,25 @@ We will now express that the differences $F-\widetilde F, Z-\widetilde Z$ are sm
 	$$
 \end{lemma}
 \begin{proof}
-	Since $\widetilde Z$ is such that $\alpha_{\widetilde Z}=\alpha_{F}^{-1} \circ \alpha_H$, Lemma \ref{lem: inverse small diff} yields
+	We recall that $\widetilde Z$ is defined by  $\alpha_{\widetilde Z}=\alpha_{F}^{-1} \circ \alpha_H$ and therefore, by Lemma \ref{lem: inverse small diff}
 	\begin{equation}\label{eq: difference widetilde k}
 		\widetilde Z(s)=H(s)-F(s)- i \alpha^{-1}_{H}(s)\left[\int_0^s \alpha_{H}(u)\Big\{\big[H(u) - F(u),\alpha_F(s,u)\{F(s)\}\big]\Big\}du \right]
 	\end{equation}
 	We write
-	\begin{equation}\label{Decomp of H-F}
-		H-F = D_1+D_2,\qquad  D_2= H - \widetilde F = \sum_n E^{(Rn)}, \qquad  D_1= \widetilde F - F,
-	\end{equation}
+	$$H-F = D_1+D_2,\qquad  D_2=  \sum_n E^{(Rn)}, \qquad  D_1= \widetilde F - F, $$
 	and we note the following properties
 	$$
-	\nor D_1\nor_{\hat{f}}\leq \hat{f}(R),\qquad   \nor D_2\nor_{R\bbZ,\hat{f}}\leq C.
+	\nor D_1\nor_{\hat{f}}\leq \hat{f}(R),\qquad   \nor D_2\nor_{R\bbZ,\hat{f}}\leq C
 	$$ 
 	The bound on $D_1$ follows from Lemma \ref{lem: small difference f}. The bound on $D_2$ is by Lemma \ref{lem: loc and liebrobinson} item iii) and Lemma \ref{lem: splitting single edge}.  
-	We now plug the decomposition~(\ref{Decomp of H-F}) in \eqref{eq: difference widetilde k}. Lemma \ref{lem: loc and liebrobinson} items ii,iv) then yields that $\widetilde Z$ has a representation similar to $H-F$, namely
-	\begin{equation}\label{Ztilde estimates}
-		\widetilde Z = D_1'+D'_2,\qquad   \nor D_1'\nor_{\hat{f}} \leq   \hat{f}(R),\qquad  \nor D_2'\nor_{R\bbZ,\hat{f}} \leq   C.
-	\end{equation}
-	We recall now that $Z$ is the split version of $\widetilde Z$, over the intervals $J_n$. Since $D_2'$ is anchored at the intersection of intervals $I_n$, $(D_2')_S \neq 0$ implies then $\diam(S) \geq R/2$ if $S$ intersects more than a single interval $J_n$. We can therefore conclude as in the proof of the previous lemma that
+	Inspecting \eqref{eq: difference widetilde k} and using again Lemma \ref{lem: loc and liebrobinson} items ii,iii), we conclude that the above representation of $H-F$ carries over to $\widetilde Z$, i.e.\ 
 	$$
-	\nor Z-\widetilde Z \nor_{\sqrt{\hat{f}}} \leq  \nor D_1' \nor_{\sqrt{\hat{f}}}+ \sqrt{\hat{f}(R)} \nor D_2'\nor_{R\bbZ,\hat{f}}
-	$$  which, together with~(\ref{Ztilde estimates}), yields the claim.
+	\widetilde Z = D_1'+D'_2,\qquad   \nor D_1'\nor_{\hat{f}} \leq   \hat{f}(R),\qquad  \nor D_2'\nor_{R\bbZ,\hat{f}} \leq   C
+	$$
+	By definition, if $S$ intersects more than a single interval $J_n$ and  $(D_2)_S \neq 0$, then $\diam(S) \geq R/2$.  Since $Z$ is derived from $\widetilde Z$ by omitting such terms, we have
+	$$
+	\nor Z-\widetilde Z \nor_{\sqrt{\hat{f}}} \leq  \nor D_1' \nor_{\sqrt{\hat{f}}}+ \sqrt{\hat{f}(R)} \nor D_2'\nor_{\sqrt{\hat{f}}}     \leq  2 \sqrt{\hat f(R)}
+	$$  which ends the proof.
 \end{proof}
 
 
@@ -1307,28 +1367,28 @@ We will now express that the differences $F-\widetilde F, Z-\widetilde Z$ are sm
 
 We have established that $F$ and $Z$  are manifestly split;  $F$ is decoupled over intervals $I_n$ and $Z$ is decoupled over intervals $J_n$. 
 So in particular we have that both $\phi \circ \alpha_{F}$ and $\phi \circ \alpha_{Z}$ are factorized over intervals of length $R$.  
-We now investigate how close those states are to $\phi$, namely how close $F, Z$ are to generating genuine loops.  
+Next, in Lemma's \ref{lem: almost loop f} and \ref{lem: almost loop k}, we investigate how close those states are to $\phi$, namely how close $F, Z$ are to generating genuine loops.  
 %
 %
 %
 \begin{lemma}\label{lem: almost loop f}
 	Let $\psi=\phi \circ \alpha_{F}(1)$. Then
-	$$||(\psi  - \phi)|_{{I_n}}|| \leq \hat{f}(R).$$
+	$$||(\psi  - \phi)|_{{I_n}}|| \leq \hat{f}(R)$$
 \end{lemma}
 \begin{proof}
-	First of all, Lemma~\ref{lem: small difference f} together with Lemma~\ref{lem: evolution by similar tdi} imply that $\Vert \alpha_{F}(1)[A]- \alpha_{\widetilde F}(1)[A]\Vert \leq  R \hat f(R)\Vert A\Vert$ for any $A\in\caA_{I_n}$. We absorb $R$ into $\hat f$ and so that it suffices to compare $\phi$ with $\phi\circ\alpha_{\widetilde F}$. For this, we  partition, see Figure~\ref{fig: intervals},  
+	We  partition, see Figure~\ref{fig: intervals},  
 	$$I_n= I_- \cup I_+, \qquad  I_-=I_n \cap J_{n}, \qquad I_+=I_n \cap J_{n+1}.$$
 	Let us first estimate $||(\psi-\phi)|_{I_{+}}||$.
 	Let $F_n=H+E^{(Rn)}$. Then $F_n$ generates a loop with basepoint $\phi$ by Lemma~\ref{lem: splitting single edge} and we have, for $A\in \caA_{I_+}$,
 	\begin{align}
-		\phi(A)-\phi\circ\alpha_{\widetilde F}(A)& = \phi(\alpha_{F_n}(1)[A]- \alpha_{\widetilde F}(1)[A] ).
+		\phi(A)-\psi(A)& = \phi(\alpha_{F_n}(1)[A]- \alpha_{F}(1)[A] )
 	\end{align}
-	We note now that the TDI $\widetilde F-F_n=\sum_{n'\neq n } E^{(Rn')}$ is anchored at distance at least $R/2$ from $I_+$, see Figure~\ref{fig: intervals} and Lemma \ref{lem: loc and liebrobinson}.  Therefore, by Lemma \ref{lem: evolution by similar tdi},  the integrand is bounded by  $\hat{f}(R) ||A ||$.
-	We next estimate $||(\psi-\phi)|_{I_{-}}||$ by the same argument but this time using $F_{n+1}=H+E^{(R(n+1))}$, so that, again $\widetilde F-F_{n+1}$ is anchored at distance $R/2$ from the relevant region $I_-$.  We have thus obtained 
+	We note now that the TDI $F-F_n=\sum_{n'\neq n } E^{(Rn')}$ is anchored at distance at least $R/2$ from $I_-$, see Figure~\ref{fig: intervals} and Lemma \ref{lem: loc and liebrobinson}.  Therefore, by Lemma \ref{lem: evolution by similar tdi},  the integrand is bounded by  $\hat{f}(R) ||A ||$.
+	We next estimate $||(\psi-\phi)|_{I_{-}}||$ by the same argument but this time using $F_{n+1}=H+E^{(R(n+1))}$, so that, again $F-F_{n+1}$ is anchored at distance $R/2$ from the relevant region $I_-$.  We have thus obtained 
 	$$
-	||(\psi-\phi)_{I_{\pm}}||  \leq \hat{f}(R).
+	||(\psi-\phi)_{I_{\pm}}||  \leq \hat{f}(R)
 	$$
-	These estimates on each half $I_\pm$ of $I_n$ suffice to obtain the claim by applying Lemma~\ref{lem: bipartite}, where the projectors correspond to the (pure) restriction of the product state $\phi$ to $I_\pm$, and the density matrices are the reduced density matrices of $\psi$ to $I_\pm$.
+	By  a simple Lemma \ref{lem: bipartite} in Appendix \ref{app: tricks}, these two bounds together imply that $ ||(\psi-\phi)_{I_n}||\leq 12 \sqrt{\hat{f}(R)} $ which ends the proof.  
 \end{proof}
 %
 %
@@ -1360,9 +1420,9 @@ We now investigate how close those states are to $\phi$, namely how close $F, Z$
 \end{proof}
 
 Let us check that we achieved the result described at the beginning of Section \ref{sec: approximate splitting}. We write
-\begin{equation}\label{First Splitting Loop}
-	\alpha_H=   \alpha_{F} \circ  \alpha_{F}^{-1} \circ \alpha_H = \alpha_{F} \circ  \left(\alpha_{\widetilde Z} \circ \alpha^{-1}_Z\right) \circ \alpha_Z =  \alpha_{F} \circ  \alpha_{W} \circ \alpha_Z
-\end{equation}
+$$
+\alpha_H=   \alpha_{F} \circ  \alpha_{F}^{-1} \circ \alpha_H = \alpha_{F} \circ  \left(\alpha_{\widetilde Z} \circ \alpha^{-1}_Z\right) \circ \alpha_Z =  \alpha_{F} \circ  \alpha_{W} \circ \alpha_Z
+$$ 
 and the desired properties of  $F,Z,W$ are manifest from the results above. 
 
 
@@ -1385,31 +1445,32 @@ Up to now, we have defined the TDIs $F,Z$ that are split on intervals of length 
 \begin{proof}
 	Both $\phi \circ \alpha_{F}(1)$ and $\phi$ are factorized exactly over intervals $I_n$. We consider each interval separately and we note that we are exactly in the framework of Lemma \ref{lem: parallel transport simple}. For each $n$, we obtain a time-dependent observable $E_{n}(\cdot)$ in $ \caA_{I_n}$
 	that generates parallel transport from $(\phi \circ \alpha_{F}(1))_{I_n}$ to $\phi_{I_n}$, with norm bounded by 
-	\begin{equation}\label{En s}
-		\nor E_n \nor \leq 8 || (\phi \circ \alpha_{F}(1)-\phi)_{I_n}    || \leq  \hat{f}(R),
-	\end{equation}
-	see Lemma~\ref{lem: almost loop f}. We then assemble the different $E_n(\cdot)$ into a TDI: Let $
-	E_S(s)= E_n(s) $ for $S=I_n$ for some $n$ and $E_S(s)=0$ otherwise.
+	$$
+	|| (\phi \circ \alpha_{F}(1)-\phi)_{I_n}    || \leq  \hat{f}(R).
+	$$
+	We then assemble the different $E_n(\cdot)$ into a TDI:  $
+	E_S(s)= E_n(s) $ for $S=I_n$ for some $n$ and $E_S(s)=0$ otherwise. 
 	% $$
 	%E_S(s)=  \begin{cases} E_n  & \text{for $S=I_n$ for some $n$} \\
 		%  0  &  \text{for other $S$}  \end{cases}
 	%$$
-	This TDI $E$ is manifestly split and it satisfies
+	This TDI $E$ satisfies
 	$$
 	\phi \circ \alpha_{F}(1) \circ \alpha_E(1)=\phi.
 	$$
-	Since the non-zero contributions to $E$ are given explicitly by $E_n$ that are strictly supported in the finite intervals $I_n$, the norm of $E$ is immediately bounded, for any $h \in \caF$, by
+	To get a bound on $E$, note that for any $h \in \caF$,
 	\begin{equation}\label{E epsilon}
 		\nor E \nor_h\leq \sup_n \frac{\sup_{s}||E_n(s)||}{h(R)}.
 	\end{equation}
-	We choose $h=\sqrt{\hat{f}}$, and so (\ref{En s}) and (\ref{E epsilon}) yield $\nor E \nor_{\sqrt{\hat{f}}}\leq \sqrt{\hat{f}(R)}$. This proves all claims concerning $E$.
-	We proceed similarly with the generator of $\alpha_Z^{-1}$ given by Lemma~\ref{lem: manipulation of evolutions}, but replacing now $I_n$ by $J_n$ and calling the resulting (split and small) interaction $Y$. This achieves that $\phi = \phi  \circ \alpha_{Z}^{-1}(1) \circ \alpha_{Y}(1) 
-	$ and hence also 
+	We choose $h=\sqrt{\hat{f}}$, and so we obtain $\nor E \nor_{\sqrt{\hat{f}}}\leq \sqrt{\hat{f}(R)}$. This proves all claims concerning $E$.
+	We now do the same for $Z^{-1}$, but replacing now $I_n$ by $J_n$ and calling the resulting (split and small) interaction $L^{-1}$. This achieves that
 	$$
-	\phi = \phi  \circ \alpha_{Y}^{-1}(1) \circ \alpha_{Z}(1) 
-	= \phi  \circ \alpha_{L}(1) \circ \alpha_{Z}(1).
+	\phi = \phi  \circ \alpha_{Z^{-1}}(1) \circ \alpha_{L^{-1}}(1) 
 	$$
-	where $L$ generates the inverse of $\alpha_Y$.
+	and hence also 
+	$$
+	\phi = \phi  \circ \alpha_{L}(1) \circ \alpha_{Z}(1).
+	$$
 \end{proof}
 
 
@@ -1418,7 +1479,7 @@ Up to now, we have defined the TDIs $F,Z$ that are split on intervals of length 
 In the above sections, we have produced $G$-loops factorized over a collection of sets $Y_n$. In our case $Y_n=I_n$ or $Y_n=J_n$.
 We will now show that such a loop is contractible, i.e.\ homotopic to a constant loop.  
 \begin{lemma}\label{lem: contractibility of product loop}
-	Consider a $G$-loop $\psi$ that is factorized over intervals $Y_n$, with $Y_n$ forming a partition of $\bbZ$. If $\diam(Y_n)$ is bounded uniformly in $n$, then $\psi$ is $G$-homotopic to a constant loop with the same basepoint. 
+	Consider a $G$-loop $\psi$ that is factorized over intervals $Y_n$, with $Y_n$ forming a partition of $\bbZ$. If $\diam(Y_n)$ is bounded uniformly in $n$, then $\psi$ is homotopic to a constant loop with the same basepoint. 
 \end{lemma}
 It is intuitively clear that this lemma relies on the fact that zero-dimensional systems don't allow for nontrivial loops because $\caB(\caH)$ is simply connected.  However, our notion of loops and their homotopy for states on spin chain algebras, does not simply reduce, in the case the chain is finite, to the standard notion of continuous loops and homotopy on topological spaces.  The reason is that we require the loops to be generated by a TDI, which, even for loops on $\caB(\caH)$, is a stronger notion than continuity. Actually, the requirement of being generated by a zero-dimensional TDI  $E(\cdot)$, as defined before Lemma \ref{lem: parallel transport}, is in that case equivalent to absolute continuity of the loop. 
 For this reason, we actually need an additional lemma on zero-dimensional loops.
@@ -1442,21 +1503,19 @@ As the proof of this lemma uses only standard expressions on parallel transport 
 	Let $E$ be the TDI generating the factorized loop $\psi$, with basepoint $\phi$. 
 	Then $(\psi(s))_{Y_n}$ is a loop of pure, G-invariant states on $\caA_{Y_n}$.
 	Since $\caA_{Y_n}$ is isomorphic to $\caB(\caH_{Y_n})$ through the map $\pi^{-1}$, we can apply Lemma \ref{lem: contractibility zero dim} for every $n$ separately. We first obtain then the time-dependent operators $E_{\lambda,n}(\cdot)$ and $F_{s,n}(\cdot)$ in $\caB(\caH_{Y_n})$.
-	Proceeding as in the proof of Lemma~\ref{lem: closure quasi loops}, we assemble these time-dependent operators in two TDIs $E_\lambda,F_s$.
-	%  by setting
-	% $$
-	% E_{\lambda,S}=\begin{cases} \pi^{-1}(E_{n,\lambda})  &  S=Y_n  \\  0 & \text{otherwise}   \end{cases}
-	% $$
-	% $$
-	% F_{s,S}=\begin{cases} \pi^{-1}(F_{n,\lambda})  &  S=Y_n  \\  0 & \text{otherwise}   \end{cases}
-	% $$
-	% so that we get, for any $h\in\caF$, 
-	% $$
-	% |||E_\lambda|||_h \leq \sup_{n} \frac{ ||E_{n,\lambda}||}{h(|Y_n|)}, \qquad  |||F_s|||_h \leq \sup_{n} \frac{ ||F_{n,s}||}{h(|Y_n|)}
-	% $$
-	% By the bounds of Lemma \ref{lem: contractibility zero dim}, and the assumption $\sup_n|Y_n|<\infty$, we get that these norms are finite. 
-	% It is straightforward to check that $\phi\circ E_{\lambda}(\cdot)$ is a homotopy of loops connecting the original loop $\phi(\cdot)$ to the constant loop with basepoint $\phi$. 
-	Both have finite $f$-norm some any $f\in\caF$ since $\sup_n|Y_n|<\infty$ and $\sup_n||E_{n,\lambda}||<\infty$.
+	We then assemble these time-dependent operators in two TDIs by setting
+	$$
+	E_{\lambda,S}=\begin{cases} \pi^{-1}(E_{n,\lambda})  &  S=Y_n  \\  0 & \text{otherwise}   \end{cases}
+	$$
+	$$
+	F_{s,S}=\begin{cases} \pi^{-1}(F_{n,\lambda})  &  S=Y_n  \\  0 & \text{otherwise}   \end{cases}
+	$$
+	so that we get, for any $h\in\caF$, 
+	$$
+	|||E_\lambda|||_h \leq \sup_{n} \frac{ ||E_{n,\lambda}||}{h(|Y_n|)}, \qquad  |||F_s|||_h \leq \sup_{n} \frac{ ||F_{n,s}||}{h(|Y_n|)}
+	$$
+	By the bounds of Lemma \ref{lem: contractibility zero dim}, and the assumption $\sup_n|Y_n|<\infty$, we get that these norms are finite. 
+	It is straightforward to check that $\phi\circ E_{\lambda}(\cdot)$ is a homotopy of loops connecting the original loop $\phi(\cdot)$ to the constant loop with basepoint $\phi$. 
 \end{proof}
 
 
@@ -1466,32 +1525,36 @@ As the proof of this lemma uses only standard expressions on parallel transport 
 
 \subsubsection{Proof of Proposition~\ref{prop: loop contractible to small loop}}
 
-We start from the identity (\ref{First Splitting Loop}) and use Lemma~\ref{lem: closure quasi loops} by bringing in the almost local evolutions $E,L$ defined therein and  bracketing terms judiciously to get:
+We start from the identity
+$$
+\alpha_H=  \alpha_{F} \circ  \left(\alpha_{\widetilde Z} \circ \alpha^{-1}_Z\right) \circ \alpha_Z
+$$
+We now use Lemma \ref{lem: closure quasi loops} by bringing in the almost local evolutions $E,L$ defined therein and  bracketing terms judiciously:
 $$
 \alpha_H=   \left(\alpha_{F} \circ \alpha_E\right)   \circ  \left(\alpha^{-1}_E \circ  \alpha_{\widetilde Z} \circ \alpha^{-1}_Z \circ \alpha^{-1}_L\right) \circ \left(\alpha_L \circ \alpha_Z\right).
 $$ 
-The first and third bracketed evolutions generate loops with basepoint $\phi$. Since $\alpha_H$ also generates a loop with basepoint $\phi$, we conclude that also the second bracketed term generates a loop with basepoint $\phi$. By Lemma \ref{lem: composition of loops is homotopic to concatenation},  the above almost local evolution is $G$-homotopic to the concatenation of 3 loops\footnote{Concatenation of loops is not an associative operation. However, Lemma \ref{lem: composition of loops is homotopic to concatenation} shows that $(\alpha_{H_1}\loopc\alpha_{H_2})\loopc \alpha_{H_3}$ is homotopic to $\alpha_{H_1}\loopc(\alpha_{H_2}\loopc \alpha_{H_3})$, since the composition $\circ$ is associative. Therefore we allow ourselves here to write simply $\ldots\loopc\ldots\loopc\ldots$.}.
+At this point, we see that the first and third bracketed evolutions generate loops with basepoint $\phi$. Since $\alpha_H$ also generates a loop with basepoint $\phi$, we conclude that also the second bracketed term generates a loop with basepoint $\phi$. By Lemma \ref{lem: composition of loops is homotopic to concatenation},  the above almost local evolution is homotopic to the concatenation of 3 loops\footnote{Concatenation of loops is not an associative operation. However, Lemma \ref{lem: composition of loops is homotopic to concatenation} shows that $(\alpha_{H_1}\loopc\alpha_{H_2})\loopc \alpha_{H_3}$ is homotopic to $\alpha_{H_1}\loopc(\alpha_{H_2}\loopc \alpha_{H_3})$, since the composition $\circ$ is associative. Therefore we allow ourselves here to write simply $\ldots\loopc\ldots\loopc\ldots$.}.
 $$
 \left( \alpha_{F} \circ \alpha_E \right) \loopc \left(\alpha^{-1}_E \circ  \left(\alpha_{\widetilde Z} \circ \alpha^{-1}_Z\right) \circ \alpha^{-1}_L\right) \loopc\left( \alpha_L \circ \alpha_Z \right)
 $$
-The first and third loop are product loops, hence contractible by Lemma \ref{lem: contractibility of product loop}. It follows that the loop $\phi\circ \alpha_H$ is $G$-homotopic to the loop $\phi\circ \alpha_{\widetilde H}$, where
+The first and third loop are product loops, hence contractible by Lemma \ref{lem: contractibility of product loop}. It follows that the loop $\phi\circ \alpha_H$ is homotopic to the loop $\phi\circ \alpha_{\widetilde H}$, where
 $$
 \alpha_{\widetilde H}=\alpha^{-1}_E \circ  \left(\alpha_{\widetilde Z} \circ \alpha^{-1}_Z\right) \circ \alpha^{-1}_L.
 $$
-Just as all of $E,\widetilde Z,Z,L$ constructed above, the  TDI $\widetilde H$ depends on the parameter $R$, and we denote it $\widetilde H^{(R)}$
-Since $Z-\widetilde Z$ is small (Lemma \ref{lem: small differences k}) and $E,L$ are small in the same sense, we get from Lemma \ref{lem: inverse small diff} and Lemma~\ref{lem: loc and liebrobinson}, that  $\widetilde H^{(R)}$ is also small, namely
-$||\widetilde H^{(R)}||_{\hat{f}}\leq \hat{f}(R)$. 
+Just as all of $E,\widetilde Z,Z,L$ constructed above, the  TDI $\widetilde H$ depends on the parameter $R$ and we write $\widetilde H^{(R)}$. 
+Since $Z-\widetilde Z$ is small (Lemma \ref{lem: small differences k}) and $E,L$ are small in the same sense, we get from Lemma \ref{lem: inverse small diff} and Lemma~\ref{lem: loc and liebrobinson}, that also $\widetilde H$ is small in this sense, e.g.\ 
+$||\widetilde H||_{\hat{f}}\leq \hat{f}(R)$. 
 \hfill \ensuremath{\Box}
 
 \section{Contractibility of short loops with product basepoint}\label{sec: contractibility of short loops with product basepoint}
 
 
-In this section, we prove that short loops, i.e.\ where the TDI has small norm, with product basepoint, are $G$-homotopic to a constant loop. The more precise statement is below in Proposition~\ref{prop: small loop is contractible}.  As before, we fix $\phi$ to be a product $G$-state.
+In this section, we prove that short loops, i.e.\ where the TDI has small norm, with product basepoint, are $G$-homotopic to a constant loop. The more precise statement is below in Proposition~\ref{prop: small loop is contractible}.  As before, we fix $\phi$ to be a $G$-state that is a product.
 %
 %
 %
 \begin{proposition}\label{prop: small loop is contractible}
-	For any $f\in\caF$, there is an $\epsilon_1(f)$, such that, if $|||H|||_f\leq \epsilon_1(f)$ and the $G$-invariant TDI $H$ generates a loop $\phi\circ\alpha_H$, then this loop is $G$-homotopic to the trivial loop with basepoint~$\phi$, and the homotopy can be chosen to have constant basepoint. 
+	For any $f\in\caF$, there is an $\epsilon_1(f)$, such that, if $|||H|||_f\leq \epsilon_1(f)$ for a $G$-invariant TDI $H$ that generates a loop $\phi\circ\alpha_H$, then this loop is $G$-homotopic to the trivial loop with basepoint~$\phi$, and the homotopy can be chosen to have constant basepoint. 
 \end{proposition}
 %
 %
@@ -1501,20 +1564,21 @@ In this section, we prove that short loops, i.e.\ where the TDI has small norm, 
 %
 \subsection{Construction of a loop of ground states}\label{sec: construction of loop of gs}
 First we rescale the given $G$-loop $\phi\circ\alpha_H$ to
-\begin{equation}\label{Rescaled loop}
+\begin{equation}
 	\psi(s)=\begin{cases}  \phi\circ\alpha_H(2s)  &  s\leq 1/2, \\  
 		\phi &   s>1/2,
 	\end{cases}
 \end{equation}
 so that now $\psi(1/2)=\phi$. The resulting loop $\psi$ is $G$-homotopic to the original one by Lemma \ref{lem: composition of loops is homotopic to concatenation} item i).  Next, we construct a specific $G$-invariant interaction $F$, tailored to the product state $\phi$:
-$F$ has only on-site terms $F_{\{i\}}= \id-P_i$, which is the orthogonal projection on the kernel of the state $\phi|_i$. It follows that for any finite $S$, $\sum_{i \in S} F_{\{i\}}$ has a simple eigenvalue $0$, corresponding to the state $\phi|_S$, and it has no other spectrum below $1$.  
+$F$ has only on-site terms $F_i= \id-P_i$ with $P_i$ the orthognonal projection on the range of the state $\phi|_i$. It follows that for any finite $S$, $\sum_{i \in S} F_i$ has a simple eigenvalue $0$, corresponding to the state $\phi|_S$, and it has no other spectrum below $1$.  
 We now define the $G$-invariant interaction
 $$
-Z(s)= \begin{cases}  \alpha^{-1}_H(2s)[F] & s \leq 1/2,  \\[2mm]
+Z(s)= \begin{cases}  F+i\int_0^{2s} du\,\alpha_H(2s)\{[H(u),F]\} & s \leq 1/2,  \\[2mm]
 	(2s-1)F+    (2-2s)Z(1/2)   & s >1/2.
 \end{cases}
 $$
-We have obtained a loop of interactions, since $Z(1)=Z(0)=F$. We contract it to a point (namely $F$) by setting
+Note that we have obtained a loop of interactions, since $Z(1)=Z(0)=F$.
+We will contract this loop of interactions to a point (namely $F$) by setting
 $$
 Z_{\lambda}(s)  =Z(0)+ (1-\lambda)( Z(s)-Z(0)), \qquad  \lambda \in [0,1].
 $$ 
@@ -1522,9 +1586,9 @@ This two-parameter family of interactions has the property that it remains close
 \begin{lemma}\label{lem: loop is small}
 	If  $|||H|||_f\leq  \epsilon \leq  1$, then, for $\hat{f}$ affiliated to $f$,
 	\begin{enumerate}
-		\item  $
+		\item  $$
 		||Z_\lambda(s)-F||_{\hat{f}} \leq   \epsilon  
-		$
+		$$
 		\item  There are $G$-invariant TDIs $X_\lambda(\cdot), X'_s(\cdot)$ such that 
 		$$
 		Z_{\lambda}(s)-Z_{\lambda}(0)=\int_{0}^{s} du X_\lambda(u), \qquad    Z_{\lambda}(s)-Z_{0}(s)=\int_{0}^{\lambda} d\lambda' X'_s(\lambda') 
@@ -1536,17 +1600,17 @@ This two-parameter family of interactions has the property that it remains close
 \end{lemma}
 \begin{proof}
 	Item i) follows directly from the definition of $Z$, using Lemma \ref{lem: loc and liebrobinson}, and $||F||_f =f(1)$. 
-	For items ii) and iii), we pick
+	To satisfy items ii) and iii), we identify,
 	$$
-	X_\lambda(s)= \begin{cases} -2\iu \left[H(2s),\alpha_H^{-1}(2s)[F]\right] &  s\leq 1/2  \\[2mm]
+	X_\lambda(s)= \begin{cases} \alpha_H(2s)[H(2s),F] &  s\leq 1/2  \\[2mm]
 		2F-2Z(1/2)  & s>1/2  \end{cases},\qquad  X'_s(\lambda)= - (Z(s)-Z(0))
 	$$ 
 	and we obtain the bounds similarly to item i). 
 \end{proof}
 
-To continue, we recall the notion of a ground state in the infinite-volume setting of quantum lattice systems. We use implicitly the discussion of Section~\ref{subsec:alal}.
+To continue, we recall the notion of a ground state in the infinite-volume setting of quantum lattice systems.
 \begin{definition}\label{def: ground state infinite volume}
-	A state $\psi$ on a spin chain algebra $\caA$ is a ground state associated to an interaction $K$ iff\
+	A state $\psi$ on a spin chain algebra $\caA$ is a ground state associated to an interaction $K$ iff.\
 	$$
 	\psi(A^*[K,A]) \geq 0,\qquad \forall A \in \caal
 	$$
@@ -1555,8 +1619,11 @@ We will need two particular properties of a ground state. The first one is its i
 \begin{equation}\label{eq: invariance of ground states}
 	\psi=\psi\circ\alpha_K(s), \qquad s\in [0,1]
 \end{equation}
-It follows by using that $[K,\cdot]$ is a derivation. Indeed, $[K,A^*A]=  A^*[K,A] - (A^*[K,A])^*$
-and hence $\psi([K,A^*A])=0$ for a ground state $\psi$, which implies \eqref{eq: invariance of ground states}. The other property is the following variational statement, see Theorem~6.2.52 in~\cite{BratRob2}.
+It follows by using that $[K,\cdot]$ is a derivation. Indeed,
+$$
+[K,A^*A]=  A^*[K,A] - (A^*[K,A])^*
+$$
+and hence $\psi([K,A^*A])=0$ for a ground state $\psi$, which implies \eqref{eq: invariance of ground states}. The other property is the following variational statement, see Theorem~6.5.52 in~\cite{BratRob2}.
 \begin{lemma}\label{lem: variational principle}
 	Let $X$ be a finite subset of $\bbZ$ and let $K$ be an interaction. Consider the functional  $e_{X,K}:\caP(\caA)\to \bbC$ (recall that $\caP(\caA)$ is the set of states) given by
 	$$e_{X,K}(\psi')= \sum_{S: S \cap X \neq \emptyset} \psi'(K_S)$$ 
@@ -1566,16 +1633,17 @@ and hence $\psi([K,A^*A])=0$ for a ground state $\psi$, which implies \eqref{eq:
 	$$
 \end{lemma}
 This property makes explicit the fact that ground states minimize the energy locally. 
-The relevance to our problem is that we have a loop of ground states of explicitly given  interactions, namely
+The relevant to our problem is that we have a loop of ground states of explicitly given  interactions, namely
 \begin{lemma}
-	For all $s\in[0,1]$,  $\psi(s)$ defined in~(\ref{Rescaled loop}) is a ground state of the interaction $Z(s)$. 
+	For all $s\in[0,1]$,  $\psi(s)$ is a ground state of the interaction $Z(s)$. 
 \end{lemma}
 \begin{proof}
-	Definition~\ref{def: ground state infinite volume} makes it explicit that the property of being a ground state depends only on the derivation association to the interaction $Z(s)$.  For  $s \in [0,1/2] $, we have $$\psi(s)(A\str[Z(s),A]) = \phi(B(s)\str[F,B(s)]),\qquad B(s) = \alpha_H(2s)(A),$$ and therefore the fact that $\psi(s)$ is a ground state of $Z(s)$ follows directly from $\phi$ being a ground state of $F$.  For $s>1/2$, we have $Z(s) \eder (2s-1)F+    (2-2s)\alpha^{-1}_H(1)[F]$ and we use that $\phi\circ\alpha_H(1)=\phi$. Therefore $\phi$ is a ground state of both $F$ and     $\alpha_H^{-1}(1)[F]$ and hence also of their convex combinations. 
+	Definition~\ref{def: ground state infinite volume} makes it explicit that the property of being a ground state depends only on the derivation association to the interaction $Z(s)$.  For  $s \in [0,1/2] $, we have $Z(s) \eder \alpha_H(2s)[F]$ and therefore the fact that $\psi(s))$ is a ground state of $Z(s)$ follows directly from $\phi$ being a ground state of $F$.  For $s>1/2$, we have $Z(s) \eder (2s-1)F+    (2-2s)\alpha_H(\tfrac{1}{2})[F]$ and we use that    $\phi\circ\alpha_H(\tfrac{1}{2})=\phi$. Therefore $\phi$ is a ground state of both $F$ and     $\alpha_H(\tfrac{1}{2})[F]$ and hence also of their convex combinations. 
 \end{proof}
 
 \subsection{Construction of the homotopy via spectral flow}\label{sec: homotopy from spectral flow}
-Our main idea to prove Proposition \ref{prop: small loop is contractible} is to consider the 2-parameter family of states given by  groundstates of the two-parameter family $Z_\lambda(s)$. We first remark, in Proposition \ref{prop: uniqueness of ground state}, that these groundstates are unique in the perturbative regime (small perturbations of product states). Results of that kind have been established in great generality (see~\cite{nachtergaele2020quasi} for results that are very close to ours, and also~\cite{yarotsky2006ground,bravyi2010topological,michalakis2013stability, roeck2017exponentially,del2021lie}) but the specific claim we need does not seem to appear in the literature. Therefore, we provide a proof in Appendix \ref{sec: app stability}
+
+Our main idea to prove Proposition \ref{prop: small loop is contractible} is to consider the 2-parameter family of states given by  groundstates of the two-parameter family $Z_\lambda(s)$. To make such considerations less subtle, we first remark, in Proposition \ref{prop: uniqueness of ground state}, that these groundstates are unique in the perturbative regime (small perturbations of product states). Results of that kind have been established in great generality in~\cite{yarotsky2006ground,bravyi2010topological,michalakis2013stability,nachtergaele2020quasi}.  However, the specific claim that we need does not seem to appear in the literature, mainly because we consider the infinite-volume setup. Therefore we provide a proof in Appendix \ref{sec: app stability}.  
 \begin{proposition}\label{prop: uniqueness of ground state}
 	For any $h\in\caF$, there is a $\epsilon_2(h)>0$ such that, if $||W||_h \leq \epsilon_2(h)$, then 
 	the interaction $F+W$ has a unique ground state. 
@@ -1583,19 +1651,20 @@ Our main idea to prove Proposition \ref{prop: small loop is contractible} is to 
 If we choose $\epsilon_1(f)$ in Proposition \ref{prop: small loop is contractible} small enough, then, by Lemma \ref{lem: loop is small}, all of the 
 interactions $Z_{\lambda}(s)$ satisfy the condition of the above proposition and hence they have a unique ground state, that we call $\psi_\lambda(s)$. This two-dimensional family  $(s,\lambda)\mapsto \psi_\lambda(s)$ is the  homotopy that will realise Proposition \ref{prop: small loop is contractible}. Indeed, for any $\lambda$, we have $Z_{\lambda}(0)=Z_{\lambda}(1)=F$, which has $\phi$ as the unique ground state, and hence $\psi_\lambda(0)=\psi_\lambda(1)=\phi$. 
 For $\lambda=0$, the family $\psi_\lambda(s)$ reduces to the loop $\psi(\cdot)$, as we had already remarked that this was a loop of ground states of $Z(\cdot)$.
-For $\lambda=1$, we have that $Z_1(s)=F$, and hence $\psi_1(\cdot)$ is the constant loop $\phi$. It remains to show that the family $(s,\lambda)\mapsto \psi_\lambda(s)$ is generated by a TDI in $\lambda$ and $s$ directions.\\ Such TDI will be obtained from the so-called \emph{spectral flow} \cite{hastings2005quasiadiabatic,bachmann2012automorphic,moon2020automorphic}, combined with  results on stability of the spectral gap. In particular, Propostion \ref{prop: bhm} below, follows from \cite{nachtergaele2020quasi}, except that the condition on spatial decay of potentials is relaxed slightly. The possibility of doing this is clear when inspecting the proofs of \cite{nachtergaele2020quasi}.
+For $\lambda=1$, we have that $Z_1(s)=F$, and hence $\psi_1(\cdot)=\Id_\phi$. It remains to show that the family $(s,\lambda)\mapsto \psi_\lambda(s)$ is generated by a TDI in $\lambda$ and $s$ directions.\\ Such TDI will be obtained from the so-called \emph{spectral flow} \cite{hastings2005quasiadiabatic,bachmann2012automorphic,moon2020automorphic}. Proposition \ref{prop: bhm} below is the precise result on spectral flow that we will use.  Such results appear in the literature for a much wider class of interactions instead of only $F$, see e.g.\ 
+\cite{bravyi2010topological,michalakis2013stability,nachtergaele2020quasi}. Even though none of these references covers explicitly the case we need, no extra idea is needed for the proof of Proposition \ref{prop: bhm}, and we comment on it in Appendix \ref{sec: app stability}. 
 To avoid a clash of notation, we use $z \in[0,1]$ (instead of $s,\lambda$) as time-parameter in a TDI.
-\begin{proposition}\label{prop: bhm}
+\begin{restatable}{proposition}{bhm}\label{prop: bhm}
 	For any $h\in\caF$, there is $0<\epsilon_3(h)< 1$ such that, for any pair of TDIs $W$ and $Y$ satisfying
 	\begin{equation}\label{eq: w and e}
 		|||W|||_h\leq \epsilon_3(h), \quad   |||Y|||_h <\infty, \qquad   W(z)-W(0)=\int^{z}_{0} d z' Y(z'),
 	\end{equation}
-	the following holds: There exists a TDI $\hat{Y}$ satisfying $|||\hat Y|||_{h'} \leq ||| Y|||_{h} $ for  $h' \in \caF$ depending only on $h$, such that, if the pure state $\nu(0)$ is a ground state of $F+W(0)$, then 
+	the following holds: There exists a TDI $\hat{Y}$ satisfying $|||\hat Y|||_{h'} \leq ||| Y|||_{h} $ for  $h' \in \caF$ depending only on $h$, such that, if the pure state $\nu$ is a ground state of $F+W(0)$, then  
 	\begin{equation}\label{eq: states determined}
 		\nu(z)=\nu(0)\circ\alpha_{\hat Y}(z),\qquad z \in [0,1] 
 	\end{equation}
-	is a ground state of $F+W(z)$. If $Y$ is $G$-invariant, then also $\hat{Y}$ can be chosen $G$-invariant.
-\end{proposition}
+	is a ground state of the interaction $F+W(z)$. If $Y$ is $G$-invariant, then also $\hat{Y}$ can be chosen $G$-invariant.
+\end{restatable}
 Based on this result we can finish in a straighforward way the
 \begin{proof}[Proof of Proposition \ref{prop: small loop is contractible}]
 	By choosing $\epsilon$ in Lemma \ref{lem: loop is small} small enough, we can apply the spectral flow technique, i.e.\ Proposition \ref{prop: bhm}, to get generating TDIs for the paths $s\mapsto \psi_\lambda(s)$, and  $\lambda
@@ -1604,33 +1673,34 @@ Based on this result we can finish in a straighforward way the
 
 By combining Proposition~\ref{prop: small loop is contractible} with Proposition \ref{prop: loop contractible to small loop} we conclude 
 \begin{theorem}\label{thm: contractibility products}
-	Let $\phi$ be a pure $G$-invariant product state and let $\psi(\cdot)=\phi\circ\alpha_{H}(\cdot)$ be a $G$-loop such that $I(\phi,H)=0$, i.e.\ its index is zero, then the loop is homotopic to the constant loop $\Id_\phi$, via a homotopy with constant basepoint. 
+	Let $\phi$ be a product $G$-state and let $\psi(\cdot)=\phi\circ\alpha_{H}(\cdot)$ be a $G$-loop such that $I(\phi,H)=0$, i.e.\ its index is zero, then the loop is homotopic to the constant loop $\Id_\phi$, via a homotopy with constant basepoint. 
 \end{theorem}
+This theorem will be the main tool in the next Section \ref{sec: classification for product loops}. 
 
 
 \section{Classification of loops with product basepoint} \label{sec: classification for product loops}
 
-We are now ready to prove the full result for the case of loops with a fixed product basepoint. Throughout this section, $\caA$ is a fixed chain algebra equipped a fixed group action and $\phi$ is again a fixed pure, $G$-invariant product state. 
+We are now ready to state a full result for the case of loops with a fixed product basepoint. Throughout this section, we again let $\phi$ be a pure, $G$-invariant product state and we consider it fixed. 
 
 
 
 \subsection{Well-definedness of the index}
-Up to now, the index $I(\phi,H)$ was defined as a function of the TDI $H$ and the basepoint $\phi$, see Section~\ref{sec: states cut loop}. We prove now that for product basepoint, it actually depends only on the loop itself and not on the choice of TDI that generates it. 
+Up to now, the index $I(\phi,H)$ was defined as a function of the TDI $H$ and the basepoint $\phi$. We prove now that for product basepoint, it actually depends only on the loop itself and not on the choice of TDI that generates it. 
 \begin{lemma}\label{lem: index indep of h}
-	Let $H_1,H_2$ be $G$-invariant TDIs that generate loops with basepoint $\phi$. If the loops are equal, namely $\phi\circ\alpha_{H_1}(s)=\phi\circ\alpha_{H_2}(s)$ for all $s\in [0,1]$, then the relative charge of the pumped states  $\phi\circ\alpha_{H'_1}(s)$, $\phi\circ\alpha_{H'_2}(s)$ is zero and hence 
+	Let $H_1,H_2$ be $G$-invariant TDIs that generate loops with basepoint $\phi$. If
+	$$\phi\circ\alpha_{H_1}(s)=\phi\circ\alpha_{H_2}(s), \qquad s\in [0,1], $$ i.e.\ if the loops are equal, then the relative charge of the pumped states  $\phi\circ\alpha_{H'_1}(s)$, $\phi\circ\alpha_{H'_2}(s)$ is zero and hence 
 	$$
 	I(\phi,H_1)=I(\phi,H_2).
 	$$ 
 \end{lemma}
 \begin{proof}
-	By the same estimate as in Lemma \ref{lem: cut state} combined with Lemma \ref{lem: condition for normality}, we deduce that  $\phi\circ\alpha_{H'_1}(s)$ and $\phi\circ\alpha_{H'_2}(s)$ are mutually normal for all $s\in [0,1]$.  Therefore, $s\mapsto\xi(s)=\phi\circ\alpha_{H'_1}(s) \circ \alpha^{-1}_{H'_2}(s) $ is a weakly-* continuous (by the strong continuity of $s\mapsto \alpha_H(s)$) path of pure states that are normal with respect to $\phi$. Hence, it can be represented as a path of $G$-invariant, pure density matrices $\rho_s$  on $\caB(\caH)$, with $\caH$ the GNS Hilbert space associated to~$\phi$.  We now show that $s\mapsto \rho_{s}$ is norm-continous (i.e.\ with respect to the trace norm).   By similar reasoning as in the proof of Lemma \ref{lem: cut state} and the estimates in the proof of Lemma \ref{lem: condition for normality}, we deduce that 
-	$\lim_{r\to\infty}||\rho_s- \rho_s(r)||_1 =0 $,  uniformly in $s$, where 
-	$$ \rho_s(r)=  \frac{\Pi_{I_{r}^c}\rho_s \Pi_{I_{r}^c}}{\Tr[\Pi_{I_{r}^c}\rho_s \Pi_{I_{r}^c}]}.$$
-	Moreover, since for any fixed $r$, $\rho_s(r)$ takes values in a finite-dimensional space, weak-* continuity of $s\mapsto\xi(s)$ implies norm-continuity of $s\mapsto \rho_s(r)$. Hence, $s\mapsto \rho(s)$ is the uniform limit of a sequence of norm-continuous functions, and thereby itself norm-continuous. Therefore, the states $\xi(s)$ are $G$-equivalent to $\phi$ and so item i) of Proposition \ref{prop: zerodim} implies that the states $\rho_{\xi(s)}$ have zero relative charge with respect to $\rho_\phi$. Item iv) of the proposition and the definition of the index (Section~\ref{sec: states cut loop}) for mutually normal states then imply that $\phi\circ\alpha_{H'_1}(s)$ and $\phi\circ\alpha_{H'_2}(s)$ have zero relative charge.  
-	The claim of the lemma then follows by item ii) of Proposition~\ref{prop: zerodim}.
+	By the same estimate as in Lemma \ref{lem: cut state} combined with Lemma \ref{lem: condition for normality}, we deduce that  $\phi\circ\alpha_{H'_1}(s)$ and $\phi\circ\alpha_{H'_2}(s)$ are mutually normal for all $s\in [0,1]$.  Therefore, the states $\xi(s)=\phi\circ\alpha_{H'_1}(s) \circ \alpha^{-1}_{H'_2}(s) $ are normal to $\phi$ and the path $s\mapsto \xi(s)$ can be represented as a path of $G$-invariant, pure, normal states on $\caB(\caH)$, with $\caH$ the GNS Hilbert space associated to~$\phi$.  Moreover, since $s\mapsto \alpha_H(s)[A]$ is continuous for any $A\in\caA$ and TDI $H$, we get that 
+	$s\mapsto \xi(s)$ is continuous in weak $^*$-topology. Hence, item ii) of Proposition \ref{prop: zerodim} implies that the states $\xi(s)$ have zero relative charge with respect to $\phi$, and it follows then that also the mutually normal states 
+	$\phi\circ\alpha_{H'_1}(s)$ and $\phi\circ\alpha_{H'_2}(s)$ have zero relative charge.  
+	The claim of the lemma then follows by item i) of Proposition~\ref{prop: zerodim}.
 \end{proof} 
 
-Since the basepoint is fixed in this section, this result means that we can now consistenly use the notation $h(\psi)$ for a loop $\psi$, instead of the more tedious object $I(\phi,H)$. 
+In particular, this result means that we can now consistenly use the notation $h(\psi)$ for a loop $\psi$, instead of the more tedious object $I(\phi,H)$. 
 
 
 \subsection{Additivity of the index}
@@ -1664,19 +1734,19 @@ Since the basepoint is fixed in this section, this result means that we can now 
 	for $\hat{f}$ affiliated to $f$ and depending on $C_H$.
 	Then we calculate 
 	\begin{align}
-		\psi'(r) &= \phi \circ \alpha_{K_1}(1) \circ \alpha_{H'_2(r)}(1) 
-		=\phi \circ \alpha_{H'_2(r)}(1) \circ \alpha_{K_1+E(r)}(1) \nonumber \\
+		\psi'(r) &= \phi \circ \alpha_{K_1}(1) \circ \alpha_{H'_2(r)}(1) \nonumber\\
+		&=\phi \circ \alpha_{H'_2(r)}(1) \circ \alpha_{K_1+E(r)}(1) \nonumber \\
 		&=\phi \circ \alpha_{K_2(r)}(1) \circ \alpha_{K_1+E(r)}(1)\label{eq: double pumped repeat} 
 	\end{align}
-	The first and third equality follow from \eqref{eq: parallel for truncated pair}, and the second equality follows by the commutation formula \eqref{eq: commutation autos integrated}
-	with $E(r)=\alpha^{-1}_{H'_2(r)}[K_1]-K_1$.  Locality estimates based on the fact that $H'_2(r)$ is anchored in a region at distance $r$ from the origin, yield  $||E(r)||_{\{0,1\},\hat{f}}\to 0$ as $r\to\infty$ and therefore also
+	The first and third equality follow from \eqref{eq: parallel for truncated pair}, and the second equality follows by the commutation formula \eqref{eq: commutation autos}
+	with $E(r)=\alpha^{-1}_{H'_2(r)}(K_1)-K_1$.  Locality estimates based on the fact that $H'_2(r)$ is anchored in a region at distance $r$ from the origin, yield  $||E(r)||_{\{0,1\},\hat{f}}\to 0$ as $r\to\infty$ and therefore also
 	\begin{equation}\label{eq: psiprime cauchy}
 		||   \psi'(r) -  \phi \circ \alpha_{K_2(r)}(1) \circ \alpha_{K_1}(1) || \to 0
 	\end{equation}
 	As $K_1,K_2(r)$ are anchored in a finite set, we have $K_1=\Adjoint(V_1), K_2(r)=\Adjoint(V_2(r)) $ and by the locality properties we deduce that  $ ||[V_1,\gamma(g)[V_2(r)]|| \to 0$.
-	We let the pure density matrix $\rho^{(r)}$ represent the (pure) pumped state $\psi'(r)$ and we write $W_j = \pi(V_j)$.  Then \eqref{eq: psiprime cauchy} reads in the GNS representation
+	We let the pure density matrix $\rho^{(r)}$ represent the (pure) pumped state $\psi'(r)$ and we write.  Then \eqref{eq: psiprime cauchy} reads in the GNS representation
 	\begin{equation}\label{eq: factor charges}
-		|| \rho^{(r)}-  \Adjoint(W^*_1 W^*_2(r))\Pi  ||_1 \to 0,
+		|| \rho^{(r)}-  \Adjoint(W^*_1 W^*_2(r))\Pi  ||_1 \to 0, \qquad W_1=\pi(V^*_1), W_2(r)=\pi(V^*_2(r))
 	\end{equation}
 	with $\Pi$, as before, the pure density matrix corresponding to the state $\phi$, and 
 	\begin{equation}\label{eq: commutation unitaries}
@@ -1686,9 +1756,9 @@ Since the basepoint is fixed in this section, this result means that we can now 
 	\begin{equation} \label{eq: control of additivity}
 		d(h(\psi_2\loopc\psi_1),h(\psi_2)+h(\psi_1)) \leq {C_{\bbS^1}}\sup_{g\in G}\left| \Tr [ \rho^{(r)} U(g)] - e^{i(h_1(g)+h_2(g))}   \right|, \qquad h_j=h(\psi_j)
 	\end{equation}
-	for any  $r\in\bbN^+$, with $C_{\bbS^1}=\sup_{\theta\in[0,\pi]}\frac{\theta}{|e^{i\theta}-1|}$.    We use \eqref{eq: factor charges}, \eqref{eq: commutation unitaries} and the definitions of the separate charges
+	for any  $r\in\bbN^+$, with $C_{\bbS^1}=\sup_{\theta\in\bbS^1}\frac{|\theta|}{|e^{i\theta}-1|}$.    We use \eqref{eq: factor charges}, \eqref{eq: commutation unitaries} and the definitions of the separate charges
 	$$
-	U(g)\Adjoint(W^*_j)\Pi =   e^{i h_j(g)}  \Adjoint(W^*_j)\Pi,\qquad  j=1,2,
+	U(g)\Adjoint(W^*_1)\Pi =   e^{i h_1(g)}  \Adjoint(W^*_1)\Pi,\qquad  U(g)  \Adjoint(W^*_2(r))\Pi =   e^{i h_1(g)}   \Adjoint(W^*_2(r))\Pi
 	$$
 	to argue that the right hand side of \eqref{eq: control of additivity} vanishes as $r\to\infty$, which concludes the proof. 
 	%
@@ -1739,7 +1809,7 @@ Since the basepoint is fixed in this section, this result means that we can now 
 	where the last equality follows from the fact that $\psi_\lambda(\cdot)$ is a loop for every $\lambda$. Moreover, $\nu$ is a loop with basepoint $\phi$ because the loops $\psi_0$ and $\psi_1$ both have basepoint $\phi$.
 	
 	We now take the set $\caS=\caS(f,\phi,C_0)$ as defined in Section \ref{sec: states cut loop} and we take $\epsilon$ as furnished by Proposition \ref{prop: finite index set}. Note that $\epsilon$ depends on $\caS$.
-	We set $N=1/\lfloor C_0\epsilon\rfloor$ and $\caT_N=\{k/N:k=0,\ldots,N\}$. For any $t\in\caT_{2N} \setminus \{1\}$, we denote by $\hat{t}$ its successor, i.e.\ $\hat{t}=t+\tfrac{1}{2N}$.
+	We set $N=1/(C_0\epsilon)$ and $\caT_N=\{0,1/N,\ldots,1\}$. For any $t\in\caT_{2N} \setminus \{1\}$, we denote by $\hat{t}$ its successor, i.e.\ $\hat{t}=t+\tfrac{1}{2N}$.
 	We consider functions $x: \caT_{2N} \to \caT_{N}^2 $ that satisfy
 	\begin{enumerate}
 		\item $x(0)=(0,0)$
@@ -1786,7 +1856,8 @@ Since the basepoint is fixed in this section, this result means that we can now 
 	x(t)=\begin{cases} (0,2t) &  t \leq \tfrac{1}{2} \\
 		(2(t- \tfrac{1}{2}),1) &  t  > \tfrac{1}{2} \\
 	\end{cases}
-	\qquad
+	$$
+	$$
 	y(t)=\begin{cases} (2t,0) &  t \leq \tfrac{1}{2} \\
 		(1, 2(t- \tfrac{1}{2}) ) &    t  > \tfrac{1}{2}  \\
 	\end{cases}
@@ -1803,13 +1874,17 @@ Since the basepoint is fixed in this section, this result means that we can now 
 			\label{fig: connected walks}
 		\end{center}
 	\end{figure} 
-	The walk $x$ correspond to the loop $\psi_1\loopc\nu$ and the walk $y$ corresponds to $\nu\loopc\psi_0$. These two loops have hence the same index and by using the additivity Lemma \ref{lem: additivity}, we conclude that $h(\nu)+h(\psi_0)= h(\psi_1)+h(\nu)$ which implies  $h(\psi_0)= h(\psi_1)$. 
+	The walk $x$ correspond to the loop $\psi_1\loopc\nu$ and the walk $y$ corresponds to $\nu\loopc\psi_0$. These two loops have hence the same index and by using the additivity Lemma \ref{lem: additivity}, we conclude that
+	$$
+	h(\nu)+h(\psi_0)= h(\psi_1)+h(\nu)
+	$$
+	which implies  $h(\psi_0)= h(\psi_1)$. 
 \end{proof}
 
 
 \subsection{Homeomorphism property of $h$}\label{sec: group homomorfism}
 
-We have already established that $h$ maps the concatenation of loops into the sum of charges. We would like to state that $h$ is a homeomorphism, but as it stands, the concatenation  of loops admits neither an identity nor an inverse. This can be remedied by using ($G$)-homotopy to define equivalence classes of loops. The following lemma shows that $h$ acts as a homeomorphism from homotopy classes to $H^1(G)$. 
+We have already established that $h$ maps the concatenation of loops into the sum of charges. We would like to state that $h$ is a homeomorphism, but as it stands, the concatenation  of loops admits neither an identity nor an inverse. This can be remedied by using ($G$)-homotopy to define equivalence classes of loops. The following lemma shows that $h$ acts as a homeomorphism from homotopy classes to $H^1$. 
 Let $\Id_\phi$ be the constant loop with basepoint $\phi$, i.e.\ $\phi(s)=\phi$, and recall the definition of the inverse ${\psi^{\theta}}(s)=\psi(1-s)$ associated to a loop  $\psi$.
 \begin{lemma}\label{lem: inverse loop}
 	Let $\psi$ be a $G$-invariant loop with basepoint $\phi$. Then
@@ -1833,32 +1908,40 @@ Let $\Id_\phi$ be the constant loop with basepoint $\phi$, i.e.\ $\phi(s)=\phi$,
 	$$
 	by the definition of ${\psi^{\theta}}$, resolving the apparent incongruence between $s\leq 1/2$ and $s>1/2$ in the definition of $\zeta_\lambda(s)$. 
 	The homotopy property of $(s,\lambda)\mapsto \zeta_\lambda(\cdot)$ now follows because $\psi,{\psi^{\theta}}$ are loops and using Lemma \ref{lem: composition of loops is homotopic to concatenation} item i). 
-	We then remark that $\zeta_0(\cdot)= {\psi^{\theta}}\loopc\psi$ and $\zeta_1(\cdot)= \Id_\phi\loopc\Id_\phi=\Id_\phi$ which settles item ii). Finally, by additivity and item i), $
+	We then remark that
+	$$
+	\zeta_0(\cdot)= {\psi^{\theta}}\loopc\psi, \qquad  \zeta_1(\cdot)= \Id_\phi\loopc\Id_\phi=\Id_\phi
+	$$
+	which settles item ii). Finally, by additivity and item i):
+	$$
 	h({\psi^{\theta}})+h(\psi)= h({\psi^{\theta}}\loopc\psi)= h(\Id_\phi)= 0
-	$
+	$$
 	which implies item iii). 
 \end{proof}
 
 
 \subsection{Completeness of classification}
-\begin{proposition}\label{lem: completeness products}
-	If a pair of $G$-invariant loops $\psi_1(\cdot)$ and $\psi_2(\cdot)$ with common basepoint $\phi$ have equal index, then they are $G$-homotopic.  
-\end{proposition}
+We now prove that our classification is complete.
+\begin{lemma}\label{lem: completeness products}
+	If a pair of $G$-invariant loops $\psi_1(\cdot)$ and $\psi_2(\cdot)$ have equal index, then they are $G$-homotopic.  
+\end{lemma}
 \begin{proof}
-	The loop $\psi^\theta_2\loopc\psi_1$ has index zero, by Lemma \ref{lem: inverse loop} and Lemma \ref{lem: additivity}.  By Theorem \ref{thm: contractibility products}, this loop is $G$-homotopic to the constant loop $\Id_\phi$.  Let $\zeta_\lambda(s)$ be this homotopy, satisfying also $\zeta_\lambda(0)=\zeta_\lambda(1)=\phi$. 
+	Indeed, the loop $\psi^\theta_2\loopc\psi_1$ has index zero, by Lemma \ref{lem: inverse loop} and Lemma \ref{lem: additivity}.  By Theorem \ref{thm: contractibility products}, this loop is $G$-homotopic to the constant loop $\Id_\phi$.  Let $\zeta_\lambda(s)$ be this homotopy, satisfying also $\zeta_\lambda(0)=\zeta_\lambda(1)=\phi$. 
 	We now construct two derived homotopies $\nu$ and $\omega$ by 
-	\begin{equation*}
+	\begin{equation}\label{Homotopy Classification}
 		\nu_\lambda(s)=\begin{cases} \zeta_\lambda(s)  &  s\leq 1/2 \\
 			\zeta_{\lambda-(2s-1)\lambda}(1/2)   &  s > 1/2
-		\end{cases},\qquad
+		\end{cases}
+	\end{equation}
+	\begin{equation}
 		\omega_\lambda(s)=\begin{cases} \zeta_\lambda(1-s)  &  s\leq 1/2 \\
 			\zeta_{\lambda-(2s-1)\lambda}(1/2)   &  s > 1/2
-		\end{cases}.
-	\end{equation*}
+		\end{cases}
+	\end{equation}
 	\begin{figure}[h] 
 		\begin{center}
 			\includegraphics[width=0.4\textwidth]{homotopycontraction.pdf}
-			\caption{The square represents the homotopy $(s,\lambda)\mapsto \zeta_\lambda(s)$. In this square we show the loops $\nu_\lambda(\cdot)$ and $\omega_\lambda(\cdot)$ building the homotopies $\nu$ and $\omega$. }
+			\caption{We square represents the homotopy $(s,\lambda)\mapsto \zeta_\lambda(s)$. In this square we show the loops $\nu_\lambda(\cdot)$ and $\omega_\lambda(\cdot)$ building the homotopies $\nu$ and $\omega$. }
 			\label{fig: homotopycontraction}
 		\end{center}
 	\end{figure}
@@ -1867,24 +1950,28 @@ Let $\Id_\phi$ be the constant loop with basepoint $\phi$, i.e.\ $\phi(s)=\phi$,
 	The fact that $s\mapsto \nu_\lambda(s) $ and $\lambda\mapsto \nu_\lambda(s)$ are generated by uniformly bounded TDIs, follows from the fact that $(s,\lambda)\mapsto \zeta_\lambda(s)$ is a homotopy and from Lemma \ref{lem: time-rescaling almost local evolutions}. 
 	Then, by construction,  $\zeta_0(1/2)=\phi$ and $\zeta_{\lambda}(0)=\phi$ so that $\nu_\lambda(\cdot)$ are loops with basepoint $\phi$. This confirms that  $(s,\lambda)\mapsto \nu_\lambda(s)$ is indeed a homotopy.  In an analogous way, one checks that  $(s,\lambda)\mapsto \omega_\lambda(s)$ is a homotopy.   In Figure \ref{fig: homotopycontraction}, we illustrate how $\nu$ and $\omega$ are derived from $\zeta$.
 	We define also the path $\kappa(z)=\zeta_{z}(1/2)$ and note that this path is in fact a loop. Indeed, $\kappa(1)=\phi$ because the original homotopy $\zeta$ reduces for $\lambda=1$ to  $\Id_\phi$, and $\kappa(0)=\zeta_0(1/2)=\phi$ as already used above. 
-	We are now ready to analyze the homotopies $\nu$ and $\omega$, following the definitions. Since $\zeta_0 = \psi^\theta_2\loopc\psi_1$, we have that $\zeta_0(s) = \psi_1(2s)$ for $s\leq 1/2$. Hence,
+	We are now ready to analyze the homotopies $\nu$ and $\omega$. 
+	For $\lambda=0$, it reduces to
 	$$
-	\nu_0 = \Id_{\phi}\loopc\psi_1.
+	\Id_{\phi}\loopc\psi_1.
 	$$
-	For $\lambda=1$, $\zeta_0 = \Id_{\phi}$ while $\zeta_{2-2s}(1/2) = \kappa^\theta(2s)$ and so
+	For $\lambda=1$, it reduces to 
 	\begin{equation}\label{eq: new endpoint homo}
-		\nu_1 = \kappa^\theta\loopc \Id_{\phi}.
+		\widetilde\kappa\loopc \Id_{\phi}.
 	\end{equation}
-	Similarly, $\zeta_0(1-s) = \psi_2(2s)$ and so
+	
+	It is also represented in Figure \ref{fig: homotopycontraction}. To verify that $\omega$ is a homotopy, we proceed analogously as for $\nu$.
+	The homotopy $\omega$ reduces for $\lambda=0$ to the loop 
 	$$
-	\omega_0 = \Id_{\phi}\loopc\psi_2
+	\Id_{\phi}\loopc\phi_2
 	$$
-	and $\omega_1 = \nu_1$. We conclude that $
-	\Id_{\phi}\loopc\psi_1 
+	and for $\lambda=1$ to the loop \eqref{eq: new endpoint homo}.
+	Hence, we conclude that $
+	\Id_{\phi}\loopc\phi_1 
 	$ and $
-	\Id_{\phi}\loopc\psi_2 
+	\Id_{\phi}\loopc\phi_2 
 	$
-	are homotopic to the same loop \eqref{eq: new endpoint homo} and hence to each other. It follows that $\psi_1$ is  homotopic to $\psi_2$.
+	are homotopic to the same loop \eqref{eq: new endpoint homo} and hence to each other. It follows that $\phi_1$ is  homotopic to $\phi_2$.
 \end{proof}
 
 \section{Proof of main theorems}\label{sec: proofs of main}
@@ -1894,7 +1981,7 @@ In Section \ref{sec: classification for product loops}, we proved all results of
 \subsection{Proof of Proposition \ref{prop: equivalence of states}} \label{sec: proof of equivalence propo}
 Let $\psi\circ\alpha_H(\cdot)$ be loop. We let $\overline{\psi}$ be an inverse to the basepoint $\psi$, such that
 \begin{equation} \label{eq: relation to phi}
-	\phi=\psi \otimes \overline{\psi} \circ \beta^{-1}.
+	\phi=\psi \otimes \overline{\psi} \circ \beta^{-1}
 \end{equation}
 where $\phi$ is a product state and $\beta=\alpha_{E}(1)$ for some TDI $E$.  As in the text preceding Proposition~\ref{prop: equivalence of states}, we let $\psi'=\psi \circ \alpha_{H'}(1)$ with $H'$ the truncated TDI. Let also
 \begin{equation} \label{eq: relation to phiprime}
@@ -1902,7 +1989,7 @@ where $\phi$ is a product state and $\beta=\alpha_{E}(1)$ for some TDI $E$.  As 
 \end{equation}
 By the uniqueness of the GNS-representation, normality of $\psi'$ w.r.t.\ $\psi$ is equivalent to normality of $\psi'\otimes\overline{\psi}$ w.r.t.\  $\psi\otimes\overline{\psi}$. By \eqref{eq: relation to phi} and \eqref{eq: relation to phiprime}, it is therefore also equivalent to normality of $\phi'$ w.r.t.\  $\phi$. By equation \eqref{eq: commutation autos integrated}, we have (here we write $\alpha_{H'}$ for $\alpha_{H'}\otimes \mathrm{id}$)
 $$
-\phi'= \phi  \circ \beta \circ \alpha_{H'}(1) \circ \beta^{-1} =   \phi  \circ \alpha_{\beta(H')}(1).
+\phi'= \phi  \circ \beta \circ \alpha_{H'}(1) \circ \beta^{-1} =   \phi  \circ \alpha_{\beta(H')}(1)   
 $$
 Since $\phi  \circ \alpha_{\beta(H)}(\cdot)$ is a loop with product basepoint, the state $\phi  \circ \alpha_{\beta(H)'}(1)$ is normal with respect to $\phi$ by Lemma~\ref{lem: cut state}.  
 Moreover, by Lemma \ref{lem: local perturbation tdi}, and the fact that $\beta(H)'-\beta(H')$ is a TDI anchored in a finite set, we get that 
@@ -1913,7 +2000,7 @@ Since normality of pure states is a transitive relation, the claim is proven.
 
 \subsection{Loops whose basepoint is $G$-equivalent to a product}\label{sec: loops with equivalent base}
 
-As a first step in dealing with loops with non-product basepoint, we formulate a lemma for loops whose basepoint is $G$-equivalent (as opposed to stably $G$-equivalent) to a product state. 
+As a first step in dealing with loops with non-product basepoint, we formulate a lemma for loops whose basepoint is $G$-equivalent to a product state. 
 \begin{lemma}\label{lem: loops with prod equiv}
 	Let $\psi$ be a $G$-loop generated by the TDI $H$, such that, for some  $G$-invariant TDI $K$ and a product state $\phi$, 
 	$$\phi=\psi(0)\circ \alpha^{-1}_K(1).$$ 
@@ -1927,7 +2014,7 @@ As a first step in dealing with loops with non-product basepoint, we formulate a
 	\end{equation} 
 \end{lemma}
 \begin{proof}
-	Recalling the definition of Section~\ref{sec:Concatenation of evolutions}, we note that the loop $\nu$ is such that  ${\alpha_{K}}$ is traversed between times $s=0$ and $s=1/4$, $\alpha_{H}$ is traversed between $s=1/4$ and $s=1/2$, and ${\alpha^\theta_{K}}$ is traversed between $s=1/2$ and $s=1$. We define the homotopy, illustated in   Figure \ref{fig: homotopytoproductbase}, 
+	We note that the loop $\nu$ is such that the evolution  ${\alpha_{K}}$ is traversed between times $s=0$ and $s=1/4$, $\alpha_{H}$ is traversed between $s=1/4$ and $s=1/2$, and ${\alpha^\theta_{K}}$ is traversed between $s=1/2$ and $s=1$. We define the homotopy, illustated in   Figure \ref{fig: homotopytoproductbase}, 
 	\begin{figure}[h] 
 		\begin{center}
 			\includegraphics[width=0.7\textwidth]{BasePoint.pdf}
@@ -1950,17 +2037,18 @@ As a first step in dealing with loops with non-product basepoint, we formulate a
 	\mu_\lambda(0) =\nu(\lambda/4 )=\psi(\lambda) ={\psi^\theta}(1-\lambda)= \nu(1-\lambda/2)=         \mu_\lambda(1). $$
 	This homotopy connects the loop $\nu$ with the loop $(\Id_{\psi(0)} \loopc \psi) \loopc  \Id_{\psi(0)}$ and the latter is clearly homotopic to $\psi$, which settles the first claim of the lemma. 
 	Since we have not yet proven in general that homotopy preserves the index,  we need another argument to get \eqref{eq: equality index inter}.  The pumped state of the loop $\nu(\cdot)$ is
-	\begin{equation}\label{Complicated Pumped State}
-		\phi \circ   \alpha_{K'}(1)\circ \alpha_{H'}(1) \circ \alpha_{(K')^\theta}(1)=  
-		\phi \circ   \alpha_{K'}(1)\circ \alpha_{H'}(1) \circ  \alpha_{K'}^{-1}(1) = 
-		\phi \circ \alpha_{\alpha_{K'}(1)[H']}(1) 
-	\end{equation}
+	$$
+	\phi \circ   \alpha_{K'}(1)\circ \alpha_{H'}(1) \circ \alpha_{(K')^\theta}(1)=  
+	\phi \circ   \alpha_{K'}(1)\circ \alpha_{H'}(1) \circ  \alpha_{K'}^{-1}(1) = 
+	\phi \circ \alpha_{\alpha_{K'}(1)[H']}(1)
+	$$
 	where the first expression follows because  $(K')^\theta=(K^\theta)'$ with $K^\theta$ the TDI generating ${\alpha^\theta_K}$, i.e.\ ${K^\theta(s)}=-K(1-s)$. 
 	Then, we observe that 
 	$$
 	\alpha_{K}(1)[H']-\alpha_{K'}(1)[H']
 	$$
-	is a $G$-invariant TDI anchored in $\{0,1\}$. This follows from Duhamel's formula (\ref{Duhamel}) and Lemma \ref{lem: loc and liebrobinson} since $[K-K',\alpha_{K'}(\cdot,\cdot)[H']]$ is anchored\footnote{Here, we assume without loss that all interaction terms are supported on intervals. Indeed, for any finite set $X$, we have that $\caA_X\subset\caA_{[\min(X),\max(X)]}$.} in $\{0,1\}$. This implies then by Lemma \ref{lem: local perturbation tdi} item~ii) that the pumped state~(\ref{Complicated Pumped State}) has zero relative charge w.r.t. the state
+	is a $G$-invariant TDI anchored in $\{0,1\}$. That follows by Duhamel's principle from  the fact that 
+	$[K-K',H']$ is anchored in $\{0,1\}$ and from Lemma \ref{lem: loc and liebrobinson}. This implies then by Lemma \ref{lem: local perturbation tdi} item ii) that the pumped state has zero relative charge w.r.t. the state
 	$$
 	\phi \circ \alpha_{\beta[H']}(1)= \phi \circ \beta \circ \alpha_{H'}(1) \circ \beta^{-1}
 	$$
@@ -1975,34 +2063,43 @@ As a first step in dealing with loops with non-product basepoint, we formulate a
 	$$
 	since the latter are the pumped state and basepoint, respectively, of the loop $\psi$.
 	This equality of relative charges follows then from item $v)$ of Proposition \ref{prop: zerodim}, taking $\delta=\beta$.
+	%Therefore, our proof is complete if we verify the more general claim that 
+	%\begin{equation} \label{eq: stability of charges under autos}
+	%h_{\frac{\omega}{\nu}}=  h_{\frac{\omega \circ\gamma}{\nu\circ\gamma}}
+	%\end{equation}
+	%for any pure $G$-invariant states $\omega$ and $G$-invariant $*$-automorphism $\gamma$.  
+	%The equality \eqref{eq: stability of charges under autos} follows readily by the uniqueness up to unitary equivalence of the GNS representation. 
 \end{proof}
 
 
 \subsection{Tensor products}\label{sec: tensor products}
 
 Given two $G$-loops $\psi_1,\psi_2$ on spin chain algebra's $\caA_1,\caA_2$, generated by TDIs $H_1,H_2$, we can consider the product loop 
-$
+$$
 \psi_1 \otimes\psi_2
-$
+$$
 on the spin chain algebra $\caA_1\otimes\caA_2$,
 generated by the TDI
 $$
 H_1\otimes \Id +\Id \otimes H_2.
 $$
-The truncation of this TDI to the left equals the sum of truncated TDIs $H'_1\otimes \Id + \Id \otimes H'_2$ and it then follows that the pumped state is a tensor product of pumped states 
-$
+The truncation of this TDI to the left equals the sum of truncated TDIs $H'_1\otimes \Id + \Id \otimes H'_2$ and it then follows that the pumped state is given by a tensor product of pumped states 
+$$
 \psi_1(0) \circ\alpha_{H'_1}(1) \otimes \psi_2(0) \circ\alpha_{H'_2}(1)
-$ and so
+$$  
+From Proposition \ref{prop: zerodim} item iii),  it then follows that the index is additive, i.e.
 $$
 I(\psi_1(0) \otimes \psi_2(0),H_1\otimes \Id +H_2\otimes \Id ) =
 I(\psi_1(0),H_1 ) + I(\psi_2(0),H_2) 
 $$
-Proposition \ref{prop: zerodim} item iii).
 
-We will establish in the next sections that the index depends only on the loop and not on the generating TDI, but we can already see that, if a loop is generated by the TDI $H=0$, then its index is zero. Hence, any $G$-loop $\psi$  generated by $H$ can be extended to a $G$-loop  $\psi\otimes \Id_\nu$, with $\nu$ a $G$-state, generated by $H\otimes\Id$, such that the index does not change, i.e.\
+We will establish in the next sections that the index depends only on the loop and not on the generating TDI, but we can already see that, if a loop is generated by the TDI $H=0$, then its index is zero. This observation allows us to extend any $G$-loop $\psi$  generated by $H$ to a $G$-loop  $\psi\otimes \Id_\nu$, with $\nu$ a $G$-state, generated by $H\otimes\Id$, such that the index does not change, i.e.\
 \begin{equation} \label{eq: index adjoining constant loop}
-	I(\psi(0)\otimes\nu,H\otimes \Id)=I(\psi(0) ,H).
+	I(\psi(0)\otimes\nu,H_1\otimes \Id)=I(\psi(0) ,H)
 \end{equation}
+
+Such operations will be used repeatedly in what follows.
+
 
 \subsection{The associated loop}
 The main tool that we will use in the remaining proofs is that every $G$-loop can be related to a loop with product basepoint, such that they have the same index.
@@ -2010,17 +2107,21 @@ We consider hence a general $G$-loop $\psi$ and we let $\overline{\psi(0)}$ be a
 
 \begin{lemma} \label{lem: equivalence associated loop}  
 	Let $\psi$ be a $G$-loop generated by the TDI $H$. There is a $G$-loop $\psi^A$ with product basepoint such that
-	$
-	h(\psi^A)=I(\psi(0),H)
-	$.
+	$$
+	h(\psi^A)=I(\psi(0),H).
+	$$
 \end{lemma}
 
-\subsection{Proof of Theorems \ref{thm: classification loops} and \ref{thm: pump index}}
+
+We will use the associated loops frequently in the analysis below.
+
+\subsection{Proof of Theorem \ref{thm: classification loops} and \ref{thm: pump index}}
 
 
 \subsubsection{Well-definedness of the index}
 
-If we have two TDIs $H_1,H_2$ that both generate a loop $\psi$, then by definition, that the associated loops can be chosen equal. Hence, by the results in Section \ref{lem: index indep of h}, their index is equal and hence also 
+Given a loop $\psi$ generated by a TDI $H$, we have argued that we can define an associated loop $\psi^A$ with the same index, in the sense of Lemma \ref{lem: equivalence associated loop}.
+If we have two TDIs $H_1,H_2$ that both generate the loop $\psi$, we see, by the definition of associated loops, that the associated loops can be chosen equal. Hence, by the results in Section \ref{lem: index indep of h}, their index is equal and hence also 
 $ I(\psi(0),H_1)= I(\psi(0),H_2) $. Therefore, also for loops with a non-product basepoint, the index $I(\cdot,\cdot)$ depends only on the loop itself. 
 We can henceforth use the notation $h(\cdot)$. In particular, this means that Theorem \ref{thm: pump index} is proven once we establish all the properties of the index $h(\cdot)$ claimed in Theorem \ref{thm: classification loops}, which we do now.
 
@@ -2035,10 +2136,11 @@ Item i) If a loop is constant, we can choose the generating TDI $H=0$. In that c
 
 Item ii)  The examples described in Section \ref{sec: examples} realize every $h\in H^1(G)$.
 
-We prove item iii) by reducing it to the already treated case of a product basepoint using associated loops. Let the $G$-loops $\psi_1,\psi_2$ be stably $G$-homotopic. Then by definition (see Section~\ref{sec: stable homotopy})  these loops are $G$-homotopic to each other upon adjoining constant loops with product basepoint. From Section \ref{sec: tensor products}, we know that this extension does not change their respective index. Hence without loss of generality we assume henceforth that $\psi_1,\psi_2$ are $G$-homotopic. 
-Consider an associated loop $\psi_1^{A}$ with product basepoint $\phi$, obtained by adjoining an inverse $\overline{\psi_1(0)}$. Since $\psi_1(0)$ and $\psi_2(0)$ are $G$-equivalent states, so are $\psi_1(0) \otimes \overline{\psi_1(0)}$ and $\psi_2(0)\otimes \overline{\psi_1(0)}$ and hence also $\psi_2$ has an associated loop $ \psi_2^A$ with basepoint $\phi$. By construction, the two loops $\psi_1^A,\psi_2^A$ are loops of states on the same algebra. Moreover, $\psi_j^A$ are stably homotopic to $\psi_j$ for $j=1,2$ and since the latter are $G$-homotopic to each other by assumption, we conclude that $\psi_1^A$ is $G$-homotopic to $\psi_2^A$.  Since they share a product basepoint, these loops have equal index, by the results in Section \ref{sec: classification for product loops}.  By Lemma \ref{lem: equivalence associated loop}  it then follows that also $\psi_1,\psi_2$ have equal index.
+Item iii) Let the $G$-loops $\psi_1,\psi_2$ be stably $G$-homotopic. From Section \ref{sec: tensor products}, we know that by adjoining constant loops with product basepoint, we can make these loops $G$-homotopic without changing their respective indices. Hence without loss of generality we assume henceforth that $\psi_1,\psi_2$ are $G$-homotopic. 
+Consider an associated loop $\psi_1^{A}$ with product basepoint $\phi$, obtained by adjoining an inverse $\overline{\psi_1(0)}$. Since $\psi_1(0)$ and $\psi_2(0)$ are $G$-equivalent, so are $\psi_1(0) \otimes \overline{\psi_1(0)}$ and $\psi_2(0)\otimes \overline{\psi_1(0)}$ and hence also $\psi_2$ has an associated loop $\psi_2^A$ with basepoint $\phi$.
+Since for $j=1,2$ the loop $\psi_j$ is stably $G$-homotopic to the loop $\psi_j^A$, and the loops  $\psi_1,\psi_2$ are $G$-homotopic to each other, also $\psi_1^A,\psi_2^A$ are $G$-homotopic.  Since they share a product basepoint, these loops have equal index, by the results in Section \ref{sec: classification for product loops}.  By Lemma \ref{lem: equivalence associated loop}  it then follows that also $\psi_1,\psi_2$ have equal index.
 
-Item iv) Here again, we can reduce the problem tho that of loops with product basepoints. For a pair $\psi_1,\psi_2$ of $G$-loops with common basepoint, we find a pair of associated loops $\psi^A_1,\psi^A_2$ with common basepoint $\phi$. 
+Item iv) For a pair $\psi_1,\psi_2$ of $G$-loops with common basepoint, we find a pair of associated loops $\psi^A_1,\psi^A_2$ with common basepoint $\phi$. 
 We note first that
 $$
 (\psi_2\loopc\psi_1)^A \quad \text{is homotopic to}\quad  \psi^A_2\loopc\psi^A_1
@@ -2052,11 +2154,12 @@ $\psi_1,\psi_2$ are $G$-equivalent. Let $\overline{\psi_1(0)}$ be a $G$-inverse 
 \begin{equation} \label{eq: two stable loops}
 	\psi_j \otimes \Id_{\overline{\psi_1(0)}}  \otimes \Id_{\psi_1(0)}, \qquad j=1,2
 \end{equation}
-and we claim that they are $G$-homotopic. This yields the required stable $G$-homotopy of the original loops, since the adjoined product of constant loops is homotopic to a constant  loop with product basepoint. As in item iii), the loops 
-$
+and we argue that they are $G$-homotopic, which will yield the required stable $G$-homotopy of the original loops, since the adjoined product of constant loops is homotopic to a constant  loop with product basepoint. 
+To show that \eqref{eq: two stable loops} are $G$-homotopic, we actually prove that 
+$$
 \psi_j \otimes \Id_{\overline{\psi_1(0)}} 
-$
-are $G$-homotopic to the associated loops $\psi^A_j$ which can be chosen to have the same product basepoint. The assumption $h(\psi_1)=h(\psi_2)$ implies that $h(\psi^A_1)=h(\psi^A_2)$ and hence $\psi^A_1,\psi^A_2$ are $G$-homotopic by Proposition~\ref{lem: completeness products}. This in turn implies that the loops in~(\ref{eq: two stable loops}) are $G$-homotopic indeed.
+$$
+are $G$-homotopic. These respective loops are homotopic to the assocated loops $\psi^A_j$, which can be chosen to have the same product basepoint, by the same reasoning as in item iv).  From $h(\psi_1)=h(\psi_2)$, we deduce that $h(\psi^A_1)=h(\psi^A_2)$ and hence $\psi^A_1,\psi^A_2$ are $G$-homotopic by Lemma~\ref{lem: completeness products}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Keep the following \cleardoublepage at the end of this file, 
