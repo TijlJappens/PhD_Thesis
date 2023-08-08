@@ -4,7 +4,7 @@
 \section{A rigorous mathematical framework}
 \label{sec:ToolsForQuantumManyBody}
 In the last few sections, I have made statements like: "the right half part of this state transforms under a projective representation" or "the restriction to the right of the loop operator applied on the product state creates a zero-dimensional SPT". With both statements is one common flaw though. These statements were meant for the situation where the lattice is $\ZZ$ but in this case, there is no notion of a full Hilbert space. Both for defining representations and for defining zero-dimensional SPT states I need a Hilbert space\footnote{For defining a zero-dimensional SPT consistent with how it was described in the previous section I even need a finite Hilbert space. However, it is straightforward to extend the notion to any separable Hilbert space.}. This begs the question, on what Hilbert space is this true? Similar problems can be found with the sum of local terms operators introduced in the beginning (see for example the $K$ in definition \ref{def:ConnectedStates}). If the lattice is non-compact, there is no reason for the sum over the local terms to be convergent.\\\\
-In this section, we will develop some definitions and mathematical tools that are most frequently used in this thesis. They are used to address some of these issues as well as allowing us to generalize some of our previously made statements.
+In this section, we will develop some definitions and mathematical tools that are most frequently used in this thesis. They are used to address some of these issues as well as allow us to generalize some of our previously made statements.
 \subsection{The quasi-local $C^*$-algebra}
 First, we define the operator algebra we will be working on. To do this, we first choose a lattice. This is a discrete set, $\Gamma$ with some notion of distance on it which we will denote by $d:\Gamma^2\rightarrow \RR$. In this thesis, we will mainly be working with three lattices. That is, the lattice with one point ($\ZZ_1$), the one dimensional lattice ($\ZZ$) and the two dimensional lattice ($\ZZ^2$).\\\\
 Next, we must create the operator algebra. This will be very similar to what we did in figure \ref{fig:Lattice}. We first fix an on-site Hilbert space. As we did before, we can still simply take $\CC^d$ for some integer $d\in\NN$ (where $d$ could possibly depend on the site). Next, we define the local algebra. To this end, let $\mathfrak{B}_{\Gamma}$. For any $\Lambda\in\mathfrak{B}_\Gamma$ we define the algebra over $\Lambda$ through:
@@ -25,7 +25,7 @@ and by identifying any two operators that can be embedded into the same operator
 \end{equation}
 is called the quasi-local $C^*$-algebra\footnote{More generally $C^*$-algebras are just Banach algebras (with a norm) and an adjoint but all the $C^*$ algebras considered in this thesis will either be bounded operators on some separable Hilbert space or quasi-local $C^*$ algebras on some lattice.}.
 \subsection{The on-site group action}
-The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case however, there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
+The definition of the on-site group action is again very similar to what we did in section \ref{sec:enriching-the-trivial-phase-with-symmetry} (see figure \ref{fig:GroupActionQuantumCirquit} in particular). We define a group homomorphism on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. In this case, however, there is no full Hilbert space and therefore, there is no unitary representation of the full group action. It is however very easy to define the adjoint group action on any local operator. Indeed, let $A\in\AA_{\text{loc}}$ be an operator with support in some finite set $\Lambda\in\mathfrak{B}_{\Gamma}$ then we can define
 \begin{equation}
 \beta^\Lambda_{g}(A)=\Ad{\bigotimes_{i\in\Lambda}U_i(g)}(A).
 \end{equation}
@@ -65,7 +65,7 @@ One of the properties of $F$-local interactions is that they can be used to gene
 \begin{equation}
 \Phi:\mathfrak{G}_{\Gamma}\times [0,1]\rightarrow \AA_{\text{loc}}:(I,t)\mapsto \Phi(I,t)
 \end{equation}
-be a piecewise norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is piecewise norm continuous for each $I\in\mathfrak{G}_{\ZZ^2}$.} one parameter family of interactions such that the $F$-norm is uniformly bounded ($\sup_{t\in[0,1]}\norm{\Phi(\cdot,t)}_F<\infty$). We will denote the set of one parameter families of interactions that satisfy this property by $\BB_{F}([0,1])$. For any $\Phi\in\BB_{F_\phi}([0,1])$, we define the locally generated automorphism (LGA) $\gamma^{\Phi}_{s;t}$ such that for any $A\in\AA$, $\gamma^{\Phi}_{s;t}(A)$ is given as the solution to the differential equation
+be a piecewise norm continuous\footnote{By which we mean that $\Phi(I,\cdot)$ is piecewise norm continuous for each $I\in\mathfrak{G}_{\ZZ^2}$.} one-parameter family of interactions such that the $F$-norm is uniformly bounded ($\sup_{t\in[0,1]}\norm{\Phi(\cdot,t)}_F<\infty$). We will denote the set of one-parameter families of interactions that satisfy this property by $\BB_{F}([0,1])$. For any $\Phi\in\BB_{F_\phi}([0,1])$, we define the locally generated automorphism (LGA) $\gamma^{\Phi}_{s;t}$ such that for any $A\in\AA$, $\gamma^{\Phi}_{s;t}(A)$ is given as the solution to the differential equation
 \begin{equation}
 \frac{\d}{\d t}\gamma^{\Phi}_{s;t}(A)=-i\sum_{I\in\mathfrak{G}_{\ZZ^2}}\gamma^{\Phi}_{s;t}([\Phi(I,t),A])
 \end{equation}
@@ -245,16 +245,16 @@ So far we have mainly seen an interaction as something with a well-defined time 
 \\\\
 The equivalence of states is straightforward to extend to the case of the quasi-local $C^*$-algebra. Namely:
 \begin{definition}\label{def:EquivalenceOfStates}
-	Two states on a quasi-local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists an $F$-function, $F$ and a one parameter family of interactions $\Phi\in\BB_{F}([0,1])$ such that
+	Two states on a quasi-local $C^*$ algebra over $\Gamma$, $\psi_1,\psi_2\in\PP(\AA)$ are connected if there exists an $F$-function, $F$ and a one-parameter family of interactions $\Phi\in\BB_{F}([0,1])$ such that
 	\begin{equation}
 		\psi_1=\psi_2\circ\gamma^\Phi_{0;1}.
 	\end{equation}
 \end{definition}
-However, to discuss the equivalence class of Hamiltonians we will need some additional structure. We will need a generalization of the adiabatic theorem. This theorem says that if we have a smooth family of Hamiltonians $\lambda\mapsto H_\lambda$ and we have a family of eigenstates $\lambda\mapsto\ket{\psi_\lambda}$ of $H_\lambda$ protected by a gap from the rest of the spectrum that then there is one parameter family of bounded operators $K(s)$ such that
+However, to discuss the equivalence class of Hamiltonians we will need some additional structure. We will need a generalization of the adiabatic theorem. This theorem says that if we have a smooth family of Hamiltonians $\lambda\mapsto H_\lambda$ and we have a family of eigenstates $\lambda\mapsto\ket{\psi_\lambda}$ of $H_\lambda$ protected by a gap from the rest of the spectrum that then there is one-parameter family of bounded operators $K(s)$ such that
 \begin{equation}
 	\ket{\psi_\lambda}=\mathcal{T}\exp(-i\int_0^\lambda\d s K(s))\ket{\psi_0}.
 \end{equation}
-To get a version of this theorem for interactions, we first need to redefine the $F$-norm to include the smoothness condition. We therefore for any smooth one parameter family of interactions (following \cite{nachtergaele2019quasi}) define a second $F$-norm (which we will call the smooth $F$-norm)
+To get a version of this theorem for interactions, we first need to redefine the $F$-norm to include the smoothness condition. We therefore for any smooth one-parameter family of interactions (following \cite{nachtergaele2019quasi}) define a second $F$-norm (which we will call the smooth $F$-norm)
 \begin{equation}
 	\norm{\Phi}_{F}^1 (s)\defeq \sup_{x,y\in \Gamma} \frac{1}{F(d(x,y))}\sum_{\substack{X\in\mathfrak{B}_\Gamma \\ x,y\in X}}\left(\norm{\Phi(X,s)}+\abs{X}\norm{\frac{\d}{\d s}\Phi(X,s)}\right).
 \end{equation}
@@ -270,7 +270,7 @@ We are now ready to state the theorem that summarises what we said in section \r
 	The if statement is done by proving that the interaction defined in equation (5.100) of \cite{nachtergaele2019quasi} has a bounded $F$-norm (with some slightly slower decaying $F$-function) and the only if statement is done in theorem 7.4 of the same paper (again, these interactions will be connected through a path defined with a slower decaying $F$-function).
 \end{proof}
 \section{SPT indices revised}\label{sec:SPT_Indices_Revised}
-We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kind of constructions were first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
+We can now revisit this formalism to properly define the projective representations that we discussed in section \ref{sec:an-example-in-1d-the-haldane-phase}. These kinds of constructions were first considered in \cite{ogata2021classification}. To this end, let $\AA$ be a quasi-local $C^*$-algebra over $\ZZ$ and let $G$ be a finite group\footnote{This is not so crucial and as mentioned before can be extended to any compact Lie group.} acting on $\AA$ through a group action $\beta_g$. Take a product state $\phi=\bigotimes_{i\in\ZZ}\phi_i$ and a one-parameter family of interactions $\Phi\in \BB_F([0,1])$ such that
 \begin{equation}
 \omega=\phi\circ\gamma^\Phi_{0;1}
 \end{equation}
