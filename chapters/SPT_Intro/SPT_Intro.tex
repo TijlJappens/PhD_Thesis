@@ -1,7 +1,7 @@
 % !TeX root = ../../thesis.tex
 \chapter{Symmetry protected topological order in a nutshell}\label{sec:SPT_Order_In_A_Nutshell}
 \section{Gapped phases of matter}\label{sec:GappedPhasesOfMatterIntro}
-All of these topological phases of matter are described by a Hamiltonian that is gapped\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.} and local. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no full Hilbert space and hence it is not clear how to define operators. In section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and this gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes. The first equivalence class is an equivalence on Hamiltonians:
+All of these topological phases of matter are described by a Hamiltonian that is gapped\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.} and local. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no one Hilbert space containing every state. Therefore, it is not clear how to define such operators. In Section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes. The first equivalence class is an equivalence on Hamiltonians:
 \begin{definition}[Equivalence of Hamiltonians]\label{def:ConnectedHamiltonians}
 	Two local Hamiltonians, with unique gapped ground states, $H_0$ and $H_1$ are connected if there exists a path $t\mapsto H(t)$ such that
 	\begin{itemize}
@@ -17,22 +17,22 @@ The second equivalence class is an equivalence on states:
 	\begin{align}
 	\ket{\psi(t)}&=V(t)\ket{\psi(0)}&V(t)&=\mathcal{T}\exp(-i\int_{0}^{t}\d s K(s)).
 	\end{align}
-	Here $V(t)$ is the time ordered exponential of $K(t)$. It is defined as the solution of the ode $V'(t)=-iK(t)V(t)$ with the initial condition $V(0)=\id$.
+	Here $V(t)$ is the time ordered exponential of $K(t)$. It is defined as the solution of the operator valued ODE $V'(t)=-iK(t)V(t)$ with the initial condition $V(0)=\id$.
 \end{definition}
-In what follows we will call a unitary generated like this $V(t)$ a locally generated unitary (LGU).\\\\
+In what follows we will call a unitary generated as the above $V(t)$, a locally generated unitary (LGU).\\\\
 Both these concepts are equivalent. More specifically:
 \begin{itemize}
-	\item If two uniquely gapped local Hamiltonians, $H_0$ and $H_1$, are equivalent through a path $H(t)$, the ground states of $H(t)$ form a path satisfying what was in definition \ref{def:ConnectedStates}.
+	\item If two uniquely gapped local Hamiltonians, $H_0$ and $H_1$, are equivalent through a path $H(t)$, the ground states of $H(t)$ form a path satisfying definition \ref{def:ConnectedStates}.
 	\item If a state $\ket{\psi_0}$ is a unique gapped ground state of some local Hamiltonian and is connected to $\ket{\psi_1}$ via a path $\ket{\psi(t)}$, there is a continuous path of parent Hamiltonians $H(t)$ for $\ket{\psi(t)}$ satisfying definition \ref{def:ConnectedHamiltonians}.
 \end{itemize}
-We will provide the statements in more detail along with the main ideas needed for the proof in section \ref{sec:equivalence-of-states-vs-equivalence-of-gapped-interactions}.\\\\
+We will provide the statements in more detail along with the main ideas needed for the proof in Section \ref{sec:equivalence-of-states-vs-equivalence-of-gapped-interactions}.\\\\
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{GappedPhasesOfQuantumMatter.pdf}
 	\caption{This is a graphical depiction of the quantum phases of matter. Any two states with different transverse Hall conductances have to be in different phases.}
 	\label{fig:GappedPhasesOfQuantumMatter}
 \end{figure}
-These equivalence classes allow for a way to characterize these topological phases of matter. For example, if two of these states have different transverse Hall conductances they cannot be equivalent. We can try to generalize this. Suppose we take all states that can be written as the unique gapped ground state of some local Hamiltonian and then tried to label all of the connected components with respect to the above equivalence class. These connected components are then called quantum phases of matter (see figure \ref{fig:GappedPhasesOfQuantumMatter}).
+These equivalence classes allow for a way to characterize these topological phases of matter. For example, if two of these states have different transverse Hall conductances they cannot be equivalent. We can try to generalize this notion. Suppose we take all states that can be written as the unique gapped ground state of some local Hamiltonian and then tried to label all of the connected components with respect to the above equivalence class. These connected components are then called quantum phases of matter (see figure \ref{fig:GappedPhasesOfQuantumMatter}).
 \section{Finite depth quantum circuits}\label{sec:finite-depth-quantum-circuits}
 \begin{figure}
 	\centering
@@ -46,7 +46,7 @@ These equivalence classes allow for a way to characterize these topological phas
 	\caption{Example of a finite depth quantum circuit with two layers being displayed.}
 	\label{fig:FiniteDepthQuantumCirquit}
 \end{figure}
-In this section, we will define a particularly simple set of examples of these LGUs called finite depth quantum circuits (FDQC). To examine what they are, envision one has a lattice $\Lambda$. In figure \ref{fig:Lattice} we give a graphical depiction of the one-dimensional lattice $\ZZ$.\footnote{All of the definitions in this section however can be generalized to other lattices.} To each site of the lattice we attach a Hilbert space, say $\CC^d$ (for some small integer $d$). The full Hilbert space is then $\HH=\bigotimes_{i\in\Lambda}\CC^d$.\footnote{For infinite lattices like $\Lambda=\ZZ$ or $\Lambda=\ZZ^2$, this Hilbert space cannot be defined. More on this in section \ref{sec:ToolsForQuantumManyBody}.} One then defines a local operator as an operator that acts on the tensor product of a few sites and acts trivially on the other sites (these sites are then called the support of the operator). These local operators form an algebra as multiplying two local operators gives a new local operator (an example of this is given in figure \ref{fig:Lattice}).
+In this section, we will define a particularly simple set of examples of these LGUs called finite depth quantum circuits (FDQC). To examine what they are, envision one has a lattice $\Lambda$. In figure \ref{fig:Lattice} we give a graphical depiction of the one-dimensional lattice $\ZZ$.\footnote{All of the definitions in this section however can be generalized to other lattices.} To each site of the lattice we attach a Hilbert space, say $\CC^d$ (for some small integer $d$). The full Hilbert space is then $\HH=\bigotimes_{i\in\Lambda}\CC^d$.\footnote{For infinite lattices like $\Lambda=\ZZ$ or $\Lambda=\ZZ^2$, this Hilbert space cannot be defined. More on this in Section \ref{sec:ToolsForQuantumManyBody}.} One then defines a local operator as an operator that acts on the tensor product of a few sites and acts trivially on the other sites (these sites are then called the support of the operator). These local operators form an algebra as multiplying two local operators gives a new local operator (an example of this is given in figure \ref{fig:Lattice}).
 \\\\
 We now create a unitary on this full Hilbert space of the following form (see figure \ref{fig:FiniteDepthQuantumCirquit} for a graphical depiction). We first create an even layer which is an operator of the form $V_1=\bigotimes_{i}V_{1,i}$ where $V_{1,i}$ has support on sites $2i$ and $2i+1$. Next, we create an odd layer which is of the same form only $V_{2,i}$ has support on sites $2i-1$ and $2i$. A unitary that is a product of odd layers and even layers is called a finite depth quantum circuit (FDQC). The amount of layers used is then called the depth. So a circuit of depth $D$ is a unitary of the form $V_D\cdots V_1$ where the $V_i$ alternate between even and odd layers.\\\\
 \begin{figure}
@@ -71,8 +71,13 @@ K(s)\defeq \left\{\begin{matrix}
 \begin{equation}
 V=\mathcal{T}\exp(-iD\int_0^1 \d s K(s)).
 \end{equation}
-This means in particular that any two states that are connected through a FDQC are also connected as in definition \ref{def:ConnectedStates}. Moreover the depth is linearly proportional to the norm of the required Hamiltonian.\\\\
-The second one is that a FDQC preserves the locality of operators. More specifically we will show that the diameter of the support of $\Ad{V}(A)$ (with $V$ a finite depth quantum circuit) grows only linearly with the depth of $V$. To see this take an operator $A$ with support contained in some diameter $\text{diam}(A)$. As is shown in figure \ref{fig:FiniteDepthQuantumCirquitLightcone}, if one now works out $\Ad{V}(A)$ one observes that this operator only depends on the unitaries in a particular lightcone around the support of $A$. This implies that the diameter of the support of $\Ad{V}(A)$ is bounded by $\text{diam}(A)+2D$. This means that a FDQC preserves the locality of operators. There is a generalization of this signal locality (as it is sometimes called) to any LGU. This generalization is called the Lieb Robinson bound and is described in section \ref{sec:ToolsForQuantumManyBody}.
+This means in particular that any two states that are connected through a FDQC are also connected as in definition \ref{def:ConnectedStates}. Moreover the depth is linearly proportional to the norm of the required Hamiltonian.
+\\\\
+The second one is that a FDQC preserves the locality of operators. More specifically we will show that the diameter of the support of
+\begin{equation}
+	\Ad{V}(A)\defeq V A V^\dagger,
+\end{equation}
+with $V$ a finite depth quantum circuit, grows only linearly with the depth of $V$. To see this take an operator $A$ with support contained in some diameter $\text{diam}(A)$. As is shown in figure \ref{fig:FiniteDepthQuantumCirquitLightcone}, if one now works out $\Ad{V}(A)$ one observes that this operator only depends on the unitaries in a particular lightcone around the support of $A$. This implies that the diameter of the support of $\Ad{V}(A)$ is bounded by $\text{diam}(A)+2D$. This means that a FDQC preserves the locality of operators. There is a generalization of this signal locality (as it is sometimes called) to any LGU. This generalization is called the Lieb-Robinson bound and is described in Section \ref{sec:ToolsForQuantumManyBody}.
 \section{Enriching the trivial phase with symmetry}\label{sec:enriching-the-trivial-phase-with-symmetry}
 \begin{figure}
 	\centering
@@ -88,9 +93,9 @@ The second one is that a FDQC preserves the locality of operators. More specific
 	\caption{This figure shows all states connected to some trivial product state $\ket{\phi}$. The highlighted black area displays all states connected to $\ket{\phi}$ via a generic LGU while the green areas show the $G$-invariant states that are connected via a $G$-invariant LGU.}
 	\label{fig:ConnectedComponents}
 \end{figure}
-FDQCs give a first way to compare topological phases of matter. If two many-body ground states can be mapped into one another via a FDQC, they are in the same quantum phase of matter. It now makes sense to look at what the trivial quantum phase of matter looks like (in the Landau picture the trivial phase was the symmetry-preserving phase). To this end, we first define the most trivial state we can think of which is called the product state. It is a state that has no entanglement between any of its sites. On the Hilbert space above one could define a product state by fixing a vector $\ket{v_i}\in\CC^d$ for each lattice site $i$ and defining $\ket{\phi_0}=\bigotimes_{i\in\Lambda}\ket{v_i}$. We now call a state $\ket{\psi}\in\HH$, short-range entangled (SRE) if there exists an LGU, $U$ such that $\ket{\psi}=U\ket{\phi_0}$.\\\\
-These SRE states then form, by construction the topologically trivial quantum phase of matter. They can in a local and smooth way be deformed to the most trivial state of all. The kind of topological order that we will discuss in this thesis is precisely the topological order that emerges when one applies an additional symmetry to this trivial phase. To this end, take a group $G$\footnote{Later on we will only talk about finite groups but for now the reader can think of any compact Lie Group.}. Now for each site $i$, take a unitary representation on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$. Use this to define a representation on the full Hilbert $U\in\hom(G,U(\HH))$ such that $U(g)=\bigotimes_{i\in\Lambda}U_i(g)$. If we graphically depict this in the same way as we did for the finite depth quantum circuits it looks like in figure \ref{fig:GroupActionQuantumCirquit}.\\\\
-We now call an SRE state $\ket{\psi}$, $G$-invariant if $U(g)\ket{\psi}=\ket{\psi}$ for all $g\in G$. We will put a similar but slightly stronger condition on product states and say that a product state $\ket{\phi_0}$ is $G$-trivial if $U_i(g)\ket{\phi_0}=\ket{\phi_0}$ for all $i\in\Lambda$ and all $g\in G$. Finally, we call a FDQC, $G$-invariant if each of the unitaries $U_{ij}$ in the FDQC commutes with the group action $U(g)$. Equivalently a FDQC is $G$-invariant if each of its layers commutes with the group action.\\\\
+FDQCs give a first way to compare topological phases of matter. If two many-body ground states can be mapped into one another via a FDQC, they are in the same quantum phase of matter. It now makes sense to look at what the trivial quantum phase of matter looks like (in the Landau picture the trivial phase was the symmetry-preserving phase). To this end, we first define the most trivial state we can think of which is called the product state. It is a state that has no entanglement between any of its sites. On the Hilbert space above, one could define a product state by fixing a vector $\ket{v_i}\in\CC^d$ for each lattice site $i$ and defining $\ket{\phi_0}=\bigotimes_{i\in\Lambda}\ket{v_i}$. We now call a state $\ket{\psi}\in\HH$, short-range entangled (SRE) if there exists an LGU, $U$ such that $\ket{\psi}=U\ket{\phi_0}$.\\\\
+These SRE states then form, by construction, the topologically trivial quantum phase of matter. They can in a local and smooth way be deformed to the most trivial state of all. The kind of topological order that we will discuss in this thesis is precisely the topological order that emerges when one applies an additional symmetry to this trivial phase. To this end, take a group $G$\footnote{Later on we will only talk about finite groups but for now the reader can think of any compact Lie Group.}. Now for each site $i$, take a unitary representation on the on-site Hilbert space $U_i\in\hom(G,U(\CC^d))$.\footnote{Here, $\hom(G,H)$ is the set of group homomorphisms from $G$ to $H$.} Use this to define a representation on the full Hilbert $U\in\hom(G,U(\HH))$ such that $U(g)=\bigotimes_{i\in\Lambda}U_i(g)$. If we graphically depict this in the same way as we did for the finite depth quantum circuits it looks like in figure \ref{fig:GroupActionQuantumCirquit}.\\\\
+We now call an SRE state $\ket{\psi}$, $G$-invariant, if $U(g)\ket{\psi}=\ket{\psi}$ for all $g\in G$. We will put a similar but slightly stronger condition on product states and say that a product state $\ket{\phi_0}$ is $G$-trivial if $U_i(g)\ket{\phi_0}=\ket{\phi_0}$ for all $i\in\Lambda$ and all $g\in G$. Finally, we call a FDQC, $G$-invariant if each of the unitaries $U_{ij}$ in the FDQC commutes with the group action $U(g)$. Equivalently a FDQC is $G$-invariant if each of its layers commutes with the group action.\\\\
 We can now define SPT phases through the following procedure (see figure \ref{fig:ConnectedComponents}). First, pick a $G$-trivial product state $\ket{\phi_0}$. Take all states connected to $\ket{\phi_0}$ via some finite depth quantum circuit. Now out of those states pick only the $G$-invariant ones and group them together if they can be connected via a $G$-invariant FDQC. The groups obtained are now called the SPT phases.
 \section{Zero dimensional SPTs}\label{sec:zero-dimensional-spts}The first example that we will give is when the lattice is trivial $\Lambda=\{1\}$. In this case, the total Hilbert space is the same as the on-site Hilbert space and the group action $U\in\hom(G,U(\CC^d))$ is just a finite-dimensional representation. A state $\ket{\psi}\in\CC^d$ is then $G$-invariant if there exists an $\alpha:G\rightarrow U(1)$ such that
 \begin{equation}
@@ -100,11 +105,11 @@ However, since
 \begin{equation}
 U(g)U(h)\ket{\psi}=U(gh)\ket{\psi}
 \end{equation}
-we need that $\alpha(g)\alpha(h)=\alpha(gh)$ and therefore $\alpha\in\hom(G,U(1))$. The trivial state is then the state such that $\alpha=1$. We therefore say that the zero-dimensional SPTs are classified by the $U(1)$-representations $\hom(G,U(1))$. We will see in subsection \ref{sec:example-1-h1gtt} that this group is the same as something called the first group cohomology group.
+we need that $\alpha(g)\alpha(h)=\alpha(gh)$ and therefore $\alpha\in\hom(G,U(1))$. The trivial state is then the state such that $\alpha=1$. We therefore say that the zero-dimensional SPTs are classified by the $U(1)$-representations $\hom(G,U(1))$. We will see in subsection \ref{sec:example-1-h1gtt} that this group is the same as the so-called first group cohomology group.
 \\\\
-At this point, the reader might wonder, why this is called zero-dimensional SPT index. Any SPT should be characterized by a vector on some Hilbert space and hence, we should be able to define a zero-dimensional SPT index for any SPT in any dimension. However, it turns out that this is not true. In section \ref{sec:equal-at-infinity} we will discuss how only states that look the same at infinity can be seen as vectors in the same Hilbert space. This implies that we can break the zero-dimensional SPT index by allowing zero-dimensional charge to escape to infinity. An example of this process is the creation of the boundary state that we will discuss in section \ref{sec:the-boundary-state}.
+At this point, the reader might wonder, why this is called the zero-dimensional SPT index. Any SPT should be characterized by a vector on some Hilbert space and hence, we should be able to define a zero-dimensional SPT index for any SPT in any dimension. However, it turns out that this is not true. In Section \ref{sec:equal-at-infinity} we will discuss how only states that look the same at infinity can be seen as vectors in the same Hilbert space. This implies that we can break the zero-dimensional SPT index by allowing zero-dimensional charge to escape to infinity. An example of this process is the creation of the boundary state that we will discuss in Section \ref{sec:the-boundary-state}.
 \section{An example in 1d: The Haldane phase}\label{sec:an-example-in-1d-the-haldane-phase}
-The next example is a slightly less trivial one. We will now take the one-dimensional lattice $\Lambda=\ZZ$.\footnote{As discussed before, this means the full Hilbert space is not a well-defined object. We will for now however choose to ignore this and revisit it in section \ref{sec:ToolsForQuantumManyBody}.} In this example we will take as group $\ZZ_2\times\ZZ_2$\footnote{We can extend this group in a straightforward way to $SO(3)$ using the double covering, $f:SU(2)\rightarrow SO(3)$.}. We write the four group elements of $\ZZ_2\times\ZZ_2$ as
+The next example is a slightly less trivial one. We will now take the one-dimensional lattice $\Lambda=\ZZ$.\footnote{As discussed before, this means the full Hilbert space is not a well-defined object. We will for now however choose to ignore this and revisit it in Section \ref{sec:ToolsForQuantumManyBody}.} In this example we will take as group $\ZZ_2\times\ZZ_2$\footnote{We can extend this group in a straightforward way to $SO(3)$ using the double covering, $f:SU(2)\rightarrow SO(3)$.}. We write the four group elements of $\ZZ_2\times\ZZ_2$ as
 \begin{align}
 &(1,1)&&(-1,1)&&(1,-1)&&(-1,-1).
 \end{align}
@@ -121,7 +126,7 @@ We then take a copy of this unitary for each site and this gives our group actio
 \end{align}
 The singlet is now invariant under the group action ($u(g)\ket{s}=\ket{s}$ for all $g\in G$) while the group action acts irreducibly on the three triplet vectors.
 \subsection{Intermezzo: Linear and projective representations}
-I can rewrite the unitaries in equation \eqref{eq:OnSiteActionOfFakeAKLT_Model} as
+We can rewrite the unitaries in equation \eqref{eq:OnSiteActionOfFakeAKLT_Model} as
 \begin{align}\label{eq:OnSiteActionOfFakeAKLT_Model_Rewritten}
 u(1,1)&=\id_{\CC^2}\otimes\id_{\CC^2}&u(-1,1)&=(i\sigma_x)\otimes(i\sigma_x)\\
 \nonumber
@@ -156,11 +161,11 @@ is a representation ($\tilde{r}\in\hom(G,\PP\UU(\CC^2))$). We call such an $\til
 	\caption{These are two $\ZZ_2\times\ZZ_2$ invariant states. The first one is a trivial state the other one is an SRE state. Each dot represents the Hilbert space $\CC^2$, each circle indicates that out of $\CC^2\otimes\CC^2$, the singlet state is chosen. The dots that are near each other form a site.}
 	\label{fig:TheTwoHaldanePhases}
 \end{figure}
-Now we define the trivial product state. As $\ket{s}$ was the only invariant vector in $\CC^4$ the trivial product state is simply $\ket{\phi}=\bigotimes_{i\in\Lambda}\ket{s}_{i_L,i_R}$. Figure \ref{fig:TrivialProductState} gives a graphical representation of this state. Similarly, we can also construct a nontrivial state. We simply take $\ket{\psi}=\bigotimes_{i\in\Lambda}\ket{s}_{i_R,(i+1)_L}$\footnote{For open boundary conditions, we did not specify what we do with the sites $1_L$ and $L_R$. This state can only be made $G$ invariant if one places it in periodic boundary conditions or if one defines it on the infinite lattice (which is what we will do later on in the thesis). This is related to section \ref{sec:gapless-edge-mode}.}. We call this state the entangled pair state\footnote{This is related to the AKLT state named after this paper: \cite{PhysRevLett.59.799}. It differs from the real AKLT state in that we only construct the entangled pairs here, we don't project the sites to the triplets (see section \ref{sec:from-the-entangled-pair-state-to-the-projective-entangled-pair-state}).} state. This state is also a product of $G$-invariant states and is therefore by construction $G$-invariant as well.\\\\
-I constructed two $G$-invariant states. One of them is a trivial product state. Now I would like to argue that the other state is a state with nontrivial SPT order. To do this I must do two things.
+Now we define the trivial product state. As $\ket{s}$ was the only invariant vector in $\CC^4$ the trivial product state is simply $\ket{\phi}=\bigotimes_{i\in\Lambda}\ket{s}_{i_L,i_R}$. Figure \ref{fig:TrivialProductState} gives a graphical representation of this state. Similarly, we can also construct a nontrivial state. We simply take $\ket{\psi}=\bigotimes_{i\in\Lambda}\ket{s}_{i_R,(i+1)_L}$\footnote{For open boundary conditions, we did not specify what we do with the sites $1_L$ and $L_R$. This state can only be made $G$ invariant if one places it in periodic boundary conditions or if one defines it on the infinite lattice (which is what we will do later on in the thesis). This is related to Section \ref{sec:gapless-edge-mode}.}. We call this state the entangled pair state\footnote{This is related to the AKLT state named after this paper: \cite{PhysRevLett.59.799}. It differs from the real AKLT state in that we only construct the entangled pairs here, we don't project the sites to the triplets (see Section \ref{sec:from-the-entangled-pair-state-to-the-projective-entangled-pair-state}).}. This state is also a product of $G$-invariant states and is therefore by construction $G$-invariant as well.\\\\
+We constructed two $G$-invariant states. One of them is a trivial product state. Now we would like to argue that the other state is a state with nontrivial SPT order. To do this we must do two things.
 \begin{enumerate}
-	\item I have to show that they can be connected via a finite depth quantum circuit.
-	\item I have to show that they cannot be connected via a $G$-invariant finite depth quantum circuit.
+	\item we have to show that they can be connected via a finite depth quantum circuit.
+	\item we have to show that they cannot be connected via a $G$-invariant finite depth quantum circuit.
 \end{enumerate}
 \begin{figure}
 	\centering
@@ -168,7 +173,7 @@ I constructed two $G$-invariant states. One of them is a trivial product state. 
 	\caption{This figure displays a finite depth quantum circuit of depth 3 mapping the trivial product state to the entangled pair state. As before the curves indicate singlet states and the dots without curves around them indicate $\ket{\uparrow}$ states. The $U$ here is therefore a unitary on $\CC^4$ that maps the $\ket{s}$ state to the $\ket{1}=\ket{\uparrow\uparrow}$ state.}
 	\label{fig:FakeAKLT_IsSRE}
 \end{figure}
-To show the first point, first let $U$ be a unitary on $\CC^4$ that maps $\ket{s}$ to $\ket{1}=\ket{\uparrow\uparrow}$. I now create a finite depth quantum circuit $V$ consisting of three layers. Look at figure \ref{fig:FakeAKLT_IsSRE} for a schematic picture of the layers of $V$. The first layer is both odd and even, $V_1=\bigotimes_{i\in\Lambda}U_{i_L,i_R}$ (it rotates the sites themselves). The second layer is odd, $V_2=\bigotimes_{i\in\Lambda}U_{(2i-1)_R,2i_L}^\dagger$. The third layer is even, $V_3=\bigotimes_{i\in\Lambda}U_{2i_R,(2i+1)_L}^\dagger$. This concludes our FDQC.
+To show the first point, first let $U$ be a unitary on $\CC^4$ that maps $\ket{s}$ to $\ket{1}=\ket{\uparrow\uparrow}$. We now create a finite depth quantum circuit $V$ consisting of three layers. Look at figure \ref{fig:FakeAKLT_IsSRE} for a schematic picture of the layers of $V$. The first layer is both odd and even, $V_1=\bigotimes_{i\in\Lambda}U_{i_L,i_R}$ (it rotates the sites themselves). The second layer is odd, $V_2=\bigotimes_{i\in\Lambda}U_{(2i-1)_R,2i_L}^\dagger$. The third layer is even, $V_3=\bigotimes_{i\in\Lambda}U_{2i_R,(2i+1)_L}^\dagger$. This concludes our FDQC.
 \subsection{The product state transforms linearly while the entangled pair state transforms projectively}\label{sec:the-product-state-transforms-linearly-while-the-entangled-pair-state-transforms-projectively}
 \begin{figure}
 	\centering
@@ -187,7 +192,7 @@ To show the first point, first let $U$ be a unitary on $\CC^4$ that maps $\ket{s
 	\caption{This shows how we can decompose the trivial product state and the entangled pair state into a left and right part.}
 	\label{fig:TheTwoHaldanePhasesTwoParts}
 \end{figure}
-In this section, I will highlight a very important fact that will eventually explain why there doesn't exist a $G$-invariant finite depth quantum circuit connecting $\ket{\phi}$ and $\ket{\psi}$. The distinction will be that the right half of $\ket{\phi}$ will transform linearly under the group action while the right half of $\ket{\psi}$ transforms projectively, To make this more precise, let $\textrm{Tr}_L$ be the partial trace that traces out the left part of the Hilbert space\footnote{Again, since our lattice is infinite, the total Hilbert space does not exist and therefore it is not straightforward to define this operation. This will be fixed in subsection \ref{sec:the-gns-representation} where we will define the GNS Hilbert space.}. Now look at figure \ref{fig:TheTwoHaldanePhasesTwoParts} and rewrite the two states as
+In this section, we will highlight a very important fact that will eventually explain why there doesn't exist a $G$-invariant finite depth quantum circuit connecting $\ket{\phi}$ and $\ket{\psi}$. The distinction will be that the right half of $\ket{\phi}$ will transform linearly under the group action while the right half of $\ket{\psi}$ transforms projectively, To make this more precise, let $\textrm{Tr}_L$ be the partial trace that traces out the left part of the Hilbert space\footnote{Again, since our lattice is infinite, the total Hilbert space does not exist and therefore it is not straightforward to define this operation. This will be fixed in Subsection \ref{sec:the-gns-representation} where we will define the GNS Hilbert space.}. Now look at figure \ref{fig:TheTwoHaldanePhasesTwoParts} and rewrite the two states as
 \begin{align}
 \ket{\phi}&=\ket{\phi_L}\otimes\ket{\phi_R}&\ket{\psi}&=\ket{\psi_L}\otimes\ket{s}\otimes\ket{\psi_R}.
 \end{align}
@@ -222,20 +227,20 @@ As is also shown in figure \ref{fig:FiniteDepthQuantumCirquitLightcone}, define 
 \end{align}
 This implies that $\tilde{\psi}$ transforms under the group action on $L$ as a projective representation while it transforms under the group action on $R$, one-dimensionally and therefore trivially. Since the entire state, $\ket{\tilde{\psi}}$ should be invariant under the group action we require that the projective representation of the group action on the left is cancelled by the group action in the $C$-part (see again figure \ref{fig:FiniteDepthQuantumCirquitLightcone}). However, the group action on the center is just a finite product of on-site group actions. The on-site group action was linear and a finite product of linear representations is linear. This means that $\ket{\tilde{\psi}}$ cannot be $G$-invariant concluding the proof.
 \begin{remark}
-	We have swept a lot of details under the table in this proof. For instance, we speak about the group action on $L$ or on $R$ but since this is an infinitely large region, there is no well-defined notion of a full Hilbert space and therefore we cannot speak about the group action on these regions. However, this will be fixed in section \ref{sec:the-gns-representation} as we will introduce the GNS Hilbert space.
+	We have swept a lot of details under the table in this proof. For instance, we speak about the group action on $L$ or on $R$ but since this is an infinitely large region, there is no well-defined notion of a full Hilbert space and therefore we cannot speak about the group action on these regions. However, this will be fixed in Section \ref{sec:the-gns-representation} as we will introduce the GNS Hilbert space.
 \end{remark}
 \subsection{From the entangled pair state to the projective entangled pair state}\label{sec:from-the-entangled-pair-state-to-the-projective-entangled-pair-state}
 The states constructed so far in this section are all very trivial. The only difference between the $G$-invariant product state and the non-trivial state lies in what we call a site. If we shift our lattice by half a site then what was previously called non-trivial will now be trivial and vice versa.
 \\\\
-This needn't be true in general. In fact, we will use the entangled pair state to construct a different state on a different lattice that shows this. This new system uses an on-site group action that only includes the triplet. To this end, let $P:\CC^4\rightarrow \CC^3$ be the projector from the  $\CC^2\otimes\CC^2$ that we had to the triplet subspace $\CC^3$ end let $E:\CC^3\rightarrow \CC^4$ be the opposite embedding. The triplet group action, defined by
+This needn't be true in general. In fact, we will use the entangled pair state to construct a different state on a different lattice that shows this. This new system uses an on-site group action that only includes the triplet. To this end, let $P:\CC^4\rightarrow \CC^3$ be the projector from $\CC^2\otimes\CC^2$ to the triplet subspace $\CC^3$. Also, let $E:\CC^3\rightarrow \CC^4$, be the opposite embedding and let $u$ be the representation on $\CC^4$ defined through equation \ref{eq:OnSiteActionOfFakeAKLT_Model}. The triplet group action, defined by
 \begin{equation}
 	u_s(g)=P u(g) E
 \end{equation}
-(where $u$ was the previous group action on $\CC^4$) is still a linear representation ($u_s\in\hom(G,\UU(\CC^3))$).
+is still a linear representation ($u_s\in\hom(G,\UU(\CC^3))$).
 \\\\
-Of course, the space over the one-dimensional lattice $\ZZ$ and the on-site Hilbert space given by the triplet $\CC^3$ doesn't have a $G$-invariant product state. Therefore will define our sites such that the on-site Hilbert space includes two triplets $\CC^3\otimes\CC^3\sim \CC^9$. This Hilbert space, with group action given by $g\mapsto u_s(g)\otimes u_s(g)$, does have an invariant vector. Call the product state over this invariant vector $\ket{\phi}$.
+Of course, the space over the one-dimensional lattice $\ZZ$, and the on-site Hilbert space given by the triplet $\CC^3$, doesn't have a $G$-invariant product state. Therefore, we will define our sites such that the on-site Hilbert space includes two triplets $\CC^3\otimes\CC^3\sim \CC^9$. This Hilbert space, with group action given by $g\mapsto u_s(g)\otimes u_s(g)$, does have an invariant vector. Call the product state over this invariant vector $\ket{\phi}$.
 \\\\
-Now, we need to create a non-trivial state in the same space. The state we will create is often called the projective entangled pair state (PEPs). We will do this as follows. Take the entangled pair state and call it $\ket{\psi^{(0)}}$. Then project all the sites in some box to the triplet space $\CC^3$ and renormalize\footnote{We will not show here that this does not give zero.} the state
+Now, we need to create a non-trivial state in the same space. The state we will create is often called the projective entangled pair state (PEPs)\cite{Cirac_2021}. We will do this as follows. Take the entangled pair state and call it $\ket{\psi^{(0)}}$. Then project all the sites in some box to the triplet space $\CC^3$ and renormalize\footnote{We will not show here that this does not give zero.} the state
 \begin{equation}
 	\ket{\psi^{(i+1)}}=\frac{1}{N_i}P_{[-i,i]}\ket{\psi^{(0)}}.
 \end{equation}
@@ -260,7 +265,7 @@ The limit, $\ket{\psi}$ exists and is called the projective entangled pair state
 \end{figure}
 So far, we have seen that the right half of the system can transform as a projective representation or as a linear representation. It turns out that this has some surprising consequences for the ground state degeneracy if we were to introduce an edge.
 \\\\
-More specifically, suppose we have an infinitely large system on a one-dimensional lattice\footnote{Again, we will define these notions properly in chapter \ref{ch:Tools_For_Quantum_many_Body}.}. Assume we have a Hamiltonian that is a sum of $G$-invariant local terms $H=\sum_{i\in\ZZ} H_i$. Suppose that the total Hilbert space is a product between the right part and the left part of the system $\HH=\HH_L\otimes\HH_R$. We can then define $H_R=\sum_{i>0}H_i$ as the sum of all local terms that act trivially on $\HH_L$. We can now see the ground state of $H_R$ as a subspace of $\HH_R$. We will call it $\mathcal{V}_R$. The vectors in $\mathcal{V}_R$ are sometimes called the edge modes (as it is a Hilbert space that emerges if one introduces an edge).
+More specifically, suppose we have an infinitely large system on a one-dimensional lattice. Assume we have a Hamiltonian that is a sum of $G$-invariant local terms $H=\sum_{i\in\ZZ} H_i$. Suppose that the total Hilbert space is a product between the right part and the left part of the system $\HH=\HH_L\otimes\HH_R$. We can then define $H_R=\sum_{i>0}H_i$ as the sum of all local terms that act trivially on $\HH_L$. We can now see the ground state of $H_R$ as a subspace of $\HH_R$. We will call it $\mathcal{V}_R$. The vectors in $\mathcal{V}_R$ are sometimes called the edge modes (as it is a Hilbert space that emerges if one introduces an edge).
 \\\\
 Since $H_R$ is a $G$-invariant operator (it is a sum over $G$-invariant terms), we need that $\mathcal{V}_R$ is a $G$-invariant subspace. However, if the bulk of the system is non-trivial the right half of the system has to transform as a projective representation. A non-trivial projective representation can never be one-dimensional. This leads us to the following statement:
 \paragraph{Statement:}The edge modes of a Hamiltonian whose bulk ground state is in the non-trivial Haldane phase can never be one-dimensional.
@@ -278,7 +283,9 @@ such that
 \begin{align}
 &(\d^{n+1}\phi)(g_1,\cdots,g_{n+1})\\
 \nonumber
-&=g_1\phi(g_2,\cdots,g_{n+1})+\sum_{i=1}^n (-1)^i \phi(g_1,\cdots,g_{i-1},g_{i}g_{i+1},\cdots,g_{n+1})+(-1)^{n+1}\phi(g_1,\cdots,g_n).
+&=g_1\phi(g_2,\cdots,g_{n+1})+\sum_{i=1}^n (-1)^i \phi(g_1,\cdots,g_{i-1},g_{i}g_{i+1},\cdots,g_{n+1})\\
+\nonumber
+&\qquad\qquad+(-1)^{n+1}\phi(g_1,\cdots,g_n).
 \end{align}
 The first term here means applying the left group action onto $\phi(g_2,\cdots,g_{n+1})$. However, when the group action on the module is trivial, we still like to keep the $g_1$ there for bookkeeping purposes.\\\\
 Since $\d^{n+1}\circ\d^{n}=0$ this defines a cochain complex and we can define its cohomology as
@@ -300,7 +307,7 @@ In this section, we will show that the first group cohomology group is in one-to
 \begin{equation}
 d^2\phi(g_1,g_2)=\phi(g_2)-\phi(g_1g_2)+\phi(g_1)=0.
 \end{equation}
-This means that $\phi$ is a representation ($\phi\in\hom(G,\TT)$). We now still need to do modulo $B^1(G,\TT)$ but this is nothing but a number that does not depend on $g$ and the only such number present in $Z^1(G,\TT)$ is 1. The first group cohomology groups are related to the zero-dimensional SPTs presented in subsection \ref{sec:zero-dimensional-spts} by going from the additive notation to the multiplicative one. More specifically, $\alpha(g)=\exp(i\phi(g))$ is a $U(1)$-representation.
+This means that $\phi$ is a representation ($\phi\in\hom(G,\TT)$). We now still need to do modulo $B^1(G,\TT)$ but this is nothing but a number that does not depend on $g$ and the only such number present in $Z^1(G,\TT)$ is 1. The first group cohomology groups are related to the zero-dimensional SPTs presented in Subsection \ref{sec:zero-dimensional-spts} by going from the additive notation to the multiplicative one. More specifically, $\alpha(g)=\exp(i\phi(g))$ is a $U(1)$-representation.
 \subsection{Example 2: $H^2(G,\TT)$}\label{sec:example-2-h2gtt}
 In this case we have maps $\phi\in C^2(G,\TT)$. First, notice that $B^2$ is given by
 \begin{equation}
@@ -351,7 +358,7 @@ satisfying that
 	\item for all $\lambda$, $s\mapsto K(\lambda,s)$, generates a loop based at $\phi$.
 	\item for almost all $s\in[0,1]$, each of the local terms of $K(\lambda,s)$ is continuous in $\lambda$.
 \end{enumerate}
-As before we will make this structure more interesting by adding an on-site group action (see section \ref{sec:enriching-the-trivial-phase-with-symmetry}). Similarly to what we had before, we will call a loop $t\mapsto\ket{\phi(t)}$, $G$-invariant if for all $t$, $\ket{\phi(t)}$ is $G$-invariant. We will call a generator $G$-invariant if each of its local terms is $G$-invariant. We will furthermore call two equivalent $G$-invariant loops, $G$-equivalent if the two-parameter family $K(\lambda,s)$ contains only $G$-invariant local terms.\\\\
+As before we will make this structure more interesting by adding an on-site group action (see Section \ref{sec:enriching-the-trivial-phase-with-symmetry}). Similarly to what we had before, we will call a loop $t\mapsto\ket{\phi(t)}$, $G$-invariant if for all $t$, $\ket{\phi(t)}$ is $G$-invariant. We will call a generator $G$-invariant if each of its local terms is $G$-invariant. We will furthermore call two equivalent $G$-invariant loops, $G$-equivalent if the two-parameter family $K(\lambda,s)$ contains only $G$-invariant local terms.\\\\
 \begin{figure}
 	\centering
 	\input{chapters/SPT_Intro/image/FiniteDepthQuantumCircuitLoop.tikz}
@@ -380,7 +387,7 @@ Now it is again time for an example. This example considers loops on the one-dim
 \begin{align}
 U(\theta)\ket{-Q}&=e^{-i Q\theta}\ket{-Q}&U(\theta)\ket{0}&=\ket{0}&U(\theta)\ket{+Q}&=e^{+iQ\theta}\ket{+Q}.
 \end{align}
-Now I will define a $G$-invariant loop starting from the product state
+Now we will define a $G$-invariant loop starting from the product state
 \begin{equation}
 \ket{\phi}=\bigotimes_{i\in\Lambda}\ket{0}.
 \end{equation}
@@ -406,7 +413,7 @@ See figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit} for a graphical
 	\label{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Contraction}
 \end{figure}
 \subsubsection{Non $G$-invariant contraction}
-Now I will show That this loop is contractible in a non $G$-invariant way. To this end, define the one-parameter family of vectors
+Now we will show That this loop is contractible in a non $G$-invariant way. To this end, define the one-parameter family of vectors
 \begin{align}
 v_-(\lambda)&=\sin(2\pi\lambda)\ket{-Q}+\cos(2\pi\lambda)\ket{0}&v_+(\lambda)&=\sin(2\pi\lambda)\ket{+Q}+\cos(2\pi\lambda)\ket{0}.
 \end{align}
@@ -425,7 +432,7 @@ These will indeed satisfy that $U(0)=V(0)=\id_{\CC^3}$, $U(1)=U$ and $V(1)=V$. M
 	\caption{A graphical depiction of the action of the FDQC $\tilde{V}(\lambda)$ on the product state $\ket{\phi}$. The state $\ket{\psi(\lambda)}$ is the boundary state of the loop and is continuous in $\lambda$.}
 	\label{fig:G_InvariantContraction_WithLightcone}
 \end{figure}
-One property that any loop (on any lattice) has is that it has an associated boundary state. In this section, we will construct this boundary state and describe some of its properties. As was the case before, all the pictures I make in this section will be on the one-dimensional lattice but can be generalized in a straightforward way to higher dimensions.\\\\
+One property that any loop (on any lattice) has is that it has an associated boundary state. In this section, we will construct this boundary state and describe some of its properties. As was the case before, all the pictures made in this section will be on the one-dimensional lattice. They can however be generalized in a straightforward way to higher dimensions.\\\\
 Suppose that the loop is generated by some depth-D FDQC $V$. Define $\tilde{V}$ that is constructed by taking all local unitaries of $V$ that have support on the right of the origin and setting all others to $0$ (see figure \ref{fig:G_InvariantContraction_WithLightcone}). Let $\ket{\tilde{\phi}}\defeq \tilde{V}\ket{\phi}$. Take the three local algebras, $\AA_L$, $\AA_C$ and $\AA_R$ as shown in figure \ref{fig:G_InvariantContraction_WithLightcone}. We now get that for any $a\in \AA_L$ and any $b\in\AA_R$
 \begin{align}
 \bra{\tilde{\phi}}a\ket{\tilde{\phi}}&=\bra{\phi_L}a\ket{\phi_L}&\bra{\tilde{\phi}}b\ket{\tilde{\phi}}&=\bra{\phi_R}b\ket{\phi_R}.
@@ -451,8 +458,8 @@ We call this state $\ket{\psi}$, the boundary state of $(V,\ket{\phi})$. Some re
 	\caption{The construction of the boundary state of the loop from figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit}.}
 	\label{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Boundary}
 \end{figure}
-Now we will show that the $G$-invariant loop presented in section \ref{sec:classification-of-loops-an-example} cannot have a $G$-invariant contraction. To see this, we first create the boundary state of this loop. This is done in figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Boundary}. It creates a zero-dimensional SPT state with charge $-Q$.\\\\
-Now, suppose there was a family of depth-D FDQCs, $V(\lambda)$ such that $V(0)=\id$ and $V(1)$ generates the loop given in section \ref{sec:classification-of-loops-an-example}. Let $\ket{\psi(\lambda)}$ be the boundary state of $(V(\lambda),\ket{\phi})$. It has to be a continuous family of states connecting the boundary state of $(V,\ket{\phi})$ to the $G$-invariant product state that is the boundary state of $(\id,\ket{\phi})$. Since the boundary state of $(V,\ket{\phi})$ had charge $-Q$ and the boundary state of $(\id,\ket{\phi})$ has charge $0$, this is not possible. This shows that there does not exist a contraction.\\\\
+Now we will show that the $G$-invariant loop presented in Section \ref{sec:classification-of-loops-an-example} cannot have a $G$-invariant contraction. To see this, we first create the boundary state of this loop. This is done in figure \ref{fig:U1_ThoulessPumpAs_FiniteDepthQuantumCircuit_Boundary}. It creates a zero-dimensional SPT state with charge $-Q$.\\\\
+Now, suppose there was a family of depth-D FDQCs, $V(\lambda)$ such that $V(0)=\id$ and $V(1)$ generates the loop given in Section \ref{sec:classification-of-loops-an-example}. Let $\ket{\psi(\lambda)}$ be the boundary state of $(V(\lambda),\ket{\phi})$. It has to be a continuous family of states connecting the boundary state of $(V,\ket{\phi})$ to the $G$-invariant product state that is the boundary state of $(\id,\ket{\phi})$. Since the boundary state of $(V,\ket{\phi})$ had charge $-Q$ and the boundary state of $(\id,\ket{\phi})$ has charge $0$, this is not possible. This shows that there does not exist a contraction.\\\\
 This allows us to come to the following conjecture that we will prove in chapter \ref{ch:LoopSPT} of this thesis:
 \begin{conjecture}
 	The classification of $G$-invariant loops is fully determined by the classification of their respective boundary states.
@@ -493,7 +500,7 @@ As an example, consider $G=\ZZ_2$. We will denote the elements of $\ZZ_2$ with m
 U(1)\ket{\uparrow}&=\ket{\uparrow}&U(1)\ket{\downarrow}&=\ket{\downarrow}\\
 U(-1)\ket{\uparrow}&=\ket{\uparrow}&U(-1)\ket{\downarrow}&=-\ket{\downarrow}.
 \end{align}
-The two examples of translation invariant $G$-invariant states that we will consider are the product state with $\ket{\uparrow}$ vectors everywhere which we will call $\ket{\psi_1}$ and the product state with $\ket{\downarrow}$ vectors everywhere which we will call $\ket{\psi_2}$. As is depicted in figure \ref{fig:Z_2_and_TranslationInvariantStates}, these two states can indeed be deformed into one another via a $G$-invariant LGU. Can I find a $G$-invariant LGU that is translation invariant as well? It turns out that the answer to this question is no. The reason why this is the case is that in chapter \ref{ch:TranslationSPT} (or more accurately in appendix \ref{sec:OneDimensionalIndices}) we provide an $H^1(G,\TT)-$valued index for any $G$-invariant, translation invariant state that is invariant under applying $G$-invariant, translation invariant LGUs. If one combines the translation index with the SPT index mentioned previously, one obtains an $H^2(G,\TT)\oplus H^1(G,\TT)$-valued index.
+The two examples of translation invariant $G$-invariant states that we will consider are the product state with $\ket{\uparrow}$ vectors everywhere which we will call $\ket{\psi_1}$ and the product state with $\ket{\downarrow}$ vectors everywhere which we will call $\ket{\psi_2}$. As is depicted in figure \ref{fig:Z_2_and_TranslationInvariantStates}, these two states can indeed be deformed into one another via a $G$-invariant LGU. Can we find a $G$-invariant LGU that is translation invariant as well? It turns out that the answer to this question is no. The reason why this is the case is that in chapter \ref{ch:TranslationSPT} (or more accurately in appendix \ref{sec:OneDimensionalIndices}) we provide an $H^1(G,\TT)-$valued index for any $G$-invariant, translation invariant state that is invariant under applying $G$-invariant, translation invariant LGUs. If one combines the translation index with the SPT index mentioned previously, one obtains an $H^2(G,\TT)\oplus H^1(G,\TT)$-valued index.
 \subsection{Mirror symmetry}
 Previously every additional symmetry we imposed just resulted in another index for the classification problem. This seems to be the case for every symmetry that preserves the orientation of the lattice\footnote{I am only talking about the lattices $\ZZ^d$ for which there are no difficulties in defining an orientation}. It turns out however that orientation-reversing symmetries can restrict some of the previous indices. By this, I mean that the cochains that are used to define the SPT index have to satisfy some additional property. This reduces the amount of SPT classes one can get.
 \\\\
