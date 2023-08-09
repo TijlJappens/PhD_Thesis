@@ -1,7 +1,7 @@
 % !TeX root = ../../thesis.tex
 \chapter{Symmetry protected topological order in a nutshell}\label{sec:SPT_Order_In_A_Nutshell}
 \section{Gapped phases of matter}\label{sec:GappedPhasesOfMatterIntro}
-All of these topological phases of matter are described by a Hamiltonian that is gapped and local\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.}. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no full Hilbert space and hence it is not clear how to define operators. In section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and this gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes: The first equivalence class is an equivalence on Hamiltonians:
+All of these topological phases of matter are described by a Hamiltonian that is gapped\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.} and local. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no full Hilbert space and hence it is not clear how to define operators. In section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and this gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes. The first equivalence class is an equivalence on Hamiltonians:
 \begin{definition}[Equivalence of Hamiltonians]\label{def:ConnectedHamiltonians}
 	Two local Hamiltonians, with unique gapped ground states, $H_0$ and $H_1$ are connected if there exists a path $t\mapsto H(t)$ such that
 	\begin{itemize}
@@ -17,12 +17,13 @@ The second equivalence class is an equivalence on states:
 	\begin{align}
 	\ket{\psi(t)}&=V(t)\ket{\psi(0)}&V(t)&=\mathcal{T}\exp(-i\int_{0}^{t}\d s K(s)).
 	\end{align}
+	Here $V(t)$ is the time ordered exponential of $K(t)$. It is defined as the solution of the ode $V'(t)=-iK(t)V(t)$ with the initial condition $V(0)=\id$.
 \end{definition}
 In what follows we will call a unitary generated like this $V(t)$ a locally generated unitary (LGU).\\\\
 Both these concepts are equivalent. More specifically:
 \begin{itemize}
 	\item If two uniquely gapped local Hamiltonians, $H_0$ and $H_1$, are equivalent through a path $H(t)$, the ground states of $H(t)$ form a path satisfying what was in definition \ref{def:ConnectedStates}.
-	\item If a state $\ket{\psi_0}$ is a unique gapped ground state of some local Hamiltonian and is connected to $\ket{\psi_1}$ via a path $\ket{\psi(t)}$, there is a continuous path of parent Hamiltonians $H(t)$ for $\ket{\psi(t)}$ satisfying what was in definition \ref{def:ConnectedHamiltonians}.
+	\item If a state $\ket{\psi_0}$ is a unique gapped ground state of some local Hamiltonian and is connected to $\ket{\psi_1}$ via a path $\ket{\psi(t)}$, there is a continuous path of parent Hamiltonians $H(t)$ for $\ket{\psi(t)}$ satisfying definition \ref{def:ConnectedHamiltonians}.
 \end{itemize}
 We will provide the statements in more detail along with the main ideas needed for the proof in section \ref{sec:equivalence-of-states-vs-equivalence-of-gapped-interactions}.\\\\
 \begin{figure}
@@ -232,9 +233,9 @@ This needn't be true in general. In fact, we will use the entangled pair state t
 \end{equation}
 (where $u$ was the previous group action on $\CC^4$) is still a linear representation ($u_s\in\hom(G,\UU(\CC^3))$).
 \\\\
-Of course, the space over the one-dimensional lattice $\ZZ$ and the on-site Hilbert space given by the triplet $\CC^3$ doesn't have a $G$-invariant product state. Therefore will define our sites such that the on-site Hilbert space includes two triplets $\CC^3\otimes\CC^3\sim \CC^9$. This Hilbert space with group action given by $g\mapsto u_s(g)\otimes u_s(g)$ does have an invariant vector. Call the product state over this invariant vector $\ket{\phi}$.
+Of course, the space over the one-dimensional lattice $\ZZ$ and the on-site Hilbert space given by the triplet $\CC^3$ doesn't have a $G$-invariant product state. Therefore will define our sites such that the on-site Hilbert space includes two triplets $\CC^3\otimes\CC^3\sim \CC^9$. This Hilbert space, with group action given by $g\mapsto u_s(g)\otimes u_s(g)$, does have an invariant vector. Call the product state over this invariant vector $\ket{\phi}$.
 \\\\
-Now, we need to create a non-trivial state in the same space. The state we will create is often called the projective entangled pair state (PEPs).\footnote{In this case the obtained PEPs state is called the AKLT state.} We will do this as follows. Take the entangled pair state and call it $\ket{\psi^(0)}$. Then project all the sites in some box to the triplet space $\CC^3$ and renormalise\footnote{We will not show here that this does not give zero.} the state
+Now, we need to create a non-trivial state in the same space. The state we will create is often called the projective entangled pair state (PEPs). We will do this as follows. Take the entangled pair state and call it $\ket{\psi^{(0)}}$. Then project all the sites in some box to the triplet space $\CC^3$ and renormalize\footnote{We will not show here that this does not give zero.} the state
 \begin{equation}
 	\ket{\psi^{(i+1)}}=\frac{1}{N_i}P_{[-i,i]}\ket{\psi^{(0)}}.
 \end{equation}
