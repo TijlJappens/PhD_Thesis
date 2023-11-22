@@ -60,19 +60,26 @@ valued index. The first part of the index is just the above mentioned $\textrm{I
 \\\\
 A final remark:
 \begin{remark}
-	As noticed in \cite{Chen_2013}. The groups in which these indices take values can be concisely written out. Using that
+	As noticed in \cite{Chen_2013}. The groups in which these indices take values can be concisely written out. We use the connection with cohomology taking values in $\ZZ$ of the form $H^d(G,U(1))\cong H^{d+1}(G,\ZZ)$ (for $d>0$). We will also use the fact that
 	\begin{align}
-		H^0(\ZZ,\TT)&\cong \TT& H^1(\ZZ,\TT)&\cong \TT& H^2(\ZZ,\TT)&\cong 0&H^3(\ZZ,\TT)&\cong 0
+		\nonumber
+		H^0(\ZZ,\ZZ)&\cong \ZZ& H^1(\ZZ,\ZZ)&\cong \ZZ& H^2(\ZZ,\TT)&\cong 0&H^3(\ZZ,\ZZ)&\cong 0&H^4(\ZZ,\ZZ)&\cong 0
 	\end{align}
-	and inserting this into the K\"unneth formula for $\ZZ\times G$ gives
+	and inserting this into the K\"unneth formula\footnote{The $\textrm{Tor}^\ZZ_1$ part of the K\"unneth formula is trivial because $\ZZ$ is free.} for $\ZZ\times G$ gives
 	\begin{align}
-		H^2(\ZZ \times G,\TT)&\cong \bigoplus_{i=0}^2 H^i(\ZZ,\TT)\otimes H^{2-i}(G,\TT)\cong H^2(G,\TT)\oplus H^1(G,\TT)\\
-		H^3(\ZZ \times G,\TT)&\cong \bigoplus_{i=0}^3 H^i(\ZZ,\TT)\otimes H^{3-i}(G,\TT)\cong H^3(G,\TT)\oplus H^2(G,\TT).
+		\nonumber
+		H^3(\ZZ \times G,\ZZ)&\cong \bigoplus_{i=0}^3 H^i(\ZZ,\ZZ)\otimes H^{3-i}(G,\ZZ)\cong H^3(G,\ZZ)\oplus H^2(G,\ZZ)\\
+		\nonumber
+		H^4(\ZZ \times G,\ZZ)&\cong \bigoplus_{i=0}^4 H^i(\ZZ,\ZZ)\otimes H^{4-i}(G,\ZZ)\cong H^4(G,\ZZ)\oplus H^3(G,\ZZ).
 	\end{align}
-	This result can in turn be used to work out the K\"unneth formula for $\ZZ^2\times G$
-	\begin{equation}
-		H^3(\ZZ^2\times G,\TT)\cong \bigoplus_{i=0}^3 H^i(\ZZ,\TT)\otimes H^{3-i}(\ZZ\times G,\TT)\cong H^3(G,\TT)\oplus H^2(G,\TT)\oplus H^2(G,\TT)\oplus H^1(G,\TT).
-	\end{equation}
+	This already allows us to write out the case with one translation index more concisely. This result can in turn be used to work out the K\"unneth formula for $\ZZ^2\times G$
+	\begin{align}
+		\nonumber
+		H^4(\ZZ^2\times G,\ZZ)&\cong \bigoplus_{i=0}^4 H^i(\ZZ,\ZZ)\otimes H^{4-i}(\ZZ\times G,\ZZ)\\
+		\nonumber
+		&\cong H^4(G,\ZZ)\oplus H^3(G,\ZZ)\oplus H^3(G,\ZZ)\oplus H^2(G,\ZZ).
+	\end{align}
+	This allows us to write out the case with two translation indices more concisely.
 \end{remark}
 The layout of this paper is as follows: First in section \ref{sec:Setup} we explain the setup, define the concept of locally generated automorphisms, and give the algebraic definition of group cohomology. In section \ref{sec:Results_1} we state the two results for SRE states. In section \ref{sec:Results_2}, we state the first result using the weaker assumption \ref{assumption} and the second result using the weaker assumption \ref{assumption:2Translations}. It is using these weaker assumptions that we then prove the statements. The rest of the paper provides a proof of these statements. The results in this paper rely heavily on the methods that were developed in \cite{Ogata2d}.
 \subsection*{Acknowledgements}
