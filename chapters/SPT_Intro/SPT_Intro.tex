@@ -1,6 +1,20 @@
 % !TeX root = ../../thesis.tex
 \chapter{Symmetry protected topological order in a nutshell}\label{sec:SPT_Order_In_A_Nutshell}
-\section{Gapped phases of matter}\label{sec:GappedPhasesOfMatterIntro}
+\section{Spontaneous symmetry breaking}\label{sec:SpontaniousSymmetryBreaking}
+In this section we will give a concrete example of (Landau) phases of matter through spontaneous symmetry breaking so that we can later on contrast it to what happens in the case of topological phases of matter. We will give an example of a phase transition that happens already at zero temperature (this is so that we can better contrast it with  topological phases of matter which are a priori also zero temperature phases of matter).
+\\\\
+The example is called the transverse field Ising model. It is a model on an arbitrary lattice $\Lambda$ with a total Hilbert space given by $\HH=\bigotimes_{i\in\Lambda}(\CC^2)$. It can be described by a family of Hamiltonians of the form
+\begin{equation}
+	H_{J,h}=-J\sum_{\left<i,j\right>}\sigma_{z,i}\otimes\sigma_{z,j}-h\sum_{i}\sigma_{x,i}.
+\end{equation}
+Here the $i$ and $j$ parameters take value in the lattice and $\left<i,j\right>$ means that $i$ and $j$ are nearest neighbor sites.
+\\\\
+This Hamiltonian has a clear 
+\\\\
+ The example is given as a one parameter family of Hamiltonians $H_g$. The Hamiltonian is invariant under some $\ZZ_2$ symmetry. One can show in this model that $H_g$ is gapped for all $g\in\RR$ except when $g\in\{-1,+1\}$. When $\abs{g}>1$, the ground state is unique and $\ZZ_2$ invariant. In this regime, we say that the model is in a symmetric phase. When $\abs{g}<1$ however, the ground state is doubly degenerate and each of the groundstates individually is not invariant under the symmetry (the density matrix containing both still is). In this model, there is a particularly simple order parameter
+\\\\
+
+\section{Uniquely gapped phases of matter}\label{sec:GappedPhasesOfMatterIntro}
 All of these topological phases of matter are described by a Hamiltonian that is gapped\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.} and local. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no one Hilbert space containing every state. Therefore, it is not clear how to define such operators. In Section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes. The first equivalence class is an equivalence on Hamiltonians:
 \begin{definition}[Equivalence of Hamiltonians]\label{def:ConnectedHamiltonians}
 	Two local Hamiltonians, with unique gapped ground states, $H_0$ and $H_1$ are connected if there exists a path $t\mapsto H(t)$ such that
