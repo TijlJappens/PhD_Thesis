@@ -7,12 +7,39 @@ The example is called the transverse field Ising model. It is a model on an arbi
 \begin{equation}
 	H_{J,h}=-J\sum_{\left<i,j\right>}\sigma_{z,i}\otimes\sigma_{z,j}-h\sum_{i}\sigma_{x,i}.
 \end{equation}
-Here the $i$ and $j$ parameters take value in the lattice and $\left<i,j\right>$ means that $i$ and $j$ are nearest neighbor sites.
+Here the $i$ and $j$ parameters take value in the lattice and $\left<i,j\right>$ means that $i$ and $j$ are nearest neighbor sites. The first part is the regular Ising model and the second term has the interpretation of applying a magnetic field in the horizontal direction.
 \\\\
-This Hamiltonian has a clear 
+This Hamiltonian is constructed in such a way that it is invariant under some $\ZZ_2$ symmetry. More specific, it is invariant under application of the unitary
+\begin{equation}
+	U=\bigotimes_{i}\sigma_{x,i}.
+\end{equation}
+The fact that the last term commutes with this unitary is trivial. For the first term, observe that $\Ad{\sigma_x}(\sigma_z)=-\sigma_z$ and therefore, a tensor product of two $\sigma_z$ operators has to commute with $U$.
 \\\\
- The example is given as a one parameter family of Hamiltonians $H_g$. The Hamiltonian is invariant under some $\ZZ_2$ symmetry. One can show in this model that $H_g$ is gapped for all $g\in\RR$ except when $g\in\{-1,+1\}$. When $\abs{g}>1$, the ground state is unique and $\ZZ_2$ invariant. In this regime, we say that the model is in a symmetric phase. When $\abs{g}<1$ however, the ground state is doubly degenerate and each of the groundstates individually is not invariant under the symmetry (the density matrix containing both still is). In this model, there is a particularly simple order parameter
-\\\\
+This Hamiltonian is particularly well understood. A particularly important result is the following:
+\begin{itemize}
+	\item If $h/J\in]-\infty,-[\:\cup\:]1,+\infty[$, $H_{J,h}$ has a unique gapped groundstate $\ket{\psi_{J,h}}$ such that $U\ket{\psi_{J,h}}=\ket{\psi_{J,h}}$.
+	\item If $h/J\in]-1,1[$, $H_{J,h}$ has a two fold degenerate gapped groundstate given by $\ket{\psi_{J,h}^1}$ and $\ket{\psi_{J,h}^2}$\footnote{To put it in the light of what proceeds, if we ask that $\ket{\psi_{J,h}^1}$ and $\ket{\psi_{J,h}^2}$ are short ranged entangled states (see section \ref{sec:GappedPhasesOfMatterIntro}) then these two states are unique (superpositions of them are not short range entangled).} such that $U\ket{\psi_{J,h}^1}=\ket{\psi_{J,h}^2}$.
+\end{itemize}
+We call the region of the parameter space where the Hamiltonian has a unique gapped groundstate the symmetry preserved phase of matter while we call the region where the Hamiltonian has a two fold degenerate groundstate the symmetry broken phase of matter.\\\\
+One of the key features of such a Landau phase of matter is that one can measure the phase transition with local order parameters. In this model, we have a local order parameter of the form $\sigma_{z,i}$ (for some site $i$). To show this, we will calculate the correlation function of the order parameter in the ground state (density matrix). More specifically, let
+\begin{equation}
+	\omega_{J,h}(\cdot)\defeq \left\{\begin{matrix}
+		\bra{\psi_{J,h}}\cdot \ket{\psi_{J,h}}&\text{if }h/J\in]-\infty,-[\:\cup\:]1,+\infty[\\
+		\frac{1}{2}\left(\bra{\psi_{J,h}^1}\cdot \ket{\psi_{J,h}^1}+\bra{\psi_{J,h}^2}\cdot \ket{\psi_{J,h}^2}\right)&\text{if }h/J\in]-1,1[.
+	\end{matrix}\right.
+\end{equation}
+be the ground state (for $h/J\notin \{-1,+1\}$). If we calculate the correlation function of the order parameter with respect to this groundstate:
+\begin{equation}
+	Cor_{J,h}(\sigma_{z,i},\sigma_{z,j})\defeq \omega_{J,h}(\sigma_{z,i}\sigma_{z,j})-\omega_{J,h}(\sigma_{z,i})\omega_{J,h}(\sigma_{z,j})
+\end{equation}
+we obtain that
+\begin{equation}
+	Cor_{J,h}(\sigma_{z,i},\sigma_{z,j})=\left\{\begin{matrix}
+		1&\text{if }h/J\in]-\infty,-[\:\cup\:]1,+\infty[\\
+		0&\text{if }h/J\in]-1,1[.
+	\end{matrix}\right.
+\end{equation}
+This shows that the local order parameter can measure the difference between the symmetry preserving phase (where the correlation function is 0) and the symmetry broken phase (where the correlation is $1$).
 
 \section{Uniquely gapped phases of matter}\label{sec:GappedPhasesOfMatterIntro}
 All of these topological phases of matter are described by a Hamiltonian that is gapped\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.} and local. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no one Hilbert space containing every state. Therefore, it is not clear how to define such operators. In Section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes. The first equivalence class is an equivalence on Hamiltonians:
