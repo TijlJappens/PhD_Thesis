@@ -17,30 +17,27 @@ The fact that the last term commutes with this unitary is trivial. For the first
 \\\\
 This Hamiltonian is particularly well understood. A particularly important result is the following:
 \begin{itemize}
-	\item If $h/J\in]-\infty,-[\:\cup\:]1,+\infty[$, $H_{J,h}$ has a unique gapped groundstate $\ket{\psi_{J,h}}$ such that $U\ket{\psi_{J,h}}=\ket{\psi_{J,h}}$.
-	\item If $h/J\in]-1,1[$, $H_{J,h}$ has a two fold degenerate gapped groundstate given by $\ket{\psi_{J,h}^1}$ and $\ket{\psi_{J,h}^2}$\footnote{To put it in the light of what proceeds, if we ask that $\ket{\psi_{J,h}^1}$ and $\ket{\psi_{J,h}^2}$ are short ranged entangled states (see section \ref{sec:GappedPhasesOfMatterIntro}) then these two states are unique (superpositions of them are not short range entangled).} such that $U\ket{\psi_{J,h}^1}=\ket{\psi_{J,h}^2}$.
+	\item If $\abs{h/J}>1$, $H_{J,h}$ has a unique gapped groundstate $\ket{\psi_{J,h}}$ such that $U\ket{\psi_{J,h}}=\ket{\psi_{J,h}}$.
+	\item If $\abs{h/J}<1$, $H_{J,h}$ has a two fold degenerate gapped groundstate given by $\ket{\psi_{J,h}^1}$ and $\ket{\psi_{J,h}^2}$\footnote{To put it in the light of what proceeds, if we ask that $\ket{\psi_{J,h}^1}$ and $\ket{\psi_{J,h}^2}$ are short ranged entangled states (see section \ref{sec:GappedPhasesOfMatterIntro}) then these two states are unique (superpositions of the two are not short range entangled).} such that $U\ket{\psi_{J,h}^1}=\ket{\psi_{J,h}^2}$.
 \end{itemize}
 We call the region of the parameter space where the Hamiltonian has a unique gapped groundstate the symmetry preserved phase of matter while we call the region where the Hamiltonian has a two fold degenerate groundstate the symmetry broken phase of matter.\\\\
-One of the key features of such a Landau phase of matter is that one can measure the phase transition with local order parameters. In this model, we have a local order parameter of the form $\sigma_{z,i}$ (for some site $i$). To show this, we will calculate the correlation function of the order parameter in the ground state (density matrix). More specifically, let
+One of the key features of such a Landau phase of matter is that one can measure the phase transition with local order parameters. In this model, we have a local order parameter of the form $\sigma_{z,i}$ (for some site $i$). To show this, we will calculate the expectation value of these local order parameters in various groundstates. In the symmetry preserving phase of matter, we get:
+\begin{align}
+	\bra{\psi_{J,h}}\sigma_{z,i} \ket{\psi_{J,h}}&=0&&\text{if}&\abs{h/J}&>1.
+\end{align}
+This is easy to see, we simply combine the fact that the state is $G$-invariant with the fact that $\Ad{\sigma_x}(\sigma_z)=-\sigma_z$ to conclude that any expectation value of a local $\sigma_z$ must give 0.
+\\\\
+In the symmetry broken phase of matter, the situation becomes very different. We now get:
+\begin{align}
+\bra{\psi_{J,h}^1}\sigma_{z,i} \ket{\psi_{J,h}^1}&=-\bra{\psi_{J,h}^2}\sigma_{z,i} \ket{\psi_{J,h}^2}=f(\abs{h/J})&&\text{if}&\abs{h/J}&<1
+\end{align}
+for some positive function $f$. The reason why the two expectation values are opposite to each other can be seen by combining the fact that $U\ket{\psi_{J,h}^1}=\ket{\psi_{J,h}^2}$ with the fact that $\Ad{\sigma_x}(\sigma_z)=-\sigma_z$. We can also calculate the limit
 \begin{equation}
-	\omega_{J,h}(\cdot)\defeq \left\{\begin{matrix}
-		\bra{\psi_{J,h}}\cdot \ket{\psi_{J,h}}&\text{if }h/J\in]-\infty,-[\:\cup\:]1,+\infty[\\
-		\frac{1}{2}\left(\bra{\psi_{J,h}^1}\cdot \ket{\psi_{J,h}^1}+\bra{\psi_{J,h}^2}\cdot \ket{\psi_{J,h}^2}\right)&\text{if }h/J\in]-1,1[.
-	\end{matrix}\right.
+	\lim_{\lambda\rightarrow\infty}f(\lambda)=\lim_{\lambda\rightarrow\infty}\bra{\psi_{J,J\lambda}^1}\sigma_{z,i} \ket{\psi_{J,J\lambda}^1}=\bra{\uparrow\cdots\uparrow}\sigma_{z,i}\ket{\uparrow\cdots\uparrow}=+1.
 \end{equation}
-be the ground state (for $h/J\notin \{-1,+1\}$). If we calculate the correlation function of the order parameter with respect to this groundstate:
-\begin{equation}
-	Cor_{J,h}(\sigma_{z,i},\sigma_{z,j})\defeq \omega_{J,h}(\sigma_{z,i}\sigma_{z,j})-\omega_{J,h}(\sigma_{z,i})\omega_{J,h}(\sigma_{z,j})
-\end{equation}
-we obtain that
-\begin{equation}
-	Cor_{J,h}(\sigma_{z,i},\sigma_{z,j})=\left\{\begin{matrix}
-		1&\text{if }h/J\in]-\infty,-[\:\cup\:]1,+\infty[\\
-		0&\text{if }h/J\in]-1,1[.
-	\end{matrix}\right.
-\end{equation}
-This shows that the local order parameter can measure the difference between the symmetry preserving phase (where the correlation function is 0) and the symmetry broken phase (where the correlation is $1$).
-
+This already shows how we can use this local order parameter to measure if we are in a symmetry preserving or a symmetry breaking phase of matter. In a symmetry preserving phase, it gives 0 in a symmetry breaking phase, it approaches $1$ (or $-1$ for the other state).
+\\\\
+This notion of the existence of local order parameters is crucial to the concept of the Landau phases of matter that we see in our everyday life. The most striking fact about the topological phases of matter discussed in this thesis is that they have no local order parameters. Many works have been written to show that there are no local order parameters for the quantum hall effect or the toric code for instance. In section \ref{sec:the-haldane-phase-has-no-local-order-parameters} we show how the Haldane phase can have no local order parameters.
 \section{Uniquely gapped phases of matter}\label{sec:GappedPhasesOfMatterIntro}
 All of these topological phases of matter are described by a Hamiltonian that is gapped\footnote{There are some caveats to this statement. For instance, one can still observe the quantum Hall effect in regimes where there is no gap.} and local. By local, we mean that it is a sum of local terms\footnote{As presented here, this is not yet a mathematically well-defined concept. For instance, in the infinite volume limit, there is no one Hilbert space containing every state. Therefore, it is not clear how to define such operators. In Section \ref{sec:ToolsForQuantumManyBody} we will define these concepts in more detail.}. It turns out that this locality and gap protect the topological orders mentioned in the last section. To explain this more precisely we will define two equivalence classes. The first equivalence class is an equivalence on Hamiltonians:
 \begin{definition}[Equivalence of Hamiltonians]\label{def:ConnectedHamiltonians}
@@ -314,6 +311,14 @@ Since $H_R$ is a $G$-invariant operator (it is a sum over $G$-invariant terms), 
 This statement is sometimes rephrased as: the edge modes of a non-trivial SPT are protected. In figure \ref{fig:EdgeModesInHaldanePhase} we give a graphical depiction of such edge modes.
 \\\\
 These edge modes can be observed in experiments. One example of such an experiment is in \cite{sompet2022realizing} (see figure \ref{fig:EdgeMagnetization}) where they are able to detect the edge modes of the non-trivial phase by measuring the average magnetization per site in a sample with nonzero total magnetization. 
+\subsection{The Haldane phase has no local order parameters}\label{sec:the-haldane-phase-has-no-local-order-parameters}
+\begin{figure}
+	\begin{center}
+		\input{chapters/SPT_Intro/image/IntertwiningEntangledPairState.tikz}
+	\end{center}
+	\caption{A family of states intertwining between the nontrivial and trivial Haldane phases that we will denote with $\psi_M$. sending M to infinity cannot be done with a finite depth quantum cirquit (or a locally generated automorphism for that matter) because the limit has a different SPT index. One needs a quantum cirquit of depth $\textrm{diam}(M)$ to generate this state from the nontrivial entangled pair state. This construction does show there can't be local order parameters to describe the 1d SPT index. If there where a local order parameter with support on some interval $X$, $O_X$ then if we take $M$ large enough so that $X\subset M$ then we need $\psi_M(O_X)=\psi_{\infty}(O_X)=\phi(O_X)$ showing that any local order parameter could never measure the total SPT index.}
+\end{figure}
+I stated somewhere at the end of section \ref{sec:SpontaniousSymmetryBreaking} that Topological phases of matter have no local order parameters. This is particularly easy to see for the Haldane phase.
 \section{(Borel) Group cohomology groups}
 \subsection{General algebraic definition}\label{sec:general-algebraic-definition}
 In this paper, we define the Group cohomology groups using the algebraic approach. A standard reference for Group cohomology is \cite{benson1991representations}. Let $G$ be a finite group. For any $n\in\NN$ and any module $M$, let $C^n(G,M)$ (in principle this can be for any (left) G-module $M$ but in this thesis, we will always take $M=\TT$ with the addition and the trivial group action\footnote{So in particular when we write $g_1 \phi(g_2,\cdots,g_n)$ for any $\phi\in C^{n-1}(G,M)$ we will sometimes identify it simply with $\phi(g_2,\cdots,g_n)$.}) be the group of all functions from $G^n$ to $M$. We will use additive notation on this space and denote the group operator by $+$ and the inverse of an element of the group $\phi$ by $-\phi$. Now define the coboundary homomorphisms
