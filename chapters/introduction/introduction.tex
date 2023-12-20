@@ -4,34 +4,41 @@
 In the realm of condensed matter physics, Landau symmetry breaking has long stood as a cornerstone for classifying and characterizing traditional phases of matter. Lev Landau's theoretical framework, developed in the mid-20th century, relies on the concept of order parameters and spontaneous symmetry breaking during phase transitions. As a system undergoes a phase transition, its symmetries are spontaneously broken, giving rise to an order parameter. This is a measurable quantity that distinguishes between different phases.
 \\\\
 In Section \ref{sec:SpontaniousSymmetryBreaking}, we will consider an example of such a Landau phase transition that is particularly well understood. The example is called the transverse Ising model. It is a model in which one can prove that there is a symmetry and an order parameter such that the expectation value of the order parameter is zero when we are in a symmetry preserving phase and nonzero for any (local) pure state in the symmetry breaking phase. This framework has successfully explained and categorized a myriad of phases, from ferromagnetism to superconductivity. The beauty of Landau symmetry breaking lies in its ability to provide a systematic and comprehensive description of phase transitions, grounded in the observable breaking of symmetries.
-\section{The quantum Hall effect}
-In 1980, Klaus von Klitzing made a groundbreaking discovery in condensed matter physics by uncovering a remarkable phenomenon called the integer quantum Hall effect. He conducted experiments on a low-temperature silicon-based MOSFET under the influence of an external magnetic field. To his surprise, the Hall conductance induced by the magnetic field did not follow the classical linear dependence observed in the classical Hall effect, which is based on the Lorentz force acting on charged particles in a magnetic field. Instead, it formed distinct quantized plateaus (see figure \ref{fig:TopologicalOrderFigures}a).
+\section{The quantum Hall effect}\label{sec:the-quantum-hall-effect}
+\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{IntegerQHE.png}
+			\caption{Integer quantum Hall effect (1980)}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{FractionalQHE.png}
+			\caption{Fractional quantum Hall effect (1982)}
+		\end{subfigure}
+		\caption{Two examples of topological order, the integer quantum Hall effect displays invertible topological order while the fractional quantum Hall effect displays both invertible and anyonic topological order.}
+		\label{fig:TopologicalOrderFigures}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{SemiclassicsHallEffect.png}
+	\caption{Semi-classical picture of currents in disordered system with high magnetic field.}
+	\label{fig:SemiclassisInHallEffect}
+\end{figure}
+In 1980, Klaus von Klitzing made a groundbreaking discovery in condensed matter physics by uncovering a remarkable phenomenon called the integer quantum Hall effect. He conducted experiments on a low-temperature silicon-based MOSFET under the influence of a strong external magnetic field. To his surprise, the Hall conductance induced by the magnetic field did not follow the classical linear dependence observed in the classical Hall effect, which is based on the Lorentz force acting on charged particles in a magnetic field. Instead, it formed distinct quantized plateaus (see figure \ref{fig:TopologicalOrderFigures}a).
 \\\\
 The materials exhibiting these Hall plateaus possessed intriguing new properties: they were classified by an integer, now known as the topological invariant or Chern number. Unlike conventional order parameters, this integer remained robust under local perturbations. Strikingly, this integer was typically not observable using local observables. It was only measurable by considering the total transversal (or Hall) conductivity of the entire system.
 \\\\
-Further investigations revealed that these quantized plateaus were manifestations of new phases of matter. They defied classification based on local order parameters, thereby challenging the conventional understanding of phases of matter described by Landau's paradigm.
+Further investigations revealed that these quantized plateaus were manifestations of new phases of matter. They defied classification based on local order parameters, thereby challenging the conventional understanding of phases of matter described by Landau's paradigm. One of the ways this can be seen is from the fact that the quantum hall plateaus persist even in highly disordered systems (they become even more pronounced). In such systems, semiclassical arguments predict that the current distribution in the material will look something like in figure \ref{fig:SemiclassisInHallEffect}. This shows that locally the current distributions look completely disordered but yet globally, we observe a quantized hall resistance.
 \\\\
-As the name suggests, the quantum Hall effect is inherently quantum mechanical in nature and is related to a topological property of the gapped many-body ground state. As such, the phenomenon is predominantly considered to be a zero-temperature phase of matter\footnote{Although certain caveats exist, such as the role of disorder, which allows the observation of quantum Hall plateaus even in situations without a gap.}. As these Hall plateaus were differentiated by some topological property of the many-body ground state, they were called topological phases of matter.
+As the name suggests, the quantum Hall effect is inherently quantum mechanical in nature and is related to a topological property of the gapped many-body ground state. As such, the phenomenon is predominantly considered to be a zero-temperature phase of matter\footnote{Although certain caveats exist, such as the fact that the aforementioned disorder allows the observation of quantum Hall plateaus even in situations without a gap.}. As these Hall plateaus were differentiated by some topological property of the many-body ground state, they were called topological phases of matter.
 \\\\
 For non-interacting electrons in periodic potentials, the topological property is characterized by the first Chern number of the Bloch bundle. However, for ground states of more general interacting Hamiltonians, distilling the properties that distinguish the phases is far more challenging and remains an active area of research. An example of such research is \cite{sopenko2023chiral} where the researchers produce examples of bosonic states that exhibit a similar kind of topological order.
 \\\\
 These integers are called topological properties, not just because they are Chern numbers of some bundle but because they are surprisingly robust. Any small and local perturbation of the gapped many-body Hamiltonian will leave the integers invariant just like a topological invariant remains unchanged under a continuous deformation of a topological space. For instance, it is impossible to continuously deform a 2-torus to a sphere because the 2-torus has a hole in it while the sphere does not. The amount of holes is a topological invariant that provides an obstruction to connecting topological spaces.
-\begin{figure}
-	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{IntegerQHE.png}
-		\caption{Integer quantum Hall effect (1980)}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{FractionalQHE.png}
-		\caption{Fractional quantum Hall effect (1982)}
-	\end{subfigure}
-	\caption{Two examples of topological order, the integer quantum Hall effect displays invertible topological order while the fractional quantum Hall effect displays both invertible and anyonic topological order.}
-	\label{fig:TopologicalOrderFigures}
-\end{figure}
+
 \section{Topological phases of matter}
 Later on, many more such phases of matter were found. They were all characterized by topological invariants. The most famous examples are the fractional quantum Hall effect (see figure \ref{fig:TopologicalOrderFigures}b), measured in 1982, and the theoretical toric code\cite{Kitaev_2003} model.
 \\\\
